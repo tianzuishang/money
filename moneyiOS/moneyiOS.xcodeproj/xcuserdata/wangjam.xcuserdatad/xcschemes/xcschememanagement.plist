@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Copy of moneyiOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>moneyiOS 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>moneyiOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B2458C431D59B90400AF0815</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2458C6B1D59BA6700AF0815</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D173101D3CA27C00FC128A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D173341D3CC92100FC128A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D173421D3CC9C000FC128A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

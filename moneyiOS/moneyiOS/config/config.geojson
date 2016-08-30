@@ -1,0 +1,10 @@
+{
+    "dev" : {
+        "ServerDomain" :"http://127.0.0.1:8001/"
+    },
+    
+    "uat" : {
+        "ServerDomain" :"http://112.74.102.178:8001/"
+    }
+    
+}

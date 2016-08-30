@@ -1,0 +1,9 @@
+exports.returnCode = {
+	ERROR: -1,
+	SUCCESS: 0,
+    LOGIN_SUCCESS: 1001,
+    LOGIN_FAIL: 1002,
+    UNLOGIN: 1003,
+    TOKEN_INVALID: 1004,
+    TOKEN_VALID: 1005
+};
