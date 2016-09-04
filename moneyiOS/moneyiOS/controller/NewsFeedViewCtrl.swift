@@ -14,11 +14,12 @@ import BXProgressHUD
 
 class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let tableview = UITableView(frame: CGRectMake(0, 9*minSpace, ScreenWidth, ScreenHeight - 9*minSpace))
-    let headview = UIView()
-    let faceView = UIImageView()
-    let headLabel = UILabel()
-    let headIcon = UIImageView()
+    
+    
+    let tableview = UITableView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight), style: UITableViewStyle.Grouped)
+    
+    
+    
     let myInfo = (UIApplication.sharedApplication().delegate as! AppDelegate).myUserInfo
     
     
@@ -29,44 +30,27 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     
     let refreshControl = UIRefreshControl()
     
+    let sectionMap = (
+        faceheadView: 0,
+        hotNews: 1,
+        lives: 2,
+        follows: 3
+    )
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = grayBackgroundColor
         
-        headLabel.text = "分享我的照片或动态"
-        headLabel.textColor = UIColor.grayColor()
-        headLabel.font = UIFont(name: fontName, size: minFont)
-        headLabel.sizeToFit()
+                
+        //self.view.addSubview(headview)
         
-        
-        faceView.clipsToBounds = true
-        faceView.contentMode = UIViewContentMode.ScaleAspectFit
-        faceView.layer.cornerRadius = 6*minSpace/2
-        
-        if(myInfo?.faceImageName != nil){
-            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+myInfo!.faceImageName!)!, placeholderImage: UIImage(named: "man-noname.png"))
-        }else{
-            faceView.image = UIImage(named: "man-noname.png")
-        }
-        
-        
-        headIcon.image = UIImage(named: "camera_.png")
-        headIcon.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        
-        
-        
-        headview.backgroundColor = UIColor.whiteColor()
-        headview.addSubview(faceView)
-        headview.addSubview(headLabel)
-        headview.addSubview(headIcon)
-        
-        self.view.addSubview(headview)
         
         tableview.delegate = self
         tableview.dataSource = self
-        tableview.backgroundColor = UIColor.whiteColor()
+        tableview.backgroundColor = grayBackgroundColor
+        tableview.separatorInset = UIEdgeInsetsMake(0,0, 0,0);
+        
         self.view.addSubview(tableview)
         
         
@@ -75,6 +59,13 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
         
         tableview.registerClass(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell");
+        tableview.registerClass(HeadLineTableViewCell.self, forCellReuseIdentifier: "HeadLineTableViewCell");
+        
+        tableview.registerClass(MoreTableViewCell.self, forCellReuseIdentifier: "MoreTableViewCell")
+        
+        tableview.registerClass(HeadFaceTableViewCell.self, forCellReuseIdentifier: "HeadFaceTableViewCell")
+
+        
         
         
         refreshControl.addTarget(self, action: "pullDownAction", forControlEvents: UIControlEvents.ValueChanged)
@@ -83,8 +74,22 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         tableview.addSubview(refreshControl)
         
         self.pullDownAction()
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
     }
 
+    
+    func applicationDidBecomeActive(notification: NSNotification) {
+        self.refreshControl.endRefreshing()
+    }
+
+    
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.refreshControl.endRefreshing()
+    }
     
     func pullDownAction() {
         
@@ -107,6 +112,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                     
                     let tempArray = responseData!["data"]!["hotNewslist"] as! NSArray
                     
+                    self.hotNewsArray.addObject("今日热点")
                     for item in tempArray {
                         let newsmodel = NewsModel()
                         newsmodel.title = item["title"] as! String
@@ -117,6 +123,8 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                         newsmodel.headline = item["headline"] as? Bool
                         self.hotNewsArray.addObject(newsmodel)
                     }
+                    self.hotNewsArray.addObject("更多")
+
                 }
                 
             }
@@ -140,6 +148,8 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -148,29 +158,6 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     override func viewWillAppear(animated: Bool) {
         //布局
         
-        headview.snp_makeConstraints { (make) -> Void in
-            make.width.equalTo(self.view.snp_width)
-            make.height.equalTo(8*minSpace)
-            make.top.equalTo(self.view.snp_top)
-            make.left.equalTo(self.view.snp_left)
-        }
-        
-        faceView.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(headview.snp_left).offset(2*minSpace)
-            make.centerY.equalTo(headview.snp_centerY)
-            make.size.width.equalTo(6*minSpace)
-        }
-        
-        headLabel.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.centerY.equalTo(faceView.snp_centerY)
-        }
-        
-        headIcon.snp_makeConstraints { (make) -> Void in
-            make.right.equalTo(headview.snp_right).offset(-2*minSpace)
-            make.centerY.equalTo(faceView.snp_centerY)
-            make.size.width.equalTo(4*minSpace)
-        }
         
         
 //        tableview.snp_makeConstraints { (make) -> Void in
@@ -180,33 +167,105 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if(section == 0){
+//            
+//            return MoreTableViewCell.cellHeight()
+//        }else{
+//            return 32
+//        }
+        return 12
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if(section == 0){
+//            return HeadLineTableViewCell.cellHeight()
+//        }else{
+//            return 32
+//        }
+        return 0.5
+    }
+    
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//        let view = UIView(frame: CGRectMake(0, 0, ScreenWidth, 4*minSpace))
+//        view.backgroundColor = grayBackgroundColor
+//        return view
+//
+//        
+////        if(section == 0){
+////            let cellView = HeadLineTableViewCell()
+////            cellView.configureCell("今日热点")
+////            return cellView
+////        }else{
+////            
+////            
+////            
+////        }
+//    }
+    
+//    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+////        if(section == 0){
+////            let cellView = MoreTableViewCell()
+////            return cellView
+////        }else{
+////            return nil
+////        }
+//        return nil
+//    }
+    
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        if(indexPath.section == 0){
-            return NewsTableViewCell.cellHeight(self.hotNewsArray[indexPath.row] as! NewsModel)
-        }else{
-            return 44
+        if(indexPath.section == sectionMap.hotNews){
+            
+            if(indexPath.row > self.hotNewsArray.count){
+                return 0
+            }
+            
+            if(indexPath.row == 0){
+                
+                return HeadLineTableViewCell.cellHeight()
+                
+            }else if(indexPath.row == self.hotNewsArray.count - 1){
+                return MoreTableViewCell.cellHeight()
+            }else{
+                
+                return NewsTableViewCell.cellHeight(self.hotNewsArray[indexPath.row] as! NewsModel)
+            }
         }
+        
+        if(indexPath.section == sectionMap.faceheadView){
+            return HeadFaceTableViewCell.cellHeight()
+        }
+        
+        return 44
+        
     }
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(section == 0){
+        if(section == sectionMap.faceheadView ){
+            return 1
+        }
+        
+        if(section == sectionMap.hotNews ){
             //热点
             return self.hotNewsArray.count
         }
         
-        else if(section == 1){
+        else if(section == sectionMap.lives ){
             //live
             return 1
         }
         
-        else if(section == 2){
+        else if(section == sectionMap.follows ){
             //follow的动态
             
             return self.followNewsArray.count
@@ -221,21 +280,48 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        if(indexPath.section == 0){
+        if(indexPath.section == sectionMap.hotNews){
             //新闻
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("NewsTableViewCell", forIndexPath: indexPath) as! NewsTableViewCell
-            
-            
-            // Configure the cell...
-            
-            cell.configureCell(self.hotNewsArray[indexPath.row] as! NewsModel)
-            
-            return cell
+            if(self.hotNewsArray[indexPath.row] is String){
+                if(indexPath.row == 0){
+                    let cell = tableView.dequeueReusableCellWithIdentifier("HeadLineTableViewCell", forIndexPath: indexPath) as! HeadLineTableViewCell
+                    
+                    
+                    // Configure the cell...
+                    
+                    cell.configureCell(self.hotNewsArray[indexPath.row] as! String)
+                    
+                    return cell
+
+                }else{
+                    //更多
+                    
+                    let cell = tableView.dequeueReusableCellWithIdentifier("MoreTableViewCell", forIndexPath: indexPath) as! MoreTableViewCell
+                    
+                    
+                    // Configure the cell...
+                    
+                    cell.configureCell(self.hotNewsArray[indexPath.row] as! String)
+                    
+                    return cell
+
+                }
+                
+            }else{
+                let cell = tableView.dequeueReusableCellWithIdentifier("NewsTableViewCell", forIndexPath: indexPath) as! NewsTableViewCell
+                
+                
+                // Configure the cell...
+                
+                cell.configureCell(self.hotNewsArray[indexPath.row] as! NewsModel)
+                
+                return cell
+            }
             
         }
         
-        if(indexPath.section == 1){
+        if(indexPath.section == sectionMap.lives){
             //直播
             let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
             
@@ -245,7 +331,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             return cell
         }
         
-        if(indexPath.section == 2){
+        if(indexPath.section == sectionMap.follows){
             //follows动态
             
             let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
@@ -254,6 +340,21 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             // Configure the cell...
             
             return cell
+        }
+        
+        
+        if(indexPath.section == sectionMap.faceheadView){
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("HeadFaceTableViewCell", forIndexPath: indexPath) as! HeadFaceTableViewCell
+            
+            
+            
+            cell.configureCell(myInfo!)
+            
+            // Configure the cell...
+            
+            return cell
+            
         }
         
         return UITableViewCell()

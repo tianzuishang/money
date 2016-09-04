@@ -20,7 +20,7 @@ class NewsTableViewCell: UITableViewCell {
     var newsModel: NewsModel
     
     static let titleHeight: CGFloat = 6*minSpace
-    static let titleWidth: CGFloat = 35*minSpace
+    static let titleWidth: CGFloat = 28*minSpace
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
@@ -37,6 +37,7 @@ class NewsTableViewCell: UITableViewCell {
         title.textColor = UIColor.blackColor()
         title.numberOfLines = 2
         title.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+//        title.frame = CGRectMake(0, 0, NewsTableViewCell.titleWidth, NewsTableViewCell.titleHeight)
         
 //        subTitle.font = UIFont(name: fontName, size: minFont)
 //        subTitle.textColor = UIColor.darkGrayColor()
@@ -79,7 +80,6 @@ class NewsTableViewCell: UITableViewCell {
             titleImageView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+newsModel.titleImageUrl!)!)
         }
         
-        title.sizeThatFits(CGSizeMake(NewsTableViewCell.titleWidth, NewsTableViewCell.titleHeight))
         //subTitle.sizeToFit()
         source.sizeToFit()
         publishTime.sizeToFit()
@@ -96,51 +96,35 @@ class NewsTableViewCell: UITableViewCell {
     
     static func cellHeight(model: NewsModel)->CGFloat {
         
-        let title = UILabel()
+        //let title = UILabel()
         //let subTitle = UILabel()
         let source = UILabel()
-        title.font = UIFont(name: fontName, size: normalFont)
-        title.numberOfLines = 0
-        title.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+//        title.font = UIFont(name: fontName, size: normalFont)
+//        title.numberOfLines = 0
+//        title.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         //subTitle.font = UIFont(name: fontName, size: minFont)
         source.font = UIFont(name: fontName, size: minminFont)
         
         //subTitle.text = model.subTitle
         source.text = model.source
         
-        title.sizeToFit();
+        //title.sizeToFit();
         //subTitle.sizeToFit()
         source.sizeToFit()
         
-        print("cellHeight: %f", title.frame.width)
-        title.frame = CGRectMake(0, 0, NewsTableViewCell.titleWidth, NewsTableViewCell.titleHeight)
         
-        
-        return minSpace + title.frame.height + minSpace + minSpace + source.frame.height + minSpace
+        return NewsTableViewCell.titleHeight + minSpace + source.frame.height
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
-        if(newsModel.titleImageUrl != nil){
-            title.snp_updateConstraints { (make) -> Void in
-                make.width.equalTo(NewsTableViewCell.titleWidth - 10*minSpace)
-                make.height.equalTo(NewsTableViewCell.titleHeight)
-                make.left.equalTo(titleImageView.snp_right).offset(2*minSpace)
-                make.top.equalTo(minSpace)
-            }
-
-        }else{
-            
-            title.snp_updateConstraints { (make) -> Void in
-                make.width.equalTo(NewsTableViewCell.titleWidth)
-                make.height.equalTo(NewsTableViewCell.titleHeight)
-                make.left.equalTo(titleImageView.snp_right).offset(2*minSpace)
-                make.top.equalTo(minSpace)
-            }
+        title.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(titleImageView.snp_right).offset(2*minSpace)
+            make.top.equalTo(self.snp_top)
+            make.width.equalTo(NewsTableViewCell.titleWidth)
+            make.height.equalTo(NewsTableViewCell.titleHeight)
         }
-        
         
         source.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(title.snp_left)
@@ -153,23 +137,12 @@ class NewsTableViewCell: UITableViewCell {
             make.top.equalTo(source.snp_top)
         }
         
-        if(newsModel.titleImageUrl == nil){
-            
-            titleImageView.snp_updateConstraints(closure: { (make) -> Void in
-                make.width.equalTo(0)
-                make.height.equalTo(0)
-                make.left.equalTo(0)
-                make.top.equalTo(0)
-            })
-            
-        }else{
-            titleImageView.snp_updateConstraints(closure: { (make) -> Void in
-                make.size.height.equalTo(NewsTableViewCell.cellHeight(self.newsModel) - 2*minSpace)
-                make.left.equalTo(2*minSpace)
-                make.top.equalTo(minSpace)
-            })
-        }
         
+        titleImageView.snp_updateConstraints(closure: { (make) -> Void in
+            make.size.height.equalTo(NewsTableViewCell.cellHeight(self.newsModel) - 2*minSpace)
+            make.left.equalTo(2*minSpace)
+            make.top.equalTo(minSpace)
+        })
     }
     
     override func awakeFromNib() {

@@ -104,6 +104,12 @@
 		B2E9487F1D7BC5460087838A /* camera_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E9487D1D7BC5460087838A /* camera_72px.png */; };
 		B2E948811D7BC6B20087838A /* camera_.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948801D7BC6B20087838A /* camera_.png */; };
 		B2E948821D7BC6B20087838A /* camera_.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948801D7BC6B20087838A /* camera_.png */; };
+		B2E948841D7BF5E90087838A /* HeadLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948831D7BF5E90087838A /* HeadLineTableViewCell.swift */; };
+		B2E948851D7BF5EA0087838A /* HeadLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948831D7BF5E90087838A /* HeadLineTableViewCell.swift */; };
+		B2E948871D7BFB670087838A /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948861D7BFB670087838A /* MoreTableViewCell.swift */; };
+		B2E948881D7BFB670087838A /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948861D7BFB670087838A /* MoreTableViewCell.swift */; };
+		B2E9488A1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */; };
+		B2E9488B1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */; };
 		B2EED7401D6C60FC0053816C /* magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED73F1D6C60FC0053816C /* magnifier.png */; };
 		B2EED7421D6C65BC0053816C /* magnifier_48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED7411D6C65BC0053816C /* magnifier_48.png */; };
 		B2EED7441D6C660C0053816C /* magnifier_32.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED7431D6C660C0053816C /* magnifier_32.png */; };
@@ -191,6 +197,9 @@
 		B2E9487A1D7BBDFB0087838A /* NewsFeedViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewCtrl.swift; sourceTree = "<group>"; };
 		B2E9487D1D7BC5460087838A /* camera_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_72px.png; sourceTree = "<group>"; };
 		B2E948801D7BC6B20087838A /* camera_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_.png; sourceTree = "<group>"; };
+		B2E948831D7BF5E90087838A /* HeadLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadLineTableViewCell.swift; sourceTree = "<group>"; };
+		B2E948861D7BFB670087838A /* MoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
+		B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadFaceTableViewCell.swift; sourceTree = "<group>"; };
 		B2EED73F1D6C60FC0053816C /* magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier.png; sourceTree = "<group>"; };
 		B2EED7411D6C65BC0053816C /* magnifier_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_48.png; sourceTree = "<group>"; };
 		B2EED7431D6C660C0053816C /* magnifier_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_32.png; sourceTree = "<group>"; };
@@ -407,8 +416,11 @@
 			isa = PBXGroup;
 			children = (
 				B2458E091D5DB51000AF0815 /* faceCell.swift */,
+				B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */,
 				B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */,
+				B2E948861D7BFB670087838A /* MoreTableViewCell.swift */,
 				B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */,
+				B2E948831D7BF5E90087838A /* HeadLineTableViewCell.swift */,
 				B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */,
 				B2458E031D5DA6B100AF0815 /* SearchPeopleTableViewCell.swift */,
 				B24706451D50D9A000FBF7EB /* TabbarController.swift */,
@@ -735,11 +747,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2458C6E1D59BA6700AF0815 /* NewsModel.swift in Sources */,
+				B2E948851D7BF5EA0087838A /* HeadLineTableViewCell.swift in Sources */,
 				B2458C6F1D59BA6700AF0815 /* MarketTableViewController.swift in Sources */,
 				B2458C701D59BA6700AF0815 /* TradeTableViewController.swift in Sources */,
 				B2E9487C1D7BBDFB0087838A /* NewsFeedViewCtrl.swift in Sources */,
 				B2458C711D59BA6700AF0815 /* ConfigAccess.swift in Sources */,
 				B2458C721D59BA6700AF0815 /* UIMacro.swift in Sources */,
+				B2E948881D7BFB670087838A /* MoreTableViewCell.swift in Sources */,
 				B2458DF91D5D992500AF0815 /* MsgTableViewController.swift in Sources */,
 				B2458DFC1D5D993700AF0815 /* SearchPeopleTableViewCtrl.swift in Sources */,
 				B2458C731D59BA6700AF0815 /* NewsAPI.swift in Sources */,
@@ -754,6 +768,7 @@
 				B2458C7A1D59BA6700AF0815 /* NewsViewCtrl.swift in Sources */,
 				B2458C7B1D59BA6700AF0815 /* moneyiOS.xcdatamodeld in Sources */,
 				B20D09381D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
+				B2E9488B1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */,
 				B2458E0B1D5DB51000AF0815 /* faceCell.swift in Sources */,
 				B2458E021D5DA54100AF0815 /* UserModel.swift in Sources */,
 				B2458C7C1D59BA6700AF0815 /* AppDelegate.swift in Sources */,
@@ -767,11 +782,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2458DF81D5D992500AF0815 /* MsgTableViewController.swift in Sources */,
+				B2E948841D7BF5E90087838A /* HeadLineTableViewCell.swift in Sources */,
 				B296BAA21D50E54A004DE860 /* NewsModel.swift in Sources */,
 				B2E27A441D571BCE00D65A94 /* MarketTableViewController.swift in Sources */,
 				B2E9487B1D7BBDFB0087838A /* NewsFeedViewCtrl.swift in Sources */,
 				B2458DFB1D5D993700AF0815 /* SearchPeopleTableViewCtrl.swift in Sources */,
 				B2458C421D59752A00AF0815 /* TradeTableViewController.swift in Sources */,
+				B2E948871D7BFB670087838A /* MoreTableViewCell.swift in Sources */,
 				B296BAA91D56DCA7004DE860 /* ConfigAccess.swift in Sources */,
 				B24706441D50D70700FBF7EB /* UIMacro.swift in Sources */,
 				B296BAA51D50ECB0004DE860 /* NewsAPI.swift in Sources */,
@@ -786,6 +803,7 @@
 				B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */,
 				B2458E0A1D5DB51000AF0815 /* faceCell.swift in Sources */,
 				B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
+				B2E9488A1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */,
 				B2D1731D1D3CA27C00FC128A /* moneyiOS.xcdatamodeld in Sources */,
 				B2D173151D3CA27C00FC128A /* AppDelegate.swift in Sources */,
 				B2458E071D5DB2B600AF0815 /* UserDetailTableViewController.swift in Sources */,
