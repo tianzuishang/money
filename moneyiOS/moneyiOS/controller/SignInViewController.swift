@@ -56,7 +56,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         loginButton.setTitle("登录", forState: UIControlState.Normal)
         loginButton.titleLabel?.font = UIFont(name: fontName, size: minMiddleFont)
-        loginButton.addTarget(self, action: Selector("login"), forControlEvents: UIControlEvents.TouchUpInside)
+        loginButton.addTarget(self, action: Selector("loginClick"), forControlEvents: UIControlEvents.TouchUpInside)
         loginButton.backgroundColor = themeColor
         loginButton.tintColor = UIColor.whiteColor()
         loginButton.layer.cornerRadius = 5.0
@@ -309,48 +309,43 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func login() {
+    func loginClick() {
+        
+        nameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
+        let bxp = BXProgressHUD.showHUDAddedTo(self.view)
+        
+        self.login(nameTextField.text, password: passwordTextField.text, hud: bxp)
+        
+        
+        
+    }
+    
+    func login(name:String?, password:String?, hud: BXProgressHUD?) {
         print("login")
         
-        nameTextField.resignFirstResponder();
-        passwordTextField.resignFirstResponder();
-        
-        if(nameTextField.text == "" || passwordTextField.text == ""){
+        if(name == "" || password == "" || name == nil || password == nil){
             
             return
         }
         
-//        if ([phoneNumTextField.text isEqualToString:@""]||[passwordTextField.text  isEqualToString:@""]) {
-//            alertMsg(@"用户名或密码不能为空");
-//            return;
-//        }
-//        
-//        
-//        AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-//        app.myInfo.user_phone = phoneNumTextField.text;
-//        
-//        app.myInfo.user_password = [Tools encodePassword:passwordTextField.text];
-//        
-//        [self sendLoginMessage:app.myInfo];
-//        
-//        
-//        NSLog(@"loginButtonAction");
-//
         
-        
-        let bxp = BXProgressHUD.showHUDAddedTo(self.view)
         
         let parameters = [
-            "userID": nameTextField.text!,
-            "userPassword": passwordTextField.text!
+            "userID": name!,
+            "userPassword": password!
         ]
         
         NewsAPI.login({ (error, responseData) -> Void in
             
-            bxp.hide()
+            if(hud != nil){
+                hud!.hide()
+            }
             
             if(error != nil){
                 
+                self.view.hidden = false
                 BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.Text).show().hide(afterDelay: 2)
                 
                 
@@ -358,10 +353,12 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 if(responseData!["code"] as! Int == ERROR){
                     
+                    self.view.hidden = false
                     BXProgressHUD.Builder(forView: self.view).text("后台错误").mode(.Text).show().hide(afterDelay: 2)
                     
                 }else if(responseData!["code"] as! Int == LOGIN_FAIL){
                     
+                    self.view.hidden = false
                     BXProgressHUD.Builder(forView: self.view).text("密码或用户名错误").mode(.Text).show().hide(afterDelay: 2)
                     
                 }else if(responseData!["code"] as! Int == LOGIN_SUCCESS){
@@ -390,8 +387,8 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     let mySettingData = NSUserDefaults.standardUserDefaults()
                     
-                    mySettingData.setObject(parameters["userID"], forKey: "userID")
-                    mySettingData.setObject(parameters["userPassword"], forKey: "userPassword")
+                    mySettingData.setObject(parameters["userID"]!, forKey: "userID")
+                    mySettingData.setObject(parameters["userPassword"]!, forKey: "userPassword")
                     mySettingData.synchronize()
                     
                     
@@ -419,7 +416,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     
                 }else{
-                    
+                    self.view.hidden = false
                     BXProgressHUD.Builder(forView: self.view).text("返回未知代码:"+"\(responseData!["code"])").mode(.Text).show().hide(afterDelay: 2)
                 }
                 
