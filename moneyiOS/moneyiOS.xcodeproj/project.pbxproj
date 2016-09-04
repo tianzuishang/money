@@ -79,9 +79,10 @@
 		B2D155681D6EFA0500CCF174 /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155671D6EFA0500CCF174 /* qq.png */; };
 		B2D1556A1D6EFA0C00CCF174 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155691D6EFA0C00CCF174 /* weibo.png */; };
 		B2D1556C1D6EFA1300CCF174 /* wechat.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D1556B1D6EFA1300CCF174 /* wechat.png */; };
-		B2D1556E1D74677E00CCF174 /* returnValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D1556D1D74677E00CCF174 /* returnValue.swift */; };
 		B2D155711D75265A00CCF174 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D1556F1D75265A00CCF174 /* message.png */; };
 		B2D155721D75265A00CCF174 /* message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155701D75265A00CCF174 /* message@2x.png */; };
+		B2D155741D767D0800CCF174 /* returnValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D155731D767D0800CCF174 /* returnValue.swift */; };
+		B2D155751D767D0800CCF174 /* returnValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D155731D767D0800CCF174 /* returnValue.swift */; };
 		B2D173151D3CA27C00FC128A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D173141D3CA27C00FC128A /* AppDelegate.swift */; };
 		B2D1731A1D3CA27C00FC128A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D173181D3CA27C00FC128A /* Main.storyboard */; };
 		B2D1731D1D3CA27C00FC128A /* moneyiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2D1731B1D3CA27C00FC128A /* moneyiOS.xcdatamodeld */; };
@@ -158,9 +159,9 @@
 		B2D155671D6EFA0500CCF174 /* qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq.png; sourceTree = "<group>"; };
 		B2D155691D6EFA0C00CCF174 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
 		B2D1556B1D6EFA1300CCF174 /* wechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat.png; sourceTree = "<group>"; };
-		B2D1556D1D74677E00CCF174 /* returnValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = returnValue.swift; sourceTree = "<group>"; };
 		B2D1556F1D75265A00CCF174 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		B2D155701D75265A00CCF174 /* message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message@2x.png"; sourceTree = "<group>"; };
+		B2D155731D767D0800CCF174 /* returnValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = returnValue.swift; sourceTree = "<group>"; };
 		B2D173111D3CA27C00FC128A /* moneyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moneyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D173141D3CA27C00FC128A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2D173191D3CA27C00FC128A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -251,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				B296BAA81D56DCA7004DE860 /* ConfigAccess.swift */,
-				B2D1556D1D74677E00CCF174 /* returnValue.swift */,
+				B2D155731D767D0800CCF174 /* returnValue.swift */,
 				B2E27A3F1D56F16300D65A94 /* config.geojson */,
 			);
 			path = config;
@@ -722,6 +723,7 @@
 				B2458DFC1D5D993700AF0815 /* SearchPeopleTableViewCtrl.swift in Sources */,
 				B2458C731D59BA6700AF0815 /* NewsAPI.swift in Sources */,
 				B20D09351D6C7D5D00C650A5 /* MarketTableViewCell.swift in Sources */,
+				B2D155751D767D0800CCF174 /* returnValue.swift in Sources */,
 				B2458C741D59BA6700AF0815 /* MarketModel.swift in Sources */,
 				B2458C751D59BA6700AF0815 /* NewsTableViewCell.swift in Sources */,
 				B2458E051D5DA6B100AF0815 /* SearchPeopleTableViewCell.swift in Sources */,
@@ -752,7 +754,7 @@
 				B24706441D50D70700FBF7EB /* UIMacro.swift in Sources */,
 				B296BAA51D50ECB0004DE860 /* NewsAPI.swift in Sources */,
 				B2E27A481D57229200D65A94 /* MarketModel.swift in Sources */,
-				B2D1556E1D74677E00CCF174 /* returnValue.swift in Sources */,
+				B2D155741D767D0800CCF174 /* returnValue.swift in Sources */,
 				B296BAA01D50E511004DE860 /* NewsTableViewCell.swift in Sources */,
 				B2458E041D5DA6B100AF0815 /* SearchPeopleTableViewCell.swift in Sources */,
 				B24706461D50D9A000FBF7EB /* TabbarController.swift in Sources */,
@@ -825,6 +827,7 @@
 /* Begin XCBuildConfiguration section */
 		B2458C8F1D59BA6700AF0815 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1C0F836070A9B61A02E1B84 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
