@@ -599,11 +599,30 @@ router.post('/login', function(req, res){
 })
 
 
+var liveList = [
+    {
+        liveTitle: '外汇市场的操作心得外汇市场的操作心得',
+        name: '苏菲',
+        startTimeStamp: 1472997127+3600*24*3
+    },
+    {
+        liveTitle: '我在本币市场这些年',
+        name: '小董',
+        startTimeStamp: 1472997127+3600*24*3
+    },
+    {
+        liveTitle: '债券买卖中的技巧',
+        name: '交易中心小助手',
+        startTimeStamp: 1472997127+3600*24*3
+    }
+]
+
 router.get('/getNewsFeed', function(req, res){
     res.send({
         code: returnValue.returnCode.SUCCESS,
         data: {
-            'hotNewslist': hotNewslist
+            'hotNewslist': hotNewslist,
+            'liveList': liveList
         }
     });
 })

@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B2458C6B1D59BA6700AF0815"
-            BuildableName = "UATmoneyiOS.app"
-            BlueprintName = "UATmoneyiOS"
+            BlueprintIdentifier = "B2D173101D3CA27C00FC128A"
+            BuildableName = "moneyiOS.app"
+            BlueprintName = "moneyiOS"
             ReferencedContainer = "container:moneyiOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B2458C6B1D59BA6700AF0815"
-            BuildableName = "UATmoneyiOS.app"
-            BlueprintName = "UATmoneyiOS"
+            BlueprintIdentifier = "B2D173101D3CA27C00FC128A"
+            BuildableName = "moneyiOS.app"
+            BlueprintName = "moneyiOS"
             ReferencedContainer = "container:moneyiOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -76,9 +76,6 @@
 		B2D155621D6EE86100CCF174 /* qq_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155611D6EE86100CCF174 /* qq_48px.png */; };
 		B2D155641D6EE86C00CCF174 /* wechat_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155631D6EE86C00CCF174 /* wechat_48px.png */; };
 		B2D155661D6EE87600CCF174 /* weibo_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155651D6EE87600CCF174 /* weibo_48px.png */; };
-		B2D155681D6EFA0500CCF174 /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155671D6EFA0500CCF174 /* qq.png */; };
-		B2D1556A1D6EFA0C00CCF174 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155691D6EFA0C00CCF174 /* weibo.png */; };
-		B2D1556C1D6EFA1300CCF174 /* wechat.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D1556B1D6EFA1300CCF174 /* wechat.png */; };
 		B2D155741D767D0800CCF174 /* returnValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D155731D767D0800CCF174 /* returnValue.swift */; };
 		B2D155751D767D0800CCF174 /* returnValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D155731D767D0800CCF174 /* returnValue.swift */; };
 		B2D173151D3CA27C00FC128A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D173141D3CA27C00FC128A /* AppDelegate.swift */; };
@@ -110,6 +107,18 @@
 		B2E948881D7BFB670087838A /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948861D7BFB670087838A /* MoreTableViewCell.swift */; };
 		B2E9488A1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */; };
 		B2E9488B1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */; };
+		B2E9488D1D7C115B0087838A /* LiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E9488C1D7C115B0087838A /* LiveTableViewCell.swift */; };
+		B2E9488E1D7C115B0087838A /* LiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E9488C1D7C115B0087838A /* LiveTableViewCell.swift */; };
+		B2E948921D7C48AB0087838A /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E9488F1D7C48AB0087838A /* qq.png */; };
+		B2E948931D7C48AB0087838A /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E9488F1D7C48AB0087838A /* qq.png */; };
+		B2E948941D7C48AB0087838A /* wechat.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948901D7C48AB0087838A /* wechat.png */; };
+		B2E948951D7C48AB0087838A /* wechat.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948901D7C48AB0087838A /* wechat.png */; };
+		B2E948961D7C48AB0087838A /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948911D7C48AB0087838A /* weibo.png */; };
+		B2E948971D7C48AB0087838A /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948911D7C48AB0087838A /* weibo.png */; };
+		B2E948991D7C4ED50087838A /* LiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948981D7C4ED50087838A /* LiveModel.swift */; };
+		B2E9489A1D7C4ED50087838A /* LiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948981D7C4ED50087838A /* LiveModel.swift */; };
+		B2E9489C1D7C50190087838A /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E9489B1D7C50190087838A /* LiveView.swift */; };
+		B2E9489D1D7C50190087838A /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E9489B1D7C50190087838A /* LiveView.swift */; };
 		B2EED7401D6C60FC0053816C /* magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED73F1D6C60FC0053816C /* magnifier.png */; };
 		B2EED7421D6C65BC0053816C /* magnifier_48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED7411D6C65BC0053816C /* magnifier_48.png */; };
 		B2EED7441D6C660C0053816C /* magnifier_32.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED7431D6C660C0053816C /* magnifier_32.png */; };
@@ -170,9 +179,6 @@
 		B2D155611D6EE86100CCF174 /* qq_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq_48px.png; sourceTree = "<group>"; };
 		B2D155631D6EE86C00CCF174 /* wechat_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_48px.png; sourceTree = "<group>"; };
 		B2D155651D6EE87600CCF174 /* weibo_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo_48px.png; sourceTree = "<group>"; };
-		B2D155671D6EFA0500CCF174 /* qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq.png; sourceTree = "<group>"; };
-		B2D155691D6EFA0C00CCF174 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
-		B2D1556B1D6EFA1300CCF174 /* wechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat.png; sourceTree = "<group>"; };
 		B2D155731D767D0800CCF174 /* returnValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = returnValue.swift; sourceTree = "<group>"; };
 		B2D173111D3CA27C00FC128A /* moneyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moneyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D173141D3CA27C00FC128A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +206,12 @@
 		B2E948831D7BF5E90087838A /* HeadLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadLineTableViewCell.swift; sourceTree = "<group>"; };
 		B2E948861D7BFB670087838A /* MoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadFaceTableViewCell.swift; sourceTree = "<group>"; };
+		B2E9488C1D7C115B0087838A /* LiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTableViewCell.swift; sourceTree = "<group>"; };
+		B2E9488F1D7C48AB0087838A /* qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq.png; sourceTree = "<group>"; };
+		B2E948901D7C48AB0087838A /* wechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat.png; sourceTree = "<group>"; };
+		B2E948911D7C48AB0087838A /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
+		B2E948981D7C4ED50087838A /* LiveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveModel.swift; sourceTree = "<group>"; };
+		B2E9489B1D7C50190087838A /* LiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		B2EED73F1D6C60FC0053816C /* magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier.png; sourceTree = "<group>"; };
 		B2EED7411D6C65BC0053816C /* magnifier_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_48.png; sourceTree = "<group>"; };
 		B2EED7431D6C660C0053816C /* magnifier_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_32.png; sourceTree = "<group>"; };
@@ -368,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				B296BAA11D50E54A004DE860 /* NewsModel.swift */,
+				B2E948981D7C4ED50087838A /* LiveModel.swift */,
 				B2458E001D5DA54100AF0815 /* UserModel.swift */,
 				B2E27A471D57229200D65A94 /* MarketModel.swift */,
 			);
@@ -379,10 +392,10 @@
 			children = (
 				B2E948801D7BC6B20087838A /* camera_.png */,
 				B2E9487D1D7BC5460087838A /* camera_72px.png */,
-				B2D155671D6EFA0500CCF174 /* qq.png */,
 				B2D155611D6EE86100CCF174 /* qq_48px.png */,
-				B2D155691D6EFA0C00CCF174 /* weibo.png */,
-				B2D1556B1D6EFA1300CCF174 /* wechat.png */,
+				B2E9488F1D7C48AB0087838A /* qq.png */,
+				B2E948901D7C48AB0087838A /* wechat.png */,
+				B2E948911D7C48AB0087838A /* weibo.png */,
 				B2D155631D6EE86C00CCF174 /* wechat_48px.png */,
 				B2D155651D6EE87600CCF174 /* weibo_48px.png */,
 				B20D09391D6C80D000C650A5 /* adress_book_contacts.png */,
@@ -416,7 +429,9 @@
 			isa = PBXGroup;
 			children = (
 				B2458E091D5DB51000AF0815 /* faceCell.swift */,
+				B2E9488C1D7C115B0087838A /* LiveTableViewCell.swift */,
 				B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */,
+				B2E9489B1D7C50190087838A /* LiveView.swift */,
 				B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */,
 				B2E948861D7BFB670087838A /* MoreTableViewCell.swift */,
 				B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */,
@@ -584,16 +599,19 @@
 				B2458C841D59BA6700AF0815 /* newsFeed@3x.png in Resources */,
 				B2458C851D59BA6700AF0815 /* newsFeed@2x.png in Resources */,
 				B2458C861D59BA6700AF0815 /* LaunchScreen.storyboard in Resources */,
+				B2E948971D7C48AB0087838A /* weibo.png in Resources */,
 				B2458DFF1D5DA3F200AF0815 /* man-noname.png in Resources */,
 				B2E9487F1D7BC5460087838A /* camera_72px.png in Resources */,
 				B2458C871D59BA6700AF0815 /* market@3x.png in Resources */,
 				B20D093B1D6C80D000C650A5 /* adress_book_contacts.png in Resources */,
 				B2458C881D59BA6700AF0815 /* Assets.xcassets in Resources */,
+				B2E948951D7C48AB0087838A /* wechat.png in Resources */,
 				B2458C891D59BA6700AF0815 /* market@2x.png in Resources */,
 				B2E948821D7BC6B20087838A /* camera_.png in Resources */,
 				B2458C8A1D59BA6700AF0815 /* watch@3x.png in Resources */,
 				B2458C8B1D59BA6700AF0815 /* Main.storyboard in Resources */,
 				B2E948741D7BB0110087838A /* message.png in Resources */,
+				B2E948931D7C48AB0087838A /* qq.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,9 +622,8 @@
 				B2E948811D7BC6B20087838A /* camera_.png in Resources */,
 				B2E948751D7BB0110087838A /* message@2x.png in Resources */,
 				B24706541D50DACD00FBF7EB /* me@3x.png in Resources */,
-				B2D1556C1D6EFA1300CCF174 /* wechat.png in Resources */,
 				B2D155621D6EE86100CCF174 /* qq_48px.png in Resources */,
-				B2D1556A1D6EFA0C00CCF174 /* weibo.png in Resources */,
+				B2E948941D7C48AB0087838A /* wechat.png in Resources */,
 				B20D093A1D6C80D000C650A5 /* adress_book_contacts.png in Resources */,
 				B24706531D50DACD00FBF7EB /* me@2x.png in Resources */,
 				B2EED7441D6C660C0053816C /* magnifier_32.png in Resources */,
@@ -616,6 +633,7 @@
 				B24706501D50DACD00FBF7EB /* newsFeed@3x.png in Resources */,
 				B2E9487E1D7BC5460087838A /* camera_72px.png in Resources */,
 				B247064F1D50DACD00FBF7EB /* newsFeed@2x.png in Resources */,
+				B2E948921D7C48AB0087838A /* qq.png in Resources */,
 				B2D173221D3CA27D00FC128A /* LaunchScreen.storyboard in Resources */,
 				B2458DFE1D5DA3F200AF0815 /* man-noname.png in Resources */,
 				B2E948731D7BB0110087838A /* message.png in Resources */,
@@ -623,10 +641,10 @@
 				B2EED7401D6C60FC0053816C /* magnifier.png in Resources */,
 				B24706521D50DACD00FBF7EB /* market@3x.png in Resources */,
 				B2D1731F1D3CA27D00FC128A /* Assets.xcassets in Resources */,
+				B2E948961D7C48AB0087838A /* weibo.png in Resources */,
 				B2EED7461D6C70C30053816C /* magnifier_32px.png in Resources */,
 				B24706511D50DACD00FBF7EB /* market@2x.png in Resources */,
 				B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */,
-				B2D155681D6EFA0500CCF174 /* qq.png in Resources */,
 				B2D1731A1D3CA27C00FC128A /* Main.storyboard in Resources */,
 				B2D155641D6EE86C00CCF174 /* wechat_48px.png in Resources */,
 			);
@@ -763,13 +781,16 @@
 				B2458C751D59BA6700AF0815 /* NewsTableViewCell.swift in Sources */,
 				B2458E051D5DA6B100AF0815 /* SearchPeopleTableViewCell.swift in Sources */,
 				B2458C771D59BA6700AF0815 /* TabbarController.swift in Sources */,
+				B2E9488E1D7C115B0087838A /* LiveTableViewCell.swift in Sources */,
 				B2458C781D59BA6700AF0815 /* NewsTableViewController.swift in Sources */,
 				B2458C791D59BA6700AF0815 /* MarketViewController.swift in Sources */,
 				B2458C7A1D59BA6700AF0815 /* NewsViewCtrl.swift in Sources */,
 				B2458C7B1D59BA6700AF0815 /* moneyiOS.xcdatamodeld in Sources */,
 				B20D09381D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
 				B2E9488B1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */,
+				B2E9489D1D7C50190087838A /* LiveView.swift in Sources */,
 				B2458E0B1D5DB51000AF0815 /* faceCell.swift in Sources */,
+				B2E9489A1D7C4ED50087838A /* LiveModel.swift in Sources */,
 				B2458E021D5DA54100AF0815 /* UserModel.swift in Sources */,
 				B2458C7C1D59BA6700AF0815 /* AppDelegate.swift in Sources */,
 				B20D093E1D6DE92D00C650A5 /* SignInViewController.swift in Sources */,
@@ -798,13 +819,16 @@
 				B2458E041D5DA6B100AF0815 /* SearchPeopleTableViewCell.swift in Sources */,
 				B24706461D50D9A000FBF7EB /* TabbarController.swift in Sources */,
 				B296BA9A1D50E163004DE860 /* NewsTableViewController.swift in Sources */,
+				B2E9488D1D7C115B0087838A /* LiveTableViewCell.swift in Sources */,
 				B2E27A421D570DB900D65A94 /* MarketViewController.swift in Sources */,
 				B2458E011D5DA54100AF0815 /* UserModel.swift in Sources */,
 				B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */,
 				B2458E0A1D5DB51000AF0815 /* faceCell.swift in Sources */,
 				B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
 				B2E9488A1D7C09300087838A /* HeadFaceTableViewCell.swift in Sources */,
+				B2E9489C1D7C50190087838A /* LiveView.swift in Sources */,
 				B2D1731D1D3CA27C00FC128A /* moneyiOS.xcdatamodeld in Sources */,
+				B2E948991D7C4ED50087838A /* LiveModel.swift in Sources */,
 				B2D173151D3CA27C00FC128A /* AppDelegate.swift in Sources */,
 				B2458E071D5DB2B600AF0815 /* UserDetailTableViewController.swift in Sources */,
 				B20D093D1D6DE92D00C650A5 /* SignInViewController.swift in Sources */,

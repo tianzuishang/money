@@ -64,7 +64,11 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         tableview.registerClass(MoreTableViewCell.self, forCellReuseIdentifier: "MoreTableViewCell")
         
         tableview.registerClass(HeadFaceTableViewCell.self, forCellReuseIdentifier: "HeadFaceTableViewCell")
+        
+        tableview.registerClass(LiveTableViewCell.self, forCellReuseIdentifier: "LiveTableViewCell")
 
+        
+        
         
         
         
@@ -96,6 +100,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         NewsAPI.getNewsFeed({ (error, responseData) -> Void in
             
             self.hotNewsArray.removeAllObjects()
+            self.liveArray.removeAllObjects()
             self.refreshControl.endRefreshing()
             
             if(error != nil){
@@ -110,7 +115,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                 
                 if(responseData!["code"] as! Int == SUCCESS) {
                     
-                    let tempArray = responseData!["data"]!["hotNewslist"] as! NSArray
+                    var tempArray = responseData!["data"]!["hotNewslist"] as! NSArray
                     
                     self.hotNewsArray.addObject("今日热点")
                     for item in tempArray {
@@ -124,6 +129,17 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                         self.hotNewsArray.addObject(newsmodel)
                     }
                     self.hotNewsArray.addObject("更多")
+                    
+                    
+                    tempArray = responseData!["data"]!["liveList"] as! NSArray
+                    
+                    for item in tempArray {
+                        let livemodel = LiveModel()
+                        livemodel.userModel.name = item["name"] as? String
+                        livemodel.liveTitle = item["liveTitle"] as! String
+                        livemodel.startTimeStamp = item["startTimeStamp"] as! Int
+                        self.liveArray.addObject(livemodel)
+                    }
 
                 }
                 
@@ -240,6 +256,10 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             return HeadFaceTableViewCell.cellHeight()
         }
         
+        if(indexPath.section == sectionMap.lives) {
+            return LiveTableViewCell.cellHeight()
+        }
+        
         return 44
         
     }
@@ -323,8 +343,9 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         
         if(indexPath.section == sectionMap.lives){
             //直播
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("LiveTableViewCell", forIndexPath: indexPath) as! LiveTableViewCell
             
+            cell.configureCell(liveArray)
             
             // Configure the cell...
             

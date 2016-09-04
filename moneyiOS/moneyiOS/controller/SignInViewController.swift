@@ -332,6 +332,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
+        let mySettingData = NSUserDefaults.standardUserDefaults()
+        mySettingData.removeObjectForKey("userID")
+        mySettingData.removeObjectForKey("userPassword")
+        mySettingData.synchronize()
+        
         let parameters = [
             "userID": name!,
             "userPassword": password!
