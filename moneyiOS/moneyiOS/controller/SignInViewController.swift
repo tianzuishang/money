@@ -351,7 +351,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             if(error != nil){
                 
-                BXProgressHUD.Builder(forView: self.view).text("未知错误").mode(.Text).show().hide(afterDelay: 2)
+                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.Text).show().hide(afterDelay: 2)
                 
                 
             }else{
@@ -420,7 +420,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                 }else{
                     
-                    BXProgressHUD.Builder(forView: self.view).text("返回未知代码").mode(.Text).show().hide(afterDelay: 2)
+                    BXProgressHUD.Builder(forView: self.view).text("返回未知代码:"+"\(responseData!["code"])").mode(.Text).show().hide(afterDelay: 2)
                 }
                 
             }
