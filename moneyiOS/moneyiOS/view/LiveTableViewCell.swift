@@ -35,7 +35,7 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
         self.selectionStyle = UITableViewCellSelectionStyle.None
         
-        scrollView.frame = CGRectMake(0, 4*minSpace, ScreenWidth, 8*minSpace)
+        scrollView.frame = CGRectMake(0, 4*minSpace, ScreenWidth, 13*minSpace)
         scrollView.delegate = self
         
         titleLabel.textColor = UIColor.grayColor()
@@ -64,17 +64,40 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
         for(var i=0; i<liveArray.count; ++i) {
             
-            let liveview = LiveView(frame: CGRectMake(minSpace+CGFloat(Float(i))*(minSpace+30*minSpace), 0, 30*minSpace, 9*minSpace))
+            let liveview = LiveView(frame: CGRectMake(minSpace+CGFloat(Float(i))*(minSpace+26*minSpace), 0, 26*minSpace, 10*minSpace))
             
             liveview.configureView(liveArray.objectAtIndex(i) as! LiveModel)
             
             scrollView.addSubview(liveview)
         }
         
-        scrollView.contentSize = CGSizeMake(minSpace+CGFloat(Float(liveArray.count))*(minSpace+30*minSpace) , 0)
+        
+        
+        let allLiveView = UIView(frame: CGRectMake(minSpace+CGFloat(Float(liveArray.count))*(minSpace+26*minSpace), 0, 12*minSpace, 10*minSpace))
+        allLiveView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        allLiveView.layer.borderWidth = 0.5
+        allLiveView.layer.cornerRadius = 6.0
+        
+        let allLabel = UILabel()
+        allLabel.text = "全部live"
+        allLabel.sizeToFit()
+        allLabel.font = UIFont(name: fontName, size: normalFont)
+        allLabel.textColor = UIColor.lightGrayColor()
+        allLiveView.addSubview(allLabel)
+        
+        allLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.center.equalTo(allLiveView.snp_center)
+        }
+        
+        
+        scrollView.addSubview(allLiveView)
+        
+        
+        scrollView.contentSize = CGSizeMake(minSpace+CGFloat(Float(liveArray.count))*(minSpace+26*minSpace) + 12*minSpace + minSpace , 0)
     }
     
     static func cellHeight()->CGFloat {
-        return 15*minSpace
+        return 16*minSpace
     }
 }

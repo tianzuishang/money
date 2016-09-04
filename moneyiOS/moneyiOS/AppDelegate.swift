@@ -55,10 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func tabInit() -> TabbarController {
-        let nav2 = UINavigationController(rootViewController: msgTableViewCtrl)
         let nav1 = UINavigationController(rootViewController: NewsFeedViewCtrl())
-        let nav3 = UINavigationController(rootViewController: NewsViewCtrl())
-        let nav4 = UINavigationController()
+        let nav2 = UINavigationController()
+        
+        let nav3 = UINavigationController(rootViewController: MarketViewController())
+        let nav4 = UINavigationController(rootViewController: NewsTableViewController())
         let nav5 = UINavigationController()
 
         

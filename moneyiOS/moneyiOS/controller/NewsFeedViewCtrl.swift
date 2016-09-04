@@ -16,7 +16,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
 
     
     
-    let tableview = UITableView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight), style: UITableViewStyle.Grouped)
+    let tableview = UITableView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight - 49 - 44), style: UITableViewStyle.Grouped)
     
     
     

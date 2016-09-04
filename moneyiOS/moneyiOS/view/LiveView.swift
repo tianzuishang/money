@@ -34,6 +34,7 @@ class LiveView: UIView {
         liveTitleLabel.font = UIFont(name: fontName, size: normalFont)
         liveTitleLabel.textColor = UIColor.blackColor()
         liveTitleLabel.numberOfLines = 2
+        //liveTitleLabel.frame = CGRectMake(0, 0, 12*minSpace, 4*minSpace)
         //liveTitleLabel.frame = CGRectMake(0, 0, 120, 40)
         
         nameLabel.font = UIFont(name: fontName, size: minFont)
@@ -72,7 +73,7 @@ class LiveView: UIView {
             faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)!)
         }
         
-        liveTitleLabel.sizeToFit()
+        //liveTitleLabel.sizeToFit()
         nameLabel.sizeToFit()
     }
     
@@ -88,6 +89,8 @@ class LiveView: UIView {
         
         liveTitleLabel.snp_makeConstraints { (make) -> Void in
             
+            make.width.equalTo(16*minSpace)
+            make.height.equalTo(5*minSpace)
             make.left.equalTo(faceView.snp_right).offset(minSpace)
             make.top.equalTo(self.snp_top).offset(2*minSpace)
             
@@ -96,7 +99,7 @@ class LiveView: UIView {
         nameLabel.snp_makeConstraints { (make) -> Void in
             
             make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(liveTitleLabel.snp_bottom).offset(minSpace)
+            make.top.equalTo(liveTitleLabel.snp_bottom)
         }
         
     }
