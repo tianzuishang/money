@@ -37,3 +37,8 @@ let themeColor = UIColor(red: 55/255, green: 147/255, blue: 198/255, alpha: 1.0)
 
 
 let grayFont = UIColor(red:215/255, green: 215/255, blue: 215/255, alpha: 1.0)
+
+
+let grayBackgroundColor = UIColor(red:229/255, green: 233/255, blue: 236/255, alpha: 1.0)
+
+

@@ -200,4 +200,23 @@ class NewsAPI: NSObject {
     }
     
     
+    static func getNewsFeed(callback: responseCall, parameters: [String: String]?){
+        Alamofire.request(.GET, serverDomain + "news/getNewsFeed", parameters: parameters)
+            .validate()
+            .responseJSON { response in
+                
+                print(response.request?.URLString)
+                
+                switch response.result {
+                case .Success:
+                    let JSON = response.result.value as! NSDictionary
+                    callback(error:nil, responseData: JSON)
+                    break
+                case .Failure(let error):
+                    print(error)
+                    callback(error: error, responseData: nil)
+                    break
+                }
+        }
+    }
 }

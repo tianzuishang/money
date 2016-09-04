@@ -8,37 +8,37 @@ var returnValue = require('../config/returnValue.js')
 
 var hotNewslist = [
     {
-        title: '外汇市场自律机制的基本情况',
+        title: '外汇市场自律机制的基本情况,外汇市场自律机制的基本情况,外汇市场自律机制的基本情况',
         titleImageUrl: 'CMS5_G20306002Resource',
         //headline: true,
         subTitle: '热点关注',
         source: '外汇交易中心',
         publishTime: '2016-08-01'
     },
-    {
-        title : "2016年7月份CFETS人民币汇率指数",
-        headline: true,
-        titleImageUrl: 'README.png',
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-08-01"
-    },
-    {
-        title : "银行间市场技术标准工作组年会暨ISO 20022培训成功举行",
-        titleImageUrl: '44D8AF4C-98F2-4742-9AE3-A55A5A74DA2F.png',
-        headline: true,
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-07-26"
-    },
-    {
-        title : "外汇掉期冲销业务正式启动 交易后处理基础设施不断完善",
-        titleImageUrl: '26A9B79E-D324-45D9-818D-D44393B67C78.png',
-        headline: true,
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-07-24"
-    },
+    // {
+    //     title : "2016年7月份CFETS人民币汇率指数",
+    //     headline: true,
+    //     titleImageUrl: 'README.png',
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-08-01"
+    // },
+    // {
+    //     title : "银行间市场技术标准工作组年会暨ISO 20022培训成功举行",
+    //     titleImageUrl: '44D8AF4C-98F2-4742-9AE3-A55A5A74DA2F.png',
+    //     headline: true,
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-07-26"
+    // },
+    // {
+    //     title : "外汇掉期冲销业务正式启动 交易后处理基础设施不断完善",
+    //     titleImageUrl: '26A9B79E-D324-45D9-818D-D44393B67C78.png',
+    //     headline: true,
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-07-24"
+    // },
     {
         title : "6月份人民币汇率指数小幅贬值",
         titleImageUrl: 'C350361C-41F7-4707-AEF8-419F2556B6E5.png',
@@ -53,19 +53,19 @@ var hotNewslist = [
         source : "外汇交易中心",
         publishTime : "2016-07-01"
     },
-    {
-        title : "外汇市场自律机制第二次工作会议在京召开",
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-06-01"
-    },
-    {
-
-        title : "中国人民银行欢迎中国外汇交易中心开展人民币对韩元直接交易",
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-05-25"
-    }
+    // {
+    //     title : "外汇市场自律机制第二次工作会议在京召开",
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-06-01"
+    // },
+    // {
+    //
+    //     title : "中国人民银行欢迎中国外汇交易中心开展人民币对韩元直接交易",
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-05-25"
+    // }
 ];
 
 
@@ -598,6 +598,15 @@ router.post('/login', function(req, res){
     })
 })
 
+
+router.get('/getNewsFeed', function(req, res){
+    res.send({
+        code: returnValue.returnCode.SUCCESS,
+        data: {
+            'hotNewslist': hotNewslist
+        }
+    });
+})
 
 
 //导出router对象

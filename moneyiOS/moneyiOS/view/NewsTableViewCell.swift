@@ -13,19 +13,19 @@ import Kingfisher
 class NewsTableViewCell: UITableViewCell {
 
     var title: UILabel
-    var subTitle: UILabel
+    //var subTitle: UILabel
     var source: UILabel
     var publishTime: UILabel
     var titleImageView: UIImageView
     var newsModel: NewsModel
     
-    static let titleHeight: CGFloat = 40
-    static let titleWidth: CGFloat = 270
+    static let titleHeight: CGFloat = 6*minSpace
+    static let titleWidth: CGFloat = 35*minSpace
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
         title = UILabel()
-        subTitle = UILabel()
+        //subTitle = UILabel()
         source = UILabel()
         publishTime = UILabel()
         titleImageView = UIImageView()
@@ -33,13 +33,13 @@ class NewsTableViewCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        title.font = UIFont(name: fontName, size: normalFont)
+        title.font = UIFont(name: fontName, size: minFont)
         title.textColor = UIColor.blackColor()
-        title.numberOfLines = 0
+        title.numberOfLines = 2
         title.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         
-        subTitle.font = UIFont(name: fontName, size: minFont)
-        subTitle.textColor = UIColor.darkGrayColor()
+//        subTitle.font = UIFont(name: fontName, size: minFont)
+//        subTitle.textColor = UIColor.darkGrayColor()
         
         source.font = UIFont(name: fontName, size: minminFont)
         source.textColor = UIColor.grayColor()
@@ -51,7 +51,7 @@ class NewsTableViewCell: UITableViewCell {
         titleImageView.clipsToBounds = true
         
         self.addSubview(title)
-        self.addSubview(subTitle)
+        //self.addSubview(subTitle)
         self.addSubview(source)
         self.addSubview(publishTime)
         self.addSubview(titleImageView)
@@ -69,7 +69,7 @@ class NewsTableViewCell: UITableViewCell {
         newsModel = model
         
         title.text = newsModel.title
-        subTitle.text = newsModel.subTitle
+        //subTitle.text = newsModel.subTitle
         source.text = newsModel.source
         publishTime.text = newsModel.publishTime
         
@@ -79,14 +79,14 @@ class NewsTableViewCell: UITableViewCell {
             titleImageView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+newsModel.titleImageUrl!)!)
         }
         
-        //title.sizeToFit();
-        subTitle.sizeToFit()
+        title.sizeThatFits(CGSizeMake(NewsTableViewCell.titleWidth, NewsTableViewCell.titleHeight))
+        //subTitle.sizeToFit()
         source.sizeToFit()
         publishTime.sizeToFit()
         
         
         print("configureCell: %f", title.frame.width)
-        print(subTitle.frame.width)
+        //print(subTitle.frame.width)
         print(source.frame.width)
         print(publishTime.frame.width)
         
@@ -97,26 +97,26 @@ class NewsTableViewCell: UITableViewCell {
     static func cellHeight(model: NewsModel)->CGFloat {
         
         let title = UILabel()
-        let subTitle = UILabel()
+        //let subTitle = UILabel()
         let source = UILabel()
         title.font = UIFont(name: fontName, size: normalFont)
         title.numberOfLines = 0
         title.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-        subTitle.font = UIFont(name: fontName, size: minFont)
+        //subTitle.font = UIFont(name: fontName, size: minFont)
         source.font = UIFont(name: fontName, size: minminFont)
         
-        subTitle.text = model.subTitle
+        //subTitle.text = model.subTitle
         source.text = model.source
         
         title.sizeToFit();
-        subTitle.sizeToFit()
+        //subTitle.sizeToFit()
         source.sizeToFit()
         
         print("cellHeight: %f", title.frame.width)
         title.frame = CGRectMake(0, 0, NewsTableViewCell.titleWidth, NewsTableViewCell.titleHeight)
         
         
-        return minSpace + title.frame.height + minSpace + subTitle.frame.height + minSpace + source.frame.height + minSpace
+        return minSpace + title.frame.height + minSpace + minSpace + source.frame.height + minSpace
     }
     
     override func layoutSubviews() {
@@ -142,15 +142,9 @@ class NewsTableViewCell: UITableViewCell {
         }
         
         
-        
-        subTitle.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(title.snp_left)
-            make.top.equalTo(title.snp_bottom).offset(minSpace)
-        }
-        
         source.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(title.snp_left)
-            make.top.equalTo(subTitle.snp_bottom).offset(minSpace)
+            make.top.equalTo(title.snp_bottom)
         }
         
         
@@ -170,8 +164,7 @@ class NewsTableViewCell: UITableViewCell {
             
         }else{
             titleImageView.snp_updateConstraints(closure: { (make) -> Void in
-                make.width.equalTo(12*minSpace)
-                make.height.equalTo(NewsTableViewCell.cellHeight(self.newsModel) - 2*minSpace)
+                make.size.height.equalTo(NewsTableViewCell.cellHeight(self.newsModel) - 2*minSpace)
                 make.left.equalTo(2*minSpace)
                 make.top.equalTo(minSpace)
             })
