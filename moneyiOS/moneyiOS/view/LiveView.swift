@@ -41,8 +41,8 @@ class LiveView: UIView {
         nameLabel.textColor = UIColor.grayColor()
         
         
-        faceView.layer.cornerRadius = faceView.frame.size.height/2
-        faceView.contentMode = UIViewContentMode.ScaleAspectFit;
+        faceView.layer.cornerRadius = 6*minSpace/2
+        faceView.contentMode = UIViewContentMode.ScaleAspectFill;
         faceView.clipsToBounds = true
         
         super.init(frame: frame)
@@ -70,7 +70,26 @@ class LiveView: UIView {
                 faceView.image = UIImage(named: "man-noname.png")
                 
         }else{
-            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)!)
+            
+            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
+                
+                if(image?.size.height>image?.size.width){
+                    
+                    let height = 2*6*minSpace
+                    let width = 2*6*minSpace*(image?.size.width)!/(image?.size.height)!
+                    
+                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+                    
+                }else{
+                    let width = 2*6*minSpace
+                    let height = 2*6*minSpace*(image?.size.height)!/(image?.size.width)!
+                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+                }
+                
+            })
+
+            
+//            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)!)
         }
         
         //liveTitleLabel.sizeToFit()

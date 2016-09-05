@@ -45,7 +45,7 @@ class HeadFaceTableViewCell: UITableViewCell {
         
         
         faceView.clipsToBounds = true
-        faceView.contentMode = UIViewContentMode.ScaleAspectFit
+        faceView.contentMode = UIViewContentMode.ScaleAspectFill
         faceView.layer.cornerRadius = 6*minSpace/2
         
         
@@ -78,7 +78,24 @@ class HeadFaceTableViewCell: UITableViewCell {
             faceView.image = UIImage(named: "man-noname.png")
             
         }else{
-            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+mymodel.faceImageName!)!)
+            
+            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+mymodel.faceImageName!)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
+                
+                if(image?.size.height>image?.size.width){
+                    
+                    let height = 2*6*minSpace
+                    let width = 2*6*minSpace*(image?.size.width)!/(image?.size.height)!
+                    
+                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+
+                }else{
+                    let width = 2*6*minSpace
+                    let height = 2*6*minSpace*(image?.size.height)!/(image?.size.width)!
+                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+                }
+                
+            })
+            
         }
         
     }
@@ -96,6 +113,8 @@ class HeadFaceTableViewCell: UITableViewCell {
                     make.left.equalTo(self.snp_left).offset(2*minSpace)
                     make.centerY.equalTo(self.snp_centerY)
                     make.size.width.equalTo(6*minSpace)
+                    
+                    
                 }
         
                 headLabel.snp_makeConstraints { (make) -> Void in

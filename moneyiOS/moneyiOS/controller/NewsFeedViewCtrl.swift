@@ -136,6 +136,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                     for item in tempArray {
                         let livemodel = LiveModel()
                         livemodel.userModel.name = item["name"] as? String
+                        livemodel.userModel.faceImageName = item["faceImageName"] as? String
                         livemodel.liveTitle = item["liveTitle"] as! String
                         livemodel.startTimeStamp = item["startTimeStamp"] as! Int
                         self.liveArray.addObject(livemodel)

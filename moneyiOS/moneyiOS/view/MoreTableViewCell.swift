@@ -52,7 +52,7 @@ class MoreTableViewCell: UITableViewCell {
     
     static func cellHeight()->CGFloat {
         
-        return 4*minSpace
+        return 5*minSpace
     }
     
     
