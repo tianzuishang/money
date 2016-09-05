@@ -615,6 +615,7 @@ var liveList = [
     {
         liveTitle: '债券买卖中的技巧',
         name: '交易中心小助手',
+        faceImageName: 'tempFace2.jpg',
         startTimeStamp: 1472997127+3600*24*3
     }
 ]
