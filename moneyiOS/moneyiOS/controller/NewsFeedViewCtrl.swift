@@ -68,7 +68,8 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         tableview.registerClass(LiveTableViewCell.self, forCellReuseIdentifier: "LiveTableViewCell")
 
         
-        
+        tableview.registerClass(NewsFeedTableViewCell.self, forCellReuseIdentifier: "NewsFeedTableViewCell")
+
         
         
         
@@ -82,6 +83,14 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
         
+        
+        let navTitle = UILabel()
+        navTitle.textColor = UIColor.whiteColor()
+        navTitle.text = "动态"
+        navTitle.sizeToFit()
+        navTitle.textAlignment = NSTextAlignment.Center
+        navTitle.font = UIFont(name: fontName, size: 20)
+        self.navigationItem.titleView = navTitle
     }
 
     
@@ -118,6 +127,9 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                     var tempArray = responseData!["data"]!["hotNewslist"] as! NSArray
                     
                     self.hotNewsArray.addObject("今日热点")
+                    
+                    
+                    
                     for item in tempArray {
                         let newsmodel = NewsModel()
                         newsmodel.title = item["title"] as! String
@@ -131,6 +143,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                     self.hotNewsArray.addObject("更多")
                     
                     
+                    //直播
                     tempArray = responseData!["data"]!["liveList"] as! NSArray
                     
                     for item in tempArray {
@@ -140,6 +153,25 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                         livemodel.liveTitle = item["liveTitle"] as! String
                         livemodel.startTimeStamp = item["startTimeStamp"] as! Int
                         self.liveArray.addObject(livemodel)
+                    }
+                    
+                    
+                    //动态信息
+                    tempArray = responseData!["data"]!["followList"] as! NSArray
+                    
+                    for item in tempArray {
+                        let newsFeedModel = NewsFeedModel()
+                        newsFeedModel.userModel.name = item["name"] as? String
+                        newsFeedModel.userModel.faceImageName = item["faceImageName"] as? String
+                        newsFeedModel.entyDesc = item["entyDesc"] as? String
+                        newsFeedModel.headTitle = item["headTitle"] as? String
+                        newsFeedModel.publishTimestamp = item["publishTimeStamp"] as! Int
+                        newsFeedModel.content = item["content"] as? String
+                        newsFeedModel.contentImageUrl = item["contentImageUrl"] as? String
+                        newsFeedModel.commentCount = item["commentCount"] as! Int
+                        newsFeedModel.likeCount = item["likeCount"] as! Int
+                        
+                        self.followNewsArray.addObject(newsFeedModel)
                     }
 
                 }
@@ -377,6 +409,20 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             
             return cell
             
+        }
+        
+        
+        if(indexPath.section == sectionMap.follows) {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("NewsFeedTableViewCell", forIndexPath: indexPath) as! NewsFeedTableViewCell
+            
+            
+            
+            //cell.configureCell(myInfo!)
+            
+            // Configure the cell...
+            
+            return cell
         }
         
         return UITableViewCell()

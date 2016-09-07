@@ -34,7 +34,7 @@ class MarketTableViewCell: UITableViewCell {
         
         titlePrdcLabel.font = UIFont(name: fontName, size: normalFont)
         priceLabel.font = UIFont(name: fontName, size: normalFont)
-        bpLabel.font = UIFont(name: fontName, size: normalFont)
+        bpLabel.font = UIFont(name: "Arial-Bold", size: normalFont)
         
         titlePrdcLabel.textColor = UIColor.blackColor()
         priceLabel.textColor = UIColor.blackColor()
@@ -66,9 +66,9 @@ class MarketTableViewCell: UITableViewCell {
         compareTitleLabel.text = myMarketModel.compareTitle
         
         if(myMarketModel.bp >= 0){
-            bpLabel.textColor = UIColor.redColor()
+            bpLabel.textColor = red
         }else{
-            bpLabel.textColor = UIColor.greenColor()
+            bpLabel.textColor = green
         }
         
         titlePrdcLabel.sizeToFit()

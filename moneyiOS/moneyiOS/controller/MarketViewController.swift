@@ -38,7 +38,7 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
         
         
         seg = UISegmentedControl(items: ["交易", "行情"])
-        seg.selectedSegmentIndex = 0
+        seg.selectedSegmentIndex = 1
         seg.addTarget(self, action: "clickSegment:", forControlEvents: UIControlEvents.ValueChanged)
         //seg.tintColor = UIColor.blueColor()
         //seg.tintColor = UIColor.clearColor()
@@ -48,7 +48,7 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
         self.navigationItem.titleView = seg
         self.view.addSubview(tradeTableViewCtrl.view)
         self.view.addSubview(marketView!)
-        self.view.bringSubviewToFront(tradeTableViewCtrl.view!)
+        self.view.bringSubviewToFront(marketView!)
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)

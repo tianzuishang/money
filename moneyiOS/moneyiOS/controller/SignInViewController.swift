@@ -36,7 +36,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        label.text = "钱圈"
+        label.text = "银河间"
         label.textColor = themeColor
         label.font = UIFont(name: fontName, size: bigbigbigFont)
         label.textAlignment = NSTextAlignment.Center

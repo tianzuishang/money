@@ -620,12 +620,50 @@ var liveList = [
     }
 ]
 
+var  followList = [
+    {
+        faceImageName: 'tempFace.jpg',
+        name: '王小野',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: '44D8AF4C-98F2-4742-9AE3-A55A5A74DA2F.png',
+        commentCount: 10,
+        likeCount: 10
+    },
+    {
+        faceImageName: 'tempFace.jpg',
+        name: '王小野',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: '44D8AF4C-98F2-4742-9AE3-A55A5A74DA2F.png',
+        commentCount: 10,
+        likeCount: 10
+    },
+    {
+        faceImageName: 'tempFace.jpg',
+        name: '王小野',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: '44D8AF4C-98F2-4742-9AE3-A55A5A74DA2F.png',
+        commentCount: 10,
+        likeCount: 10
+    }
+]
+
+
 router.get('/getNewsFeed', function(req, res){
     res.send({
         code: returnValue.returnCode.SUCCESS,
         data: {
             'hotNewslist': hotNewslist,
-            'liveList': liveList
+            'liveList': liveList,
+            'followList': followList
         }
     });
 })
