@@ -140,7 +140,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     static func cellHeight(model: NewsFeedModel)->CGFloat {
         
         
-        return 40*minSpace
+        return 38*minSpace
     
     
     }
@@ -178,10 +178,13 @@ class NewsFeedTableViewCell: UITableViewCell {
         }
         
         
+        if(mymodel == nil){
+            return
+        }
         
         if(mymodel.content != nil && mymodel.content != ""){
             
-            contentLabel.snp_updateConstraints(closure: { (make) -> Void in
+            contentLabel.snp_makeConstraints(closure: { (make) -> Void in
                 make.left.equalTo(faceView.snp_right).offset(minSpace)
                 make.top.equalTo(faceView.snp_bottom).offset(minSpace/2)
                 make.right.equalTo(self.snp_right).offset(-2*minSpace)
@@ -190,7 +193,7 @@ class NewsFeedTableViewCell: UITableViewCell {
             
         }else{
             
-            contentLabel.snp_updateConstraints(closure: { (make) -> Void in
+            contentLabel.snp_makeConstraints(closure: { (make) -> Void in
                 make.left.equalTo(faceView.snp_right).offset(minSpace)
                 make.top.equalTo(faceView.snp_bottom).offset(minSpace/2)
                 make.right.equalTo(self.snp_right).offset(-2*minSpace)
@@ -201,7 +204,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         if(mymodel.contentImageUrl != nil && mymodel.contentImageUrl != ""){
             
-            contentImage.snp_updateConstraints(closure: { (make) -> Void in
+            contentImage.snp_makeConstraints(closure: { (make) -> Void in
                 
                 make.left.equalTo(faceView.snp_right).offset(minSpace)
                 make.top.equalTo(contentLabel.snp_bottom).offset(minSpace/2)
@@ -212,7 +215,7 @@ class NewsFeedTableViewCell: UITableViewCell {
             
         }else{
             
-            contentImage.snp_updateConstraints(closure: { (make) -> Void in
+            contentImage.snp_makeConstraints(closure: { (make) -> Void in
                 
                 make.left.equalTo(faceView.snp_right).offset(minSpace)
                 make.top.equalTo(contentLabel.snp_bottom).offset(minSpace/2)
@@ -223,7 +226,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         }
         
         
-        likeIcon.snp_updateConstraints { (make) -> Void in
+        likeIcon.snp_makeConstraints { (make) -> Void in
             
             make.size.width.equalTo(20)
             make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
@@ -231,42 +234,34 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         }
         
-        likeCountLabel.snp_updateConstraints { (make) -> Void in
+        likeCountLabel.snp_makeConstraints { (make) -> Void in
             
             make.left.equalTo(likeIcon.snp_right).offset(minSpace)
             
             make.centerY.equalTo(likeIcon.snp_centerY)
         }
         
-        commentIcon.snp_updateConstraints { (make) -> Void in
+        commentIcon.snp_makeConstraints { (make) -> Void in
             
             make.size.width.equalTo(20)
             make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
             make.centerX.equalTo(contentImage.snp_centerX)
             
         }
-        commentCountLabel.snp_updateConstraints { (make) -> Void in
+        
+        commentCountLabel.snp_makeConstraints { (make) -> Void in
             
             make.left.equalTo(commentIcon.snp_right).offset(minSpace)
             make.centerY.equalTo(commentIcon.snp_centerY)
         }
         
         
-        shareIcon.snp_updateConstraints { (make) -> Void in
+        shareIcon.snp_makeConstraints { (make) -> Void in
             
             make.size.width.equalTo(20)
             make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
             make.right.equalTo(contentImage.snp_right)
         }
-        
-        
-        
-//        if(mymodel.contentImageUrl != nil&& mymodel.contentImageUrl != ""){
-//            
-//        }else{
-//            
-//        }
-        
         
     }
     
