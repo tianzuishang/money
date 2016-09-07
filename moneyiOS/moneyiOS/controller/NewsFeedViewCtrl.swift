@@ -16,7 +16,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
 
     
     
-    let tableview = UITableView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight - 49 - 44), style: UITableViewStyle.Grouped)
+    let tableview = UITableView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight - 49 - 44 - 20), style: UITableViewStyle.Grouped)
     
     
     
@@ -293,6 +293,11 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             return LiveTableViewCell.cellHeight()
         }
         
+        if(indexPath.section == sectionMap.follows) {
+            
+            return NewsFeedTableViewCell.cellHeight(self.followNewsArray.objectAtIndex(indexPath.row) as! NewsFeedModel)
+        }
+        
         return 44
         
     }
@@ -385,17 +390,6 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             return cell
         }
         
-        if(indexPath.section == sectionMap.follows){
-            //follows动态
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
-            
-            
-            // Configure the cell...
-            
-            return cell
-        }
-        
         
         if(indexPath.section == sectionMap.faceheadView){
             
@@ -416,9 +410,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             
             let cell = tableView.dequeueReusableCellWithIdentifier("NewsFeedTableViewCell", forIndexPath: indexPath) as! NewsFeedTableViewCell
             
-            
-            
-            //cell.configureCell(myInfo!)
+            cell.configureCell(self.followNewsArray.objectAtIndex(indexPath.row) as! NewsFeedModel)
             
             // Configure the cell...
             
