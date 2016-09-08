@@ -78,6 +78,9 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         
         tableview.addSubview(refreshControl)
         
+        
+        //tableview.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         self.pullDownAction()
         
         

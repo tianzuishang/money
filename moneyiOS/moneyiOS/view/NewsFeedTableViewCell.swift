@@ -31,9 +31,9 @@ class NewsFeedTableViewCell: UITableViewCell {
     let likeIcon = UIImageView()
     
     
-    let faceViewWidth = 5*minSpace
-    
-    
+    static let faceViewWidth:CGFloat = 5*minSpace
+    static let contentImageHeight:CGFloat = 17*minSpace
+    static let iconHeight:CGFloat = 20
     
     var mymodel: NewsFeedModel!
     
@@ -41,7 +41,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         faceView.clipsToBounds = true
-        faceView.layer.cornerRadius = faceViewWidth/2
+        faceView.layer.cornerRadius = NewsFeedTableViewCell.faceViewWidth/2
         faceView.contentMode = UIViewContentMode.ScaleAspectFill
         
         contentImage.clipsToBounds = true
@@ -58,6 +58,9 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         contentLabel.font = UIFont(name: fontName, size: minFont)
         contentLabel.numberOfLines = 20
+        contentLabel.frame.size = CGSize(width: 0, height: 20*minSpace)
+        
+        
         commentCountLabel.font = UIFont(name: fontName, size: minminFont)
         likeCountLabel.font = UIFont(name: fontName, size: minminFont)
         commentCountLabel.textColor = UIColor.grayColor()
@@ -75,6 +78,88 @@ class NewsFeedTableViewCell: UITableViewCell {
         self.addSubview(commentIcon)
         self.addSubview(shareIcon)
         self.addSubview(likeIcon)
+        
+        
+        faceView.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(self.snp_left).offset(2*minSpace)
+            make.top.equalTo(self.snp_top).offset(2*minSpace)
+            make.size.width.equalTo(NewsFeedTableViewCell.faceViewWidth)
+        }
+        
+        nameLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(faceView.snp_top)
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+        }
+        
+        publishTimeLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(nameLabel.snp_right).offset(minSpace)
+            make.top.equalTo(faceView.snp_top)
+            
+        }
+        
+        subLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace/2)
+        }
+        
+        likeIcon.snp_makeConstraints { (make) -> Void in
+            
+            make.size.width.equalTo(20)
+            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
+            make.left.equalTo(contentImage.snp_left)
+            
+        }
+        
+        likeCountLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(likeIcon.snp_right).offset(minSpace)
+            
+            make.centerY.equalTo(likeIcon.snp_centerY)
+        }
+        
+        commentIcon.snp_makeConstraints { (make) -> Void in
+            
+            make.size.width.equalTo(20)
+            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
+            make.centerX.equalTo(contentImage.snp_centerX)
+            
+        }
+        
+        commentCountLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(commentIcon.snp_right).offset(minSpace)
+            make.centerY.equalTo(commentIcon.snp_centerY)
+        }
+        
+        
+        shareIcon.snp_makeConstraints { (make) -> Void in
+            
+            make.size.width.equalTo(20)
+            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
+            make.right.equalTo(contentImage.snp_right)
+        }
+        
+        
+        contentLabel.snp_makeConstraints(closure: { (make) -> Void in
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(faceView.snp_bottom)
+            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+            //make.height.equalTo(20*minSpace)
+        })
+        
+        contentImage.snp_makeConstraints(closure: { (make) -> Void in
+            
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(contentLabel.snp_bottom)
+            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+            make.height.equalTo(0*minSpace)
+            
+        })
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -119,7 +204,7 @@ class NewsFeedTableViewCell: UITableViewCell {
             faceView.image = UIImage(named: "man-noname.png")
             
         }else{
-            Tool.setFaceViewImage(faceView, faceViewWidth: faceViewWidth, imageUrl: ConfigAccess.serverDomain()+mymodel.userModel.faceImageName!)
+            Tool.setFaceViewImage(faceView, faceViewWidth: NewsFeedTableViewCell.faceViewWidth, imageUrl: ConfigAccess.serverDomain()+mymodel.userModel.faceImageName!)
         }
         
         
@@ -134,15 +219,77 @@ class NewsFeedTableViewCell: UITableViewCell {
         }
         
         
+        
+        
+        if(mymodel.content != nil && mymodel.content != ""){
+            
+            contentLabel.snp_updateConstraints(closure: { (make) -> Void in
+                //make.height.equalTo(20*minSpace)
+                make.top.equalTo(faceView.snp_bottom).offset(minSpace)
+            })
+            
+        }else{
+            
+            contentLabel.snp_updateConstraints(closure: { (make) -> Void in
+                //make.height.equalTo(0*minSpace)
+                make.top.equalTo(faceView.snp_bottom)
+            })
+        }
+
+        
+        if(mymodel.contentImageUrl != nil && mymodel.contentImageUrl != ""){
+            
+            contentImage.snp_updateConstraints(closure: { (make) -> Void in
+                make.height.equalTo(NewsFeedTableViewCell.contentImageHeight)
+                make.top.equalTo(contentLabel.snp_bottom).offset(minSpace)
+            })
+            
+        }else{
+            
+            contentImage.snp_updateConstraints(closure: { (make) -> Void in
+                make.height.equalTo(0*minSpace)
+                make.top.equalTo(contentLabel.snp_bottom)
+            })
+        }
+        
+        
     }
     
     
     static func cellHeight(model: NewsFeedModel)->CGFloat {
         
         
-        return 38*minSpace
-    
-    
+        var contentImageHeight:CGFloat = 0.0
+        var contentHeight: CGFloat = 0.0
+        
+        if(model.contentImageUrl == nil || model.contentImageUrl == ""){
+            
+            contentImageHeight = 0.0
+            
+        }else{
+            contentImageHeight = NewsFeedTableViewCell.contentImageHeight + minSpace
+        }
+        
+        if(model.content == "" || model.content == nil){
+            contentHeight = 0.0
+        }else{
+            
+            let contentTempLabel = UILabel()
+            contentTempLabel.font = UIFont(name: fontName, size: minFont)
+            contentTempLabel.numberOfLines = 20
+            contentTempLabel.frame.size = CGSize(width: ScreenWidth - minSpace - NewsFeedTableViewCell.faceViewWidth - minSpace - 2*minSpace , height: 20*minSpace)
+            contentTempLabel.text = model.content
+            contentTempLabel.sizeToFit()
+            
+            contentHeight = contentTempLabel.frame.size.height + minSpace
+            
+        }
+        
+        
+        
+        return 2*minSpace+NewsFeedTableViewCell.faceViewWidth+minSpace+contentHeight+contentImageHeight+NewsFeedTableViewCell.iconHeight+2*minSpace
+        
+        //return 2*minSpace+NewsFeedTableViewCell.faceViewWidth+minSpace+contentHeight+contentImageHeight+NewsFeedTableViewCell.iconHeight+minSpace
     }
 
     
@@ -151,117 +298,14 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         super.layoutSubviews()
         
-        faceView.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(self.snp_left).offset(2*minSpace)
-            make.top.equalTo(self.snp_top).offset(2*minSpace)
-            make.size.width.equalTo(faceViewWidth)
-        }
-        
-        nameLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.top.equalTo(faceView.snp_top)
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-        }
-        
-        publishTimeLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(nameLabel.snp_right).offset(minSpace)
-            make.top.equalTo(faceView.snp_top)
-            
-        }
-        
-        subLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace/2)
-        }
         
         
         if(mymodel == nil){
             return
         }
         
-        if(mymodel.content != nil && mymodel.content != ""){
-            
-            contentLabel.snp_makeConstraints(closure: { (make) -> Void in
-                make.left.equalTo(faceView.snp_right).offset(minSpace)
-                make.top.equalTo(faceView.snp_bottom).offset(minSpace/2)
-                make.right.equalTo(self.snp_right).offset(-2*minSpace)
-                make.height.equalTo(8*minSpace)
-            })
-            
-        }else{
-            
-            contentLabel.snp_makeConstraints(closure: { (make) -> Void in
-                make.left.equalTo(faceView.snp_right).offset(minSpace)
-                make.top.equalTo(faceView.snp_bottom).offset(minSpace/2)
-                make.right.equalTo(self.snp_right).offset(-2*minSpace)
-                make.height.equalTo(0*minSpace)
-            })
-        }
         
         
-        if(mymodel.contentImageUrl != nil && mymodel.contentImageUrl != ""){
-            
-            contentImage.snp_makeConstraints(closure: { (make) -> Void in
-                
-                make.left.equalTo(faceView.snp_right).offset(minSpace)
-                make.top.equalTo(contentLabel.snp_bottom).offset(minSpace/2)
-                make.right.equalTo(self.snp_right).offset(-2*minSpace)
-                make.height.equalTo(17*minSpace)
-                
-            })
-            
-        }else{
-            
-            contentImage.snp_makeConstraints(closure: { (make) -> Void in
-                
-                make.left.equalTo(faceView.snp_right).offset(minSpace)
-                make.top.equalTo(contentLabel.snp_bottom).offset(minSpace/2)
-                make.right.equalTo(self.snp_right).offset(-2*minSpace)
-                make.height.equalTo(0*minSpace)
-            })
-            
-        }
-        
-        
-        likeIcon.snp_makeConstraints { (make) -> Void in
-            
-            make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.left.equalTo(contentImage.snp_left)
-        
-        }
-        
-        likeCountLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(likeIcon.snp_right).offset(minSpace)
-            
-            make.centerY.equalTo(likeIcon.snp_centerY)
-        }
-        
-        commentIcon.snp_makeConstraints { (make) -> Void in
-            
-            make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.centerX.equalTo(contentImage.snp_centerX)
-            
-        }
-        
-        commentCountLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(commentIcon.snp_right).offset(minSpace)
-            make.centerY.equalTo(commentIcon.snp_centerY)
-        }
-        
-        
-        shareIcon.snp_makeConstraints { (make) -> Void in
-            
-            make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.right.equalTo(contentImage.snp_right)
-        }
         
     }
     
