@@ -60,6 +60,8 @@ class NewsTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor.whiteColor()
         self.selectionStyle = UITableViewCellSelectionStyle.None
         
+        self.layoutView()
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -116,9 +118,8 @@ class NewsTableViewCell: UITableViewCell {
         return NewsTableViewCell.titleHeight + minSpace + source.frame.height
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    
+    func layoutView() {
         title.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(titleImageView.snp_right).offset(2*minSpace)
             make.top.equalTo(self.snp_top)
@@ -143,7 +144,9 @@ class NewsTableViewCell: UITableViewCell {
             make.left.equalTo(2*minSpace)
             make.top.equalTo(minSpace)
         })
+
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -28,12 +28,15 @@ class LiveView: UIView {
     let faceView = UIImageView()
     let liveTitleLabel = UILabel()
     let nameLabel = UILabel()
+    let faceViewWidth = 6*minSpace
     
     override init(frame: CGRect) {
         
         liveTitleLabel.font = UIFont(name: fontName, size: normalFont)
         liveTitleLabel.textColor = UIColor.blackColor()
         liveTitleLabel.numberOfLines = 2
+        liveTitleLabel.frame.size = CGSize(width: 0, height: 3*minSpace)
+        
         //liveTitleLabel.frame = CGRectMake(0, 0, 12*minSpace, 4*minSpace)
         //liveTitleLabel.frame = CGRectMake(0, 0, 120, 40)
         
@@ -41,7 +44,7 @@ class LiveView: UIView {
         nameLabel.textColor = UIColor.grayColor()
         
         
-        faceView.layer.cornerRadius = 6*minSpace/2
+        faceView.layer.cornerRadius = faceViewWidth/2
         faceView.contentMode = UIViewContentMode.ScaleAspectFill;
         faceView.clipsToBounds = true
         
@@ -54,6 +57,29 @@ class LiveView: UIView {
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.layer.cornerRadius = 6.0
+        
+        
+        faceView.snp_makeConstraints { (make) -> Void in
+            make.size.width.equalTo(6*minSpace)
+            make.left.equalTo(self.snp_left).offset(minSpace)
+            make.centerY.equalTo(self.snp_centerY)
+        }
+        
+        
+        liveTitleLabel.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.right.equalTo(self.snp_right).offset(-minSpace)
+            make.top.equalTo(self.snp_top).offset(2*minSpace)
+            
+        }
+        
+        nameLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(liveTitleLabel.snp_bottom)
+        }
+
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -65,62 +91,30 @@ class LiveView: UIView {
         
         nameLabel.text = livemodel.userModel.name
         liveTitleLabel.text = livemodel.liveTitle
+        nameLabel.sizeToFit()
+        liveTitleLabel.sizeToFit()
         
         if(livemodel.userModel.faceImageName == ""||livemodel.userModel.faceImageName == nil){
                 faceView.image = UIImage(named: "man-noname.png")
-                
         }else{
             
             faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
                 
-                if(image?.size.height>image?.size.width){
-                    
-                    let height = 2*6*minSpace
-                    let width = 2*6*minSpace*(image?.size.width)!/(image?.size.height)!
-                    
-                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
-                    
-                }else{
-                    let width = 2*6*minSpace
-                    let height = 2*6*minSpace*(image?.size.height)!/(image?.size.width)!
-                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
-                }
+//                if(image?.size.height>image?.size.width){
+//                    
+//                    let height = 2*6*minSpace
+//                    let width = 2*6*minSpace*(image?.size.width)!/(image?.size.height)!
+//                    
+//                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+//                    
+//                }else{
+//                    let width = 2*6*minSpace
+//                    let height = 2*6*minSpace*(image?.size.height)!/(image?.size.width)!
+//                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+//                }
                 
             })
+        }
 
-            
-//            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)!)
-        }
-        
-        //liveTitleLabel.sizeToFit()
-        nameLabel.sizeToFit()
     }
-    
-    
-    override func layoutSubviews() {
-        
-        faceView.snp_makeConstraints { (make) -> Void in
-            make.size.width.equalTo(6*minSpace)
-            make.left.equalTo(self.snp_left).offset(minSpace)
-            make.centerY.equalTo(self.snp_centerY)
-        }
-        
-        
-        liveTitleLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.width.equalTo(16*minSpace)
-            make.height.equalTo(5*minSpace)
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(self.snp_top).offset(2*minSpace)
-            
-        }
-        
-        nameLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(liveTitleLabel.snp_bottom)
-        }
-        
-    }
-    
 }

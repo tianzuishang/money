@@ -352,22 +352,13 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 self.view.hidden = false
                 BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.Text).show().hide(afterDelay: 2)
-                
-                
             }else{
                 
-                if(responseData!["code"] as! Int == ERROR){
-                    
+                Tool.showErrorMsgBox(responseData!["code"] as? Int)
+                
+                if(responseData!["code"] as! Int != LOGIN_SUCCESS){
                     self.view.hidden = false
-                    BXProgressHUD.Builder(forView: self.view).text("后台错误").mode(.Text).show().hide(afterDelay: 2)
-                    
-                }else if(responseData!["code"] as! Int == LOGIN_FAIL){
-                    
-                    self.view.hidden = false
-                    BXProgressHUD.Builder(forView: self.view).text("密码或用户名错误").mode(.Text).show().hide(afterDelay: 2)
-                    
-                }else if(responseData!["code"] as! Int == LOGIN_SUCCESS){
-                    
+                }else{
                     print("登录成功")
                     
                     if(responseData!["data"]?.count != 1){
@@ -400,12 +391,12 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     
                     //本地库连接
-//                    NSLog(@"%@", app.myInfo.user_id);
-//                    app.locDatabase = [[LocDatabase alloc] init];
-//                    if(![app.locDatabase connectToDatabase:app.myInfo.user_id]){
-//                        alertMsg(@"本地数据库问题");
-//                        return;
-//                    }
+                    //                    NSLog(@"%@", app.myInfo.user_id);
+                    //                    app.locDatabase = [[LocDatabase alloc] init];
+                    //                    if(![app.locDatabase connectToDatabase:app.myInfo.user_id]){
+                    //                        alertMsg(@"本地数据库问题");
+                    //                        return;
+                    //                    }
                     
                     
                     let tab = app.tabInit()
@@ -414,15 +405,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.presentViewController(tab, animated: true, completion: nil)
                     
                     //更新device token
-//                    [[UIApplication sharedApplication] registerForRemoteNotifications];
-//                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
-//                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-//
-                    
-                    
-                }else{
-                    self.view.hidden = false
-                    BXProgressHUD.Builder(forView: self.view).text("返回未知代码:"+"\(responseData!["code"])").mode(.Text).show().hide(afterDelay: 2)
+                    //                    [[UIApplication sharedApplication] registerForRemoteNotifications];
+                    //                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+                    //                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+                    //
+
                 }
                 
             }

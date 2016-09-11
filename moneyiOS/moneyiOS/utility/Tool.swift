@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BXProgressHUD
 
 class Tool: NSObject {
     
@@ -51,6 +52,47 @@ class Tool: NSObject {
                 faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
             }
         })
+    }
+    
+    
+    
+    static func appRootViewController() -> UIViewController {
+        
+        var appRootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        
+        while ((appRootVC!.presentedViewController) != nil) {
+            appRootVC = appRootVC!.presentedViewController;
+        }
+        
+        return appRootVC!;
+    }
+    
+    
+    static func showMsgBox(msg: String){
+        let viewCtrl = Tool.appRootViewController()
+        BXProgressHUD.Builder(forView: viewCtrl.view).text(msg).mode(.Text).show().hide(afterDelay: 2)
+    }
+    
+    static func showErrorMsgBox(errorCode: Int?) {
+        
+        if(errorCode == nil){
+            Tool.showMsgBox("后台返回未知代码")
+            
+            return;
+        }
+        
+        
+        let errorMsg = errorMap[errorCode!]
+        if(errorMsg != nil){
+            
+            if(errorMsg != ""){
+                Tool.showMsgBox(errorMsg!)
+            }
+            
+        }else{
+            //返回未知代码
+            Tool.showMsgBox("后台返回未知代码")
+        }
     }
     
     

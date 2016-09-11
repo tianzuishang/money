@@ -51,12 +51,12 @@ class NewsFeedTableViewCell: UITableViewCell {
         shareIcon.image = UIImage(named: "heart3.png")
         likeIcon.image = UIImage(named: "Like_64.png")
         
-        nameLabel.font = UIFont(name: fontName, size: minFont)
+        nameLabel.font = UIFont(name: fontName, size: normalFont)
         publishTimeLabel.font = UIFont(name: fontName, size: minminFont)
         subLabel.font = UIFont(name: fontName, size: minminFont)
         subLabel.textColor = UIColor.grayColor()
         
-        contentLabel.font = UIFont(name: fontName, size: minFont)
+        contentLabel.font = UIFont(name: fontName, size: normalFont)
         contentLabel.numberOfLines = 20
         contentLabel.frame.size = CGSize(width: 0, height: 20*minSpace)
         
@@ -80,87 +80,20 @@ class NewsFeedTableViewCell: UITableViewCell {
         self.addSubview(likeIcon)
         
         
-        faceView.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(self.snp_left).offset(2*minSpace)
-            make.top.equalTo(self.snp_top).offset(2*minSpace)
-            make.size.width.equalTo(NewsFeedTableViewCell.faceViewWidth)
-        }
-        
-        nameLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.top.equalTo(faceView.snp_top)
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-        }
-        
-        publishTimeLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(nameLabel.snp_right).offset(minSpace)
-            make.top.equalTo(faceView.snp_top)
-            
-        }
-        
-        subLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace/2)
-        }
-        
-        likeIcon.snp_makeConstraints { (make) -> Void in
-            
-            make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.left.equalTo(contentImage.snp_left)
-            
-        }
-        
-        likeCountLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(likeIcon.snp_right).offset(minSpace)
-            
-            make.centerY.equalTo(likeIcon.snp_centerY)
-        }
-        
-        commentIcon.snp_makeConstraints { (make) -> Void in
-            
-            make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.centerX.equalTo(contentImage.snp_centerX)
-            
-        }
-        
-        commentCountLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(commentIcon.snp_right).offset(minSpace)
-            make.centerY.equalTo(commentIcon.snp_centerY)
-        }
+        contentImage.userInteractionEnabled = true
+        contentImage.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: Selector("clickImage:")))
         
         
-        shareIcon.snp_makeConstraints { (make) -> Void in
-            
-            make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.right.equalTo(contentImage.snp_right)
-        }
+        self.selectionStyle = UITableViewCellSelectionStyle.None
         
-        
-        contentLabel.snp_makeConstraints(closure: { (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(faceView.snp_bottom)
-            make.right.equalTo(self.snp_right).offset(-2*minSpace)
-            //make.height.equalTo(20*minSpace)
-        })
-        
-        contentImage.snp_makeConstraints(closure: { (make) -> Void in
-            
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(contentLabel.snp_bottom)
-            make.right.equalTo(self.snp_right).offset(-2*minSpace)
-            make.height.equalTo(0*minSpace)
-            
-        })
+        self.layoutView()
         
     }
+    
+    func clickImage(sender: UITapGestureRecognizer) {
+        print("clickImage")
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -275,7 +208,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         }else{
             
             let contentTempLabel = UILabel()
-            contentTempLabel.font = UIFont(name: fontName, size: minFont)
+            contentTempLabel.font = UIFont(name: fontName, size: normalFont)
             contentTempLabel.numberOfLines = 20
             contentTempLabel.frame.size = CGSize(width: ScreenWidth - minSpace - NewsFeedTableViewCell.faceViewWidth - minSpace - 2*minSpace , height: 20*minSpace)
             contentTempLabel.text = model.content
@@ -294,21 +227,87 @@ class NewsFeedTableViewCell: UITableViewCell {
 
     
     
-    override func layoutSubviews() {
+    func layoutView() {
+        faceView.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(self.snp_left).offset(2*minSpace)
+            make.top.equalTo(self.snp_top).offset(2*minSpace)
+            make.size.width.equalTo(NewsFeedTableViewCell.faceViewWidth)
+        }
         
-        super.layoutSubviews()
+        nameLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(faceView.snp_top)
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+        }
         
+        publishTimeLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(nameLabel.snp_right).offset(minSpace)
+            make.top.equalTo(faceView.snp_top)
+            
+        }
         
+        subLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace/2)
+        }
         
-        if(mymodel == nil){
-            return
+        likeIcon.snp_makeConstraints { (make) -> Void in
+            
+            make.size.width.equalTo(20)
+            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
+            make.left.equalTo(contentImage.snp_left)
+            
+        }
+        
+        likeCountLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(likeIcon.snp_right).offset(minSpace)
+            
+            make.centerY.equalTo(likeIcon.snp_centerY)
+        }
+        
+        commentIcon.snp_makeConstraints { (make) -> Void in
+            
+            make.size.width.equalTo(20)
+            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
+            make.centerX.equalTo(contentImage.snp_centerX)
+            
+        }
+        
+        commentCountLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(commentIcon.snp_right).offset(minSpace)
+            make.centerY.equalTo(commentIcon.snp_centerY)
         }
         
         
+        shareIcon.snp_makeConstraints { (make) -> Void in
+            
+            make.size.width.equalTo(20)
+            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
+            make.right.equalTo(contentImage.snp_right)
+        }
         
         
+        contentLabel.snp_makeConstraints(closure: { (make) -> Void in
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(faceView.snp_bottom)
+            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+            //make.height.equalTo(20*minSpace)
+        })
+        
+        contentImage.snp_makeConstraints(closure: { (make) -> Void in
+            
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(contentLabel.snp_bottom)
+            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+            make.height.equalTo(0*minSpace)
+            
+        })
+
     }
-    
-    
     
 }

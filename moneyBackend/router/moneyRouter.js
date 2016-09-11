@@ -702,5 +702,59 @@ router.get('/getNewsFeed', function(req, res){
 })
 
 
+var recommandPersonList = [
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+]
+
+router.get('/getRecommandPersonList', function(req, res){
+    res.send({
+        code: returnValue.returnCode.SUCCESS,
+        data: {
+            'recommandPersonList': recommandPersonList
+        }
+    });
+})
+
+
+
 //导出router对象
 module.exports = router;
