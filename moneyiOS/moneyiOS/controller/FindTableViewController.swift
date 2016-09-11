@@ -9,11 +9,11 @@
 import UIKit
 import BXProgressHUD
 
-class FindTableViewController: UITableViewController {
+class FindTableViewController: UITableViewController, UISearchBarDelegate {
 
     
     let personArray = NSMutableArray()
-    
+    let searchBar = UISearchBar()
     
     
     override func viewDidLoad() {
@@ -34,8 +34,49 @@ class FindTableViewController: UITableViewController {
         
         self.pullDownAction()
         
+        
+        searchBar.frame = CGRectMake(0, 0, ScreenWidth, 3*minSpace)
+        searchBar.placeholder = "搜索用户或机构"
+        //searchBar.showsCancelButton = true
+        searchBar.delegate = self
+        searchBar.barTintColor = UIColor.whiteColor()
+        searchBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.addSubview(searchBar)
+        
+        
+        searchBar.snp_makeConstraints { (make) -> Void in
+            
+            make.centerY.equalTo((self.navigationController?.navigationBar.snp_centerY)!)
+            make.left.equalTo((self.navigationController?.navigationBar.snp_left)!).offset(2*minSpace)
+            make.right.equalTo((self.navigationController?.navigationBar.snp_right)!).offset(-2*minSpace)
+            
+        }
+        
     }
 
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+    }
+    
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        
+        searchBar.showsCancelButton = false
+        
+        return true
+    }
+    
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        
+        
+        searchBar.showsCancelButton = true
+        
+        
+        return true
+        
+    }
+    
     
     func pullDownAction() {
         
