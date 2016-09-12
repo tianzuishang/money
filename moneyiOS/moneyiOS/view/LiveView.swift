@@ -89,7 +89,7 @@ class LiveView: UIView {
     
     func configureView(livemodel: LiveModel){
         
-        nameLabel.text = livemodel.userModel.name
+        nameLabel.text = livemodel.userModel.userName
         liveTitleLabel.text = livemodel.liveTitle
         nameLabel.sizeToFit()
         liveTitleLabel.sizeToFit()

@@ -743,7 +743,7 @@ var recommandPersonList = [
         name: '小董',
         entyDesc: '工商银行'
     },
-]
+];
 
 router.get('/getRecommandPersonList', function(req, res){
     res.send({
@@ -755,6 +755,46 @@ router.get('/getRecommandPersonList', function(req, res){
 })
 
 
+var userDetail = {
+
+
+};
+
+
+
+router.get('/getUserDetail', function(req, res){
+
+    var returnData = {};
+    userModel.getUserDtlsByUserSrno(req.query.userSrno, function(err, data){
+        if(err){
+            log.error(err, log.getFileNameAndLineNum(__filename));
+            returnData.code = returnValue.returnCode.ERROR;
+            returnData.data = err;
+        }else{
+            if(data.length == 0){
+                log.error(err, log.getFileNameAndLineNum(__filename));
+                returnData.code = returnValue.returnCode.USER_NOT_FOUND;
+            }else{
+                var userDetail = {};
+                returnData.code = returnValue.returnCode.SUCCESS;
+                userDetail.userSrno = data[0].UDT_USER_SRNO;
+                userDetail.userName = data[0].UDT_USER_DESC;
+                userDetail.userID = data[0].UDT_USER_USER_ID;
+                userDetail.faceImageName = data[0].UDT_USER_FACE;
+                userDetail.entySrno = data[0].UDT_ENTY_SRNO;
+                userDetail.entyName = data[0].EMA_ENTY_DESC;
+                userDetail.cityDesc = data[0].UDT_CITY_SHRT_DESC;
+                userDetail.prvnceDesc = data[0].UDT_PRVNCE_SHRT_DESC;
+                userDetail.sign = data[0].UDT_USER_SIGN;
+                returnData.data = {
+                    'userDetail': userDetail
+                }
+            }
+        }
+        log.debug(returnData, log.getFileNameAndLineNum(__filename))
+        res.send(returnData);
+    });
+})
 
 //导出router对象
 module.exports = router;

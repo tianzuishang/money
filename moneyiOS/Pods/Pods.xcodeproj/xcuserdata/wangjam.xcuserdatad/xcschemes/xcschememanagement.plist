@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>EVReflection.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,17 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0143FB11ACF16A990A98847D91AB2008</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>566CEA84314106357ADB325F5D664233</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AEECC1D3AF7071B4F4D3A0303265C935</key>
+		<key>662B6A2F2C8B7DD661893E71C16D136F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D47C60932F7CA3F9106A06B79B180161</key>
+		<key>BD8CDCD04E1556B7BE064504B1598CAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E97872C7974E1CDDBAF1E0FFBD2DB50B</key>
+		<key>C3C2090211A29BD5E3D9489627F6F807</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D47C60932F7CA3F9106A06B79B180161</key>
 		<dict>
 			<key>primary</key>
 			<true/>

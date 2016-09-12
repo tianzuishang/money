@@ -15,71 +15,232 @@ class faceCell: UITableViewCell {
 
     var faceView: UIImageView
     var name: UILabel
-    var wx: UILabel
+    var sign: UILabel
+    var cityLabel: UILabel
+    var followButton: UIButton
+    var entyLabel: UILabel
+    
+    
+    var newsCountLabel: UILabel
+    var newsCount: UILabel
+    
+    var followCountLabel: UILabel
+    var followCount: UILabel
+    
+    var fansCountLabel: UILabel
+    var fansCount: UILabel
+    
+    
+    var line: UIView
+    
     var userModel: UserModel
+    
+    static let faceViewWidth = 8*minSpace
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
         faceView = UIImageView();
         name = UILabel();
-        wx = UILabel();
+        sign = UILabel()
+        cityLabel = UILabel()
+        followButton = UIButton()
+        entyLabel = UILabel()
+        newsCount = UILabel()
+        followCount = UILabel()
+        fansCount = UILabel()
+        
+        newsCountLabel = UILabel()
+        fansCountLabel = UILabel()
+        followCountLabel = UILabel()
+        
+        line = UIView()
+        line.backgroundColor = grayBackgroundColor
+        
         userModel = UserModel();
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        faceView.image = UIImage(named: "face.jpg");
-        faceView.contentMode = UIViewContentMode.ScaleAspectFit;
+        faceView.contentMode = UIViewContentMode.ScaleAspectFill;
+        faceView.layer.cornerRadius = faceCell.faceViewWidth/2
+        faceView.clipsToBounds = true
+        name.font = UIFont(name: fontName, size: normalFont)
+        sign.font = UIFont(name: fontName, size: minFont)
+        sign.textColor = UIColor.grayColor()
+        cityLabel.font = UIFont(name: fontName, size: minFont)
+        cityLabel.textColor = UIColor.grayColor()
+        entyLabel.font = UIFont(name: fontName, size: minFont)
+        entyLabel.textColor = UIColor.grayColor()
         
-        name.font = UIFont(name: "Arial", size: 18)
-        wx.font = UIFont(name: "Arial", size: 14)
+        newsCount.font = UIFont(name: fontName, size: normalFont)
+        followCount.font = UIFont(name: fontName, size: normalFont)
+        fansCount.font = UIFont(name: fontName, size: normalFont)
         
-        wx.textColor = UIColor.grayColor();
+        
+        newsCount.textAlignment = NSTextAlignment.Center
+        followCount.textAlignment = NSTextAlignment.Center
+        fansCount.textAlignment = NSTextAlignment.Center
+        
+        newsCountLabel.text = "帖子"
+        followCountLabel.text = "关注"
+        fansCountLabel.text = "粉丝"
+        
+        
+        newsCountLabel.textColor = UIColor.grayColor()
+        followCountLabel.textColor = UIColor.grayColor()
+        fansCountLabel.textColor = UIColor.grayColor()
+
+        
+        newsCountLabel.font = UIFont(name: fontName, size: minFont)
+        followCountLabel.font = UIFont(name: fontName, size: minFont)
+        fansCountLabel.font = UIFont(name: fontName, size: minFont)
         
         self.addSubview(faceView)
         self.addSubview(name)
-        self.addSubview(wx)
+        self.addSubview(sign)
+        self.addSubview(cityLabel)
+        self.addSubview(followButton)
+        self.addSubview(entyLabel)
+        self.addSubview(newsCount)
+        self.addSubview(followCount)
+        self.addSubview(fansCount)
+        self.addSubview(newsCountLabel)
+        self.addSubview(followCountLabel)
+        self.addSubview(fansCountLabel)
+        self.addSubview(line)
+        
+        self.layoutViews()
+        
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    
+    func layoutViews() {
+        
         
         faceView.snp_makeConstraints{ (make) -> Void in
-            make.size.height.equalTo(74)
-            make.left.equalTo(self).offset(10)
-            make.top.equalTo(self).offset(5)
+            make.size.height.equalTo(faceCell.faceViewWidth)
+            make.left.equalTo(self).offset(2*minSpace)
+            make.top.equalTo(self).offset(2*minSpace)
         }
         
         name.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(5);
-            make.centerY.equalTo(self.snp_centerY);
+            make.left.equalTo(faceView.snp_right).offset(minSpace);
+            make.top.equalTo(faceView.snp_top).offset(minSpace)
+        }
+        
+        sign.snp_makeConstraints { (make) -> Void in
             
-            make.width.equalTo(120);
-            make.height.equalTo(28);
+            make.left.equalTo(name.snp_left)
+            
+            make.top.equalTo(name.snp_bottom).offset(minSpace)
+        }
+        
+        line.snp_makeConstraints { (make) -> Void in
+            
+            make.left.equalTo(self.snp_left)
+            make.top.equalTo(faceView.snp_bottom).offset(2*minSpace)
+            make.height.equalTo(0.5)
+            make.right.equalTo(self.snp_right)
+        }
+        
+        
+        
+        
+        newsCount.snp_makeConstraints { (make) -> Void in
+            
+            make.centerX.equalTo(faceView.snp_centerX)
+            make.top.equalTo(line.snp_bottom).offset(2*minSpace)
             
         }
         
-//        wx.snp_makeConstraints { (make) -> Void in
-//            make.left.equalTo(faceView.snp_right).offset(5);
-//            make.top.equalTo(name.snp_bottom).offset(5);
-//            make.width.equalTo(160)
-//            make.height.equalTo(20)
+        
+        newsCountLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(newsCount.snp_bottom)
+            make.centerX.equalTo(newsCount.snp_centerX)
+            
+        }
+//
+        
+        followCount.snp_makeConstraints { (make) -> Void in
+            
+            //make.right.equalTo(fansCount.snp_left).offset(-2*minSpace)
+            make.top.equalTo(line.snp_bottom).offset(2*minSpace)
+            make.centerX.equalTo(self.snp_centerX)
+            
+        }
+        
+        followCountLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(followCount.snp_bottom)
+            make.centerX.equalTo(followCount.snp_centerX)
+        }
+        
+//
+        fansCount.snp_makeConstraints { (make) -> Void in
+            
+            make.right.equalTo(self.snp_right).offset(-4*minSpace)
+            make.top.equalTo(line.snp_bottom).offset(2*minSpace)
+        }
+        
+        fansCountLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(fansCount.snp_bottom)
+            make.centerX.equalTo(fansCount.snp_centerX)
+            
+        }
+//
+//        
+//        entyLabel.snp_makeConstraints { (make) -> Void in
+//            
+//            make.left.equalTo(faceView.snp_left)
+//            make.top.equalTo(faceView.snp_bottom).offset(2*minSpace)
 //        }
+//        
+//        cityLabel.snp_makeConstraints { (make) -> Void in
+//            
+//            make.left.equalTo(faceView.snp_left)
+//            make.top.equalTo(entyLabel.snp_bottom).offset(minSpace)
+//            
+//        }
+//        
+//        sign.snp_makeConstraints { (make) -> Void in
+//            
+//            make.left.equalTo(faceView.snp_left)
+//            make.top.equalTo(cityLabel.snp_bottom).offset(minSpace)
+//        }
+//        
+//        followButton.snp_makeConstraints { (make) -> Void in
+//            
+//            
+//            
+//        }
+
     }
     
     
     func configureCell(model: UserModel){
         userModel = model
-        name.text = userModel.name
+        name.text = userModel.userName
         if(userModel.faceImageName != nil && userModel.faceImageName != ""){
-            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+userModel.faceImageName!)!)
+            
+            
+            Tool.setFaceViewImage(faceView, faceViewWidth: faceCell.faceViewWidth, imageUrl: ConfigAccess.serverDomain()+userModel.faceImageName!)
         }else{
             faceView.image = UIImage(named: "man-noname.png")
         }
         
+        //entyLabel.text = userModel.entyName
+        //cityLabel.text = userModel.cityDesc
+        sign.text = userModel.sign
+        sign.text = "签名要写什么"
+        newsCount.text = "2126"
+        followCount.text = "330"
+        fansCount.text = "282"
+        
     }
     
     static func cellHeight() ->CGFloat {
-        return 88
+        return 21*minSpace
     }
     
     

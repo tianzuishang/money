@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import EVReflection
 
-class NewsModel: NSObject {
+class NewsModel: EVObject {
     var title: String = ""
     var subTitle: String = ""
     var source: String = ""

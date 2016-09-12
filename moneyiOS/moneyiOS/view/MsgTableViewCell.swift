@@ -52,9 +52,9 @@ class MsgTableViewCell: UITableViewCell {
     
     func configureCell(model: UserModel) {
         mymodel = model
-        name.text = mymodel.name
-        msg.text = mymodel.lastTalk
-        dateTime.text = mymodel.lastUpdateTimeStr
+        name.text = mymodel.userName
+        //msg.text = mymodel.lastTalk
+        //dateTime.text = mymodel.lastUpdateTimeStr
         
         if(mymodel.faceImageName == nil || mymodel.faceImageName == ""){
             faceView.image = UIImage(named: "man-noname.png")
@@ -64,9 +64,9 @@ class MsgTableViewCell: UITableViewCell {
         
         
         //判断是否通讯录cell
-        if(mymodel.contactflag == true){
-            faceView.image = UIImage(named: "adress_book_contacts.png")
-        }
+//        if(mymodel.contactflag == true){
+//            faceView.image = UIImage(named: "adress_book_contacts.png")
+//        }
         
         
         name.sizeToFit()

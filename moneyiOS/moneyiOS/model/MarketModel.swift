@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import EVReflection
 
-class MarketModel: NSObject {
+
+class MarketModel: EVObject {
     var prdcImageUrl: String?
     var prdcTitle: String = ""
     var price: CGFloat?

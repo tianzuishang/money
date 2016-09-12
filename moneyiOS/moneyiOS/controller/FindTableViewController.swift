@@ -41,6 +41,10 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.barTintColor = UIColor.whiteColor()
         searchBar.tintColor = UIColor.whiteColor()
+        
+        
+        //searchBar.setSearchFieldBackgroundImage(Tool.getImageWithColor(UIColor.lightGrayColor(), height: 4*minSpace), forState: UIControlState.Normal)
+        
         self.navigationController?.navigationBar.addSubview(searchBar)
         
         
@@ -100,7 +104,7 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
                     for item in tempArray {
                         
                         let usermodel = UserModel()
-                        usermodel.name = item["name"] as? String
+                        usermodel.userName = item["name"] as? String
                         usermodel.faceImageName = item["faceImageName"] as? String
                         usermodel.entyName = item["entyDesc"] as? String
                         

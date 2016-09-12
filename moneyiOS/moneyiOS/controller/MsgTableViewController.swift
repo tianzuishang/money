@@ -56,11 +56,11 @@ class MsgTableViewController: UITableViewController {
         
         
         
-        let contact = UserModel()
-        contact.name = "通讯录"
-        contact.lastTalk = "查看我的通讯录"
-        contact.contactflag = true
-        headlist.append(contact)
+//        let contact = UserModel()
+//        contact.userName = "通讯录"
+//        contact.lastTalk = "查看我的通讯录"
+//        contact.contactflag = true
+//        headlist.append(contact)
     }
     
     func searchButton() {

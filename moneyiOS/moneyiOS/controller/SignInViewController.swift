@@ -371,11 +371,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let app = UIApplication.sharedApplication().delegate as! AppDelegate;
                     app.myUserInfo = UserModel()
                     
-                    app.myUserInfo?.userSrno = userInfoDic["UDT_USER_SRNO"] as? Int
+                    app.myUserInfo?.userSrno = (userInfoDic["UDT_USER_SRNO"] as? Int)!
                     app.myUserInfo?.userID = userInfoDic["UDT_USER_USER_ID"] as? String
-                    app.myUserInfo?.name = userInfoDic["UDT_USER_DESC"] as? String
+                    app.myUserInfo?.userName = userInfoDic["UDT_USER_DESC"] as? String
                     app.myUserInfo?.entyName = userInfoDic["EMA_ENTY_ENCD_DESC"] as? String
-                    app.myUserInfo?.entySrno = userInfoDic["EMA_ENTY_SRNO"] as? Int
+                    app.myUserInfo?.entySrno = (userInfoDic["EMA_ENTY_SRNO"] as? Int)!
                     app.myUserInfo?.cityDesc = userInfoDic["UDT_CITY_SHRT_DESC"] as? String
                     app.myUserInfo?.prvnceDesc = userInfoDic["UDT_PRVNCE_SHRT_DESC"] as? String
                     app.myUserInfo?.faceImageName = userInfoDic["UDT_USER_FACE"] as? String

@@ -108,7 +108,7 @@ class FindTableViewCell: UITableViewCell {
         
         mymodel = model
         
-        nameLabel.text = mymodel?.name
+        nameLabel.text = mymodel?.userName
         subTitle.text = mymodel?.entyName
         
         if(mymodel?.faceImageName == "" || mymodel?.faceImageName == nil){

@@ -18,6 +18,7 @@ let LOGIN_FAIL = 1011
 let REGISTER_SUCCESS = 1020
 let REGISTER_FAIL = 1021
 
+let USER_NOT_FOUND = 2001
 
 let errorMap = [
     SUCCESS: "",
@@ -25,6 +26,7 @@ let errorMap = [
     LOGIN_SUCCESS: "登录成功",
     LOGIN_FAIL: "用户名或密码错误",
     REGISTER_SUCCESS: "注册成功",
-    REGISTER_FAIL: "注册失败"
+    REGISTER_FAIL: "注册失败",
+    USER_NOT_FOUND: "用户不存在"
 ]
 

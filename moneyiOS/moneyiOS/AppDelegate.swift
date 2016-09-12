@@ -60,8 +60,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nav3 = UINavigationController(rootViewController: MarketViewController())
         let nav4 = UINavigationController(rootViewController: NewsTableViewController())
-        let nav5 = UINavigationController()
-
+        
+        
+        
+        
+        
+        let userDetailTableViewCtrl = UserDetailTableViewController(style:UITableViewStyle.Grouped)
+        
+        
+        userDetailTableViewCtrl.usermodel = myUserInfo
+        let nav5 = UINavigationController(rootViewController: userDetailTableViewCtrl)
+        
         
         
         nav1.navigationBar.barTintColor = themeColor

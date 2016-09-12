@@ -11,6 +11,12 @@ exports.getUserCache = function(req ,callback){
 }
 
 
+exports.getUserDtlsByUserSrno = function(userSrno, callback){
+	var sql = 'select a.*, b.* from trdx_user_dtls a, trdx_entity_master b '+
+	' where a.udt_user_srno = b.EMA_ENTY_SRNO and a.udt_user_srno = ?';
+	conn.executeSql(sql, userSrno, callback)
+}
+
 exports.getUserDtlsByDesc = function(searchDesc, page, callback){
 	if(page === undefined){
 		page = 1;

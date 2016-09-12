@@ -50,7 +50,7 @@ class SearchPeopleTableViewCell: UITableViewCell {
     
     func configureCell(model: UserModel) {
         usermodel = model
-        nameLabel.text = usermodel.name
+        nameLabel.text = usermodel.userName
         entyNameLabel.text = usermodel.entyName
         
         

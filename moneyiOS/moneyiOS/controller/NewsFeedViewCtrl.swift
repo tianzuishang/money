@@ -151,7 +151,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                     
                     for item in tempArray {
                         let livemodel = LiveModel()
-                        livemodel.userModel.name = item["name"] as? String
+                        livemodel.userModel.userName = item["name"] as? String
                         livemodel.userModel.faceImageName = item["faceImageName"] as? String
                         livemodel.liveTitle = item["liveTitle"] as! String
                         livemodel.startTimeStamp = item["startTimeStamp"] as! Int
@@ -164,7 +164,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                     
                     for item in tempArray {
                         let newsFeedModel = NewsFeedModel()
-                        newsFeedModel.userModel.name = item["name"] as? String
+                        newsFeedModel.userModel.userName = item["name"] as? String
                         newsFeedModel.userModel.faceImageName = item["faceImageName"] as? String
                         newsFeedModel.entyDesc = item["entyDesc"] as? String
                         newsFeedModel.headTitle = item["headTitle"] as? String

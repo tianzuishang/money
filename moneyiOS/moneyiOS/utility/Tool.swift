@@ -95,6 +95,21 @@ class Tool: NSObject {
         }
     }
     
+    static func getImageWithColor(color: UIColor, height: CGFloat) -> UIImage{
+        
+        let frame = CGRectMake(0.0, 0.0, 1.0, height)
+        UIGraphicsBeginImageContext(frame.size)
+        let context = UIGraphicsGetCurrentContext();
+        
+        CGContextSetFillColorWithColor(context, color.CGColor);
+        CGContextFillRect(context, frame);
+        
+        let img = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return img;
+    }
+    
     
     static func showTime(timeStamp:Int) -> String {
         

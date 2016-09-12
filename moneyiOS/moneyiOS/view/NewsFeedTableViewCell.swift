@@ -115,7 +115,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     func configureCell(model: NewsFeedModel){
         mymodel = model
         
-        nameLabel.text = mymodel.userModel.name
+        nameLabel.text = mymodel.userModel.userName
         publishTimeLabel.text = Tool.showTime(mymodel.publishTimestamp)
         subLabel.text = mymodel.headTitle! + "," + mymodel.entyDesc!
         contentLabel.text = mymodel.content
