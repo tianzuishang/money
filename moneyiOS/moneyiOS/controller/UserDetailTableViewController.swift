@@ -17,21 +17,18 @@ class UserDetailTableViewController: UITableViewController {
     let addButton: UIButton = UIButton()
     
     static let faceWidth = 14*minSpace
-    static let headViewHeight = 48*minSpace
+    static let headViewHeight = 38*minSpace
     
     
     let sectionMap = (
-        faceSection: 0,
-        newFriendSection: 1,
-        newsSection: 2,
-        detailSection: 3,
-        contactSection: 4,
-        quitSection: 5
+        newFriendSection: 0,
+        detailSection: 1,
+        contactSection: 2,
+        quitSection: 3
     )
     
     
-    let newFriendSectionTitles = ["新的好友"]
-    let newsSectionTitles = ["最近动态"]
+    let newFriendSectionTitles = ["最近动态", "关注的人", "被关注的人"]
     let detailSectionTitles = ["机构", "地区"]
     let contactSectionTitles = ["微信", "微博", "QQ"]
     let quitSectionTitles = ["退出当前账号"]
@@ -69,6 +66,8 @@ class UserDetailTableViewController: UITableViewController {
     func initHeadView() {
         
         let view = UIView(frame: CGRectMake(0, 0, ScreenWidth, UserDetailTableViewController.headViewHeight))
+        
+        view.backgroundColor = UIColor.whiteColor()
         //view.backgroundColor = themeColor
         
         let blurEffect = UIBlurEffect(style: .Light)
@@ -111,6 +110,49 @@ class UserDetailTableViewController: UITableViewController {
         
         Tool.setFaceViewImage(faceView, faceViewWidth: UserDetailTableViewController.faceWidth, imageUrl: ConfigAccess.serverDomain()+(usermodel?.faceImageName)!)
         
+        
+        let nameLabel = UILabel()
+        nameLabel.text = usermodel?.userName
+        nameLabel.font = UIFont(name: fontName, size: minMiddleFont)
+        
+        
+        view.addSubview(nameLabel)
+        
+        nameLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(faceView.snp_bottom).offset(minSpace)
+            make.centerX.equalTo(faceView.snp_centerX)
+            
+        }
+        
+        let entyLabel = UILabel()
+        entyLabel.text = usermodel?.entyName
+        entyLabel.font = UIFont(name: fontName, size: normalFont)
+        
+        view.addSubview(entyLabel)
+        
+        entyLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace)
+            make.centerX.equalTo(nameLabel.snp_centerX)
+        }
+        
+        let signLabel = UILabel()
+        signLabel.text = usermodel?.sign
+        signLabel.font = UIFont(name: fontName, size: normalFont)
+        
+        view.addSubview(signLabel)
+        
+        signLabel.snp_makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(entyLabel.snp_bottom).offset(minSpace)
+            make.centerX.equalTo(nameLabel.snp_centerX)
+            
+        }
+        
+        
+        
+        
         self.tableView.tableHeaderView = view
     }
     
@@ -127,12 +169,12 @@ class UserDetailTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 12
+        return 0.5
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 0.5
+        return 12
     }
     
     
@@ -151,9 +193,9 @@ class UserDetailTableViewController: UITableViewController {
                     
                     self.usermodel = userDetail
                     
-                    //self.initNavTitle(self.usermodel!.userName!)
+                    self.initNavTitle(self.usermodel!.userName!)
                     
-                    //self.initHeadView()
+                    self.initHeadView()
                     
                 }else{
                     
@@ -223,7 +265,7 @@ class UserDetailTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
-        return 6
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -239,17 +281,11 @@ class UserDetailTableViewController: UITableViewController {
 //        }
         
         
-        if(section == sectionMap.faceSection) {
-            return 1
-        }
-        
         if(section == sectionMap.newFriendSection) {
             return newFriendSectionTitles.count
         }
         
-        if(section == sectionMap.newsSection) {
-            return newsSectionTitles.count
-        }
+        
         
         if(section == sectionMap.detailSection) {
             return detailSectionTitles.count
@@ -270,83 +306,74 @@ class UserDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        if(indexPath.section == 0 && indexPath.row == 0){
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier("faceCell", forIndexPath: indexPath) as? faceCell
-            
-            cell?.configureCell(usermodel!)
-            
-            return cell!
-            
-        }else{
-            
-            let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
 
-            if(indexPath.section == sectionMap.newFriendSection){
-                
-                
-                cell.textLabel?.text = newFriendSectionTitles[indexPath.row]
-                
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-                
+        if(indexPath.section == sectionMap.newFriendSection){
+            
+            
+            cell.textLabel?.text = newFriendSectionTitles[indexPath.row]
+            
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            
+            //cell.imageView?.image = UIImage(named: "Person_add_72px.png")
+            
+            if(indexPath.row == 1){
+                //关注的人
+                cell.detailTextLabel?.text = "231"
             }
             
-            if(indexPath.section == sectionMap.newsSection){
-                
-                cell.textLabel?.text = newsSectionTitles[indexPath.row]
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-                
+            if(indexPath.row == 2){
+                //被关注的人
+                cell.detailTextLabel?.text = "1238"
             }
-            
-            if(indexPath.section == sectionMap.detailSection){
-                cell.textLabel?.text = detailSectionTitles[indexPath.row]
-                
-                if(indexPath.row == 0){
-                    //机构
-                    cell.detailTextLabel?.text = usermodel?.entyName
-                }
-                
-                if(indexPath.row == 1){
-                    //地区
-                    if(usermodel?.cityDesc == nil||usermodel?.cityDesc == nil){
-                        cell.detailTextLabel?.text = "未知"
-
-                    }else{
-                        cell.detailTextLabel?.text = (usermodel?.prvnceDesc)! + (usermodel?.cityDesc)!
-                    }
-                }
-
-            }
-            
-            if(indexPath.section == sectionMap.contactSection){
-                cell.textLabel?.text = contactSectionTitles[indexPath.row]
-                cell.detailTextLabel?.text = "未绑定"
-                
-            }
-            
-            if(indexPath.section == sectionMap.quitSection){
-                cell.textLabel?.text = quitSectionTitles[indexPath.row]
-
-            }
-            
-            return cell
             
         }
         
         
+        if(indexPath.section == sectionMap.detailSection){
+            cell.textLabel?.text = detailSectionTitles[indexPath.row]
+            
+            if(indexPath.row == 0){
+                //机构
+                cell.detailTextLabel?.text = usermodel?.entyName
+            }
+            
+            if(indexPath.row == 1){
+                //地区
+                if(usermodel?.cityDesc == nil||usermodel?.cityDesc == nil){
+                    cell.detailTextLabel?.text = "未知"
+
+                }else{
+                    cell.detailTextLabel?.text = (usermodel?.prvnceDesc)! + (usermodel?.cityDesc)!
+                }
+            }
+
+        }
+        
+        if(indexPath.section == sectionMap.contactSection){
+            cell.textLabel?.text = contactSectionTitles[indexPath.row]
+            cell.detailTextLabel?.text = "未绑定"
+            
+        }
+        
+        if(indexPath.section == sectionMap.quitSection){
+            cell.textLabel?.text = quitSectionTitles[indexPath.row]
+
+        }
+        
+        return cell
+        
+        
         
         // Configure the cell...
-        return UITableViewCell()
         
     }
 
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(indexPath.section == 0 && indexPath.row == 0){
-            return faceCell .cellHeight()
-        }else{
+        
             return 44
-        }
     }
     
     

@@ -45,7 +45,7 @@ class FindTableViewCell: UITableViewCell {
         subTitle.frame.size = CGSize(width: 0, height: 3*minSpace)
         
         
-        followIcon.image = UIImage(named: "follow_72px.png")
+        followIcon.image = UIImage(named: "Person_add_72px.png")
         followIcon.contentMode = UIViewContentMode.ScaleAspectFill
         
         followLabel.font = UIFont(name: fontName, size: minFont)
@@ -71,7 +71,7 @@ class FindTableViewCell: UITableViewCell {
         nameLabel.snp_makeConstraints { (make) -> Void in
             
             make.left.equalTo(faceView.snp_right).offset(2*minSpace)
-            make.top.equalTo(faceView.snp_top).offset(minSpace)
+            make.top.equalTo(faceView.snp_top).offset(2*minSpace)
             
         }
         
@@ -87,7 +87,7 @@ class FindTableViewCell: UITableViewCell {
         followIcon.snp_makeConstraints { (make) -> Void in
             
             make.right.equalTo(self.snp_right).offset(-4*minSpace)
-            make.centerY.equalTo(faceView.snp_centerY)
+            make.top.equalTo(faceView.snp_top).offset(minSpace)
             make.size.width.equalTo(4*minSpace)
         }
         

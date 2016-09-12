@@ -16,8 +16,6 @@
 		B20D093B1D6C80D000C650A5 /* adress_book_contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = B20D09391D6C80D000C650A5 /* adress_book_contacts.png */; };
 		B20D093D1D6DE92D00C650A5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */; };
 		B20D093E1D6DE92D00C650A5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */; };
-		B213E3A31D82590900B9E4A5 /* FindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B213E3A21D82590900B9E4A5 /* FindTableViewCell.swift */; };
-		B213E3A51D82796300B9E4A5 /* FindTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B213E3A41D82796300B9E4A5 /* FindTableViewController.swift */; };
 		B213E3A71D82C2C200B9E4A5 /* follow_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B213E3A61D82C2C200B9E4A5 /* follow_72px.png */; };
 		B2458C421D59752A00AF0815 /* TradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2458C411D59752A00AF0815 /* TradeTableViewController.swift */; };
 		B2458C6E1D59BA6700AF0815 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BAA11D50E54A004DE860 /* NewsModel.swift */; };
@@ -76,6 +74,12 @@
 		B296BAA21D50E54A004DE860 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BAA11D50E54A004DE860 /* NewsModel.swift */; };
 		B296BAA51D50ECB0004DE860 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BAA41D50ECB0004DE860 /* NewsAPI.swift */; };
 		B296BAA91D56DCA7004DE860 /* ConfigAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BAA81D56DCA7004DE860 /* ConfigAccess.swift */; };
+		B297DB731D86E86D00A6426D /* FindTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB721D86E86D00A6426D /* FindTableViewController.swift */; };
+		B297DB741D86E86D00A6426D /* FindTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB721D86E86D00A6426D /* FindTableViewController.swift */; };
+		B297DB761D86E8C700A6426D /* FindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB751D86E8C700A6426D /* FindTableViewCell.swift */; };
+		B297DB771D86E8C700A6426D /* FindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB751D86E8C700A6426D /* FindTableViewCell.swift */; };
+		B297DB791D86EC1E00A6426D /* Person_add_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B297DB781D86EC1E00A6426D /* Person_add_72px.png */; };
+		B297DB7A1D86EC1E00A6426D /* Person_add_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B297DB781D86EC1E00A6426D /* Person_add_72px.png */; };
 		B2D155621D6EE86100CCF174 /* qq_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155611D6EE86100CCF174 /* qq_48px.png */; };
 		B2D155641D6EE86C00CCF174 /* wechat_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155631D6EE86C00CCF174 /* wechat_48px.png */; };
 		B2D155661D6EE87600CCF174 /* weibo_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155651D6EE87600CCF174 /* weibo_48px.png */; };
@@ -171,8 +175,6 @@
 		B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09391D6C80D000C650A5 /* adress_book_contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adress_book_contacts.png; sourceTree = "<group>"; };
 		B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		B213E3A21D82590900B9E4A5 /* FindTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTableViewCell.swift; sourceTree = "<group>"; };
-		B213E3A41D82796300B9E4A5 /* FindTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTableViewController.swift; sourceTree = "<group>"; };
 		B213E3A61D82C2C200B9E4A5 /* follow_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = follow_72px.png; sourceTree = "<group>"; };
 		B2458C411D59752A00AF0815 /* TradeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTableViewController.swift; sourceTree = "<group>"; };
 		B2458C6A1D59B90500AF0815 /* moneyiOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "moneyiOS copy-Info.plist"; path = "/Users/wangjam/Documents/develop/money/moneyiOS/moneyiOS copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -201,6 +203,9 @@
 		B296BAA11D50E54A004DE860 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		B296BAA41D50ECB0004DE860 /* NewsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		B296BAA81D56DCA7004DE860 /* ConfigAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigAccess.swift; sourceTree = "<group>"; };
+		B297DB721D86E86D00A6426D /* FindTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTableViewController.swift; sourceTree = "<group>"; };
+		B297DB751D86E8C700A6426D /* FindTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTableViewCell.swift; sourceTree = "<group>"; };
+		B297DB781D86EC1E00A6426D /* Person_add_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person_add_72px.png; sourceTree = "<group>"; };
 		B2D155611D6EE86100CCF174 /* qq_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq_48px.png; sourceTree = "<group>"; };
 		B2D155631D6EE86C00CCF174 /* wechat_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_48px.png; sourceTree = "<group>"; };
 		B2D155651D6EE87600CCF174 /* weibo_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo_48px.png; sourceTree = "<group>"; };
@@ -390,8 +395,8 @@
 			children = (
 				B2E9487A1D7BBDFB0087838A /* NewsFeedViewCtrl.swift */,
 				B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */,
-				B213E3A41D82796300B9E4A5 /* FindTableViewController.swift */,
 				B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */,
+				B297DB721D86E86D00A6426D /* FindTableViewController.swift */,
 				B2E27A411D570DB900D65A94 /* MarketViewController.swift */,
 				B2458E061D5DB2B600AF0815 /* UserDetailTableViewController.swift */,
 				B2458DFA1D5D993700AF0815 /* SearchPeopleTableViewCtrl.swift */,
@@ -429,6 +434,7 @@
 				B2E948B01D8019250087838A /* comment.png */,
 				B2E948AD1D8017E20087838A /* like.png */,
 				B213E3A61D82C2C200B9E4A5 /* follow_72px.png */,
+				B297DB781D86EC1E00A6426D /* Person_add_72px.png */,
 				B2E948A71D8015590087838A /* heart2.png */,
 				B2E948A81D8015590087838A /* heart3.png */,
 				B2E948B61D801A1F0087838A /* comment_48px.png */,
@@ -473,8 +479,8 @@
 			children = (
 				B2458E091D5DB51000AF0815 /* faceCell.swift */,
 				B2E948A11D7FAA800087838A /* NewsFeedTableViewCell.swift */,
-				B213E3A21D82590900B9E4A5 /* FindTableViewCell.swift */,
 				B2E9488C1D7C115B0087838A /* LiveTableViewCell.swift */,
+				B297DB751D86E8C700A6426D /* FindTableViewCell.swift */,
 				B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */,
 				B2E9489B1D7C50190087838A /* LiveView.swift */,
 				B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */,
@@ -645,6 +651,7 @@
 				B2E948B51D8019300087838A /* Like_64.png in Resources */,
 				B2458C841D59BA6700AF0815 /* newsFeed@3x.png in Resources */,
 				B2458C851D59BA6700AF0815 /* newsFeed@2x.png in Resources */,
+				B297DB7A1D86EC1E00A6426D /* Person_add_72px.png in Resources */,
 				B2E948B21D8019250087838A /* comment.png in Resources */,
 				B2E948AA1D8015590087838A /* heart2.png in Resources */,
 				B2458C861D59BA6700AF0815 /* LaunchScreen.storyboard in Resources */,
@@ -703,6 +710,7 @@
 				B2EED7461D6C70C30053816C /* magnifier_32px.png in Resources */,
 				B24706511D50DACD00FBF7EB /* market@2x.png in Resources */,
 				B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */,
+				B297DB791D86EC1E00A6426D /* Person_add_72px.png in Resources */,
 				B2D1731A1D3CA27C00FC128A /* Main.storyboard in Resources */,
 				B2D155641D6EE86C00CCF174 /* wechat_48px.png in Resources */,
 			);
@@ -844,6 +852,7 @@
 				B2458C781D59BA6700AF0815 /* NewsTableViewController.swift in Sources */,
 				B2458C791D59BA6700AF0815 /* MarketViewController.swift in Sources */,
 				B2458C7A1D59BA6700AF0815 /* NewsViewCtrl.swift in Sources */,
+				B297DB771D86E8C700A6426D /* FindTableViewCell.swift in Sources */,
 				B2458C7B1D59BA6700AF0815 /* moneyiOS.xcdatamodeld in Sources */,
 				B20D09381D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
 				B2E948A61D7FAC580087838A /* NewsFeedModel.swift in Sources */,
@@ -851,6 +860,7 @@
 				B2E9489D1D7C50190087838A /* LiveView.swift in Sources */,
 				B2E948A31D7FAA800087838A /* NewsFeedTableViewCell.swift in Sources */,
 				B2458E0B1D5DB51000AF0815 /* faceCell.swift in Sources */,
+				B297DB741D86E86D00A6426D /* FindTableViewController.swift in Sources */,
 				B2E9489A1D7C4ED50087838A /* LiveModel.swift in Sources */,
 				B2458E021D5DA54100AF0815 /* UserModel.swift in Sources */,
 				B2458C7C1D59BA6700AF0815 /* AppDelegate.swift in Sources */,
@@ -863,7 +873,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B213E3A51D82796300B9E4A5 /* FindTableViewController.swift in Sources */,
+				B297DB731D86E86D00A6426D /* FindTableViewController.swift in Sources */,
 				B2458DF81D5D992500AF0815 /* MsgTableViewController.swift in Sources */,
 				B2E948841D7BF5E90087838A /* HeadLineTableViewCell.swift in Sources */,
 				B296BAA21D50E54A004DE860 /* NewsModel.swift in Sources */,
@@ -885,8 +895,8 @@
 				B2E9488D1D7C115B0087838A /* LiveTableViewCell.swift in Sources */,
 				B2E27A421D570DB900D65A94 /* MarketViewController.swift in Sources */,
 				B2458E011D5DA54100AF0815 /* UserModel.swift in Sources */,
+				B297DB761D86E8C700A6426D /* FindTableViewCell.swift in Sources */,
 				B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */,
-				B213E3A31D82590900B9E4A5 /* FindTableViewCell.swift in Sources */,
 				B2458E0A1D5DB51000AF0815 /* faceCell.swift in Sources */,
 				B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
 				B2E948A51D7FAC580087838A /* NewsFeedModel.swift in Sources */,
@@ -991,6 +1001,7 @@
 		};
 		B2D173241D3CA27D00FC128A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0ECF9765B399BF38C72FD327 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1035,6 +1046,7 @@
 		};
 		B2D173251D3CA27D00FC128A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8EB17601AB4695FF0F602B5 /* Pods-moneyiOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
