@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav2 = UINavigationController(rootViewController: FindTableViewController())
         
         let nav3 = UINavigationController(rootViewController: MarketViewController())
-        let nav4 = UINavigationController(rootViewController: NewsTableViewController())
+        let nav4 = UINavigationController(rootViewController: MsgTableViewController())
         
         
         

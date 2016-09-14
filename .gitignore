@@ -4,3 +4,8 @@ moneyiOS/moneyiOS.xcworkspace/xcuserdata/wangjam.xcuserdatad/UserInterfaceState.
 *.xcbkptlist
 
 *.xcscheme
+
+moneyiOS/build/moneyiOS.build/Release-iphoneos/moneyiOS.build/dgph
+
+*.hmap
+moneyiOS/build/*

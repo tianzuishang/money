@@ -80,6 +80,8 @@
 		B297DB771D86E8C700A6426D /* FindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB751D86E8C700A6426D /* FindTableViewCell.swift */; };
 		B297DB791D86EC1E00A6426D /* Person_add_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B297DB781D86EC1E00A6426D /* Person_add_72px.png */; };
 		B297DB7A1D86EC1E00A6426D /* Person_add_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B297DB781D86EC1E00A6426D /* Person_add_72px.png */; };
+		B297DB7C1D87DA4A00A6426D /* MsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB7B1D87DA4A00A6426D /* MsgModel.swift */; };
+		B297DB7D1D87DA4A00A6426D /* MsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB7B1D87DA4A00A6426D /* MsgModel.swift */; };
 		B2D155621D6EE86100CCF174 /* qq_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155611D6EE86100CCF174 /* qq_48px.png */; };
 		B2D155641D6EE86C00CCF174 /* wechat_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155631D6EE86C00CCF174 /* wechat_48px.png */; };
 		B2D155661D6EE87600CCF174 /* weibo_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155651D6EE87600CCF174 /* weibo_48px.png */; };
@@ -206,6 +208,7 @@
 		B297DB721D86E86D00A6426D /* FindTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTableViewController.swift; sourceTree = "<group>"; };
 		B297DB751D86E8C700A6426D /* FindTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTableViewCell.swift; sourceTree = "<group>"; };
 		B297DB781D86EC1E00A6426D /* Person_add_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person_add_72px.png; sourceTree = "<group>"; };
+		B297DB7B1D87DA4A00A6426D /* MsgModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgModel.swift; sourceTree = "<group>"; };
 		B2D155611D6EE86100CCF174 /* qq_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq_48px.png; sourceTree = "<group>"; };
 		B2D155631D6EE86C00CCF174 /* wechat_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_48px.png; sourceTree = "<group>"; };
 		B2D155651D6EE87600CCF174 /* weibo_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo_48px.png; sourceTree = "<group>"; };
@@ -419,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				B296BAA11D50E54A004DE860 /* NewsModel.swift */,
+				B297DB7B1D87DA4A00A6426D /* MsgModel.swift */,
 				B2E948A41D7FAC580087838A /* NewsFeedModel.swift */,
 				B2E948981D7C4ED50087838A /* LiveModel.swift */,
 				B2458E001D5DA54100AF0815 /* UserModel.swift */,
@@ -849,6 +853,7 @@
 				B2458E051D5DA6B100AF0815 /* SearchPeopleTableViewCell.swift in Sources */,
 				B2458C771D59BA6700AF0815 /* TabbarController.swift in Sources */,
 				B2E9488E1D7C115B0087838A /* LiveTableViewCell.swift in Sources */,
+				B297DB7D1D87DA4A00A6426D /* MsgModel.swift in Sources */,
 				B2458C781D59BA6700AF0815 /* NewsTableViewController.swift in Sources */,
 				B2458C791D59BA6700AF0815 /* MarketViewController.swift in Sources */,
 				B2458C7A1D59BA6700AF0815 /* NewsViewCtrl.swift in Sources */,
@@ -892,6 +897,7 @@
 				B2458E041D5DA6B100AF0815 /* SearchPeopleTableViewCell.swift in Sources */,
 				B24706461D50D9A000FBF7EB /* TabbarController.swift in Sources */,
 				B296BA9A1D50E163004DE860 /* NewsTableViewController.swift in Sources */,
+				B297DB7C1D87DA4A00A6426D /* MsgModel.swift in Sources */,
 				B2E9488D1D7C115B0087838A /* LiveTableViewCell.swift in Sources */,
 				B2E27A421D570DB900D65A94 /* MarketViewController.swift in Sources */,
 				B2458E011D5DA54100AF0815 /* UserModel.swift in Sources */,
