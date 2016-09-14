@@ -17,7 +17,9 @@ class MsgTableViewCell: UITableViewCell {
     var name: UILabel
     var msg: UILabel
     var dateTime: UILabel
-    var mymodel: UserModel = UserModel()
+    var mymodel: MsgModel = MsgModel()
+    static let faceWidth = 6*minSpace
+    
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
@@ -29,12 +31,14 @@ class MsgTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         faceView.image = UIImage(named: "face.jpg");
-        faceView.contentMode = UIViewContentMode.ScaleAspectFit;
+        faceView.contentMode = UIViewContentMode.ScaleAspectFill;
         faceView.clipsToBounds = true
+        faceView.layer.cornerRadius = 6.0
         
-        name.font = UIFont(name: "Arial", size: normalFont)
-        msg.font = UIFont(name: "Arial", size: minFont)
-        dateTime.font = UIFont(name: "Arial", size: minFont)
+        
+        name.font = UIFont(name: fontName, size: minFont)
+        msg.font = UIFont(name: fontName, size: minFont)
+        dateTime.font = UIFont(name: fontName, size: minminFont)
         msg.textColor = UIColor.grayColor()
         dateTime.textColor = UIColor.grayColor()
         
@@ -50,25 +54,23 @@ class MsgTableViewCell: UITableViewCell {
     }
     
     
-    func configureCell(model: UserModel) {
+    func configureCell(model: MsgModel) {
         mymodel = model
-        name.text = mymodel.name
-        msg.text = mymodel.lastTalk
-        dateTime.text = mymodel.lastUpdateTimeStr
         
-        if(mymodel.faceImageName == nil || mymodel.faceImageName == ""){
+        name.text = mymodel.userModel.userName
+        msg.text = mymodel.lastTalk
+        dateTime.text = Tool.showTime(mymodel.lastTimeStamp)
+        
+        
+        
+        if(mymodel.userModel.faceImageName == nil || mymodel.userModel.faceImageName == ""){
             faceView.image = UIImage(named: "man-noname.png")
         }else{
-            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+mymodel.faceImageName!)!)
+            
+            Tool.setFaceViewImage(faceView, faceViewWidth: MsgTableViewCell.faceWidth , imageUrl: ConfigAccess.serverDomain()+mymodel.userModel.faceImageName!)
         }
         
-        
-        //判断是否通讯录cell
-        if(mymodel.contactflag == true){
-            faceView.image = UIImage(named: "adress_book_contacts.png")
-        }
-        
-        
+    
         name.sizeToFit()
         dateTime.sizeToFit()
         
@@ -79,28 +81,25 @@ class MsgTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         faceView.snp_makeConstraints{ (make) -> Void in
-            make.size.height.equalTo(6*minSpace)
+            make.size.height.equalTo(MsgTableViewCell.faceWidth)
             make.left.equalTo(self).offset(2*minSpace)
             make.top.equalTo(self).offset(minSpace)
         }
         
         name.snp_makeConstraints{ (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(2*minSpace)
-            make.top.equalTo(faceView.snp_top).offset(minSpace)
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(faceView.snp_top).offset(minSpace/2)
         }
         
         msg.snp_makeConstraints{ (make) -> Void in
-            make.width.equalTo(180);
-            make.height.equalTo(2*minSpace);
-            make.left.equalTo(faceView.snp_right).offset(2*minSpace)
-            make.bottom.equalTo(faceView.snp_bottom)
+            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+            make.top.equalTo(name.snp_bottom).offset(minSpace)
         }
         
         dateTime.snp_makeConstraints{ (make) -> Void in
-            make.width.equalTo(8*minSpace);
-            make.height.equalTo(2*minSpace);
-            make.right.equalTo(self.snp_right)
-            make.top.equalTo(faceView.snp_top)
+            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+            make.top.equalTo(name.snp_top)
         }
     }
     

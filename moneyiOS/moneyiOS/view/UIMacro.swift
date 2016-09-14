@@ -35,5 +35,16 @@ let whiteThemeColor = UIColor(red: 166/255, green: 202/255, blue: 226/255, alpha
 
 let themeColor = UIColor(red: 55/255, green: 147/255, blue: 198/255, alpha: 1.0)
 
+let darkThemeColor = UIColor(red: 33/255, green: 105/255, blue: 151/255, alpha: 1.0)
 
 let grayFont = UIColor(red:215/255, green: 215/255, blue: 215/255, alpha: 1.0)
+
+
+let grayBackgroundColor = UIColor(red:229/255, green: 233/255, blue: 236/255, alpha: 1.0)
+
+
+let red = UIColor(red:203/255, green: 27/255, blue: 69/255, alpha: 1.0)
+let green = UIColor(red:34/255, green: 125/255, blue: 81/255, alpha: 1.0)
+
+
+

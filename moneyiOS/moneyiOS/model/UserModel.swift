@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import EVReflection
 
-class UserModel: NSObject {
-    var userSrno: Int?
+
+class UserModel: EVObject {
+    var userSrno: Int = 0
     var userID: String?
-    var name: String?
+    var userName: String?
     var faceImageName: String?
-    var entySrno: Int?
+    var entySrno: Int = 0
     var entyName: String?
     var cityDesc: String?
     var prvnceDesc: String?
     var sign: String?
-    var lastTalk: String?
-    var lastUpdateTimeStr: String?
-    var contactflag: Bool = false
+    var followCount: Int = 0
+    var fansCount: Int = 0
 }

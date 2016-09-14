@@ -6,7 +6,7 @@ exports.mysqlConnection = {
     host: process.env.dbhost,
     user: process.env.dbuser,
     password: process.env.dbpassword,
-    database: process.env.database,
+    database: 'cfets_test',
     port: process.env.dbport
 };
 

@@ -8,37 +8,37 @@ var returnValue = require('../config/returnValue.js')
 
 var hotNewslist = [
     {
-        title: '外汇市场自律机制的基本情况',
+        title: '外汇市场自律机制的基本情况,外汇市场自律机制的基本情况,外汇市场自律机制的基本情况',
         titleImageUrl: 'CMS5_G20306002Resource',
         //headline: true,
         subTitle: '热点关注',
         source: '外汇交易中心',
         publishTime: '2016-08-01'
     },
-    {
-        title : "2016年7月份CFETS人民币汇率指数",
-        headline: true,
-        titleImageUrl: 'README.png',
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-08-01"
-    },
-    {
-        title : "银行间市场技术标准工作组年会暨ISO 20022培训成功举行",
-        titleImageUrl: '44D8AF4C-98F2-4742-9AE3-A55A5A74DA2F.png',
-        headline: true,
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-07-26"
-    },
-    {
-        title : "外汇掉期冲销业务正式启动 交易后处理基础设施不断完善",
-        titleImageUrl: '26A9B79E-D324-45D9-818D-D44393B67C78.png',
-        headline: true,
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-07-24"
-    },
+    // {
+    //     title : "2016年7月份CFETS人民币汇率指数",
+    //     headline: true,
+    //     titleImageUrl: 'README.png',
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-08-01"
+    // },
+    // {
+    //     title : "银行间市场技术标准工作组年会暨ISO 20022培训成功举行",
+    //     titleImageUrl: '44D8AF4C-98F2-4742-9AE3-A55A5A74DA2F.png',
+    //     headline: true,
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-07-26"
+    // },
+    // {
+    //     title : "外汇掉期冲销业务正式启动 交易后处理基础设施不断完善",
+    //     titleImageUrl: '26A9B79E-D324-45D9-818D-D44393B67C78.png',
+    //     headline: true,
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-07-24"
+    // },
     {
         title : "6月份人民币汇率指数小幅贬值",
         titleImageUrl: 'C350361C-41F7-4707-AEF8-419F2556B6E5.png',
@@ -53,19 +53,19 @@ var hotNewslist = [
         source : "外汇交易中心",
         publishTime : "2016-07-01"
     },
-    {
-        title : "外汇市场自律机制第二次工作会议在京召开",
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-06-01"
-    },
-    {
-
-        title : "中国人民银行欢迎中国外汇交易中心开展人民币对韩元直接交易",
-        subTitle : "热点关注",
-        source : "外汇交易中心",
-        publishTime : "2016-05-25"
-    }
+    // {
+    //     title : "外汇市场自律机制第二次工作会议在京召开",
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-06-01"
+    // },
+    // {
+    //
+    //     title : "中国人民银行欢迎中国外汇交易中心开展人民币对韩元直接交易",
+    //     subTitle : "热点关注",
+    //     source : "外汇交易中心",
+    //     publishTime : "2016-05-25"
+    // }
 ];
 
 
@@ -599,6 +599,202 @@ router.post('/login', function(req, res){
 })
 
 
+var liveList = [
+    {
+        liveTitle: '外汇市场的操作心得外汇市场的操作心得',
+        name: '王小野',
+        faceImageName: 'tempFace.jpg',
+        startTimeStamp: 1472997127+3600*24*3
+    },
+    {
+        liveTitle: '我在本币市场这些年',
+        name: '小董',
+        faceImageName: 'tempFace3.jpg',
+        startTimeStamp: 1472997127+3600*24*3
+    },
+    {
+        liveTitle: '债券买卖中的技巧',
+        name: '交易中心小助手',
+        faceImageName: 'tempFace2.jpg',
+        startTimeStamp: 1472997127+3600*24*3
+    }
+]
+
+var  followList = [
+    {
+        faceImageName: 'tempFace.jpg',
+        name: '王小野',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: 'imagTemp.jpg',
+        commentCount: 1234,
+        likeCount: 123
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: 'imageTemp2.jpg',
+        commentCount: 666,
+        likeCount: 123
+    },
+    {
+        faceImageName: 'tempFace3.jpg',
+        name: '交易中心',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: 'imageTemp3.jpg',
+        commentCount: 66,
+        likeCount: 888
+    },
+    {
+        faceImageName: 'tempFace3.jpg',
+        name: '交易中心',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: 'imageTemp3.jpg',
+        commentCount: 66,
+        likeCount: 888
+    },
+    {
+        faceImageName: 'tempFace3.jpg',
+        name: '交易中心',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: 'imageTemp3.jpg',
+        commentCount: 66,
+        likeCount: 888
+    },
+    {
+        faceImageName: 'tempFace3.jpg',
+        name: '交易中心',
+        entyDesc: '工商银行',
+        headTitle: '首席外汇交易员',
+        publishTimeStamp: 1472997127,
+        content: '外汇交易就是一国货币与另一国货币进行交换。与其他金融市场不同，外汇市场没有具体地点，也没有中央交易所，而是通过银行、企业和个人间的电子网络进行交易。 "外汇交易"是同时买入一对货币组合中的一种货币而卖出另外一种货币',
+        contentImageUrl: 'imageTemp3.jpg',
+        commentCount: 66,
+        likeCount: 888
+    }
+]
+
+
+router.get('/getNewsFeed', function(req, res){
+    res.send({
+        code: returnValue.returnCode.SUCCESS,
+        data: {
+            'hotNewslist': hotNewslist,
+            'liveList': liveList,
+            'followList': followList
+        }
+    });
+})
+
+
+var recommandPersonList = [
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+    {
+        faceImageName: 'tempFace2.jpg',
+        name: '小董',
+        entyDesc: '工商银行'
+    },
+];
+
+router.get('/getRecommandPersonList', function(req, res){
+    res.send({
+        code: returnValue.returnCode.SUCCESS,
+        data: {
+            'recommandPersonList': recommandPersonList
+        }
+    });
+})
+
+
+var userDetail = {
+
+
+};
+
+
+
+router.get('/getUserDetail', function(req, res){
+
+    var returnData = {};
+    userModel.getUserDtlsByUserSrno(req.query.userSrno, function(err, data){
+        if(err){
+            log.error(err, log.getFileNameAndLineNum(__filename));
+            returnData.code = returnValue.returnCode.ERROR;
+            returnData.data = err;
+        }else{
+            if(data.length == 0){
+                log.error(err, log.getFileNameAndLineNum(__filename));
+                returnData.code = returnValue.returnCode.USER_NOT_FOUND;
+            }else{
+                var userDetail = {};
+                returnData.code = returnValue.returnCode.SUCCESS;
+                userDetail.userSrno = data[0].UDT_USER_SRNO;
+                userDetail.userName = data[0].UDT_USER_DESC;
+                userDetail.userID = data[0].UDT_USER_USER_ID;
+                userDetail.faceImageName = data[0].UDT_USER_FACE;
+                userDetail.entySrno = data[0].UDT_ENTY_SRNO;
+                userDetail.entyName = data[0].EMA_ENTY_DESC;
+                userDetail.cityDesc = data[0].UDT_CITY_SHRT_DESC;
+                userDetail.prvnceDesc = data[0].UDT_PRVNCE_SHRT_DESC;
+                userDetail.sign = data[0].UDT_USER_SIGN;
+                returnData.data = {
+                    'userDetail': userDetail
+                }
+            }
+        }
+        log.debug(returnData, log.getFileNameAndLineNum(__filename))
+        res.send(returnData);
+    });
+})
 
 //导出router对象
 module.exports = router;

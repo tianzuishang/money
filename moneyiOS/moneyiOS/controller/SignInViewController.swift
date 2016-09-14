@@ -36,7 +36,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        label.text = "钱圈"
+        label.text = "银河间"
         label.textColor = themeColor
         label.font = UIFont(name: fontName, size: bigbigbigFont)
         label.textAlignment = NSTextAlignment.Center
@@ -56,7 +56,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         loginButton.setTitle("登录", forState: UIControlState.Normal)
         loginButton.titleLabel?.font = UIFont(name: fontName, size: minMiddleFont)
-        loginButton.addTarget(self, action: Selector("login"), forControlEvents: UIControlEvents.TouchUpInside)
+        loginButton.addTarget(self, action: Selector("loginClick"), forControlEvents: UIControlEvents.TouchUpInside)
         loginButton.backgroundColor = themeColor
         loginButton.tintColor = UIColor.whiteColor()
         loginButton.layer.cornerRadius = 5.0
@@ -309,63 +309,56 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func login() {
+    func loginClick() {
+        
+        nameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
+        let bxp = BXProgressHUD.showHUDAddedTo(self.view)
+        
+        self.login(nameTextField.text, password: passwordTextField.text, hud: bxp)
+        
+        
+        
+    }
+    
+    func login(name:String?, password:String?, hud: BXProgressHUD?) {
         print("login")
         
-        nameTextField.resignFirstResponder();
-        passwordTextField.resignFirstResponder();
-        
-        if(nameTextField.text == "" || passwordTextField.text == ""){
+        if(name == "" || password == "" || name == nil || password == nil){
             
             return
         }
         
-//        if ([phoneNumTextField.text isEqualToString:@""]||[passwordTextField.text  isEqualToString:@""]) {
-//            alertMsg(@"用户名或密码不能为空");
-//            return;
-//        }
-//        
-//        
-//        AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-//        app.myInfo.user_phone = phoneNumTextField.text;
-//        
-//        app.myInfo.user_password = [Tools encodePassword:passwordTextField.text];
-//        
-//        [self sendLoginMessage:app.myInfo];
-//        
-//        
-//        NSLog(@"loginButtonAction");
-//
         
         
-        let bxp = BXProgressHUD.showHUDAddedTo(self.view)
+        let mySettingData = NSUserDefaults.standardUserDefaults()
+        mySettingData.removeObjectForKey("userID")
+        mySettingData.removeObjectForKey("userPassword")
+        mySettingData.synchronize()
         
         let parameters = [
-            "userID": nameTextField.text!,
-            "userPassword": passwordTextField.text!
+            "userID": name!,
+            "userPassword": password!
         ]
         
         NewsAPI.login({ (error, responseData) -> Void in
             
-            bxp.hide()
+            if(hud != nil){
+                hud!.hide()
+            }
             
             if(error != nil){
                 
-                BXProgressHUD.Builder(forView: self.view).text("未知错误").mode(.Text).show().hide(afterDelay: 2)
-                
-                
+                self.view.hidden = false
+                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.Text).show().hide(afterDelay: 2)
             }else{
                 
-                if(responseData!["code"] as! Int == ERROR){
-                    
-                    BXProgressHUD.Builder(forView: self.view).text("后台错误").mode(.Text).show().hide(afterDelay: 2)
-                    
-                }else if(responseData!["code"] as! Int == LOGIN_FAIL){
-                    
-                    BXProgressHUD.Builder(forView: self.view).text("密码或用户名错误").mode(.Text).show().hide(afterDelay: 2)
-                    
-                }else if(responseData!["code"] as! Int == LOGIN_SUCCESS){
-                    
+                Tool.showErrorMsgBox(responseData!["code"] as? Int)
+                
+                if(responseData!["code"] as! Int != LOGIN_SUCCESS){
+                    self.view.hidden = false
+                }else{
                     print("登录成功")
                     
                     if(responseData!["data"]?.count != 1){
@@ -378,11 +371,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let app = UIApplication.sharedApplication().delegate as! AppDelegate;
                     app.myUserInfo = UserModel()
                     
-                    app.myUserInfo?.userSrno = userInfoDic["UDT_USER_SRNO"] as? Int
+                    app.myUserInfo?.userSrno = (userInfoDic["UDT_USER_SRNO"] as? Int)!
                     app.myUserInfo?.userID = userInfoDic["UDT_USER_USER_ID"] as? String
-                    app.myUserInfo?.name = userInfoDic["UDT_USER_DESC"] as? String
+                    app.myUserInfo?.userName = userInfoDic["UDT_USER_DESC"] as? String
                     app.myUserInfo?.entyName = userInfoDic["EMA_ENTY_ENCD_DESC"] as? String
-                    app.myUserInfo?.entySrno = userInfoDic["EMA_ENTY_SRNO"] as? Int
+                    app.myUserInfo?.entySrno = (userInfoDic["EMA_ENTY_SRNO"] as? Int)!
                     app.myUserInfo?.cityDesc = userInfoDic["UDT_CITY_SHRT_DESC"] as? String
                     app.myUserInfo?.prvnceDesc = userInfoDic["UDT_PRVNCE_SHRT_DESC"] as? String
                     app.myUserInfo?.faceImageName = userInfoDic["UDT_USER_FACE"] as? String
@@ -390,20 +383,20 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     let mySettingData = NSUserDefaults.standardUserDefaults()
                     
-                    mySettingData.setObject(parameters["userID"], forKey: "userID")
-                    mySettingData.setObject(parameters["userPassword"], forKey: "userPassword")
+                    mySettingData.setObject(parameters["userID"]!, forKey: "userID")
+                    mySettingData.setObject(parameters["userPassword"]!, forKey: "userPassword")
                     mySettingData.synchronize()
                     
                     
                     
                     
                     //本地库连接
-//                    NSLog(@"%@", app.myInfo.user_id);
-//                    app.locDatabase = [[LocDatabase alloc] init];
-//                    if(![app.locDatabase connectToDatabase:app.myInfo.user_id]){
-//                        alertMsg(@"本地数据库问题");
-//                        return;
-//                    }
+                    //                    NSLog(@"%@", app.myInfo.user_id);
+                    //                    app.locDatabase = [[LocDatabase alloc] init];
+                    //                    if(![app.locDatabase connectToDatabase:app.myInfo.user_id]){
+                    //                        alertMsg(@"本地数据库问题");
+                    //                        return;
+                    //                    }
                     
                     
                     let tab = app.tabInit()
@@ -412,15 +405,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.presentViewController(tab, animated: true, completion: nil)
                     
                     //更新device token
-//                    [[UIApplication sharedApplication] registerForRemoteNotifications];
-//                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
-//                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-//
-                    
-                    
-                }else{
-                    
-                    BXProgressHUD.Builder(forView: self.view).text("返回未知代码").mode(.Text).show().hide(afterDelay: 2)
+                    //                    [[UIApplication sharedApplication] registerForRemoteNotifications];
+                    //                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+                    //                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+                    //
+
                 }
                 
             }

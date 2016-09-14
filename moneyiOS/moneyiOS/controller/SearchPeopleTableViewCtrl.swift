@@ -81,7 +81,7 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
                         print(userItem["UDT_USER_DESC"])
                         
                         let userModel = UserModel()
-                        userModel.name = userItem["UDT_USER_DESC"] as? String
+                        userModel.userName = userItem["UDT_USER_DESC"] as? String
                         userModel.entyName = userItem["EMA_ENTY_DESC"] as? String
                         userModel.cityDesc = userItem["UDT_CITY_SHRT_DESC"] as? String
                         userModel.prvnceDesc = userItem["UDT_PRVNCE_SHRT_DESC"] as? String
@@ -179,17 +179,17 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
     
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(indexPath.section == 1){
-            
-            let userDetail = UserDetailTableViewController(style:UITableViewStyle.Grouped)
-            
-            userDetail.setUserModel(userlist[indexPath.row] as? UserModel)
-            
-            
-            //self.presentViewController(userDetail, animated: true, completion: nil)
-            
-            self.navigationController?.pushViewController(userDetail, animated: true)
-        }
+//        if(indexPath.section == 1){
+//            
+//            let userDetail = UserDetailTableViewController(style:UITableViewStyle.Grouped)
+//            
+//            userDetail.setUserModel(userlist[indexPath.row] as? UserModel)
+//            
+//            
+//            //self.presentViewController(userDetail, animated: true, completion: nil)
+//            
+//            self.navigationController?.pushViewController(userDetail, animated: true)
+//        }
     }
     
     

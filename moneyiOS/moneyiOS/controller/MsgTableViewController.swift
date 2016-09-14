@@ -15,6 +15,9 @@ class MsgTableViewController: UITableViewController {
     var headlist = [UserModel]()
     
     
+    var msgList = [MsgModel]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +31,7 @@ class MsgTableViewController: UITableViewController {
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.text = "消息"
-        titleLabel.font = UIFont(name: fontName, size: minMiddleFont)
+        titleLabel.font = UIFont(name: fontName, size: 20)
         titleLabel.sizeToFit()
         
         self.navigationItem.titleView = titleLabel
@@ -49,18 +52,52 @@ class MsgTableViewController: UITableViewController {
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightbutton)
         
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "magnifier_32px.png"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("searchButton"))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "magnifier_32px.png"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("searchButton"))
         
         
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         
         
         
-        let contact = UserModel()
-        contact.name = "通讯录"
-        contact.lastTalk = "查看我的通讯录"
-        contact.contactflag = true
-        headlist.append(contact)
+//        let contact = UserModel()
+//        contact.userName = "通讯录"
+//        contact.lastTalk = "查看我的通讯录"
+//        contact.contactflag = true
+//        headlist.append(contact)
+        
+        
+        let msgModel = MsgModel()
+        
+        msgModel.lastTalk = "最后一条发送或接收的消息"
+        
+        msgModel.lastTimeStamp = 1473750467
+        
+        msgModel.userModel.userName = "外汇交易中心-谁谁谁"
+        msgModel.userModel.faceImageName = "tempFace3.jpg"
+        
+        
+        msgList.append(msgModel)
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        msgList.append(msgModel)
+
+        
     }
     
     func searchButton() {
@@ -80,31 +117,23 @@ class MsgTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        if(section == 0){
-            return headlist.count
-        }else{
-            return userlist.count
-        }
+        return msgList.count
+        
+        
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MsgTableViewCell", forIndexPath: indexPath) as! MsgTableViewCell
 
-        if(indexPath.section == 0){
-            
-            cell.configureCell(headlist[indexPath.row])
-            
-        }else{
-            cell.configureCell(userlist[indexPath.row])
-        }
         
+        cell.configureCell(msgList[indexPath.row])
         
         // Configure the cell...
 

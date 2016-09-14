@@ -35,8 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible();
         self.window!.backgroundColor = backgroundColor
         
-        signInView()
         
+
+        
+        if(NSUserDefaults.standardUserDefaults().objectForKey("userID") != nil
+            && NSUserDefaults.standardUserDefaults().objectForKey("userPassword") != nil){
+                //直接登录
+                let signinViewCtrl = signInView()
+                signinViewCtrl.view.hidden = true
+                signinViewCtrl.login(NSUserDefaults.standardUserDefaults().objectForKey("userID") as? String, password: NSUserDefaults.standardUserDefaults().objectForKey("userPassword") as? String, hud: nil)
+                
+        }else{
+            signInView()
+        }
         
         return true
     }
@@ -44,12 +55,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func tabInit() -> TabbarController {
-        let nav2 = UINavigationController(rootViewController: msgTableViewCtrl)
-        let nav1 = UINavigationController(rootViewController: MarketViewController())
-        let nav3 = UINavigationController(rootViewController: NewsViewCtrl())
-        let nav4 = UINavigationController()
-        let nav5 = UINavigationController()
-
+        let nav1 = UINavigationController(rootViewController: NewsFeedViewCtrl())
+        let nav2 = UINavigationController(rootViewController: FindTableViewController())
+        
+        let nav3 = UINavigationController(rootViewController: MarketViewController())
+        let nav4 = UINavigationController(rootViewController: MsgTableViewController())
+        
+        
+        
+        
+        
+        let userDetailTableViewCtrl = UserDetailTableViewController(style:UITableViewStyle.Grouped)
+        
+        
+        userDetailTableViewCtrl.usermodel = myUserInfo
+        let nav5 = UINavigationController(rootViewController: userDetailTableViewCtrl)
+        
         
         
         nav1.navigationBar.barTintColor = themeColor
@@ -82,11 +103,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    func signInView() {
+    func signInView() -> SignInViewController {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
 
         let signinViewCtrl = SignInViewController()
         self.window?.rootViewController = signinViewCtrl;
+        
+        return signinViewCtrl
     }
     
     
