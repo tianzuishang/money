@@ -9,3 +9,7 @@ moneyiOS/build/moneyiOS.build/Release-iphoneos/moneyiOS.build/dgph
 
 *.hmap
 moneyiOS/build/*
+
+moneyiOS/moneyiOS.xcodeproj/xcuserdata/wangjam.xcuserdatad/xcschemes/xcschememanagement.plist
+
+moneyiOS/Pods/Pods.xcodeproj/xcuserdata/wangjam.xcuserdatad/xcschemes/xcschememanagement.plist
