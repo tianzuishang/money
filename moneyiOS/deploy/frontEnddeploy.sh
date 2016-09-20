@@ -1,9 +1,14 @@
-cd /Users/wangjam/Documents/develop/money/moneyiOS
+workspacePath="/Users/wangjam/Documents/develop/money/moneyiOS/moneyiOS.xcworkspace"
+schemeName="UATmoneyiOS"
+
+
+
+
 git checkout develop
 git pull
 
 
-xcodebuild -workspace moneyiOS.xcworkspace/ -scheme UATmoneyiOS
+xcodebuild -workspace workspacePath -scheme schemeName
 
 fir login cbcd61de383d14ccb2494068a894a332
 
