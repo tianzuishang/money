@@ -10,8 +10,10 @@ echo $buildPath
 git checkout develop
 git pull
 
-xcodebuild -workspace workspacePath -scheme schemeName
-xcrun  -sdk iphoneos PackageApplication -v buildPath -o /Users/wangjam/Documents/develop/money/moneyiOS/deploy/UATmoneyiOS.ipa
 
-fir login firToken
+xcodebuild -workspace $workspacePath -scheme $schemeName clean
+xcodebuild -workspace $workspacePath -scheme $schemeName
+xcrun  -sdk iphoneos PackageApplication -v $buildPath -o /Users/wangjam/Documents/develop/money/moneyiOS/deploy/UATmoneyiOS.ipa
+
+fir login $firToken
 fir publish /Users/wangjam/Documents/develop/money/moneyiOS/deploy/UATmoneyiOS.ipa
