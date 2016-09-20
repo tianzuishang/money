@@ -2,18 +2,22 @@ workspacePath="/Users/wangjam/Documents/develop/money/moneyiOS/moneyiOS.xcworksp
 schemeName="UATmoneyiOS"
 firToken="cbcd61de383d14ccb2494068a894a332"
 buildPath="/Users/wangjam/Documents/develop/money/moneyiOS/deploy/UATmoneyiOS"
+ipaPath="/Users/wangjam/Documents/develop/money/moneyiOS/deploy/UATmoneyiOS.ipa"
 
-echo $workspacePath
-echo $schemeName
-echo $buildPath
+echo "workspacePath:"${workspacePath}
+echo "schemeName:"${schemeName}
+echo "buildPath:"${buildPath}
+echo "ipaPath:"${ipaPath}
 
 git checkout develop
 git pull
 
 
+rm $ipaPath
+
 xcodebuild -workspace $workspacePath -scheme $schemeName clean
 xcodebuild -workspace $workspacePath -scheme $schemeName
-xcrun  -sdk iphoneos PackageApplication -v $buildPath -o /Users/wangjam/Documents/develop/money/moneyiOS/deploy/UATmoneyiOS.ipa
+xcrun  -sdk iphoneos PackageApplication -v UATmoneyiOS.app -o $ipaPath
 
 fir login $firToken
-fir publish /Users/wangjam/Documents/develop/money/moneyiOS/deploy/UATmoneyiOS.ipa
+fir publish $ipaPath
