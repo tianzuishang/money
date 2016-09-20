@@ -13,3 +13,5 @@ moneyiOS/build/*
 moneyiOS/moneyiOS.xcodeproj/xcuserdata/wangjam.xcuserdatad/xcschemes/xcschememanagement.plist
 
 moneyiOS/Pods/Pods.xcodeproj/xcuserdata/wangjam.xcuserdatad/xcschemes/xcschememanagement.plist
+
+*.ipa
