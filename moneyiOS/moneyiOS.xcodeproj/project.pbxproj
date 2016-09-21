@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34429F610448E4ACD68FB595 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
+		5B86519AF879D56F24424170 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
 		B20D09341D6C7D5D00C650A5 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */; };
 		B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */; };
 		B20D093A1D6C80D000C650A5 /* adress_book_contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = B20D09391D6C80D000C650A5 /* adress_book_contacts.png */; };
@@ -50,8 +51,6 @@
 		B22FDCA71D8FE07F005B0E86 /* UserDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2458E061D5DB2B600AF0815 /* UserDetailTableViewController.swift */; };
 		B22FDCA81D8FE07F005B0E86 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */; };
 		B22FDCA91D8FE07F005B0E86 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */; };
-		B22FDCAB1D8FE07F005B0E86 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
-		B22FDCAC1D8FE07F005B0E86 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
 		B22FDCAE1D8FE07F005B0E86 /* camera_.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948801D7BC6B20087838A /* camera_.png */; };
 		B22FDCAF1D8FE07F005B0E86 /* heart2.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948A71D8015590087838A /* heart2.png */; };
 		B22FDCB01D8FE07F005B0E86 /* message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E948721D7BB0110087838A /* message@2x.png */; };
@@ -116,6 +115,9 @@
 		B297DB761D86E8C700A6426D /* FindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB751D86E8C700A6426D /* FindTableViewCell.swift */; };
 		B297DB791D86EC1E00A6426D /* Person_add_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B297DB781D86EC1E00A6426D /* Person_add_72px.png */; };
 		B297DB7C1D87DA4A00A6426D /* MsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB7B1D87DA4A00A6426D /* MsgModel.swift */; };
+		B29EBA941D9218E900818503 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA931D9218E900818503 /* libc++.tbd */; };
+		B29EBA961D9218F100818503 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA951D9218F100818503 /* libz.tbd */; };
+		B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA971D9218FB00818503 /* SystemConfiguration.framework */; };
 		B2D155621D6EE86100CCF174 /* qq_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155611D6EE86100CCF174 /* qq_48px.png */; };
 		B2D155641D6EE86C00CCF174 /* wechat_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155631D6EE86C00CCF174 /* wechat_48px.png */; };
 		B2D155661D6EE87600CCF174 /* weibo_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2D155651D6EE87600CCF174 /* weibo_48px.png */; };
@@ -181,7 +183,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0ECF9765B399BF38C72FD327 /* Pods-moneyiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moneyiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moneyiOS/Pods-moneyiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		071F84D32E988F20775DFDC4 /* Pods-moneyiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moneyiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moneyiOS/Pods-moneyiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1BD34F029EDA06E54B7E40DA /* Pods-moneyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moneyiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-moneyiOS/Pods-moneyiOS.release.xcconfig"; sourceTree = "<group>"; };
 		9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moneyiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +223,9 @@
 		B297DB751D86E8C700A6426D /* FindTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTableViewCell.swift; sourceTree = "<group>"; };
 		B297DB781D86EC1E00A6426D /* Person_add_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person_add_72px.png; sourceTree = "<group>"; };
 		B297DB7B1D87DA4A00A6426D /* MsgModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgModel.swift; sourceTree = "<group>"; };
+		B29EBA931D9218E900818503 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		B29EBA951D9218F100818503 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B29EBA971D9218FB00818503 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B2D155611D6EE86100CCF174 /* qq_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq_48px.png; sourceTree = "<group>"; };
 		B2D155631D6EE86C00CCF174 /* wechat_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_48px.png; sourceTree = "<group>"; };
 		B2D155651D6EE87600CCF174 /* weibo_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo_48px.png; sourceTree = "<group>"; };
@@ -269,7 +275,6 @@
 		B2EED7411D6C65BC0053816C /* magnifier_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_48.png; sourceTree = "<group>"; };
 		B2EED7431D6C660C0053816C /* magnifier_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_32.png; sourceTree = "<group>"; };
 		B2EED7451D6C70C30053816C /* magnifier_32px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_32px.png; sourceTree = "<group>"; };
-		F8EB17601AB4695FF0F602B5 /* Pods-moneyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moneyiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-moneyiOS/Pods-moneyiOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,8 +282,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22FDCAB1D8FE07F005B0E86 /* Pods_moneyiOS.framework in Frameworks */,
-				B22FDCAC1D8FE07F005B0E86 /* Pods_moneyiOS.framework in Frameworks */,
+				B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */,
+				B29EBA961D9218F100818503 /* libz.tbd in Frameworks */,
+				B29EBA941D9218E900818503 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +294,7 @@
 			files = (
 				F07298814B863C90E363C6C4 /* Pods_moneyiOS.framework in Frameworks */,
 				34429F610448E4ACD68FB595 /* Pods_moneyiOS.framework in Frameworks */,
+				5B86519AF879D56F24424170 /* Pods_moneyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +318,9 @@
 		1B0EBD6149D348C16A86C570 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B29EBA971D9218FB00818503 /* SystemConfiguration.framework */,
+				B29EBA951D9218F100818503 /* libz.tbd */,
+				B29EBA931D9218E900818503 /* libc++.tbd */,
 				9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */,
 			);
 			name = Frameworks;
@@ -319,8 +329,8 @@
 		8D11F26B9418C97C82CC3821 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F8EB17601AB4695FF0F602B5 /* Pods-moneyiOS.release.xcconfig */,
-				0ECF9765B399BF38C72FD327 /* Pods-moneyiOS.debug.xcconfig */,
+				071F84D32E988F20775DFDC4 /* Pods-moneyiOS.debug.xcconfig */,
+				1BD34F029EDA06E54B7E40DA /* Pods-moneyiOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -995,7 +1005,6 @@
 /* Begin XCBuildConfiguration section */
 		B22FDCD51D8FE07F005B0E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ECF9765B399BF38C72FD327 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
@@ -1006,6 +1015,7 @@
 				);
 				INFOPLIST_FILE = "moneyiOS copy3-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1014,7 +1024,6 @@
 		};
 		B22FDCD61D8FE07F005B0E86 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8EB17601AB4695FF0F602B5 /* Pods-moneyiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1024,6 +1033,7 @@
 				);
 				INFOPLIST_FILE = "moneyiOS copy3-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1032,7 +1042,6 @@
 		};
 		B2D173241D3CA27D00FC128A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ECF9765B399BF38C72FD327 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1077,7 +1086,6 @@
 		};
 		B2D173251D3CA27D00FC128A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8EB17601AB4695FF0F602B5 /* Pods-moneyiOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1115,7 +1123,7 @@
 		};
 		B2D173271D3CA27D00FC128A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ECF9765B399BF38C72FD327 /* Pods-moneyiOS.debug.xcconfig */;
+			baseConfigurationReference = 071F84D32E988F20775DFDC4 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1133,7 +1141,7 @@
 		};
 		B2D173281D3CA27D00FC128A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8EB17601AB4695FF0F602B5 /* Pods-moneyiOS.release.xcconfig */;
+			baseConfigurationReference = 1BD34F029EDA06E54B7E40DA /* Pods-moneyiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (

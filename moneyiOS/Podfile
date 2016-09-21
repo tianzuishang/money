@@ -12,5 +12,6 @@ target 'moneyiOS' do
   pod 'Kingfisher'
   pod 'BXProgressHUD'
   pod 'EVReflection'
+  pod 'KSCrash'
   #pod 'ChameleonFramework/Swift'
 end

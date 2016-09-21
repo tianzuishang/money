@@ -3,6 +3,61 @@ PODS:
   - BXProgressHUD (1.0.2)
   - EVReflection (2.13.0)
   - Kingfisher (1.8.2)
+  - KSCrash (0.0.8):
+    - KSCrash/Installations (= 0.0.8)
+    - KSCrash/no-arc (= 0.0.8)
+    - KSCrash/Recording (= 0.0.8)
+    - KSCrash/Reporting (= 0.0.8)
+  - KSCrash/Installations (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting
+  - KSCrash/no-arc (0.0.8)
+  - KSCrash/Recording (0.0.8):
+    - KSCrash/no-arc
+  - KSCrash/Reporting (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters (= 0.0.8)
+    - KSCrash/Reporting/Sinks (= 0.0.8)
+    - KSCrash/Reporting/Tools (= 0.0.8)
+  - KSCrash/Reporting/Filters (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Alert (= 0.0.8)
+    - KSCrash/Reporting/Filters/AppleFmt (= 0.0.8)
+    - KSCrash/Reporting/Filters/Base (= 0.0.8)
+    - KSCrash/Reporting/Filters/Basic (= 0.0.8)
+    - KSCrash/Reporting/Filters/GZip (= 0.0.8)
+    - KSCrash/Reporting/Filters/JSON (= 0.0.8)
+    - KSCrash/Reporting/Filters/Sets (= 0.0.8)
+  - KSCrash/Reporting/Filters/Alert (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/AppleFmt (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/Base (0.0.8):
+    - KSCrash/Recording
+  - KSCrash/Reporting/Filters/Basic (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/GZip (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/JSON (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/Sets (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/AppleFmt
+    - KSCrash/Reporting/Filters/Base
+    - KSCrash/Reporting/Filters/Basic
+    - KSCrash/Reporting/Filters/GZip
+    - KSCrash/Reporting/Filters/JSON
+  - KSCrash/Reporting/Sinks (0.0.8):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters
+    - KSCrash/Reporting/Tools
+  - KSCrash/Reporting/Tools (0.0.8):
+    - KSCrash/Recording
   - SnapKit (0.18.0)
   - SwiftyJSON (2.3.1)
 
@@ -11,6 +66,7 @@ DEPENDENCIES:
   - BXProgressHUD
   - EVReflection
   - Kingfisher
+  - KSCrash
   - SnapKit
   - SwiftyJSON
 
@@ -19,9 +75,10 @@ SPEC CHECKSUMS:
   BXProgressHUD: 3fbb7dfe3d087ac762d2daa87685e6d652365feb
   EVReflection: 8e36d4209b9719375726f6814e18e807528a3cf9
   Kingfisher: b39315e9dbed7e8ffe73a9ca1be2ee006d1d57e4
+  KSCrash: a928da877b18f70c9ec3b50d4e8960271e2a10e5
   SnapKit: e1f090a6d47b1dd4bd89b73f72b6746a7835ef3c
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
 
-PODFILE CHECKSUM: 3c906ac642e78b2eee11d532040ff7b4437bafbd
+PODFILE CHECKSUM: 38a65257378c88eb51d2d341ae9835be59755c2d
 
 COCOAPODS: 1.0.1
