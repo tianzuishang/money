@@ -21,7 +21,7 @@ if(returnValue != 0):
     print "git pull failed:" + str(returnValue)
     exit(-1)
 
-returnValue = os.system("rm -f" + ipaPath)
+returnValue = os.system("rm -f " + ipaPath)
 if(returnValue != 0):
     print "rm " + ipaPath + " failed:" + str(returnValue)
     exit(-1)
