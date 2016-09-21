@@ -11,5 +11,27 @@ print "schemeName:" + schemeName
 print "ipaPath:" + ipaPath
 
 
-os.system("git checkout develop")
-os.system("git pull")
+returnValue = os.system("git checkout develop")
+if(returnValue != 0):
+    print "git checkout develop failed:" + str(returnValue)
+    exit(-1)
+
+returnValue = os.system("git pull")
+if(returnValue != 0):
+    print "git pull failed:" + str(returnValue)
+    exit(-1)
+
+returnValue = os.system("rm -f" + ipaPath)
+if(returnValue != 0):
+    print "rm " + ipaPath + " failed:" + str(returnValue)
+    exit(-1)
+
+returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName + " clean")
+if(returnValue != 0):
+    print "clean failed:" + str(returnValue)
+    exit(-1)
+
+returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName)
+if(returnValue != 0):
+    print "xcodebuild failed:" + str(returnValue)
+    exit(-1)
