@@ -1042,6 +1042,7 @@
 		};
 		B2D173241D3CA27D00FC128A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 071F84D32E988F20775DFDC4 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1086,6 +1087,7 @@
 		};
 		B2D173251D3CA27D00FC128A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BD34F029EDA06E54B7E40DA /* Pods-moneyiOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
