@@ -14,7 +14,7 @@ public extension BXProgressHUD{
         let hud:BXProgressHUD
         let targetView:UIView
         public init(forView:UIView){
-            hud = BXProgressHUD(view: forView)
+            hud = BXProgressHUD()
             targetView = forView
         }
         
@@ -44,29 +44,31 @@ public extension BXProgressHUD{
         
         
         public func text(text:String) -> Self{
-            hud.labelText = text
+            hud.label.text = text
+            return self
+        }
+        
+        public func textColor(color:UIColor) -> Self{
+            hud.label.textColor = color
             return self
         }
         
         public func detailText(text:String) -> Self{
-            hud.detailsLabelText = text
+            hud.detailsLabel.text = text
             return self
         }
+        
+        public func detailColor(color:UIColor) -> Self{
+            hud.detailsLabel.textColor = color
+            return self
+        }
+        
         
         public func customView(view:UIView) -> Self{
             hud.customView = view
             return self
         }
         
-        public func opacity(opacity:CGFloat) -> Self{
-            hud.opacity = opacity
-            return self
-        }
-        
-        public func color(color:UIColor) -> Self{
-            hud.color = color
-            return self
-        }
         
         public func removeFromSuperViewOnHide(remove:Bool) -> Self{
             hud.removeFromSuperViewOnHide = remove
@@ -111,7 +113,7 @@ public extension BXProgressHUD{
         }
         
         public func create() -> BXProgressHUD{
-            targetView.addSubview(hud)
+            hud.attachTo(targetView)
             return hud
         }
         
