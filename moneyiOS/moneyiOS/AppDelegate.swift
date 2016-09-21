@@ -8,8 +8,7 @@
 
 import UIKit
 import CoreData
-import KSCrash
-import KSCrashInstallationStandard
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -55,18 +54,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-    func traceLog() {
-        
-        let installation = KSCrashInstallationStandard.sharedInstance()
-        installation.url = NSURL(string: "https://collector.bughd.com/kscrash?key=55a7676422c31ece61b80af6244796f9")
-        installation.install()
-        installation.sendAllReportsWithCompletion()
-        
-//        KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
-//        installation.url = [NSURL URLWithString:@"https://collector.bughd.com/kscrash?key=55a7676422c31ece61b80af6244796f9"];
-//        [installation install];
-//        [installation sendAllReportsWithCompletion:nil];
-    }
+//    func traceLog() {
+//        
+//        let installation = KSCrashInstallationStandard.sharedInstance()
+//        installation.url = NSURL(string: "https://collector.bughd.com/kscrash?key=55a7676422c31ece61b80af6244796f9")
+//        installation.install()
+//        installation.sendAllReportsWithCompletion()
+//        
+////        KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
+////        installation.url = [NSURL URLWithString:@"https://collector.bughd.com/kscrash?key=55a7676422c31ece61b80af6244796f9"];
+////        [installation install];
+////        [installation sendAllReportsWithCompletion:nil];
+//    }
     
     
     func tabInit() -> TabbarController {
