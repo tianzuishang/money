@@ -50,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             signInView()
         }
         
+        
+        
+        //Bugly.startWithAppId("111")
         return true
     }
 

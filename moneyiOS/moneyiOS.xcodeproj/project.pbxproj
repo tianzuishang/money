@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		34429F610448E4ACD68FB595 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
 		5B86519AF879D56F24424170 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
+		B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FC1D9267DC005B4A7E /* Security.framework */; };
+		B208E7FF1D9267F0005B4A7E /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */; };
+		B208E8001D9267FA005B4A7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FC1D9267DC005B4A7E /* Security.framework */; };
+		B208E8011D926803005B4A7E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA951D9218F100818503 /* libz.tbd */; };
+		B208E8021D92681A005B4A7E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA931D9218E900818503 /* libc++.tbd */; };
 		B20D09341D6C7D5D00C650A5 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */; };
 		B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */; };
 		B20D093A1D6C80D000C650A5 /* adress_book_contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = B20D09391D6C80D000C650A5 /* adress_book_contacts.png */; };
@@ -186,6 +191,8 @@
 		071F84D32E988F20775DFDC4 /* Pods-moneyiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moneyiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moneyiOS/Pods-moneyiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		1BD34F029EDA06E54B7E40DA /* Pods-moneyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moneyiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-moneyiOS/Pods-moneyiOS.release.xcconfig"; sourceTree = "<group>"; };
 		9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moneyiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B208E7FC1D9267DC005B4A7E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_moneyiOS.framework; path = "Pods/../build/Debug-iphoneos/Pods_moneyiOS.framework"; sourceTree = "<group>"; };
 		B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09391D6C80D000C650A5 /* adress_book_contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adress_book_contacts.png; sourceTree = "<group>"; };
@@ -282,6 +289,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B208E7FF1D9267F0005B4A7E /* Pods_moneyiOS.framework in Frameworks */,
+				B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */,
 				B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */,
 				B29EBA961D9218F100818503 /* libz.tbd in Frameworks */,
 				B29EBA941D9218E900818503 /* libc++.tbd in Frameworks */,
@@ -292,6 +301,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B208E8021D92681A005B4A7E /* libc++.tbd in Frameworks */,
+				B208E8011D926803005B4A7E /* libz.tbd in Frameworks */,
+				B208E8001D9267FA005B4A7E /* Security.framework in Frameworks */,
 				F07298814B863C90E363C6C4 /* Pods_moneyiOS.framework in Frameworks */,
 				34429F610448E4ACD68FB595 /* Pods_moneyiOS.framework in Frameworks */,
 				5B86519AF879D56F24424170 /* Pods_moneyiOS.framework in Frameworks */,
@@ -318,6 +330,8 @@
 		1B0EBD6149D348C16A86C570 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */,
+				B208E7FC1D9267DC005B4A7E /* Security.framework */,
 				B29EBA971D9218FB00818503 /* SystemConfiguration.framework */,
 				B29EBA951D9218F100818503 /* libz.tbd */,
 				B29EBA931D9218E900818503 /* libc++.tbd */,
@@ -1008,6 +1022,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1026,6 +1044,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
