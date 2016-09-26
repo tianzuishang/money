@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import EVReflection
+//import EVReflection
 
 
-class UserModel: EVObject {
+class UserModel: NSObject {
     var userSrno: Int = 0
     var userID: String?
     var userName: String?
@@ -22,4 +22,20 @@ class UserModel: EVObject {
     var sign: String?
     var followCount: Int = 0
     var fansCount: Int = 0
+    
+    
+    func setModel(dic: NSDictionary) {
+        userSrno = dic["userSrno"] as! Int
+        userID = dic["userID"] as? String
+        userName = dic["userName"] as? String
+        faceImageName = dic["faceImageName"] as? String
+        entySrno = dic["entySrno"] as! Int
+        entyName = dic["entyName"] as? String
+        cityDesc = dic["cityDesc"] as? String
+        prvnceDesc = dic["prvnceDesc"] as? String
+        sign = dic["sign"] as? String
+        followCount = dic["followCount"] as! Int
+        fansCount = dic["fansCount"] as! Int
+
+    }
 }

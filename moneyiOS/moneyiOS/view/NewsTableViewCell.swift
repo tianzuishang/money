@@ -34,21 +34,21 @@ class NewsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         title.font = UIFont(name: fontName, size: minFont)
-        title.textColor = UIColor.blackColor()
+        title.textColor = UIColor.black
         title.numberOfLines = 2
-        title.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        title.lineBreakMode = NSLineBreakMode.byTruncatingTail
 //        title.frame = CGRectMake(0, 0, NewsTableViewCell.titleWidth, NewsTableViewCell.titleHeight)
         
 //        subTitle.font = UIFont(name: fontName, size: minFont)
 //        subTitle.textColor = UIColor.darkGrayColor()
         
         source.font = UIFont(name: fontName, size: minminFont)
-        source.textColor = UIColor.grayColor()
+        source.textColor = UIColor.gray
         
         publishTime.font = UIFont(name: fontName, size: minminFont)
-        publishTime.textColor = UIColor.grayColor()
+        publishTime.textColor = UIColor.gray
         
-        titleImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        titleImageView.contentMode = UIViewContentMode.scaleAspectFill
         titleImageView.clipsToBounds = true
         
         self.addSubview(title)
@@ -57,8 +57,8 @@ class NewsTableViewCell: UITableViewCell {
         self.addSubview(publishTime)
         self.addSubview(titleImageView)
         
-        self.backgroundColor = UIColor.whiteColor()
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.backgroundColor = UIColor.white
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         
         self.layoutView()
         
@@ -68,7 +68,7 @@ class NewsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(model: NewsModel){
+    func configureCell(_ model: NewsModel){
         newsModel = model
         
         title.text = newsModel.title
@@ -79,7 +79,8 @@ class NewsTableViewCell: UITableViewCell {
         
         
         if(newsModel.titleImageUrl != nil){
-            titleImageView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+newsModel.titleImageUrl!)!)
+            
+            titleImageView.kf.setImage(with: URL(string: ConfigAccess.serverDomain()+newsModel.titleImageUrl!)!)
         }
         
         //subTitle.sizeToFit()
@@ -96,7 +97,7 @@ class NewsTableViewCell: UITableViewCell {
         
     }
     
-    static func cellHeight(model: NewsModel)->CGFloat {
+    static func cellHeight(_ model: NewsModel)->CGFloat {
         
         //let title = UILabel()
         //let subTitle = UILabel()
@@ -139,7 +140,7 @@ class NewsTableViewCell: UITableViewCell {
         }
         
         
-        titleImageView.snp_updateConstraints(closure: { (make) -> Void in
+        titleImageView.snp_updateConstraints({ (make) -> Void in
             make.size.height.equalTo(NewsTableViewCell.cellHeight(self.newsModel) - 2*minSpace)
             make.left.equalTo(2*minSpace)
             make.top.equalTo(minSpace)
@@ -153,7 +154,7 @@ class NewsTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

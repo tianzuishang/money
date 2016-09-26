@@ -9,18 +9,18 @@
 import UIKit
 import SnapKit
 import Kingfisher
-import BXProgressHUD
+//import BXProgressHUD
 
 
 class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     
-    let tableview = UITableView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight - 49 - 44 - 20), style: UITableViewStyle.Grouped)
+    let tableview = UITableView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight - 49 - 44 - 20), style: UITableViewStyle.grouped)
     
     
     
-    let myInfo = (UIApplication.sharedApplication().delegate as! AppDelegate).myUserInfo
+    let myInfo = (UIApplication.shared.delegate as! AppDelegate).myUserInfo
     
     
     var hotNewsArray = NSMutableArray()
@@ -56,25 +56,25 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         
         // Do any additional setup after loading the view.
         
-        tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
+        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
         
-        tableview.registerClass(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell");
-        tableview.registerClass(HeadLineTableViewCell.self, forCellReuseIdentifier: "HeadLineTableViewCell");
+        tableview.register(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell");
+        tableview.register(HeadLineTableViewCell.self, forCellReuseIdentifier: "HeadLineTableViewCell");
         
-        tableview.registerClass(MoreTableViewCell.self, forCellReuseIdentifier: "MoreTableViewCell")
+        tableview.register(MoreTableViewCell.self, forCellReuseIdentifier: "MoreTableViewCell")
         
-        tableview.registerClass(HeadFaceTableViewCell.self, forCellReuseIdentifier: "HeadFaceTableViewCell")
+        tableview.register(HeadFaceTableViewCell.self, forCellReuseIdentifier: "HeadFaceTableViewCell")
         
-        tableview.registerClass(LiveTableViewCell.self, forCellReuseIdentifier: "LiveTableViewCell")
+        tableview.register(LiveTableViewCell.self, forCellReuseIdentifier: "LiveTableViewCell")
 
         
-        tableview.registerClass(NewsFeedTableViewCell.self, forCellReuseIdentifier: "NewsFeedTableViewCell")
+        tableview.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: "NewsFeedTableViewCell")
 
         
         
         
-        refreshControl.addTarget(self, action: "pullDownAction", forControlEvents: UIControlEvents.ValueChanged)
-        refreshControl.tintColor = UIColor.grayColor();
+        refreshControl.addTarget(self, action: #selector(NewsFeedViewCtrl.pullDownAction), for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor.gray;
         
         tableview.addSubview(refreshControl)
         
@@ -84,26 +84,26 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         self.pullDownAction()
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         
         let navTitle = UILabel()
-        navTitle.textColor = UIColor.whiteColor()
+        navTitle.textColor = UIColor.white
         navTitle.text = "动态"
         navTitle.sizeToFit()
-        navTitle.textAlignment = NSTextAlignment.Center
+        navTitle.textAlignment = NSTextAlignment.center
         navTitle.font = UIFont(name: fontName, size: 20)
         self.navigationItem.titleView = navTitle
     }
 
     
-    func applicationDidBecomeActive(notification: NSNotification) {
+    func applicationDidBecomeActive(_ notification: Notification) {
         self.refreshControl.endRefreshing()
     }
 
     
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         self.refreshControl.endRefreshing()
     }
     
@@ -116,65 +116,73 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
             self.refreshControl.endRefreshing()
             
             if(error != nil){
-                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.localizedFailureReason)!).mode(.Text).show().hide(afterDelay: 2)
+//                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.localizedFailureReason)!).mode(.text).show().hide(afterDelay: 2)
             }else {
                 
                 if(responseData!["code"] as! Int == ERROR) {
                     
-                    BXProgressHUD.Builder(forView: self.view).text("后台出错").mode(.Text).show().hide(afterDelay: 2)
+//                    BXProgressHUD.Builder(forView: self.view).text("后台出错").mode(.text).show().hide(afterDelay: 2)
                 }
                 
                 
                 if(responseData!["code"] as! Int == SUCCESS) {
                     
-                    var tempArray = responseData!["data"]!["hotNewslist"] as! NSArray
+                    let data = responseData!["data"] as! NSDictionary
                     
-                    self.hotNewsArray.addObject("今日热点")
+                    var tempArray = data["hotNewslist"] as! NSArray
+                    
+                    self.hotNewsArray.add("今日热点")
                     
                     
                     
                     for item in tempArray {
+                        let itemDic = item as! NSDictionary
                         let newsmodel = NewsModel()
-                        newsmodel.title = item["title"] as! String
-                        newsmodel.subTitle = item["subTitle"] as! String
-                        newsmodel.publishTime = item["publishTime"] as! String
-                        newsmodel.source = item["source"] as! String
-                        newsmodel.titleImageUrl = item["titleImageUrl"] as? String
-                        newsmodel.headline = item["headline"] as? Bool
-                        self.hotNewsArray.addObject(newsmodel)
+                        newsmodel.title = itemDic["title"] as! String
+                        newsmodel.subTitle = itemDic["subTitle"] as! String
+                        newsmodel.publishTime = itemDic["publishTime"] as! String
+                        newsmodel.source = itemDic["source"] as! String
+                        newsmodel.titleImageUrl = itemDic["titleImageUrl"] as? String
+                        newsmodel.headline = itemDic["headline"] as? Bool
+                        self.hotNewsArray.add(newsmodel)
                     }
-                    self.hotNewsArray.addObject("更多")
+                    self.hotNewsArray.add("更多")
                     
                     
                     //直播
-                    tempArray = responseData!["data"]!["liveList"] as! NSArray
+                    tempArray = data["liveList"] as! NSArray
                     
                     for item in tempArray {
+                        let itemDic = item as! NSDictionary
+                        
                         let livemodel = LiveModel()
-                        livemodel.userModel.userName = item["name"] as? String
-                        livemodel.userModel.faceImageName = item["faceImageName"] as? String
-                        livemodel.liveTitle = item["liveTitle"] as! String
-                        livemodel.startTimeStamp = item["startTimeStamp"] as! Int
-                        self.liveArray.addObject(livemodel)
+                        livemodel.userModel.userName = itemDic["name"] as? String
+                        livemodel.userModel.faceImageName = itemDic["faceImageName"] as? String
+                        livemodel.liveTitle = itemDic["liveTitle"] as! String
+                        livemodel.startTimeStamp = itemDic["startTimeStamp"] as! Int
+                        self.liveArray.add(livemodel)
                     }
                     
                     
                     //动态信息
-                    tempArray = responseData!["data"]!["followList"] as! NSArray
+                    tempArray = data["followList"] as! NSArray
                     
-                    for item in tempArray {
-                        let newsFeedModel = NewsFeedModel()
-                        newsFeedModel.userModel.userName = item["name"] as? String
-                        newsFeedModel.userModel.faceImageName = item["faceImageName"] as? String
-                        newsFeedModel.entyDesc = item["entyDesc"] as? String
-                        newsFeedModel.headTitle = item["headTitle"] as? String
-                        newsFeedModel.publishTimestamp = item["publishTimeStamp"] as! Int
-                        newsFeedModel.content = item["content"] as? String
-                        newsFeedModel.contentImageUrl = item["contentImageUrl"] as? String
-                        newsFeedModel.commentCount = item["commentCount"] as! Int
-                        newsFeedModel.likeCount = item["likeCount"] as! Int
+                    for var item in tempArray {
                         
-                        self.followNewsArray.addObject(newsFeedModel)
+                        let itemDic = item as! NSDictionary
+                        
+                        let newsFeedModel = NewsFeedModel()
+                        newsFeedModel.userModel.userName = itemDic["name"] as? String
+                        newsFeedModel.userModel.faceImageName = itemDic["faceImageName"] as? String
+                        newsFeedModel.entyDesc = itemDic["entyDesc"] as? String
+                        newsFeedModel.headTitle = itemDic["headTitle"] as? String
+                        newsFeedModel.publishTimestamp = itemDic["publishTimeStamp"] as! Int
+                        newsFeedModel.content = itemDic["content"] as? String
+                        newsFeedModel.contentImageUrl = itemDic["contentImageUrl"] as? String
+                        newsFeedModel.commentCount = itemDic["commentCount"] as! Int
+                        newsFeedModel.likeCount = itemDic["likeCount"] as! Int
+                        
+                        self.followNewsArray.add(newsFeedModel)
                     }
 
                 }
@@ -207,7 +215,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //布局
         
         
@@ -220,7 +228,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     
     
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 //        if(section == 0){
 //            
 //            return MoreTableViewCell.cellHeight()
@@ -230,7 +238,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         return 12
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        if(section == 0){
 //            return HeadLineTableViewCell.cellHeight()
 //        }else{
@@ -268,37 +276,37 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
 //    }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if(indexPath.section == sectionMap.hotNews){
+        if((indexPath as NSIndexPath).section == sectionMap.hotNews){
             
-            if(indexPath.row > self.hotNewsArray.count){
+            if((indexPath as NSIndexPath).row > self.hotNewsArray.count){
                 return 0
             }
             
-            if(indexPath.row == 0){
+            if((indexPath as NSIndexPath).row == 0){
                 
                 return HeadLineTableViewCell.cellHeight()
                 
-            }else if(indexPath.row == self.hotNewsArray.count - 1){
+            }else if((indexPath as NSIndexPath).row == self.hotNewsArray.count - 1){
                 return MoreTableViewCell.cellHeight()
             }else{
                 
-                return NewsTableViewCell.cellHeight(self.hotNewsArray[indexPath.row] as! NewsModel)
+                return NewsTableViewCell.cellHeight(self.hotNewsArray[(indexPath as NSIndexPath).row] as! NewsModel)
             }
         }
         
-        if(indexPath.section == sectionMap.faceheadView){
+        if((indexPath as NSIndexPath).section == sectionMap.faceheadView){
             return HeadFaceTableViewCell.cellHeight()
         }
         
-        if(indexPath.section == sectionMap.lives) {
+        if((indexPath as NSIndexPath).section == sectionMap.lives) {
             return LiveTableViewCell.cellHeight()
         }
         
-        if(indexPath.section == sectionMap.follows) {
+        if((indexPath as NSIndexPath).section == sectionMap.follows) {
             
-            return NewsFeedTableViewCell.cellHeight(self.followNewsArray.objectAtIndex(indexPath.row) as! NewsFeedModel)
+            return NewsFeedTableViewCell.cellHeight(self.followNewsArray.object(at: (indexPath as NSIndexPath).row) as! NewsFeedModel)
         }
         
         return 44
@@ -306,11 +314,11 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(section == sectionMap.faceheadView ){
             return 1
@@ -338,53 +346,53 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if(indexPath.section == sectionMap.hotNews){
+        if((indexPath as NSIndexPath).section == sectionMap.hotNews){
             //新闻
             
-            if(self.hotNewsArray[indexPath.row] is String){
-                if(indexPath.row == 0){
-                    let cell = tableView.dequeueReusableCellWithIdentifier("HeadLineTableViewCell", forIndexPath: indexPath) as! HeadLineTableViewCell
+            if(self.hotNewsArray[(indexPath as NSIndexPath).row] is String){
+                if((indexPath as NSIndexPath).row == 0){
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "HeadLineTableViewCell", for: indexPath) as! HeadLineTableViewCell
                     
                     
                     // Configure the cell...
                     
-                    cell.configureCell(self.hotNewsArray[indexPath.row] as! String)
+                    cell.configureCell(self.hotNewsArray[(indexPath as NSIndexPath).row] as! String)
                     
                     return cell
 
                 }else{
                     //更多
                     
-                    let cell = tableView.dequeueReusableCellWithIdentifier("MoreTableViewCell", forIndexPath: indexPath) as! MoreTableViewCell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "MoreTableViewCell", for: indexPath) as! MoreTableViewCell
                     
                     
                     // Configure the cell...
                     
-                    cell.configureCell(self.hotNewsArray[indexPath.row] as! String)
+                    cell.configureCell(self.hotNewsArray[(indexPath as NSIndexPath).row] as! String)
                     
                     return cell
 
                 }
                 
             }else{
-                let cell = tableView.dequeueReusableCellWithIdentifier("NewsTableViewCell", forIndexPath: indexPath) as! NewsTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
                 
                 
                 // Configure the cell...
                 
-                cell.configureCell(self.hotNewsArray[indexPath.row] as! NewsModel)
+                cell.configureCell(self.hotNewsArray[(indexPath as NSIndexPath).row] as! NewsModel)
                 
                 return cell
             }
             
         }
         
-        if(indexPath.section == sectionMap.lives){
+        if((indexPath as NSIndexPath).section == sectionMap.lives){
             //直播
-            let cell = tableView.dequeueReusableCellWithIdentifier("LiveTableViewCell", forIndexPath: indexPath) as! LiveTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LiveTableViewCell", for: indexPath) as! LiveTableViewCell
             
             cell.configureCell(liveArray)
             
@@ -394,9 +402,9 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         
-        if(indexPath.section == sectionMap.faceheadView){
+        if((indexPath as NSIndexPath).section == sectionMap.faceheadView){
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("HeadFaceTableViewCell", forIndexPath: indexPath) as! HeadFaceTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeadFaceTableViewCell", for: indexPath) as! HeadFaceTableViewCell
             
             
             
@@ -409,11 +417,11 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         
-        if(indexPath.section == sectionMap.follows) {
+        if((indexPath as NSIndexPath).section == sectionMap.follows) {
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("NewsFeedTableViewCell", forIndexPath: indexPath) as! NewsFeedTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsFeedTableViewCell", for: indexPath) as! NewsFeedTableViewCell
             
-            cell.configureCell(self.followNewsArray.objectAtIndex(indexPath.row) as! NewsFeedModel)
+            cell.configureCell(self.followNewsArray.object(at: (indexPath as NSIndexPath).row) as! NewsFeedModel)
             
             // Configure the cell...
             

@@ -24,7 +24,7 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -35,15 +35,15 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         
-        scrollView.frame = CGRectMake(0, 4*minSpace, ScreenWidth, 13*minSpace)
+        scrollView.frame = CGRect(x: 0, y: 4*minSpace, width: ScreenWidth, height: 13*minSpace)
         scrollView.delegate = self
         
-        titleLabel.textColor = UIColor.grayColor()
+        titleLabel.textColor = UIColor.gray
         titleLabel.font = UIFont(name: fontName, size: minFont)
         titleLabel.text = "最近Live"
-        titleLabel.frame = CGRectMake(minSpace, minSpace, 0, 0)
+        titleLabel.frame = CGRect(x: minSpace, y: minSpace, width: 0, height: 0)
         titleLabel.sizeToFit()
         
         self.addSubview(titleLabel)
@@ -59,7 +59,7 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     
-    func configureCell(array: NSMutableArray){
+    func configureCell(_ array: NSMutableArray){
         
         liveArray = array
         
@@ -67,11 +67,11 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
             
             //复用以前的view
             
-            for(var i=0; i<liveViewArray.count; ++i) {
+            for i in 0 ..< liveViewArray.count {
                 
-                let liveview = liveViewArray.objectAtIndex(i) as! LiveView
+                let liveview = liveViewArray.object(at: i) as! LiveView
                 
-                liveview.configureView(liveArray.objectAtIndex(i) as! LiveModel)
+                liveview.configureView(liveArray.object(at: i) as! LiveModel)
             }
 
             
@@ -84,11 +84,11 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
             }
             
             
-            for(var i=0; i<liveArray.count; ++i) {
+            for i in 0 ..< liveArray.count  {
                 
-                let liveview = LiveView(frame: CGRectMake(minSpace+CGFloat(Float(i))*(minSpace+26*minSpace), 0, 26*minSpace, 10*minSpace))
+                let liveview = LiveView(frame: CGRect(x: minSpace+CGFloat(Float(i))*(minSpace+26*minSpace), y: 0, width: 26*minSpace, height: 10*minSpace))
                 
-                liveViewArray.addObject(liveview)
+                liveViewArray.add(liveview)
                 
                 scrollView.addSubview(liveview)
             }
@@ -96,8 +96,8 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
             
             
             
-            let allLiveView = UIView(frame: CGRectMake(minSpace+CGFloat(Float(liveViewArray.count))*(minSpace+26*minSpace), 0, 12*minSpace, 10*minSpace))
-            allLiveView.layer.borderColor = UIColor.lightGrayColor().CGColor
+            let allLiveView = UIView(frame: CGRect(x: minSpace+CGFloat(Float(liveViewArray.count))*(minSpace+26*minSpace), y: 0, width: 12*minSpace, height: 10*minSpace))
+            allLiveView.layer.borderColor = UIColor.lightGray.cgColor
             allLiveView.layer.borderWidth = 0.5
             allLiveView.layer.cornerRadius = 6.0
             
@@ -105,7 +105,7 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
             allLabel.text = "全部live"
             allLabel.sizeToFit()
             allLabel.font = UIFont(name: fontName, size: normalFont)
-            allLabel.textColor = UIColor.lightGrayColor()
+            allLabel.textColor = UIColor.lightGray
             allLiveView.addSubview(allLabel)
             
             allLabel.snp_makeConstraints { (make) -> Void in
@@ -117,14 +117,17 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
             scrollView.addSubview(allLiveView)
             
             
-            scrollView.contentSize = CGSizeMake(minSpace+CGFloat(Float(liveViewArray.count))*(minSpace+26*minSpace) + 12*minSpace + minSpace , 0)
+            let width = minSpace + CGFloat(Float(liveViewArray.count))*(minSpace+26*minSpace) + 12*minSpace + minSpace
             
             
-            for(var i=0; i<liveViewArray.count; ++i) {
+            
+            scrollView.contentSize = CGSize(width: width, height: 0)
+            
+            for i in 0 ..< liveViewArray.count {
                 
-                let liveview = liveViewArray.objectAtIndex(i) as! LiveView
+                let liveview = liveViewArray.object(at: i) as! LiveView
                 
-                liveview.configureView(liveArray.objectAtIndex(i) as! LiveModel)
+                liveview.configureView(liveArray.object(at: i) as! LiveModel)
             }
             
         }

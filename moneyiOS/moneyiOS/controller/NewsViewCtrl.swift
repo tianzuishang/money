@@ -24,7 +24,7 @@ class NewsViewCtrl: UIViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
         scrollview = UIScrollView(frame: self.view.frame);
-        scrollview.backgroundColor = UIColor.blackColor()
+        scrollview.backgroundColor = UIColor.black
         scrollview.delegate = self
         
         table1.view.backgroundColor = backgroundColor
@@ -33,10 +33,10 @@ class NewsViewCtrl: UIViewController, UIScrollViewDelegate {
         table4.view.backgroundColor = backgroundColor
         
         
-        table1.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - 64 - 49)
-        table2.view.frame = CGRectMake(self.view.frame.width, 0, self.view.frame.width, self.view.frame.height - 64 - 49)
-        table3.view.frame = CGRectMake(2*self.view.frame.width, 0, self.view.frame.width, self.view.frame.height - 64 - 49)
-        table4.view.frame = CGRectMake(3*self.view.frame.width, 0, self.view.frame.width, self.view.frame.height - 64 - 49)
+        table1.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49)
+        table2.view.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49)
+        table3.view.frame = CGRect(x: 2*self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49)
+        table4.view.frame = CGRect(x: 3*self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49)
         
         
         table1.pullDownCall = NewsAPI.getHotNews
@@ -49,8 +49,8 @@ class NewsViewCtrl: UIViewController, UIScrollViewDelegate {
         scrollview.addSubview(table3.tableView)
         scrollview.addSubview(table4.tableView)
         
-        scrollview.contentSize = CGSizeMake(4*self.view.frame.width, 0)
-        scrollview.pagingEnabled = true
+        scrollview.contentSize = CGSize(width: 4*self.view.frame.width, height: 0)
+        scrollview.isPagingEnabled = true
         
         
         scrollview.showsHorizontalScrollIndicator = false
@@ -58,19 +58,19 @@ class NewsViewCtrl: UIViewController, UIScrollViewDelegate {
         
         seg = UISegmentedControl(items: ["热点",  "公告", "存单", "发行"])
         seg.selectedSegmentIndex = 0
-        seg.addTarget(self, action: "clickSegment:", forControlEvents: UIControlEvents.ValueChanged)
-        seg.tintColor = UIColor.clearColor()
+        seg.addTarget(self, action: #selector(NewsViewCtrl.clickSegment(_:)), for: UIControlEvents.valueChanged)
+        seg.tintColor = UIColor.clear
         
         
-        seg.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: minMiddleFont)!, NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Selected)
+        seg.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: minMiddleFont)!, NSForegroundColorAttributeName: UIColor.white], for: UIControlState.selected)
         
-        seg.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: normalFont)!, NSForegroundColorAttributeName: UIColor.lightTextColor()], forState: UIControlState.Normal)
+        seg.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: normalFont)!, NSForegroundColorAttributeName: UIColor.lightText], for: UIControlState())
         
         self.navigationItem.titleView = seg
         self.view.addSubview(scrollview)
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
         table1.refreshControl?.endRefreshing()
         table2.refreshControl?.endRefreshing()
@@ -83,7 +83,7 @@ class NewsViewCtrl: UIViewController, UIScrollViewDelegate {
         table4.viewWillAppear(true)
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
         print(scrollview.contentOffset.x)
         
@@ -94,45 +94,45 @@ class NewsViewCtrl: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         print("scrollViewDidEndDragging")
         
         
         
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         
         print("scrollViewDidEndScrollingAnimation")
         
     }
     
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if(scrollview.isKindOfClass(UITableView.self)){
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(scrollview.isKind(of: UITableView.self)){
             print("tableview scroll")
         }else{
             print("scroll view scroll")
         }
     }
     
-    func clickSegment(segment: UISegmentedControl) {
+    func clickSegment(_ segment: UISegmentedControl) {
         print(segment.selectedSegmentIndex);
         
         switch segment.selectedSegmentIndex {
         case 0:
-            scrollview.setContentOffset(CGPointMake(0, 0), animated: false)
+            scrollview.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             
             break
             
         case 1:
-            scrollview.setContentOffset(CGPointMake(self.view.frame.width, 0), animated: false)
+            scrollview.setContentOffset(CGPoint(x: self.view.frame.width, y: 0), animated: false)
             break
         case 2:
-            scrollview.setContentOffset(CGPointMake(2*self.view.frame.width, 0), animated: false)
+            scrollview.setContentOffset(CGPoint(x: 2*self.view.frame.width, y: 0), animated: false)
             break
         case 3:
-            scrollview.setContentOffset(CGPointMake(3*self.view.frame.width, 0), animated: false)
+            scrollview.setContentOffset(CGPoint(x: 3*self.view.frame.width, y: 0), animated: false)
             break
         default:
             break

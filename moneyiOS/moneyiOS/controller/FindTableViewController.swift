@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BXProgressHUD
+//import BXProgressHUD
 
 class FindTableViewController: UITableViewController, UISearchBarDelegate {
 
@@ -25,22 +25,22 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.tableView.registerClass(FindTableViewCell.self, forCellReuseIdentifier: "FindTableViewCell");
+        self.tableView.register(FindTableViewCell.self, forCellReuseIdentifier: "FindTableViewCell");
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl!.addTarget(self, action: "pullDownAction", forControlEvents: UIControlEvents.ValueChanged)
-        self.refreshControl!.tintColor = UIColor.grayColor();
+        self.refreshControl!.addTarget(self, action: #selector(FindTableViewController.pullDownAction), for: UIControlEvents.valueChanged)
+        self.refreshControl!.tintColor = UIColor.gray;
         
         
         self.pullDownAction()
         
         
-        searchBar.frame = CGRectMake(0, 0, ScreenWidth, 3*minSpace)
+        searchBar.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 3*minSpace)
         searchBar.placeholder = "搜索用户或机构"
         //searchBar.showsCancelButton = true
         searchBar.delegate = self
-        searchBar.barTintColor = UIColor.whiteColor()
-        searchBar.tintColor = UIColor.whiteColor()
+        searchBar.barTintColor = UIColor.white
+        searchBar.tintColor = UIColor.white
         
         
         //searchBar.setSearchFieldBackgroundImage(Tool.getImageWithColor(UIColor.lightGrayColor(), height: 4*minSpace), forState: UIControlState.Normal)
@@ -58,20 +58,20 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
         
     }
 
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.endEditing(true)
     }
     
     
-    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         
         searchBar.showsCancelButton = false
         
         return true
     }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         
         
         searchBar.showsCancelButton = true
@@ -89,26 +89,35 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
             self.personArray.removeAllObjects()
             self.refreshControl?.endRefreshing()
             if(error != nil){
-                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.localizedFailureReason)!).mode(.Text).show().hide(afterDelay: 2)
+//                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.localizedFailureReason)!).mode(.text).show().hide(afterDelay: 2)
             }else{
                 
                 if(responseData!["code"] as! Int == ERROR) {
                     
-                    BXProgressHUD.Builder(forView: self.view).text("后台出错").mode(.Text).show().hide(afterDelay: 2)
+//                    BXProgressHUD.Builder(forView: self.view).text("后台出错").mode(.text).show().hide(afterDelay: 2)
                 }
                 
                 if(responseData!["code"] as! Int == SUCCESS) {
                     
-                    let tempArray = responseData!["data"]!["recommandPersonList"] as! NSArray
                     
-                    for item in tempArray {
+                    let data = responseData!["data"] as! NSDictionary
+                    
+                    let tempArray = data["recommandPersonList"] as! NSArray
+                    
+                    
+                    
+                    
+                    for (_, item) in tempArray.enumerated() {
                         
                         let usermodel = UserModel()
-                        usermodel.userName = item["name"] as? String
-                        usermodel.faceImageName = item["faceImageName"] as? String
-                        usermodel.entyName = item["entyDesc"] as? String
                         
-                        self.personArray.addObject(usermodel)
+                        let itemNode = item as! NSDictionary
+                        
+                        usermodel.userName = itemNode["name"] as? String
+                        usermodel.faceImageName = itemNode["faceImageName"] as? String
+                        usermodel.entyName = itemNode["entyDesc"] as? String
+                        
+                        self.personArray.add(usermodel)
                         
                     }
                     
@@ -133,34 +142,34 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return personArray.count
     }
 
     
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if(section == 0){
             
             
-            let view = UIView(frame: CGRectMake(0, 0, ScreenWidth, 4*minSpace))
-            view.backgroundColor = UIColor.whiteColor()
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 4*minSpace))
+            view.backgroundColor = UIColor.white
             
             let label = UILabel()
             view.addSubview(label)
             
             label.text = "你可能感兴趣的人"
             label.font = UIFont(name: fontName, size: minFont)
-            label.textColor = UIColor.grayColor()
+            label.textColor = UIColor.gray
             
-            label.snp_makeConstraints(closure: { (make) -> Void in
+            label.snp_makeConstraints({ (make) -> Void in
                 
                 make.left.equalTo(view.snp_left).offset(2*minSpace)
                 make.centerY.equalTo(view.snp_centerY)
@@ -173,7 +182,7 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if(section == 0){
             return "你可能感兴趣的人"
@@ -183,17 +192,17 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FindTableViewCell", forIndexPath: indexPath) as! FindTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FindTableViewCell", for: indexPath) as! FindTableViewCell
 
         // Configure the cell...
         
-        cell.configureCell(personArray.objectAtIndex(indexPath.row) as! UserModel)
+        cell.configureCell(personArray.object(at: (indexPath as NSIndexPath).row) as! UserModel)
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return FindTableViewCell.cellHeight()
         

@@ -7,19 +7,20 @@
 //
 
 import UIKit
-import BXProgressHUD
+//import BXProgressHUD
+
 
 class Tool: NSObject {
     
-    static func scaleToSize(image: UIImage, newsize: CGSize) -> UIImage {
+    static func scaleToSize(_ image: UIImage, newsize: CGSize) -> UIImage {
         
-        if(UIScreen.mainScreen().scale == 2.0){
+        if(UIScreen.main.scale == 2.0){
             UIGraphicsBeginImageContextWithOptions(newsize, false, 2.0)
         }else{
             UIGraphicsBeginImageContext(newsize)
         }
         
-        image.drawInRect(CGRectMake(0, 0, newsize.width, newsize.height))
+        image.draw(in: CGRect(x: 0, y: 0, width: newsize.width, height: newsize.height))
         
         var scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         if(scaledImage == nil){
@@ -27,19 +28,26 @@ class Tool: NSObject {
         }
         UIGraphicsEndImageContext();
         
-        return scaledImage
+        return scaledImage!
         
     }
     
-    static func setFaceViewImage(faceView: UIImageView, faceViewWidth: CGFloat, imageUrl: String){
+    static func setViewImage(imageView: UIImageView, imageUrl: String) {
+        imageView.kf.setImage(with: URL(string: imageUrl)!)
+    }
+    
+    static func setFaceViewImage(_ faceView: UIImageView, faceViewWidth: CGFloat, imageUrl: String){
         
-        faceView.kf_setImageWithURL(NSURL(string: imageUrl)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
+        
+        faceView.kf.setImage(with: URL(string: imageUrl)!, placeholder: nil, options: nil, progressBlock: nil) { (image, error, cacheType, imageURL) in
             
             if(image == nil){
                 return
             }
             
-            if(image?.size.height>image?.size.width){
+            
+            
+            if(Float((image?.size.height)!) > Float((image?.size.width)!)){
                 
                 let height = 2*faceViewWidth
                 let width = 2*faceViewWidth*(image?.size.width)!/(image?.size.height)!
@@ -51,14 +59,35 @@ class Tool: NSObject {
                 let height = 2*faceViewWidth*(image?.size.height)!/(image?.size.width)!
                 faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
             }
-        })
+        }
+        
+        
+//        faceView.kf.setImageWithURL(URL(string: imageUrl)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
+//            
+//            if(image == nil){
+//                return
+//            }
+//            
+//            if(image?.size.height>image?.size.width){
+//                
+//                let height = 2*faceViewWidth
+//                let width = 2*faceViewWidth*(image?.size.width)!/(image?.size.height)!
+//                
+//                faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+//                
+//            }else{
+//                let width = 2*faceViewWidth
+//                let height = 2*faceViewWidth*(image?.size.height)!/(image?.size.width)!
+//                faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
+//            }
+//        })
     }
     
     
     
     static func appRootViewController() -> UIViewController {
         
-        var appRootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        var appRootVC = UIApplication.shared.keyWindow?.rootViewController
         
         while ((appRootVC!.presentedViewController) != nil) {
             appRootVC = appRootVC!.presentedViewController;
@@ -68,12 +97,12 @@ class Tool: NSObject {
     }
     
     
-    static func showMsgBox(msg: String){
+    static func showMsgBox(_ msg: String){
         let viewCtrl = Tool.appRootViewController()
-        BXProgressHUD.Builder(forView: viewCtrl.view).text(msg).mode(.Text).show().hide(afterDelay: 2)
+//        BXProgressHUD.Builder(forView: viewCtrl.view).text(msg).mode(.text).show().hide(afterDelay: 2)
     }
     
-    static func showErrorMsgBox(errorCode: Int?) {
+    static func showErrorMsgBox(_ errorCode: Int?) {
         
         if(errorCode == nil){
             Tool.showMsgBox("后台返回未知代码")
@@ -95,27 +124,27 @@ class Tool: NSObject {
         }
     }
     
-    static func getImageWithColor(color: UIColor, height: CGFloat) -> UIImage{
+    static func getImageWithColor(_ color: UIColor, height: CGFloat) -> UIImage{
         
-        let frame = CGRectMake(0.0, 0.0, 1.0, height)
+        let frame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: height)
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext();
         
-        CGContextSetFillColorWithColor(context, color.CGColor);
-        CGContextFillRect(context, frame);
+        context?.setFillColor(color.cgColor);
+        context?.fill(frame);
         
         let img = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        return img;
+        return img!;
     }
     
     
-    static func showTime(timeStamp:Int) -> String {
+    static func showTime(_ timeStamp:Int) -> String {
         
         
         
-        let date = NSDate()
+        let date = Date()
         let nowTimeStamp = date.timeIntervalSince1970
         
         

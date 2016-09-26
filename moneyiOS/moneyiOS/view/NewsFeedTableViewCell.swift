@@ -42,10 +42,10 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         faceView.clipsToBounds = true
         faceView.layer.cornerRadius = NewsFeedTableViewCell.faceViewWidth/2
-        faceView.contentMode = UIViewContentMode.ScaleAspectFill
+        faceView.contentMode = UIViewContentMode.scaleAspectFill
         
         contentImage.clipsToBounds = true
-        contentImage.contentMode = UIViewContentMode.ScaleAspectFill
+        contentImage.contentMode = UIViewContentMode.scaleAspectFill
         
         commentIcon.image = UIImage(named: "comment_48px.png")
         shareIcon.image = UIImage(named: "heart3.png")
@@ -54,7 +54,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         nameLabel.font = UIFont(name: fontName, size: normalFont)
         publishTimeLabel.font = UIFont(name: fontName, size: minminFont)
         subLabel.font = UIFont(name: fontName, size: minminFont)
-        subLabel.textColor = UIColor.grayColor()
+        subLabel.textColor = UIColor.gray
         
         contentLabel.font = UIFont(name: fontName, size: normalFont)
         contentLabel.numberOfLines = 20
@@ -63,8 +63,8 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         commentCountLabel.font = UIFont(name: fontName, size: minminFont)
         likeCountLabel.font = UIFont(name: fontName, size: minminFont)
-        commentCountLabel.textColor = UIColor.grayColor()
-        likeCountLabel.textColor = UIColor.grayColor()
+        commentCountLabel.textColor = UIColor.gray
+        likeCountLabel.textColor = UIColor.gray
         
         self.addSubview(faceView)
         self.addSubview(nameLabel)
@@ -80,17 +80,17 @@ class NewsFeedTableViewCell: UITableViewCell {
         self.addSubview(likeIcon)
         
         
-        contentImage.userInteractionEnabled = true
-        contentImage.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: Selector("clickImage:")))
+        contentImage.isUserInteractionEnabled = true
+        contentImage.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(NewsFeedTableViewCell.clickImage(_:))))
         
         
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         
         self.layoutView()
         
     }
     
-    func clickImage(sender: UITapGestureRecognizer) {
+    func clickImage(_ sender: UITapGestureRecognizer) {
         print("clickImage")
     }
     
@@ -105,14 +105,14 @@ class NewsFeedTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
     
-    func configureCell(model: NewsFeedModel){
+    func configureCell(_ model: NewsFeedModel){
         mymodel = model
         
         nameLabel.text = mymodel.userModel.userName
@@ -147,8 +147,9 @@ class NewsFeedTableViewCell: UITableViewCell {
             
         }else{
             
-            contentImage.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+mymodel.contentImageUrl!)!, placeholderImage: nil)
             
+            Tool.setViewImage(imageView: contentImage, imageUrl: ConfigAccess.serverDomain()+mymodel.contentImageUrl!)
+                        
         }
         
         
@@ -156,14 +157,14 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         if(mymodel.content != nil && mymodel.content != ""){
             
-            contentLabel.snp_updateConstraints(closure: { (make) -> Void in
+            contentLabel.snp_updateConstraints({ (make) -> Void in
                 //make.height.equalTo(20*minSpace)
                 make.top.equalTo(faceView.snp_bottom).offset(minSpace)
             })
             
         }else{
             
-            contentLabel.snp_updateConstraints(closure: { (make) -> Void in
+            contentLabel.snp_updateConstraints({ (make) -> Void in
                 //make.height.equalTo(0*minSpace)
                 make.top.equalTo(faceView.snp_bottom)
             })
@@ -172,14 +173,14 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         if(mymodel.contentImageUrl != nil && mymodel.contentImageUrl != ""){
             
-            contentImage.snp_updateConstraints(closure: { (make) -> Void in
+            contentImage.snp_updateConstraints({ (make) -> Void in
                 make.height.equalTo(NewsFeedTableViewCell.contentImageHeight)
                 make.top.equalTo(contentLabel.snp_bottom).offset(minSpace)
             })
             
         }else{
             
-            contentImage.snp_updateConstraints(closure: { (make) -> Void in
+            contentImage.snp_updateConstraints({ (make) -> Void in
                 make.height.equalTo(0*minSpace)
                 make.top.equalTo(contentLabel.snp_bottom)
             })
@@ -189,7 +190,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     }
     
     
-    static func cellHeight(model: NewsFeedModel)->CGFloat {
+    static func cellHeight(_ model: NewsFeedModel)->CGFloat {
         
         
         var contentImageHeight:CGFloat = 0.0
@@ -292,14 +293,14 @@ class NewsFeedTableViewCell: UITableViewCell {
         }
         
         
-        contentLabel.snp_makeConstraints(closure: { (make) -> Void in
+        contentLabel.snp_makeConstraints({ (make) -> Void in
             make.left.equalTo(faceView.snp_right).offset(minSpace)
             make.top.equalTo(faceView.snp_bottom)
             make.right.equalTo(self.snp_right).offset(-2*minSpace)
             //make.height.equalTo(20*minSpace)
         })
         
-        contentImage.snp_makeConstraints(closure: { (make) -> Void in
+        contentImage.snp_makeConstraints({ (make) -> Void in
             
             make.left.equalTo(faceView.snp_right).offset(minSpace)
             make.top.equalTo(contentLabel.snp_bottom)

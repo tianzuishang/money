@@ -60,34 +60,34 @@ class faceCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        faceView.contentMode = UIViewContentMode.ScaleAspectFill;
+        faceView.contentMode = UIViewContentMode.scaleAspectFill;
         faceView.layer.cornerRadius = faceCell.faceViewWidth/2
         faceView.clipsToBounds = true
         name.font = UIFont(name: fontName, size: normalFont)
         sign.font = UIFont(name: fontName, size: minFont)
-        sign.textColor = UIColor.grayColor()
+        sign.textColor = UIColor.gray
         cityLabel.font = UIFont(name: fontName, size: minFont)
-        cityLabel.textColor = UIColor.grayColor()
+        cityLabel.textColor = UIColor.gray
         entyLabel.font = UIFont(name: fontName, size: minFont)
-        entyLabel.textColor = UIColor.grayColor()
+        entyLabel.textColor = UIColor.gray
         
         newsCount.font = UIFont(name: fontName, size: normalFont)
         followCount.font = UIFont(name: fontName, size: normalFont)
         fansCount.font = UIFont(name: fontName, size: normalFont)
         
         
-        newsCount.textAlignment = NSTextAlignment.Center
-        followCount.textAlignment = NSTextAlignment.Center
-        fansCount.textAlignment = NSTextAlignment.Center
+        newsCount.textAlignment = NSTextAlignment.center
+        followCount.textAlignment = NSTextAlignment.center
+        fansCount.textAlignment = NSTextAlignment.center
         
         newsCountLabel.text = "帖子"
         followCountLabel.text = "关注"
         fansCountLabel.text = "粉丝"
         
         
-        newsCountLabel.textColor = UIColor.grayColor()
-        followCountLabel.textColor = UIColor.grayColor()
-        fansCountLabel.textColor = UIColor.grayColor()
+        newsCountLabel.textColor = UIColor.gray
+        followCountLabel.textColor = UIColor.gray
+        fansCountLabel.textColor = UIColor.gray
 
         
         newsCountLabel.font = UIFont(name: fontName, size: minFont)
@@ -218,7 +218,7 @@ class faceCell: UITableViewCell {
     }
     
     
-    func configureCell(model: UserModel){
+    func configureCell(_ model: UserModel){
         userModel = model
         name.text = userModel.userName
         if(userModel.faceImageName != nil && userModel.faceImageName != ""){
@@ -253,7 +253,7 @@ class faceCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

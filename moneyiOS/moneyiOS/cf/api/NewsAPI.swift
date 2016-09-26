@@ -9,151 +9,107 @@
 import UIKit
 import Alamofire
 
-typealias responseCall = (error: NSError? ,responseData: NSDictionary?)->Void
-typealias apiCall = (callback: responseCall) ->Void
+typealias responseCall = (_ error: NSError? ,_ responseData: NSDictionary?)->Void
+typealias apiCall = (_ callback: @escaping responseCall) ->Void
 
 class NewsAPI: NSObject {
     
     static let serverDomain = ConfigAccess.serverDomain()
     
-    static func getHotNews(callback: responseCall){
-        Alamofire.request(.GET, serverDomain + "news/hotNewslist", parameters: nil)
-            .validate()
-            .responseJSON { response in
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-            }
-    }
     
-    static func getAnnouncementList(callback: responseCall){
-        Alamofire.request(.GET, serverDomain + "news/announcementList", parameters: nil)
-            .validate()
-            .responseJSON { response in
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
-    }
-    
-    static func getDepositlist(callback: responseCall){
-        Alamofire.request(.GET, serverDomain + "news/depositlist", parameters: nil)
-            .validate()
-            .responseJSON { response in
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
-    }
-    
-    static func getPublishlist(callback: responseCall){
-        Alamofire.request(.GET, serverDomain + "news/publishlist", parameters: nil)
-            .validate()
-            .responseJSON { response in
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
-    }
-    
-    static func getBenchmark(callback: responseCall){
-        Alamofire.request(.GET, serverDomain + "news/getBenchmark", parameters: nil)
-            .validate()
-            .responseJSON { response in
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
-    }
-    
-    
-    static func getForeign(callback: responseCall){
-                Alamofire.request(.GET, serverDomain + "news/getForeign", parameters: nil)
-                    .validate()
-                    .responseJSON { response in
+    static func httpRequestForGet(url: String, parameters: [String: AnyObject]?, callback: @escaping responseCall) {
         
-                        switch response.result {
-                        case .Success:
-                            let JSON = response.result.value as! NSDictionary
-                            callback(error:nil, responseData: JSON)
-                            break
-                        case .Failure(let error):
-                            print(error)
-                            callback(error: error, responseData: nil)
-                            break
-                        }
+        Alamofire.request(url, method: .get, parameters: parameters).validate()
+            .responseJSON { response in
+                
+                switch response.result {
+                case .success:
+                    let JSON = response.result.value as! NSDictionary
+                    callback(nil, JSON)
+                    break
+                case .failure(let error):
+                    print(error)
+                    callback(error as NSError?, nil)
+                    break
                 }
-    }
-    
-    static func getRMB(callback: responseCall){
-                Alamofire.request(.GET, serverDomain + "news/getRMB", parameters: nil)
-                    .validate()
-                    .responseJSON { response in
+        }
         
-                        switch response.result {
-                        case .Success:
-                            let JSON = response.result.value as! NSDictionary
-                            callback(error:nil, responseData: JSON)
-                            break
-                        case .Failure(let error):
-                            print(error)
-                            callback(error: error, responseData: nil)
-                            break
-                        }
-                }
     }
     
-    static func getCurve(callback: responseCall){
+    
+    static func httpRequestForPost(url: String, parameters: [String: AnyObject]?, callback: @escaping responseCall) {
+        
+        Alamofire.request(url, method: .post, parameters: parameters).validate()
+            .responseJSON { response in
+                
+                switch response.result {
+                case .success:
+                    let JSON = response.result.value as! NSDictionary
+                    callback(nil, JSON)
+                    break
+                case .failure(let error):
+                    print(error)
+                    callback(error as NSError?, nil)
+                    break
+                }
+        }
+        
+    }
+    
+    
+    static func getHotNews(_ callback: @escaping responseCall){
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/hotNewslist", parameters: nil, callback: callback)
+    }
+    
+    static func getAnnouncementList(_ callback: @escaping responseCall){
+        
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/announcementList", parameters: nil, callback: callback)
+    }
+    
+    static func getDepositlist(_ callback: @escaping responseCall){
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/depositlist", parameters: nil, callback: callback)
+    }
+    
+    
+    static func getPublishlist(_ callback: @escaping responseCall){
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/publishlist", parameters: nil, callback: callback)
+        
+    }
+    
+    static func getBenchmark(_ callback: @escaping responseCall){
+        
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/getBenchmark", parameters: nil, callback: callback)
+
+    }
+    
+    
+    static func getForeign(_ callback: @escaping responseCall){
+        
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/getForeign", parameters: nil, callback: callback)
+
+    }
+    
+    static func getRMB(_ callback: @escaping responseCall){
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/getRMB", parameters: nil, callback: callback)
+    }
+    
+    static func getCurve(_ callback: responseCall){
         //        Alamofire.request(.GET, serverDomain + "news/publishlist", parameters: nil)
         //            .validate()
         //            .responseJSON { response in
         //
         //                switch response.result {
-        //                case .Success:
+        //                case .success:
         //                    let JSON = response.result.value as! NSDictionary
         //                    callback(error:nil, responseData: JSON)
         //                    break
-        //                case .Failure(let error):
+        //                case .failure(let error):
         //                    print(error)
         //                    callback(error: error, responseData: nil)
         //                    break
@@ -162,105 +118,35 @@ class NewsAPI: NSObject {
     }
     
     
-    static func userSearch(callback: responseCall, parameters: [String: AnyObject]?){
-                Alamofire.request(.GET, serverDomain + "news/userSearch", parameters: parameters)
-                    .validate()
-                    .responseJSON { response in
+    static func userSearch(_ callback: @escaping responseCall, parameters: [String: AnyObject]?){
         
-                        switch response.result {
-                        case .Success:
-                            let JSON = response.result.value as! NSDictionary
-                            callback(error:nil, responseData: JSON)
-                            break
-                        case .Failure(let error):
-                            print(error)
-                            callback(error: error, responseData: nil)
-                            break
-                        }
-                }
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/userSearch", parameters: parameters, callback: callback)
     }
     
     
-    static func login(callback: responseCall, parameters: [String: String]?){
-        Alamofire.request(.POST, serverDomain + "news/login", parameters: parameters)
-            .validate()
-            .responseJSON { response in
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
+    static func login(_ callback: @escaping responseCall, parameters: [String: AnyObject]?){
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/login", parameters: parameters, callback: callback)
     }
     
     
-    static func getNewsFeed(callback: responseCall, parameters: [String: String]?){
-        Alamofire.request(.GET, serverDomain + "news/getNewsFeed", parameters: parameters)
-            .validate()
-            .responseJSON { response in
-                
-                print(response.request?.URLString)
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
+    static func getNewsFeed(_ callback: @escaping responseCall, parameters: [String: AnyObject]?){
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/getNewsFeed", parameters: parameters, callback: callback)
+
     }
     
     
-    static func getRecommandPersonList(callback: responseCall, parameters: [String: String]?){
-        Alamofire.request(.GET, serverDomain + "news/getRecommandPersonList", parameters: parameters)
-            .validate()
-            .responseJSON { response in
-                
-                print(response.request?.URLString)
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
+    static func getRecommandPersonList(_ callback: @escaping responseCall, parameters: [String: AnyObject]?){
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/getRecommandPersonList", parameters: parameters, callback: callback)
     }
     
     
-    
-    static func getUserDetail(callback: responseCall, parameters: [String: AnyObject]?){
-        Alamofire.request(.GET, serverDomain + "news/getUserDetail", parameters: parameters)
-            .validate()
-            .responseJSON { response in
-                
-                print(response.request?.URLString)
-                
-                switch response.result {
-                case .Success:
-                    let JSON = response.result.value as! NSDictionary
-                    callback(error:nil, responseData: JSON)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    callback(error: error, responseData: nil)
-                    break
-                }
-        }
+    static func getUserDetail(_ callback: @escaping responseCall, parameters: [String: AnyObject]?){
+        
+        NewsAPI.httpRequestForGet(url: serverDomain + "news/getUserDetail", parameters: parameters, callback: callback)
     }
     
 

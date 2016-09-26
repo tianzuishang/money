@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import EVReflection
+//import EVReflection
 
 
-class LiveModel: EVObject {
+class LiveModel: NSObject {
     var userModel = UserModel()
     var liveTitle: String!
     var startTimeStamp: Int!

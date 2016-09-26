@@ -85,19 +85,15 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/BXProgressHUD/BXProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/EVReflection/EVReflection.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JASON/JASON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PinAuto/PinAuto.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RappleProgressHUD/RappleProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/BXProgressHUD/BXProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/EVReflection/EVReflection.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JASON/JASON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PinAuto/PinAuto.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RappleProgressHUD/RappleProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi

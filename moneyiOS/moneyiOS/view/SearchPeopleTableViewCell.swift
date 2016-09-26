@@ -30,11 +30,11 @@ class SearchPeopleTableViewCell: UITableViewCell {
         nameLabel.font = UIFont(name: fontName, size: minFont)
         entyNameLabel.font = UIFont(name: fontName, size: minminFont)
         entyNameLabel.numberOfLines = 1
-        entyNameLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-        entyNameLabel.textColor = UIColor.grayColor()
+        entyNameLabel.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        entyNameLabel.textColor = UIColor.gray
         
         
-        faceImageView.contentMode = UIViewContentMode.ScaleAspectFit;
+        faceImageView.contentMode = UIViewContentMode.scaleAspectFit;
         faceImageView.clipsToBounds = true
         
         self.addSubview(entyNameLabel)
@@ -48,7 +48,7 @@ class SearchPeopleTableViewCell: UITableViewCell {
     }
     
     
-    func configureCell(model: UserModel) {
+    func configureCell(_ model: UserModel) {
         usermodel = model
         nameLabel.text = usermodel.userName
         entyNameLabel.text = usermodel.entyName
@@ -60,7 +60,8 @@ class SearchPeopleTableViewCell: UITableViewCell {
         if(usermodel.faceImageName == nil || usermodel.faceImageName == ""){
             faceImageView.image = UIImage(named: "man-noname.png")
         }else{
-            faceImageView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+usermodel.faceImageName!)!)
+            
+            faceImageView.kf.setImage(with: URL(string: ConfigAccess.serverDomain()+usermodel.faceImageName!)!)
         }
         
         nameLabel.sizeToFit()
@@ -102,7 +103,7 @@ class SearchPeopleTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

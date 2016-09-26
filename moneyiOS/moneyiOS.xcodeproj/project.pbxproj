@@ -10,7 +10,6 @@
 		34429F610448E4ACD68FB595 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
 		5B86519AF879D56F24424170 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
 		B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FC1D9267DC005B4A7E /* Security.framework */; };
-		B208E7FF1D9267F0005B4A7E /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */; };
 		B208E8001D9267FA005B4A7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FC1D9267DC005B4A7E /* Security.framework */; };
 		B208E8011D926803005B4A7E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA951D9218F100818503 /* libz.tbd */; };
 		B208E8021D92681A005B4A7E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA931D9218E900818503 /* libc++.tbd */; };
@@ -289,7 +288,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B208E7FF1D9267F0005B4A7E /* Pods_moneyiOS.framework in Frameworks */,
 				B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */,
 				B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */,
 				B29EBA961D9218F100818503 /* libz.tbd in Frameworks */,
@@ -349,6 +347,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B27480A81D965FEB00006383 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		B296BAA31D50EC72004DE860 /* api */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +402,7 @@
 		B2D173131D3CA27C00FC128A /* moneyiOS */ = {
 			isa = PBXGroup;
 			children = (
+				B27480A81D965FEB00006383 /* lib */,
 				B296BAA61D56DB98004DE860 /* config */,
 				B296BAA31D50EC72004DE860 /* api */,
 				B2D173291D3CB29800FC128A /* cf */,
@@ -647,6 +653,7 @@
 				TargetAttributes = {
 					B2D173101D3CA27C00FC128A = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 					B2D173341D3CC92100FC128A = {
 						CreatedOnToolsVersion = 7.2;
@@ -1037,6 +1044,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -1059,6 +1067,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -1160,6 +1169,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"DEV\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1178,6 +1188,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"DEV\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

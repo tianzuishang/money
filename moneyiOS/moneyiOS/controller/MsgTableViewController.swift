@@ -29,14 +29,14 @@ class MsgTableViewController: UITableViewController {
         
         
         let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.text = "消息"
         titleLabel.font = UIFont(name: fontName, size: 20)
         titleLabel.sizeToFit()
         
         self.navigationItem.titleView = titleLabel
         
-        self.tableView.registerClass(MsgTableViewCell.self, forCellReuseIdentifier: "MsgTableViewCell");
+        self.tableView.register(MsgTableViewCell.self, forCellReuseIdentifier: "MsgTableViewCell");
         
         
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "搜索", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("searchButton"))
@@ -55,7 +55,7 @@ class MsgTableViewController: UITableViewController {
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "magnifier_32px.png"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("searchButton"))
         
         
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         
         
@@ -102,7 +102,7 @@ class MsgTableViewController: UITableViewController {
     
     func searchButton() {
         
-        let searchPeople = SearchPeopleTableViewCtrl(style:UITableViewStyle.Grouped)
+        let searchPeople = SearchPeopleTableViewCtrl(style:UITableViewStyle.grouped)
         searchPeople.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(searchPeople, animated: true)
     }
@@ -115,12 +115,12 @@ class MsgTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return msgList.count
@@ -129,11 +129,11 @@ class MsgTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MsgTableViewCell", forIndexPath: indexPath) as! MsgTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MsgTableViewCell", for: indexPath) as! MsgTableViewCell
 
         
-        cell.configureCell(msgList[indexPath.row])
+        cell.configureCell(msgList[(indexPath as NSIndexPath).row])
         
         // Configure the cell...
 
@@ -141,7 +141,7 @@ class MsgTableViewController: UITableViewController {
     }
     
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return MsgTableViewCell.cellHeight()
     }
     

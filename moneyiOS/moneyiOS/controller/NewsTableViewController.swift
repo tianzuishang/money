@@ -30,20 +30,20 @@ class NewsTableViewController: UITableViewController {
         
         
         
-        self.tableView.registerClass(NewsTableViewCell.self, forCellReuseIdentifier: "newscell");
+        self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "newscell");
         
         //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         self.tableView.sectionFooterHeight = 5
         
         self.refreshControl = UIRefreshControl();
-        self.refreshControl?.addTarget(self, action: "pullDownAction", forControlEvents: UIControlEvents.ValueChanged)
-        self.refreshControl!.tintColor = UIColor.grayColor();
+        self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.pullDownAction), for: UIControlEvents.valueChanged)
+        self.refreshControl!.tintColor = UIColor.gray;
         
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.pullDownAction()
     }
     
@@ -52,7 +52,7 @@ class NewsTableViewController: UITableViewController {
         if(pullDownCall != nil){
             newsArray.removeAll()
             headlineArray.removeAll()
-            pullDownCall!(callback: {(error: NSError? ,responseData: NSDictionary?) in
+            pullDownCall!({(error: NSError? ,responseData: NSDictionary?) in
                 
                 self.refreshControl?.endRefreshing()
                 
@@ -68,13 +68,15 @@ class NewsTableViewController: UITableViewController {
                         let tempArray = responseData!["data"] as! NSArray
                         
                         for item in tempArray {
+                            let itemDic = item as! NSDictionary
+                            
                             let newsmodel = NewsModel()
-                            newsmodel.title = item["title"] as! String
-                            newsmodel.subTitle = item["subTitle"] as! String
-                            newsmodel.publishTime = item["publishTime"] as! String
-                            newsmodel.source = item["source"] as! String
-                            newsmodel.titleImageUrl = item["titleImageUrl"] as? String
-                            newsmodel.headline = item["headline"] as? Bool
+                            newsmodel.title = itemDic["title"] as! String
+                            newsmodel.subTitle = itemDic["subTitle"] as! String
+                            newsmodel.publishTime = itemDic["publishTime"] as! String
+                            newsmodel.source = itemDic["source"] as! String
+                            newsmodel.titleImageUrl = itemDic["titleImageUrl"] as? String
+                            newsmodel.headline = itemDic["headline"] as? Bool
                             if(newsmodel.headline == true){
                                 self.headlineArray.append(newsmodel)
                             }else{
@@ -92,8 +94,8 @@ class NewsTableViewController: UITableViewController {
                 if(self.headlineArray.count != 0){
                     
                     
-                    self.tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, ScreenWidth, ScreenWidth*0.5))
-                    self.headlineScrollView = UIScrollView(frame: CGRectMake(0, 0, ScreenWidth, ScreenWidth*0.5))
+                    self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenWidth*0.5))
+                    self.headlineScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenWidth*0.5))
                     self.tableView.tableHeaderView?.addSubview(self.headlineScrollView!)
                     
                     self.setHeadline()
@@ -104,7 +106,7 @@ class NewsTableViewController: UITableViewController {
                     
                     
                     
-                    self.tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, ScreenWidth, 0.1))
+                    self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 0.1))
                     
                     //self.headlineScrollView = nil
                 }
@@ -125,14 +127,17 @@ class NewsTableViewController: UITableViewController {
         
         
         self.headlineScrollView!.delegate = self
-        for(var i=0;i<headlineArray.count;++i){
-            let imageview = UIImageView(frame: CGRectMake(CGFloat(Float(i))*self.headlineScrollView!.frame.width, 0, self.headlineScrollView!.frame.width, self.headlineScrollView!.frame.height))
+        
+        
+        
+        for i in 0 ..< headlineArray.count {
+            let imageview = UIImageView(frame: CGRect(x: CGFloat(Float(i))*self.headlineScrollView!.frame.width, y: 0, width: self.headlineScrollView!.frame.width, height: self.headlineScrollView!.frame.height))
             self.headlineScrollView!.addSubview(imageview)
             
             
+            Tool.setViewImage(imageView: imageview, imageUrl: ConfigAccess.serverDomain()+headlineArray[i].titleImageUrl!)
             
-            imageview.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+headlineArray[i].titleImageUrl!)!)
-            imageview.contentMode = UIViewContentMode.ScaleAspectFill
+            imageview.contentMode = UIViewContentMode.scaleAspectFill
             imageview.clipsToBounds = true
             
 //            let uiview = UIView()
@@ -146,7 +151,7 @@ class NewsTableViewController: UITableViewController {
             
             let titlelabel = UILabel()
             imageview.addSubview(titlelabel)
-            titlelabel.snp_makeConstraints(closure: { (make) -> Void in
+            titlelabel.snp_makeConstraints({ (make) -> Void in
                 make.width.equalTo(imageview.frame.width - 4*minSpace)
                 make.height.equalTo(imageview.frame.width*0.1)
                 make.left.equalTo(imageview.snp_left).offset(2*minSpace)
@@ -155,9 +160,9 @@ class NewsTableViewController: UITableViewController {
             
             //titlelabel.backgroundColor = UIColor.grayColor()
             
-            titlelabel.textAlignment = NSTextAlignment.Center
+            titlelabel.textAlignment = NSTextAlignment.center
             titlelabel.font = UIFont(name: fontName, size: minMiddleFont)
-            titlelabel.textColor = UIColor.whiteColor()
+            titlelabel.textColor = UIColor.white
             titlelabel.text = headlineArray[i].title
             
             
@@ -168,7 +173,7 @@ class NewsTableViewController: UITableViewController {
         self.pageControl!.numberOfPages = headlineArray.count
         self.pageControl!.currentPage = 0
         if(headlineArray.count == 1){
-            self.pageControl?.hidden = true
+            self.pageControl?.isHidden = true
         }
         self.tableView.tableHeaderView?.addSubview(self.pageControl!)
         self.pageControl!.snp_makeConstraints { (make) -> Void in
@@ -178,12 +183,12 @@ class NewsTableViewController: UITableViewController {
             make.bottom.equalTo((self.tableView.tableHeaderView?.snp_bottom)!).offset(-minSpace)
         }
         
-        self.headlineScrollView!.pagingEnabled = true
-        self.headlineScrollView!.contentSize = CGSizeMake(CGFloat(Float(headlineArray.count))*self.headlineScrollView!.frame.width, 0)
+        self.headlineScrollView!.isPagingEnabled = true
+        self.headlineScrollView!.contentSize = CGSize(width: CGFloat(Float(headlineArray.count))*self.headlineScrollView!.frame.width, height: 0)
     }
     
     
-    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         if(scrollView == self.headlineScrollView){
             print("scrollViewDidEndDecelerating")
@@ -194,11 +199,11 @@ class NewsTableViewController: UITableViewController {
     }
 
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1.0
     }
 
@@ -210,23 +215,23 @@ class NewsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return newsArray.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("newscell", forIndexPath: indexPath) as! NewsTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newscell", for: indexPath) as! NewsTableViewCell
         
         // Configure the cell...
         
-        cell.configureCell(newsArray[indexPath.row])
+        cell.configureCell(newsArray[(indexPath as NSIndexPath).row])
         
         
         //let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
@@ -239,10 +244,10 @@ class NewsTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if(indexPath.row < newsArray.count){
-            return NewsTableViewCell.cellHeight(newsArray[indexPath.row])
+        if((indexPath as NSIndexPath).row < newsArray.count){
+            return NewsTableViewCell.cellHeight(newsArray[(indexPath as NSIndexPath).row])
         }else{
             return 0
         }

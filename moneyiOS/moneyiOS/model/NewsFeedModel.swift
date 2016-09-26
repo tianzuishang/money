@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import EVReflection
+//import EVReflection
 
 
 //发布的动态
-class NewsFeedModel: EVObject {
+class NewsFeedModel: NSObject {
     var userModel = UserModel()
     var content: String?
     var contentImageUrl: String?

@@ -39,25 +39,25 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
         
         seg = UISegmentedControl(items: ["交易", "行情"])
         seg.selectedSegmentIndex = 1
-        seg.addTarget(self, action: "clickSegment:", forControlEvents: UIControlEvents.ValueChanged)
+        seg.addTarget(self, action: #selector(MarketViewController.clickSegment(_:)), for: UIControlEvents.valueChanged)
         //seg.tintColor = UIColor.blueColor()
         //seg.tintColor = UIColor.clearColor()
-        seg.tintColor = UIColor.whiteColor()
+        seg.tintColor = UIColor.white
         
-        tradeTableViewCtrl.tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight)
+        tradeTableViewCtrl.tableView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight)
         self.navigationItem.titleView = seg
         self.view.addSubview(tradeTableViewCtrl.view)
         self.view.addSubview(marketView!)
-        self.view.bringSubviewToFront(marketView!)
+        self.view.bringSubview(toFront: marketView!)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         
     }
 
     
-    func applicationDidBecomeActive(notification: NSNotification) {
+    func applicationDidBecomeActive(_ notification: Notification) {
         table1.refreshControl?.endRefreshing()
         table2.refreshControl?.endRefreshing()
         table3.refreshControl?.endRefreshing()
@@ -72,29 +72,29 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
     
     func initMarketScrollView() {
         
-        marketView = UIView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
+        marketView = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight))
         marketView?.backgroundColor = backgroundColor
         
         marketSegControl = UISegmentedControl(items: ["基准", "外汇", "人民币", "曲线指数"])
-        marketSegControl.frame = CGRectMake(0, 0, ScreenWidth, 24)
+        marketSegControl.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 24)
         marketSegControl.selectedSegmentIndex = 0
-        marketSegControl.addTarget(self, action: "clickMarketSegment:", forControlEvents: UIControlEvents.ValueChanged)
-        marketSegControl.tintColor = UIColor.clearColor()
+        marketSegControl.addTarget(self, action: #selector(MarketViewController.clickMarketSegment(_:)), for: UIControlEvents.valueChanged)
+        marketSegControl.tintColor = UIColor.clear
         
         
-        marketSegControl.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: minFont)!, NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Selected)
+        marketSegControl.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: minFont)!, NSForegroundColorAttributeName: UIColor.black], for: UIControlState.selected)
         
-        marketSegControl.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: minFont)!, NSForegroundColorAttributeName: UIColor.grayColor()], forState: UIControlState.Normal)
+        marketSegControl.setTitleTextAttributes([NSFontAttributeName: UIFont(name: fontName, size: minFont)!, NSForegroundColorAttributeName: UIColor.gray], for: UIControlState())
         
         
         
         marketView!.addSubview(marketSegControl)
         
-        marketScrollView = UIScrollView(frame: CGRectMake(0, 24, ScreenWidth, ScreenHeight));
+        marketScrollView = UIScrollView(frame: CGRect(x: 0, y: 24, width: ScreenWidth, height: ScreenHeight));
         marketScrollView.backgroundColor = backgroundColor
         marketScrollView.delegate = self
-        marketScrollView.contentSize = CGSizeMake(4*self.view.frame.width, 0)
-        marketScrollView.pagingEnabled = true
+        marketScrollView.contentSize = CGSize(width: 4*self.view.frame.width, height: 0)
+        marketScrollView.isPagingEnabled = true
         marketScrollView.showsHorizontalScrollIndicator = false
         
         
@@ -103,10 +103,10 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
         table3.view.backgroundColor = backgroundColor
         table4.view.backgroundColor = backgroundColor
         
-        table1.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - 64 - 49 - 24)
-        table2.view.frame = CGRectMake(self.view.frame.width, 0, self.view.frame.width, self.view.frame.height - 64 - 49 - 24)
-        table3.view.frame = CGRectMake(2*self.view.frame.width, 0, self.view.frame.width, self.view.frame.height - 64 - 49 - 24)
-        table4.view.frame = CGRectMake(3*self.view.frame.width, 0, self.view.frame.width, self.view.frame.height - 64 - 49 - 24)
+        table1.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49 - 24)
+        table2.view.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49 - 24)
+        table3.view.frame = CGRect(x: 2*self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49 - 24)
+        table4.view.frame = CGRect(x: 3*self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49 - 24)
         
         
         table1.pullDownCall = NewsAPI.getBenchmark
@@ -124,7 +124,7 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
         table1.refreshControl?.endRefreshing()
         table2.refreshControl?.endRefreshing()
@@ -139,7 +139,7 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
     
     
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
         print(scrollView.contentOffset.x)
         
@@ -150,23 +150,23 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-    func clickMarketSegment(segment: UISegmentedControl) {
+    func clickMarketSegment(_ segment: UISegmentedControl) {
         print(segment.selectedSegmentIndex);
         
         switch segment.selectedSegmentIndex {
         case 0:
-            marketScrollView.setContentOffset(CGPointMake(0, 0), animated: false)
+            marketScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             
             break
             
         case 1:
-            marketScrollView.setContentOffset(CGPointMake(self.view.frame.width, 0), animated: false)
+            marketScrollView.setContentOffset(CGPoint(x: self.view.frame.width, y: 0), animated: false)
             break
         case 2:
-            marketScrollView.setContentOffset(CGPointMake(2*self.view.frame.width, 0), animated: false)
+            marketScrollView.setContentOffset(CGPoint(x: 2*self.view.frame.width, y: 0), animated: false)
             break
         case 3:
-            marketScrollView.setContentOffset(CGPointMake(3*self.view.frame.width, 0), animated: false)
+            marketScrollView.setContentOffset(CGPoint(x: 3*self.view.frame.width, y: 0), animated: false)
             break
         default:
             break
@@ -174,19 +174,19 @@ class MarketViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-    func clickSegment(segment: UISegmentedControl) {
+    func clickSegment(_ segment: UISegmentedControl) {
         print(segment.selectedSegmentIndex);
         
         switch segment.selectedSegmentIndex {
         case 0:
             
             
-            self.view.bringSubviewToFront(tradeTableViewCtrl.view!)
+            self.view.bringSubview(toFront: tradeTableViewCtrl.view!)
             
             break
             
         case 1:
-            self.view.bringSubviewToFront(marketView!)
+            self.view.bringSubview(toFront: marketView!)
             break
         default:
             break

@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import EVReflection
+//import EVReflection
 
 
-class MsgModel: EVObject {
+class MsgModel: NSObject {
     
     var userModel: UserModel = UserModel()
     var lastTalk: String = ""

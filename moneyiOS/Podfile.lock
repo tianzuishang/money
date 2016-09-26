@@ -1,33 +1,27 @@
 PODS:
   - Alamofire (4.0.0)
   - Bugly (2.4.0)
-  - BXProgressHUD (1.8.0):
-    - PinAuto
-  - EVReflection (2.46.0)
+  - JASON (3.0)
   - Kingfisher (3.1.0)
-  - PinAuto (1.7)
+  - RappleProgressHUD (2.0.4)
   - SnapKit (3.0.1)
-  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - Alamofire
-  - Bugly
-  - BXProgressHUD
-  - EVReflection
-  - Kingfisher
-  - SnapKit
-  - SwiftyJSON
+  - Alamofire (= 4.0.0)
+  - Bugly (= 2.4.0)
+  - JASON (= 3.0)
+  - Kingfisher (= 3.1.0)
+  - RappleProgressHUD (= 2.0.4)
+  - SnapKit (= 3.0.1)
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   Bugly: 3b56d8365c5687f74fd6fbb50c5b7ede3cdac96c
-  BXProgressHUD: 4d0e29b7bd05c546ce803755c213addbb7423fdc
-  EVReflection: 17b377f0dd86a0f6ceccab574d0e22962a2f107e
+  JASON: cf4d762e61428a20db8eaef2acb6a569a10c1801
   Kingfisher: 7779f22e977393e9533a89a9685beb8f679d3767
-  PinAuto: 648a843c526307c079c568667cd782b2aed1ee07
+  RappleProgressHUD: f0591a3b4803d5392c169ca7cfae8048ba7119a4
   SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: d58d84f4d7a3a315d1e316df7271c267ffc1f0a9
+PODFILE CHECKSUM: 2cbce90d00e4557eb7ca11378743ac96b749101f
 
 COCOAPODS: 1.0.1

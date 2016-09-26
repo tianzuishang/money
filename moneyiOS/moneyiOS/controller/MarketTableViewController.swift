@@ -28,12 +28,12 @@ class MarketTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.tableView.registerClass(MarketTableViewCell.self, forCellReuseIdentifier: "marketcell");
+        self.tableView.register(MarketTableViewCell.self, forCellReuseIdentifier: "marketcell");
 
         
         self.refreshControl = UIRefreshControl();
-        self.refreshControl?.addTarget(self, action: "pullDownAction", forControlEvents: UIControlEvents.ValueChanged)
-        self.refreshControl!.tintColor = UIColor.grayColor();
+        self.refreshControl?.addTarget(self, action: #selector(MarketTableViewController.pullDownAction), for: UIControlEvents.valueChanged)
+        self.refreshControl!.tintColor = UIColor.gray;
         
         //self.tableView.separatorColor = UIColor.clearColor()
         
@@ -44,7 +44,7 @@ class MarketTableViewController: UITableViewController {
 
     func pullDownAction() {
         if(pullDownCall != nil){
-                pullDownCall!(callback: {(error: NSError? ,responseData: NSDictionary?) in
+                pullDownCall!({(error: NSError? ,responseData: NSDictionary?) in
                 
                 self.refreshControl?.endRefreshing()
                 
@@ -70,11 +70,13 @@ class MarketTableViewController: UITableViewController {
                             var rowArray = [MarketModel]()
                             for model in item as! NSArray {
                                 let marketmodel = MarketModel()
-                                marketmodel.prdcTitle = model["prdcTitle"] as! String
-                                marketmodel.price = model["price"] as? CGFloat
-                                marketmodel.bp = model["bp"] as? CGFloat
-                                marketmodel.prdcImageUrl = model["prdcImageUrl"] as? String
-                                marketmodel.compareTitle = model["compareTitle"] as? String
+                                
+                                let modelDic = model as! NSDictionary
+                                marketmodel.prdcTitle = modelDic["prdcTitle"] as! String
+                                marketmodel.price = modelDic["price"] as? CGFloat
+                                marketmodel.bp = modelDic["bp"] as? CGFloat
+                                marketmodel.prdcImageUrl = modelDic["prdcImageUrl"] as? String
+                                marketmodel.compareTitle = modelDic["compareTitle"] as? String
                                 rowArray.append(marketmodel)
                             }
                             self.marketModels?.append(rowArray)
@@ -97,12 +99,12 @@ class MarketTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionView = UIView(frame: CGRectMake(0, 0, ScreenWidth, 3*minSpace))
-        sectionView.backgroundColor = UIColor.whiteColor()
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 3*minSpace))
+        sectionView.backgroundColor = UIColor.white
         let sectionLabel = UILabel()
         sectionLabel.text = sectionTitles![section]
-        sectionLabel.textColor = UIColor.grayColor()
+        sectionLabel.textColor = UIColor.gray
         sectionLabel.font = UIFont(name: fontName, size: minFont)
         sectionLabel.sizeToFit()
         sectionView.addSubview(sectionLabel)
@@ -114,7 +116,7 @@ class MarketTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles![section]
     }
     
@@ -125,34 +127,34 @@ class MarketTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return (marketModels?.count)!
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return marketModels![section].count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("marketcell", forIndexPath: indexPath) as! MarketTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "marketcell", for: indexPath) as! MarketTableViewCell
 
         // Configure the cell...
         
         
         
-        cell.configureCell(marketModels![indexPath.section][indexPath.row])
+        cell.configureCell(marketModels![(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row])
         
         return cell
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if(indexPath.section<marketModels!.count && indexPath.row<marketModels![indexPath.section].count){
-            return MarketTableViewCell.cellHeight(marketModels![indexPath.section][indexPath.row])
+        if((indexPath as NSIndexPath).section<marketModels!.count && (indexPath as NSIndexPath).row<marketModels![(indexPath as NSIndexPath).section].count){
+            return MarketTableViewCell.cellHeight(marketModels![(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row])
 
         }else{
             return 0

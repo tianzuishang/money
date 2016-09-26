@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import BXProgressHUD
+//import BXProgressHUD
 
 class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -39,26 +39,26 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.text = "银河间"
         label.textColor = themeColor
         label.font = UIFont(name: fontName, size: bigbigbigFont)
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         self.view.addSubview(label)
         
         
         tableview.delegate = self
         tableview.dataSource = self
-        tableview.scrollEnabled = false
+        tableview.isScrollEnabled = false
        
         self.view.addSubview(tableview)
         
-        tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
+        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
         tableview.separatorInset = UIEdgeInsetsMake(0,3*minSpace, 0, 3*minSpace);
         tableview.separatorColor = grayFont
         
         
-        loginButton.setTitle("登录", forState: UIControlState.Normal)
+        loginButton.setTitle("登录", for: UIControlState())
         loginButton.titleLabel?.font = UIFont(name: fontName, size: minMiddleFont)
-        loginButton.addTarget(self, action: Selector("loginClick"), forControlEvents: UIControlEvents.TouchUpInside)
+        loginButton.addTarget(self, action: #selector(SignInViewController.loginClick), for: UIControlEvents.touchUpInside)
         loginButton.backgroundColor = themeColor
-        loginButton.tintColor = UIColor.whiteColor()
+        loginButton.tintColor = UIColor.white
         loginButton.layer.cornerRadius = 5.0
         loginButton.layer.masksToBounds = true
         loginButton.showsTouchWhenHighlighted = true
@@ -79,7 +79,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
             make.centerX.equalTo(self.view.snp_centerX)
         }
         
-        nameTextField.textAlignment = NSTextAlignment.Left;
+        nameTextField.textAlignment = NSTextAlignment.left;
         nameTextField.font = UIFont(name:fontName, size: normalFont)
         nameTextField.attributedPlaceholder = NSAttributedString(string: "本币账户", attributes: [NSForegroundColorAttributeName: grayFont])
         nameTextField.delegate = self
@@ -87,25 +87,25 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        passwordTextField.textAlignment = NSTextAlignment.Left;
+        passwordTextField.textAlignment = NSTextAlignment.left;
         passwordTextField.font = UIFont(name:fontName, size: normalFont)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSForegroundColorAttributeName: grayFont])
 
-        passwordTextField.secureTextEntry = true
+        passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
         
         
         
         
-        nameTextField.addTarget(self, action: Selector("textChangeAction:"), forControlEvents: UIControlEvents.EditingChanged)
+        nameTextField.addTarget(self, action: #selector(SignInViewController.textChangeAction(_:)), for: UIControlEvents.editingChanged)
         
-        passwordTextField.addTarget(self, action: Selector("textChangeAction:"), forControlEvents: UIControlEvents.EditingChanged)
+        passwordTextField.addTarget(self, action: #selector(SignInViewController.textChangeAction(_:)), for: UIControlEvents.editingChanged)
         
         
         self.forbiddenLoginButton()
         
         //添加点击事件
-        let tapGesture = UITapGestureRecognizer.init(target: self, action: Selector("clickView"))
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(SignInViewController.clickView))
         
         self.view.addGestureRecognizer(tapGesture)
         
@@ -113,7 +113,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         otherlabel.text = "其他方式登录"
         otherlabel.font = UIFont(name: fontName, size: minFont)
         otherlabel.textColor = grayFont
-        otherlabel.textAlignment = NSTextAlignment.Center
+        otherlabel.textAlignment = NSTextAlignment.center
         otherlabel.sizeToFit()
         
         
@@ -129,9 +129,9 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        wechatButton.setBackgroundImage(UIImage(named: "wechat.png"), forState: UIControlState.Normal)
-        weiboButton.setBackgroundImage(UIImage(named: "weibo.png"), forState: UIControlState.Normal)
-        qqButton.setBackgroundImage(UIImage(named: "qq.png"), forState: UIControlState.Normal)
+        wechatButton.setBackgroundImage(UIImage(named: "wechat.png"), for: UIControlState())
+        weiboButton.setBackgroundImage(UIImage(named: "weibo.png"), for: UIControlState())
+        qqButton.setBackgroundImage(UIImage(named: "qq.png"), for: UIControlState())
         
         
         self.view.addSubview(wechatButton)
@@ -140,13 +140,13 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         //增加下滑手势
-        let recognizer = UISwipeGestureRecognizer(target: self, action: Selector("clickView"))
-        recognizer.direction = UISwipeGestureRecognizerDirection.Down
+        let recognizer = UISwipeGestureRecognizer(target: self, action: #selector(SignInViewController.clickView))
+        recognizer.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(recognizer)
     }
 
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         
         tableview.snp_makeConstraints { (make) -> Void in
@@ -167,14 +167,14 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardDidShow:"), name: UIKeyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardDidHide:"), name: UIKeyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardDidHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         
         
         
@@ -241,17 +241,17 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func enableLoginButton() {
-        loginButton.enabled = true
+        loginButton.isEnabled = true
         loginButton.backgroundColor = themeColor
     }
     
     func forbiddenLoginButton() {
-        loginButton.enabled = false
+        loginButton.isEnabled = false
         loginButton.backgroundColor = whiteThemeColor
     }
     
     
-    func textChangeAction(sender: AnyObject) {
+    func textChangeAction(_ sender: AnyObject) {
         print("textChangeAction")
         
         
@@ -294,17 +294,17 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrollViewDidScroll")
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
@@ -314,15 +314,15 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         nameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
-        let bxp = BXProgressHUD.showHUDAddedTo(self.view)
+        //let bxp = BXProgressHUD.showHUDAddedTo(self.view)
         
-        self.login(nameTextField.text, password: passwordTextField.text, hud: bxp)
+        self.login(nameTextField.text, password: passwordTextField.text)
         
         
         
     }
     
-    func login(name:String?, password:String?, hud: BXProgressHUD?) {
+    func login(_ name:String?, password:String?) {
         print("login")
         
         if(name == "" || password == "" || name == nil || password == nil){
@@ -332,43 +332,46 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        let mySettingData = NSUserDefaults.standardUserDefaults()
-        mySettingData.removeObjectForKey("userID")
-        mySettingData.removeObjectForKey("userPassword")
+        let mySettingData = UserDefaults.standard
+        mySettingData.removeObject(forKey: "userID")
+        mySettingData.removeObject(forKey: "userPassword")
         mySettingData.synchronize()
         
-        let parameters = [
-            "userID": name!,
-            "userPassword": password!
+        let parameters:[String: AnyObject] = [
+            "userID": name! as AnyObject,
+            "userPassword": password! as AnyObject
         ]
         
         NewsAPI.login({ (error, responseData) -> Void in
             
-            if(hud != nil){
-                hud!.hide()
-            }
-            
+//            if(hud != nil){
+//                hud!.hide()
+//            }
+//            
             if(error != nil){
                 
-                self.view.hidden = false
-                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.Text).show().hide(afterDelay: 2)
+                self.view.isHidden = false
+//                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.text).show().hide(afterDelay: 2)
             }else{
                 
                 Tool.showErrorMsgBox(responseData!["code"] as? Int)
                 
                 if(responseData!["code"] as! Int != LOGIN_SUCCESS){
-                    self.view.hidden = false
+                    self.view.isHidden = false
                 }else{
                     print("登录成功")
                     
-                    if(responseData!["data"]?.count != 1){
+                    if((responseData!["data"] as AnyObject).count != 1){
                         print("返回条数有误")
                         return
                     }
                     
-                    let userInfoDic = responseData!["data"]![0] as! NSDictionary
                     
-                    let app = UIApplication.sharedApplication().delegate as! AppDelegate;
+                    let dataArray = responseData!["data"] as! NSArray
+                    
+                    let userInfoDic = dataArray[0] as! NSDictionary
+                    
+                    let app = UIApplication.shared.delegate as! AppDelegate;
                     app.myUserInfo = UserModel()
                     
                     app.myUserInfo?.userSrno = (userInfoDic["UDT_USER_SRNO"] as? Int)!
@@ -381,10 +384,10 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     app.myUserInfo?.faceImageName = userInfoDic["UDT_USER_FACE"] as? String
                     
                     
-                    let mySettingData = NSUserDefaults.standardUserDefaults()
+                    let mySettingData = UserDefaults.standard
                     
-                    mySettingData.setObject(parameters["userID"]!, forKey: "userID")
-                    mySettingData.setObject(parameters["userPassword"]!, forKey: "userPassword")
+                    mySettingData.set(parameters["userID"]!, forKey: "userID")
+                    mySettingData.set(parameters["userPassword"]!, forKey: "userPassword")
                     mySettingData.synchronize()
                     
                     
@@ -401,8 +404,8 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     let tab = app.tabInit()
                     
-                    UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-                    self.presentViewController(tab, animated: true, completion: nil)
+                    UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+                    self.present(tab, animated: true, completion: nil)
                     
                     //更新device token
                     //                    [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -427,16 +430,16 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 6*minSpace
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         
         
-        if(indexPath.row == 0){
+        if((indexPath as NSIndexPath).row == 0){
             cell.addSubview(nameTextField)
             nameTextField.snp_makeConstraints { (make) -> Void in
                 make.left.equalTo(cell.snp_left).offset(3*minSpace)
@@ -449,7 +452,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         }
         
-        if(indexPath.row == 1){
+        if((indexPath as NSIndexPath).row == 1){
             cell.addSubview(passwordTextField)
             passwordTextField.snp_makeConstraints { (make) -> Void in
                 make.left.equalTo(cell.snp_left).offset(3*minSpace)
@@ -461,7 +464,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         // Configure the cell...
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
 
@@ -471,11 +474,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 
     
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(_ notification: Notification) {
         print("keyboardWillHide")
-        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
-        let curve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! UInt
-        UIView.animateWithDuration(duration, delay: 0.1, options: UIViewAnimationOptions(rawValue: curve), animations: { () -> Void in
+        let duration = (notification as NSNotification).userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        let curve = (notification as NSNotification).userInfo![UIKeyboardAnimationCurveUserInfoKey] as! UInt
+        UIView.animate(withDuration: duration, delay: 0.1, options: UIViewAnimationOptions(rawValue: curve), animations: { () -> Void in
             if(self.view.frame.origin.y != 0){
                 self.view.frame.origin.y = 0
             }
@@ -484,23 +487,23 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
-    func keyboardDidHide(notification: NSNotification) {
+    func keyboardDidHide(_ notification: Notification) {
         
     }
     
-    func keyboardDidShow(notification: NSNotification) {
+    func keyboardDidShow(_ notification: Notification) {
         
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         print("keyboardWillShow")
         
         
-        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
-        let curve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! UInt
+        let duration = (notification as NSNotification).userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        let curve = (notification as NSNotification).userInfo![UIKeyboardAnimationCurveUserInfoKey] as! UInt
         
         
-        UIView.animateWithDuration(duration, delay: 0.1, options: UIViewAnimationOptions(rawValue: curve), animations: { () -> Void in
+        UIView.animate(withDuration: duration, delay: 0.1, options: UIViewAnimationOptions(rawValue: curve), animations: { () -> Void in
             if(self.view.frame.origin.y == 0){
                 self.view.frame.origin.y = -8*minSpace
             }
@@ -512,8 +515,8 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    override func viewDidDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
     

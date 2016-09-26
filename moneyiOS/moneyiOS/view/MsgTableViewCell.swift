@@ -31,7 +31,7 @@ class MsgTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         faceView.image = UIImage(named: "face.jpg");
-        faceView.contentMode = UIViewContentMode.ScaleAspectFill;
+        faceView.contentMode = UIViewContentMode.scaleAspectFill;
         faceView.clipsToBounds = true
         faceView.layer.cornerRadius = 6.0
         
@@ -39,8 +39,8 @@ class MsgTableViewCell: UITableViewCell {
         name.font = UIFont(name: fontName, size: minFont)
         msg.font = UIFont(name: fontName, size: minFont)
         dateTime.font = UIFont(name: fontName, size: minminFont)
-        msg.textColor = UIColor.grayColor()
-        dateTime.textColor = UIColor.grayColor()
+        msg.textColor = UIColor.gray
+        dateTime.textColor = UIColor.gray
         
         
         self.addSubview(faceView)
@@ -54,7 +54,7 @@ class MsgTableViewCell: UITableViewCell {
     }
     
     
-    func configureCell(model: MsgModel) {
+    func configureCell(_ model: MsgModel) {
         mymodel = model
         
         name.text = mymodel.userModel.userName
@@ -117,7 +117,7 @@ class MsgTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
