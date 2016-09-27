@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import JASON
 //import BXProgressHUD
 
 class UserDetailTableViewController: UITableViewController {

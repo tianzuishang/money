@@ -127,7 +127,7 @@ class NewsAPI: NSObject {
     
     static func login(_ callback: @escaping responseCall, parameters: [String: AnyObject]?){
         
-        NewsAPI.httpRequestForGet(url: serverDomain + "news/login", parameters: parameters, callback: callback)
+        NewsAPI.httpRequestForPost(url: serverDomain + "news/login", parameters: parameters, callback: callback)
     }
     
     

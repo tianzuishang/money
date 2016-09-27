@@ -323,8 +323,8 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func login(_ name:String?, password:String?) {
-        print("login")
         
+        print("login")
         if(name == "" || password == "" || name == nil || password == nil){
             
             return
@@ -342,32 +342,47 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
             "userPassword": password! as AnyObject
         ]
         
+        
+        if(self.view.isHidden == false){
+            Tool.showLoading(msg: "正在登陆")
+        }
+        
         NewsAPI.login({ (error, responseData) -> Void in
             
 //            if(hud != nil){
 //                hud!.hide()
 //            }
 //            
+            
+            Tool.stoploading()
+            
             if(error != nil){
                 
                 self.view.isHidden = false
 //                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.text).show().hide(afterDelay: 2)
+                
+                Tool.showMsgBox("\(error?.code):"+(error?.domain)!)
+                
+                
             }else{
                 
-                Tool.showErrorMsgBox(responseData!["code"] as? Int)
                 
                 if(responseData!["code"] as! Int != LOGIN_SUCCESS){
                     self.view.isHidden = false
+                    Tool.showErrorMsgBox(responseData!["code"] as? Int)
+                    
                 }else{
                     print("登录成功")
                     
-                    if((responseData!["data"] as AnyObject).count != 1){
+                    
+                    
+                    let dataArray = responseData!["data"] as! NSArray
+                    
+                    if(dataArray.count != 1){
                         print("返回条数有误")
                         return
                     }
                     
-                    
-                    let dataArray = responseData!["data"] as! NSArray
                     
                     let userInfoDic = dataArray[0] as! NSDictionary
                     
@@ -424,6 +439,8 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
 //        let hud = BXHUD.showProgress("Loading")
 //        hud.hide(afterDelay: 3)
+        
+        
         
         
         

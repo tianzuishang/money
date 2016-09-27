@@ -9,6 +9,7 @@
 import UIKit
 //import BXProgressHUD
 
+import RappleProgressHUD
 
 class Tool: NSObject {
     
@@ -97,9 +98,39 @@ class Tool: NSObject {
     }
     
     
+    static func stopAnimation(){
+        RappleActivityIndicatorView.stopAnimating()
+    }
+    
+    
+    static func showLoading(msg: String) {
+        RappleActivityIndicatorView.startAnimatingWithLabel(msg, attributes: RappleAppleAttributes)
+    }
+    
+    static func stoploading() {
+        Tool.stopAnimation()
+    }
+    
+    
     static func showMsgBox(_ msg: String){
-        let viewCtrl = Tool.appRootViewController()
 //        BXProgressHUD.Builder(forView: viewCtrl.view).text(msg).mode(.text).show().hide(afterDelay: 2)
+        
+        
+        //RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleModernAttributes)
+        //RappleActivityIndicatorView.stopAnimating(showCompletion: true, completionLabel: msg, completionTimeout: 3.0)
+        
+        
+        //Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(Tool.stopAnimation), userInfo: nil, repeats: false)
+        
+        let alert = UIAlertController(title: "", message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.default, handler: nil)
+        alert.addAction(okAction)
+        
+        let viewctrl = Tool.appRootViewController()
+        
+        viewctrl.present(alert, animated: true, completion: nil)
+        
+        //Tool.appRootViewController().present(alert, animated: true, completion: nil)
     }
     
     static func showErrorMsgBox(_ errorCode: Int?) {

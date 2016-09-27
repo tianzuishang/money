@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import JASON
+import SwiftyJSON
 
 class ConfigAccess: NSObject {
     static func readConfig() ->JSON {
@@ -16,9 +16,11 @@ class ConfigAccess: NSObject {
         
         
         
-        let data = NSData(contentsOfFile: configStrPath!)
+        var data = NSData(contentsOfFile: configStrPath!)
         
-        let parsejson = JSON(data)
+        //data = data?.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        
+        let parsejson = JSON(data:data as! Data)
         
         return parsejson
     }
