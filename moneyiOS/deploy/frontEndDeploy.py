@@ -26,11 +26,13 @@ if(returnValue != 0):
     print "rm " + ipaPath + " failed:" + str(returnValue)
     exit(-1)
 
+#clean
 returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName + " clean")
 if(returnValue != 0):
     print "clean failed:" + str(returnValue)
     exit(-1)
 
+#build
 returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName)
 if(returnValue != 0):
     print "xcodebuild failed:" + str(returnValue)

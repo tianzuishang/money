@@ -110,6 +110,7 @@
 		B24706551D50DACD00FBF7EB /* watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064D1D50DACD00FBF7EB /* watch@2x.png */; };
 		B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064E1D50DACD00FBF7EB /* watch@3x.png */; };
 		B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */; };
+		B24CB5D31D9BA6920058A009 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */; };
 		B296BA9A1D50E163004DE860 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BA991D50E163004DE860 /* NewsTableViewController.swift */; };
 		B296BAA01D50E511004DE860 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */; };
 		B296BAA21D50E54A004DE860 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BAA11D50E54A004DE860 /* NewsModel.swift */; };
@@ -220,6 +221,7 @@
 		B247064D1D50DACD00FBF7EB /* watch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch@2x.png"; sourceTree = "<group>"; };
 		B247064E1D50DACD00FBF7EB /* watch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch@3x.png"; sourceTree = "<group>"; };
 		B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCtrl.swift; sourceTree = "<group>"; };
+		B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_moneyiOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/moneyiOS-fqpazxdxfvcthkchuotjrhxlandb/Build/Products/Debug-iphonesimulator/Pods_moneyiOS.framework"; sourceTree = "<group>"; };
 		B296BA991D50E163004DE860 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		B296BAA11D50E54A004DE860 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B24CB5D31D9BA6920058A009 /* Pods_moneyiOS.framework in Frameworks */,
 				B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */,
 				B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */,
 				B29EBA961D9218F100818503 /* libz.tbd in Frameworks */,
@@ -328,6 +331,7 @@
 		1B0EBD6149D348C16A86C570 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */,
 				B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */,
 				B208E7FC1D9267DC005B4A7E /* Security.framework */,
 				B29EBA971D9218FB00818503 /* SystemConfiguration.framework */,
