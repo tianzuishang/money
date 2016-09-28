@@ -141,7 +141,7 @@ class NewsTableViewController: UITableViewController {
             imageview.clipsToBounds = true
             
 //            let uiview = UIView()
-//            uiview.snp_makeConstraints(closure: { (make) -> Void in
+//            uiview.snp.makeConstraints(closure: { (make) -> Void in
 //                <#code#>
 //            })
 //            
@@ -151,11 +151,11 @@ class NewsTableViewController: UITableViewController {
             
             let titlelabel = UILabel()
             imageview.addSubview(titlelabel)
-            titlelabel.snp_makeConstraints({ (make) -> Void in
+            titlelabel.snp.makeConstraints({ (make) -> Void in
                 make.width.equalTo(imageview.frame.width - 4*minSpace)
                 make.height.equalTo(imageview.frame.width*0.1)
-                make.left.equalTo(imageview.snp_left).offset(2*minSpace)
-                make.bottom.equalTo(imageview.snp_bottom).offset(-2*minSpace)
+                make.left.equalTo(imageview.snp.left).offset(2*minSpace)
+                make.bottom.equalTo(imageview.snp.bottom).offset(-2*minSpace)
             })
             
             //titlelabel.backgroundColor = UIColor.grayColor()
@@ -176,11 +176,11 @@ class NewsTableViewController: UITableViewController {
             self.pageControl?.isHidden = true
         }
         self.tableView.tableHeaderView?.addSubview(self.pageControl!)
-        self.pageControl!.snp_makeConstraints { (make) -> Void in
-            make.width.equalTo((self.tableView.tableHeaderView?.snp_width)!)
+        self.pageControl!.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo((self.tableView.tableHeaderView?.snp.width)!)
             make.height.equalTo(minSpace)
-            make.centerX.equalTo((self.tableView.tableHeaderView?.snp_centerX)!)
-            make.bottom.equalTo((self.tableView.tableHeaderView?.snp_bottom)!).offset(-minSpace)
+            make.centerX.equalTo((self.tableView.tableHeaderView?.snp.centerX)!)
+            make.bottom.equalTo((self.tableView.tableHeaderView?.snp.bottom)!).offset(-minSpace)
         }
         
         self.headlineScrollView!.isPagingEnabled = true

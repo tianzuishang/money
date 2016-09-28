@@ -74,11 +74,11 @@ class UserDetailTableViewController: UITableViewController {
         let backView = UIVisualEffectView(effect: blurEffect)
         view.addSubview(backView)
         
-        backView.snp_makeConstraints { (make) -> Void in
+        backView.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(view.snp_left)
-            make.top.equalTo(view.snp_top)
-            make.right.equalTo(view.snp_right)
+            make.left.equalTo(view.snp.left)
+            make.top.equalTo(view.snp.top)
+            make.right.equalTo(view.snp.right)
             make.height.equalTo(UserDetailTableViewController.headViewHeight/2)
         }
         
@@ -102,10 +102,10 @@ class UserDetailTableViewController: UITableViewController {
         
         view.addSubview(faceView)
         
-        faceView.snp_makeConstraints { (make) -> Void in
+        faceView.snp.makeConstraints { (make) -> Void in
             make.size.width.equalTo(UserDetailTableViewController.faceWidth)
-            make.centerX.equalTo(view.snp_centerX)
-            make.bottom.equalTo(backView.snp_bottom).offset(UserDetailTableViewController.faceWidth/2)
+            make.centerX.equalTo(view.snp.centerX)
+            make.bottom.equalTo(backView.snp.bottom).offset(UserDetailTableViewController.faceWidth/2)
         }
         
         Tool.setFaceViewImage(faceView, faceViewWidth: UserDetailTableViewController.faceWidth, imageUrl: ConfigAccess.serverDomain()+(usermodel?.faceImageName)!)
@@ -118,10 +118,10 @@ class UserDetailTableViewController: UITableViewController {
         
         view.addSubview(nameLabel)
         
-        nameLabel.snp_makeConstraints { (make) -> Void in
+        nameLabel.snp.makeConstraints { (make) -> Void in
             
-            make.top.equalTo(faceView.snp_bottom).offset(minSpace)
-            make.centerX.equalTo(faceView.snp_centerX)
+            make.top.equalTo(faceView.snp.bottom).offset(minSpace)
+            make.centerX.equalTo(faceView.snp.centerX)
             
         }
         
@@ -131,10 +131,10 @@ class UserDetailTableViewController: UITableViewController {
         
         view.addSubview(entyLabel)
         
-        entyLabel.snp_makeConstraints { (make) -> Void in
+        entyLabel.snp.makeConstraints { (make) -> Void in
             
-            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace)
-            make.centerX.equalTo(nameLabel.snp_centerX)
+            make.top.equalTo(nameLabel.snp.bottom).offset(minSpace)
+            make.centerX.equalTo(nameLabel.snp.centerX)
         }
         
         let signLabel = UILabel()
@@ -143,10 +143,10 @@ class UserDetailTableViewController: UITableViewController {
         
         view.addSubview(signLabel)
         
-        signLabel.snp_makeConstraints { (make) -> Void in
+        signLabel.snp.makeConstraints { (make) -> Void in
             
-            make.top.equalTo(entyLabel.snp_bottom).offset(minSpace)
-            make.centerX.equalTo(nameLabel.snp_centerX)
+            make.top.equalTo(entyLabel.snp.bottom).offset(minSpace)
+            make.centerX.equalTo(nameLabel.snp.centerX)
             
         }
         
@@ -232,8 +232,9 @@ class UserDetailTableViewController: UITableViewController {
         msgTableViewCtrl.userlist.insert(usermodel!, at: 0)
         msgTableViewCtrl.tableView.reloadData()
         
-        self.navigationController?.popToRootViewController(animated: true);
+        //self.navigationController?.popToRootViewController(animated: true);
         
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func initAddButton(){
@@ -252,11 +253,11 @@ class UserDetailTableViewController: UITableViewController {
         addButton.addTarget(self, action: #selector(UserDetailTableViewController.addButtonAction(_:)), for: UIControlEvents.touchUpInside)
         self.tableView.tableFooterView?.addSubview(addButton)
         
-//        addButton.snp_makeConstraints { (make) -> Void in
+//        addButton.snp.makeConstraints { (make) -> Void in
 //            make.width.equalTo(ScreenWidth - 4*minSpace)
 //            make.height.equalTo(44)
-//            make.left.equalTo((self.tableView.tableFooterView?.snp_left)!).offset(2*minSpace)
-//            make.top.equalTo((self.tableView.tableFooterView?.snp_bottom)!).offset(minSpace)
+//            make.left.equalTo((self.tableView.tableFooterView?.snp.left)!).offset(2*minSpace)
+//            make.top.equalTo((self.tableView.tableFooterView?.snp.bottom)!).offset(minSpace)
 //        }
     }
     

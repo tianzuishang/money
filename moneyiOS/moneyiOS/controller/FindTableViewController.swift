@@ -48,11 +48,13 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
         self.navigationController?.navigationBar.addSubview(searchBar)
         
         
-        searchBar.snp_makeConstraints { (make) -> Void in
+        
+        
+        searchBar.snp.makeConstraints { (make) -> Void in
             
-            make.centerY.equalTo((self.navigationController?.navigationBar.snp_centerY)!)
-            make.left.equalTo((self.navigationController?.navigationBar.snp_left)!).offset(2*minSpace)
-            make.right.equalTo((self.navigationController?.navigationBar.snp_right)!).offset(-2*minSpace)
+            make.centerY.equalTo((self.navigationController?.navigationBar.snp.centerY)!)
+            make.left.equalTo((self.navigationController?.navigationBar.snp.left)!).offset(2*minSpace)
+            make.right.equalTo((self.navigationController?.navigationBar.snp.right)!).offset(-2*minSpace)
             
         }
         
@@ -169,10 +171,10 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
             label.font = UIFont(name: fontName, size: minFont)
             label.textColor = UIColor.gray
             
-            label.snp_makeConstraints({ (make) -> Void in
+            label.snp.makeConstraints({ (make) -> Void in
                 
-                make.left.equalTo(view.snp_left).offset(2*minSpace)
-                make.centerY.equalTo(view.snp_centerY)
+                make.left.equalTo(view.snp.left).offset(2*minSpace)
+                make.centerY.equalTo(view.snp.centerY)
             })
             
             return view

@@ -108,9 +108,9 @@ class MarketTableViewController: UITableViewController {
         sectionLabel.font = UIFont(name: fontName, size: minFont)
         sectionLabel.sizeToFit()
         sectionView.addSubview(sectionLabel)
-        sectionLabel.snp_updateConstraints { (make) -> Void in
-            make.centerY.equalTo(sectionView.snp_centerY)
-            make.left.equalTo(sectionView.snp_left).offset(2*minSpace)
+        sectionLabel.snp.updateConstraints { (make) -> Void in
+            make.centerY.equalTo(sectionView.snp.centerY)
+            make.left.equalTo(sectionView.snp.left).offset(2*minSpace)
         }
         return sectionView;
     }

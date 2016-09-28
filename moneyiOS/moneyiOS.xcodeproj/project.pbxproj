@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34429F610448E4ACD68FB595 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
-		5B86519AF879D56F24424170 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
 		B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FC1D9267DC005B4A7E /* Security.framework */; };
 		B208E8001D9267FA005B4A7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FC1D9267DC005B4A7E /* Security.framework */; };
 		B208E8011D926803005B4A7E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA951D9218F100818503 /* libz.tbd */; };
@@ -306,8 +304,6 @@
 				B208E8011D926803005B4A7E /* libz.tbd in Frameworks */,
 				B208E8001D9267FA005B4A7E /* Security.framework in Frameworks */,
 				F07298814B863C90E363C6C4 /* Pods_moneyiOS.framework in Frameworks */,
-				34429F610448E4ACD68FB595 /* Pods_moneyiOS.framework in Frameworks */,
-				5B86519AF879D56F24424170 /* Pods_moneyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,7 +648,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "jam wang";
 				TargetAttributes = {
 					B2D173101D3CA27C00FC128A = {
@@ -1079,6 +1075,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 071F84D32E988F20775DFDC4 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1089,8 +1086,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1124,6 +1123,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BD34F029EDA06E54B7E40DA /* Pods-moneyiOS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1134,8 +1134,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1154,6 +1156,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1162,6 +1165,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 071F84D32E988F20775DFDC4 /* Pods-moneyiOS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1181,6 +1185,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BD34F029EDA06E54B7E40DA /* Pods-moneyiOS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",

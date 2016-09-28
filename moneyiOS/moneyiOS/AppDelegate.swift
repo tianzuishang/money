@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 signinViewCtrl.login(UserDefaults.standard.object(forKey: "userID") as? String, password: UserDefaults.standard.object(forKey: "userPassword") as? String)
                 
         }else{
-            signInView()
+            self.signInView()
         }
         
         

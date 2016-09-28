@@ -60,10 +60,10 @@ class HeadLineTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        headlineLabel.snp_makeConstraints { (make) -> Void in
+        headlineLabel.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(self.snp_left).offset(2*minSpace)
-            make.centerY.equalTo(self.snp_centerY)
+            make.left.equalTo(self.snp.left).offset(2*minSpace)
+            make.centerY.equalTo(self.snp.centerY)
             
         }
     }

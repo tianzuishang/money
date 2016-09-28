@@ -167,7 +167,7 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
                     //动态信息
                     tempArray = data["followList"] as! NSArray
                     
-                    for var item in tempArray {
+                    for item in tempArray {
                         
                         let itemDic = item as! NSDictionary
                         
@@ -220,9 +220,9 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
         
         
         
-//        tableview.snp_makeConstraints { (make) -> Void in
-//            make.top.equalTo(headview.snp_bottom).offset(minSpace)
-//            make.left.equalTo(self.view.snp_left)
+//        tableview.snp.makeConstraints { (make) -> Void in
+//            make.top.equalTo(headview.snp.bottom).offset(minSpace)
+//            make.left.equalTo(self.view.snp.left)
 //        }
     }
     

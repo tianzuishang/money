@@ -75,21 +75,21 @@ class SearchPeopleTableViewCell: UITableViewCell {
         
         super.layoutSubviews()
         
-        faceImageView.snp_makeConstraints { (make) -> Void in
+        faceImageView.snp.makeConstraints { (make) -> Void in
             make.size.height.equalTo(5*minSpace);
             make.left.equalTo(2*minSpace);
             make.top.equalTo(self).offset(minSpace);
         }
         
         
-        nameLabel.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(faceImageView.snp_right).offset(minSpace)
+        nameLabel.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(faceImageView.snp.right).offset(minSpace)
             make.top.equalTo(self).offset(minSpace)
         }
         
-        entyNameLabel.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(faceImageView.snp_right).offset(minSpace)
-            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace)
+        entyNameLabel.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(faceImageView.snp.right).offset(minSpace)
+            make.top.equalTo(nameLabel.snp.bottom).offset(minSpace)
         }
     }
     

@@ -80,26 +80,26 @@ class MsgTableViewCell: UITableViewCell {
         
         super.layoutSubviews()
         
-        faceView.snp_makeConstraints{ (make) -> Void in
+        faceView.snp.makeConstraints{ (make) -> Void in
             make.size.height.equalTo(MsgTableViewCell.faceWidth)
             make.left.equalTo(self).offset(2*minSpace)
             make.top.equalTo(self).offset(minSpace)
         }
         
-        name.snp_makeConstraints{ (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(faceView.snp_top).offset(minSpace/2)
+        name.snp.makeConstraints{ (make) -> Void in
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
+            make.top.equalTo(faceView.snp.top).offset(minSpace/2)
         }
         
-        msg.snp_makeConstraints{ (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.right.equalTo(self.snp_right).offset(-2*minSpace)
-            make.top.equalTo(name.snp_bottom).offset(minSpace)
+        msg.snp.makeConstraints{ (make) -> Void in
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
+            make.right.equalTo(self.snp.right).offset(-2*minSpace)
+            make.top.equalTo(name.snp.bottom).offset(minSpace)
         }
         
-        dateTime.snp_makeConstraints{ (make) -> Void in
-            make.right.equalTo(self.snp_right).offset(-2*minSpace)
-            make.top.equalTo(name.snp_top)
+        dateTime.snp.makeConstraints{ (make) -> Void in
+            make.right.equalTo(self.snp.right).offset(-2*minSpace)
+            make.top.equalTo(name.snp.top)
         }
     }
     

@@ -16,7 +16,7 @@ class ConfigAccess: NSObject {
         
         
         
-        var data = NSData(contentsOfFile: configStrPath!)
+        let data = NSData(contentsOfFile: configStrPath!)
         
         //data = data?.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         
