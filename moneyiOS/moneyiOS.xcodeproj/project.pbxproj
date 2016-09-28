@@ -655,16 +655,22 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "jam wang";
 				TargetAttributes = {
+					B22FDC821D8FE07F005B0E86 = {
+						DevelopmentTeam = money;
+					};
 					B2D173101D3CA27C00FC128A = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = money;
 						LastSwiftMigration = 0800;
 					};
 					B2D173341D3CC92100FC128A = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = money;
 						TestTargetID = B2D173101D3CA27C00FC128A;
 					};
 					B2D173421D3CC9C000FC128A = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = money;
 						TestTargetID = B2D173101D3CA27C00FC128A;
 					};
 				};
@@ -1096,6 +1102,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = money;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1115,6 +1122,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
+				PROVISIONING_PROFILE_SPECIFIER = moneyDev;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = moneyDev;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1141,6 +1151,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = money;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1153,6 +1164,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
