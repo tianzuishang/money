@@ -4,7 +4,7 @@ import os
 workspacePath = "/Users/wangjam/Documents/develop/money/moneyiOS/moneyiOS.xcworkspace"
 schemeName = "UATmoneyiOS"
 ipaPath = "/Users/wangjam/Documents/develop/money/moneyiOS/deploy/build/UATmoneyiOS.ipa"
-
+buildPath = "/Users/wangjam/Library/Developer/Xcode/DerivedData/moneyiOS-fqpazxdxfvcthkchuotjrhxlandb/Build/Products/Debug-iphoneos/UATmoneyiOS.app"
 
 print "workspacePath:" + workspacePath
 print "schemeName:" + schemeName
@@ -36,4 +36,10 @@ if(returnValue != 0):
 returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName)
 if(returnValue != 0):
     print "xcodebuild failed:" + str(returnValue)
+    exit(-1)
+
+#xcrun
+returnValue = os.system("xcrun  -sdk iphoneos PackageApplication -v " + buildPath + " -o " + ipaPath)
+if(returnValue != 0):
+    print "xcrun failed:" + str(returnValue)
     exit(-1)
