@@ -662,7 +662,7 @@
 					B2D173101D3CA27C00FC128A = {
 						CreatedOnToolsVersion = 7.2;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B2D173341D3CC92100FC128A = {
 						CreatedOnToolsVersion = 7.2;
@@ -1134,7 +1134,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3a712010-f2e6-48d9-b131-bacd77d3ef5d";
+				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
@@ -1177,7 +1177,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "3a712010-f2e6-48d9-b131-bacd77d3ef5d";
+				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
