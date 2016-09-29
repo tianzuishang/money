@@ -657,7 +657,7 @@
 				TargetAttributes = {
 					B22FDC821D8FE07F005B0E86 = {
 						DevelopmentTeam = 7R8RS88G2M;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B2D173101D3CA27C00FC128A = {
 						CreatedOnToolsVersion = 7.2;
@@ -1058,6 +1058,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanghan.money;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
 				PROVISIONING_PROFILE_SPECIFIER = moneyDev;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1085,6 +1086,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanghan.money;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
 				PROVISIONING_PROFILE_SPECIFIER = moneyDev;
 				SWIFT_VERSION = 3.0;
 			};
