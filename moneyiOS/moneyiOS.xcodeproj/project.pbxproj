@@ -1057,7 +1057,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanghan.money;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = moneyDev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1083,7 +1083,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"UAT\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanghan.money;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = moneyDev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
