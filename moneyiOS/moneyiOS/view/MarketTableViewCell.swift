@@ -9,6 +9,26 @@
 import UIKit
 import SnapKit
 import Kingfisher
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 
 class MarketTableViewCell: UITableViewCell {
@@ -36,11 +56,11 @@ class MarketTableViewCell: UITableViewCell {
         priceLabel.font = UIFont(name: fontName, size: normalFont)
         bpLabel.font = UIFont(name: "Arial-Bold", size: normalFont)
         
-        titlePrdcLabel.textColor = UIColor.blackColor()
-        priceLabel.textColor = UIColor.blackColor()
-        bpLabel.textColor = UIColor.blackColor()
-        compareTitleLabel.textColor = UIColor.blackColor()
-        prdcImage.contentMode = UIViewContentMode.ScaleAspectFill
+        titlePrdcLabel.textColor = UIColor.black
+        priceLabel.textColor = UIColor.black
+        bpLabel.textColor = UIColor.black
+        compareTitleLabel.textColor = UIColor.black
+        prdcImage.contentMode = UIViewContentMode.scaleAspectFill
         prdcImage.clipsToBounds = true
         
 
@@ -57,7 +77,7 @@ class MarketTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(marketModel: MarketModel) {
+    func configureCell(_ marketModel: MarketModel) {
         myMarketModel = marketModel
         
         titlePrdcLabel.text = myMarketModel.prdcTitle
@@ -77,12 +97,13 @@ class MarketTableViewCell: UITableViewCell {
         compareTitleLabel.sizeToFit()
         
         if(myMarketModel.prdcImageUrl != nil){
-            prdcImage.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+myMarketModel.prdcImageUrl!)!)
+            
+            Tool.setViewImage(imageView: prdcImage, imageUrl: ConfigAccess.serverDomain()+myMarketModel.prdcImageUrl!)
         }
         
     }
     
-    static func cellHeight(marketModel: MarketModel) ->CGFloat {
+    static func cellHeight(_ marketModel: MarketModel) ->CGFloat {
         return 44
     }
     
@@ -91,7 +112,7 @@ class MarketTableViewCell: UITableViewCell {
         
         if(myMarketModel.prdcImageUrl != nil){
             
-            prdcImage.snp_remakeConstraints(closure: { (make) -> Void in
+            prdcImage.snp_remakeConstraints({ (make) -> Void in
                 make.width.equalTo(14)
                 make.height.equalTo(10)
                 make.left.equalTo(self.snp_left).offset(2*minSpace)
@@ -105,7 +126,7 @@ class MarketTableViewCell: UITableViewCell {
             
         }else{
             
-            prdcImage.snp_remakeConstraints(closure: { (make) -> Void in
+            prdcImage.snp_remakeConstraints({ (make) -> Void in
                 make.width.equalTo(0)
                 make.height.equalTo(0)
 //                make.left.equalTo(0)
@@ -131,7 +152,7 @@ class MarketTableViewCell: UITableViewCell {
         
         
         if(myMarketModel.compareTitle != nil){
-            compareTitleLabel.snp_updateConstraints(closure: { (make) -> Void in
+            compareTitleLabel.snp_updateConstraints({ (make) -> Void in
                 make.right.equalTo(self.snp_right).offset(-2*minSpace)
                 make.centerY.equalTo(self.snp_centerY)
             })
@@ -144,7 +165,7 @@ class MarketTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

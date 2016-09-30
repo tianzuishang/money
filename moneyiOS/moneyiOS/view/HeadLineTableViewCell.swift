@@ -24,7 +24,7 @@ class HeadLineTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         
-        headlineLabel.textColor = UIColor.grayColor()
+        headlineLabel.textColor = UIColor.gray
         headlineLabel.font = UIFont(name: fontName, size: minFont)
         
         self.addSubview(headlineLabel)
@@ -40,13 +40,13 @@ class HeadLineTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func configureCell(labelStr: String) {
+    func configureCell(_ labelStr: String) {
         headlineLabel.text = labelStr
         headlineLabel.sizeToFit()
     }

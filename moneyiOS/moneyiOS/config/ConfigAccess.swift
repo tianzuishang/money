@@ -11,12 +11,16 @@ import SwiftyJSON
 
 class ConfigAccess: NSObject {
     static func readConfig() ->JSON {
-        let configStrPath = NSBundle.mainBundle().pathForResource("config", ofType: "geojson")
+        let configStrPath = Bundle.main.path(forResource: "config", ofType: "geojson")
         
         
-        let data = NSData.dataWithContentsOfMappedFile(configStrPath!) as! NSData
         
-        let parsejson = JSON(data: data)
+        
+        var data = NSData(contentsOfFile: configStrPath!)
+        
+        //data = data?.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        
+        let parsejson = JSON(data:data as! Data)
         
         return parsejson
     }

@@ -23,11 +23,11 @@ let minminminFont: CGFloat = 10
 let minSpace: CGFloat = 8
 
 
-let ScreenWidth = UIScreen.mainScreen().bounds.size.width
-let ScreenHeight = UIScreen.mainScreen().bounds.size.height
+let ScreenWidth = UIScreen.main.bounds.size.width
+let ScreenHeight = UIScreen.main.bounds.size.height
 
 
-let backgroundColor = UIColor.whiteColor()
+let backgroundColor = UIColor.white
 //let themeColor = UIColor(red: 29/255, green: 34/255, blue: 40/255, alpha: 1.0)
 
 

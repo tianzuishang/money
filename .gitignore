@@ -15,3 +15,9 @@ moneyiOS/moneyiOS.xcodeproj/xcuserdata/wangjam.xcuserdatad/xcschemes/xcschememan
 moneyiOS/Pods/Pods.xcodeproj/xcuserdata/wangjam.xcuserdatad/xcschemes/xcschememanagement.plist
 
 *.ipa
+
+moneyiOS/nohup.out
+
+moneyiOS/deploy/.a.txt.swp
+
+moneyiOS/deploy/a.txt

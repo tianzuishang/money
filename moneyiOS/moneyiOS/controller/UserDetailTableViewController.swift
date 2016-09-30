@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import BXProgressHUD
+//import BXProgressHUD
 
 class UserDetailTableViewController: UITableViewController {
 
@@ -46,8 +46,8 @@ class UserDetailTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
-        self.tableView.registerClass(faceCell.self, forCellReuseIdentifier: "faceCell");
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
+        self.tableView.register(faceCell.self, forCellReuseIdentifier: "faceCell");
         
         
         
@@ -56,8 +56,8 @@ class UserDetailTableViewController: UITableViewController {
         
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl!.addTarget(self, action: "pullDownAction", forControlEvents: UIControlEvents.ValueChanged)
-        self.refreshControl!.tintColor = UIColor.grayColor();
+        self.refreshControl!.addTarget(self, action: #selector(UserDetailTableViewController.pullDownAction), for: UIControlEvents.valueChanged)
+        self.refreshControl!.tintColor = UIColor.gray;
         self.pullDownAction()
         
     }
@@ -65,12 +65,12 @@ class UserDetailTableViewController: UITableViewController {
     
     func initHeadView() {
         
-        let view = UIView(frame: CGRectMake(0, 0, ScreenWidth, UserDetailTableViewController.headViewHeight))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: UserDetailTableViewController.headViewHeight))
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         //view.backgroundColor = themeColor
         
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .light)
         let backView = UIVisualEffectView(effect: blurEffect)
         view.addSubview(backView)
         
@@ -82,23 +82,23 @@ class UserDetailTableViewController: UITableViewController {
             make.height.equalTo(UserDetailTableViewController.headViewHeight/2)
         }
         
-        UIImageView().kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+(usermodel?.faceImageName)!)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
+        UIImageView().kf.setImage(with: URL(string: ConfigAccess.serverDomain()+(usermodel?.faceImageName)!)!, placeholder: nil, options: nil, progressBlock: nil) { (image, error, cachetype, nil) in
+            
             
             if(image == nil){
                 return
             }
             
             backView.backgroundColor = UIColor(patternImage: image!)
-            
-        })
 
+        }
         
         
         
         let faceView = UIImageView()
         faceView.clipsToBounds = true
         faceView.layer.cornerRadius = UserDetailTableViewController.faceWidth/2
-        faceView.contentMode = UIViewContentMode.ScaleAspectFill
+        faceView.contentMode = UIViewContentMode.scaleAspectFill
         
         view.addSubview(faceView)
         
@@ -156,23 +156,23 @@ class UserDetailTableViewController: UITableViewController {
         self.tableView.tableHeaderView = view
     }
     
-    func initNavTitle(title: String){
+    func initNavTitle(_ title: String){
         let navTitle = UILabel()
-        navTitle.textColor = UIColor.whiteColor()
+        navTitle.textColor = UIColor.white
         navTitle.text = title
         navTitle.sizeToFit()
-        navTitle.textAlignment = NSTextAlignment.Center
+        navTitle.textAlignment = NSTextAlignment.center
         navTitle.font = UIFont(name: fontName, size: 20)
         self.navigationItem.titleView = navTitle
 
     }
     
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.5
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 12
     }
@@ -183,13 +183,22 @@ class UserDetailTableViewController: UITableViewController {
             self.refreshControl?.endRefreshing()
             
             if(error != nil){
-                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.localizedFailureReason)!).mode(.Text).show().hide(afterDelay: 2)
+//                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.localizedFailureReason)!).mode(.text).show().hide(afterDelay: 2)
 
             }else{
                 
                 if(responseData!["code"] as! Int == SUCCESS){
                     
-                    let userDetail = UserModel(dictionary: responseData!["data"]!["userDetail"] as! NSDictionary)
+                    let data = responseData!["data"] as! NSDictionary
+                    
+                    let userDic = data["userDetail"] as! NSDictionary
+                    
+                    let userDetail = UserModel()
+                    userDetail.setModel(dic: userDic)
+                    
+                    
+                    
+                    
                     
                     self.usermodel = userDetail
                     
@@ -207,40 +216,40 @@ class UserDetailTableViewController: UITableViewController {
             
             
             
-            }, parameters: ["userSrno": (usermodel?.userSrno) as! AnyObject])
+            }, parameters: ["userSrno": (usermodel?.userSrno) as AnyObject])
     }
     
     
-    func addButtonAction(button: UIButton){
+    func addButtonAction(_ button: UIButton){
         print("addButtonAction")
         
         //self.navigationController?.popToViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
         
         
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate;
+        let app = UIApplication.shared.delegate as! AppDelegate;
         let msgTableViewCtrl = app.msgTableViewCtrl
         
-        msgTableViewCtrl.userlist.insert(usermodel!, atIndex: 0)
+        msgTableViewCtrl.userlist.insert(usermodel!, at: 0)
         msgTableViewCtrl.tableView.reloadData()
         
-        self.navigationController?.popToRootViewControllerAnimated(true);
+        self.navigationController?.popToRootViewController(animated: true);
         
     }
     
     func initAddButton(){
-        self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, ScreenWidth, 8*minSpace))
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 8*minSpace))
         
-        addButton.frame = CGRectMake(2*minSpace, 0, ScreenWidth - 4*minSpace, 44)
+        addButton.frame = CGRect(x: 2*minSpace, y: 0, width: ScreenWidth - 4*minSpace, height: 44)
         
-        addButton.setTitle("添加到通讯录", forState: UIControlState.Normal)
+        addButton.setTitle("添加到通讯录", for: UIControlState())
         addButton.layer.cornerRadius = 5.0
         addButton.layer.masksToBounds = true
         addButton.showsTouchWhenHighlighted = true
         
         
-        addButton.titleLabel?.textColor = UIColor.whiteColor()
+        addButton.titleLabel?.textColor = UIColor.white
         addButton.backgroundColor = themeColor
-        addButton.addTarget(self, action: Selector("addButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        addButton.addTarget(self, action: #selector(UserDetailTableViewController.addButtonAction(_:)), for: UIControlEvents.touchUpInside)
         self.tableView.tableFooterView?.addSubview(addButton)
         
 //        addButton.snp_makeConstraints { (make) -> Void in
@@ -262,13 +271,13 @@ class UserDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         return 4
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
 //        if(section == 0){
@@ -303,27 +312,27 @@ class UserDetailTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
 
-        if(indexPath.section == sectionMap.newFriendSection){
+        if((indexPath as NSIndexPath).section == sectionMap.newFriendSection){
             
             
-            cell.textLabel?.text = newFriendSectionTitles[indexPath.row]
+            cell.textLabel?.text = newFriendSectionTitles[(indexPath as NSIndexPath).row]
             
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             
             //cell.imageView?.image = UIImage(named: "Person_add_72px.png")
             
-            if(indexPath.row == 1){
+            if((indexPath as NSIndexPath).row == 1){
                 //关注的人
                 cell.detailTextLabel?.text = "231"
             }
             
-            if(indexPath.row == 2){
+            if((indexPath as NSIndexPath).row == 2){
                 //被关注的人
                 cell.detailTextLabel?.text = "1238"
             }
@@ -331,15 +340,15 @@ class UserDetailTableViewController: UITableViewController {
         }
         
         
-        if(indexPath.section == sectionMap.detailSection){
-            cell.textLabel?.text = detailSectionTitles[indexPath.row]
+        if((indexPath as NSIndexPath).section == sectionMap.detailSection){
+            cell.textLabel?.text = detailSectionTitles[(indexPath as NSIndexPath).row]
             
-            if(indexPath.row == 0){
+            if((indexPath as NSIndexPath).row == 0){
                 //机构
                 cell.detailTextLabel?.text = usermodel?.entyName
             }
             
-            if(indexPath.row == 1){
+            if((indexPath as NSIndexPath).row == 1){
                 //地区
                 if(usermodel?.cityDesc == nil||usermodel?.cityDesc == nil){
                     cell.detailTextLabel?.text = "未知"
@@ -351,14 +360,14 @@ class UserDetailTableViewController: UITableViewController {
 
         }
         
-        if(indexPath.section == sectionMap.contactSection){
-            cell.textLabel?.text = contactSectionTitles[indexPath.row]
+        if((indexPath as NSIndexPath).section == sectionMap.contactSection){
+            cell.textLabel?.text = contactSectionTitles[(indexPath as NSIndexPath).row]
             cell.detailTextLabel?.text = "未绑定"
             
         }
         
-        if(indexPath.section == sectionMap.quitSection){
-            cell.textLabel?.text = quitSectionTitles[indexPath.row]
+        if((indexPath as NSIndexPath).section == sectionMap.quitSection){
+            cell.textLabel?.text = quitSectionTitles[(indexPath as NSIndexPath).row]
 
         }
         
@@ -371,7 +380,7 @@ class UserDetailTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
             return 44
     }

@@ -36,17 +36,17 @@ class FindTableViewCell: UITableViewCell {
         
         nameLabel.font = UIFont(name: fontName, size: normalFont)
         subTitle.font = UIFont(name:fontName, size: minFont)
-        subTitle.textColor = UIColor.grayColor()
+        subTitle.textColor = UIColor.gray
         faceView.clipsToBounds = true
         faceView.layer.cornerRadius = FindTableViewCell.faceViewWidth/2
-        faceView.contentMode = UIViewContentMode.ScaleAspectFill
+        faceView.contentMode = UIViewContentMode.scaleAspectFill
         
         subTitle.numberOfLines = 2
         subTitle.frame.size = CGSize(width: 0, height: 3*minSpace)
         
         
         followIcon.image = UIImage(named: "Person_add_72px.png")
-        followIcon.contentMode = UIViewContentMode.ScaleAspectFill
+        followIcon.contentMode = UIViewContentMode.scaleAspectFill
         
         followLabel.font = UIFont(name: fontName, size: minFont)
         followLabel.textColor = themeColor
@@ -104,7 +104,7 @@ class FindTableViewCell: UITableViewCell {
         return FindTableViewCell.faceViewWidth + 2*minSpace
     }
     
-    func configureCell(model: UserModel){
+    func configureCell(_ model: UserModel){
         
         mymodel = model
         
@@ -130,7 +130,7 @@ class FindTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

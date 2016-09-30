@@ -33,7 +33,7 @@ class LiveView: UIView {
     override init(frame: CGRect) {
         
         liveTitleLabel.font = UIFont(name: fontName, size: normalFont)
-        liveTitleLabel.textColor = UIColor.blackColor()
+        liveTitleLabel.textColor = UIColor.black
         liveTitleLabel.numberOfLines = 2
         liveTitleLabel.frame.size = CGSize(width: 0, height: 3*minSpace)
         
@@ -41,11 +41,11 @@ class LiveView: UIView {
         //liveTitleLabel.frame = CGRectMake(0, 0, 120, 40)
         
         nameLabel.font = UIFont(name: fontName, size: minFont)
-        nameLabel.textColor = UIColor.grayColor()
+        nameLabel.textColor = UIColor.gray
         
         
         faceView.layer.cornerRadius = faceViewWidth/2
-        faceView.contentMode = UIViewContentMode.ScaleAspectFill;
+        faceView.contentMode = UIViewContentMode.scaleAspectFill;
         faceView.clipsToBounds = true
         
         super.init(frame: frame)
@@ -55,7 +55,7 @@ class LiveView: UIView {
         self.addSubview(nameLabel)
         
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.cornerRadius = 6.0
         
         
@@ -87,7 +87,7 @@ class LiveView: UIView {
     }
     
     
-    func configureView(livemodel: LiveModel){
+    func configureView(_ livemodel: LiveModel){
         
         nameLabel.text = livemodel.userModel.userName
         liveTitleLabel.text = livemodel.liveTitle
@@ -98,22 +98,9 @@ class LiveView: UIView {
                 faceView.image = UIImage(named: "man-noname.png")
         }else{
             
-            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
-                
-//                if(image?.size.height>image?.size.width){
-//                    
-//                    let height = 2*6*minSpace
-//                    let width = 2*6*minSpace*(image?.size.width)!/(image?.size.height)!
-//                    
-//                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
-//                    
-//                }else{
-//                    let width = 2*6*minSpace
-//                    let height = 2*6*minSpace*(image?.size.height)!/(image?.size.width)!
-//                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
-//                }
-                
-            })
+            
+            Tool.setViewImage(imageView: faceView, imageUrl: ConfigAccess.serverDomain()+livemodel.userModel.faceImageName!)
+            
         }
 
     }

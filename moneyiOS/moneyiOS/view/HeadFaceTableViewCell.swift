@@ -24,7 +24,7 @@ class HeadFaceTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -36,27 +36,27 @@ class HeadFaceTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         
         headLabel.text = "分享我的照片或动态"
-        headLabel.textColor = UIColor.grayColor()
+        headLabel.textColor = UIColor.gray
         headLabel.font = UIFont(name: fontName, size: minFont)
         headLabel.sizeToFit()
         
         
         faceView.clipsToBounds = true
-        faceView.contentMode = UIViewContentMode.ScaleAspectFill
+        faceView.contentMode = UIViewContentMode.scaleAspectFill
         faceView.layer.cornerRadius = 6*minSpace/2
         
         
         
         headIcon.image = UIImage(named: "camera_.png")
-        headIcon.contentMode = UIViewContentMode.ScaleAspectFit
+        headIcon.contentMode = UIViewContentMode.scaleAspectFit
         
         
         
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         self.addSubview(faceView)
         self.addSubview(headLabel)
         self.addSubview(headIcon)
@@ -70,7 +70,7 @@ class HeadFaceTableViewCell: UITableViewCell {
     }
     
     
-    func configureCell(model: UserModel){
+    func configureCell(_ model: UserModel){
         mymodel = model
         
         if(mymodel.faceImageName == "" || mymodel.faceImageName == nil){
@@ -79,23 +79,8 @@ class HeadFaceTableViewCell: UITableViewCell {
             
         }else{
             
-            faceView.kf_setImageWithURL(NSURL(string: ConfigAccess.serverDomain()+mymodel.faceImageName!)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
-                
-                if(image?.size.height>image?.size.width){
-                    
-                    let height = 2*6*minSpace
-                    let width = 2*6*minSpace*(image?.size.width)!/(image?.size.height)!
-                    
-                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
-
-                }else{
-                    let width = 2*6*minSpace
-                    let height = 2*6*minSpace*(image?.size.height)!/(image?.size.width)!
-                    self.faceView.image = Tool.scaleToSize(image!, newsize: CGSize(width: width, height: height))
-                }
-                
-            })
             
+            Tool.setFaceViewImage(faceView, faceViewWidth: 2*6*minSpace, imageUrl: ConfigAccess.serverDomain()+mymodel.faceImageName!)
         }
         
     }

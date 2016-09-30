@@ -21,7 +21,7 @@ class MoreTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         
-        moreLabel.textColor = UIColor.grayColor()
+        moreLabel.textColor = UIColor.gray
         moreLabel.font = UIFont(name: fontName, size: minFont)
         moreLabel.text = "更多"
         
@@ -38,14 +38,14 @@ class MoreTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
     
-    func configureCell(labelStr: String) {
+    func configureCell(_ labelStr: String) {
         moreLabel.text = labelStr
         moreLabel.sizeToFit()
     }

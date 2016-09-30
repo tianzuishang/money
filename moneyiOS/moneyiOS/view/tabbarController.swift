@@ -28,16 +28,18 @@ class TabbarController: UITabBarController {
         //self.viewControllers = tabArray;
     }
     
-    func tabInit(items: [tabItem]) {
+    func tabInit(_ items: [tabItem]) {
         
         var tabArray = [UIViewController]();
         
-        for (var index = 0; index < items.count; ++index){
+        
+        for (index, item) in items.enumerated()  {
             
-            let tabbarItem = UITabBarItem(title: items[index].title, image: UIImage(named: items[index].iconName), tag: index);
-            items[index].viewCtrl.tabBarItem = tabbarItem;
+            let tabbarItem = UITabBarItem(title: item.title, image: UIImage(named: item.iconName), tag: index);
+            item.viewCtrl.tabBarItem = tabbarItem;
             
-            tabArray.append(items[index].viewCtrl);
+            tabArray.append(item.viewCtrl);
+            
         }
         
         self.viewControllers = tabArray;

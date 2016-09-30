@@ -23,28 +23,28 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        userSearchTextField.frame = CGRectMake(0, 0, ScreenWidth - 4*minSpace, 6*minSpace);
-        userSearchTextField.textAlignment = NSTextAlignment.Left;
+        userSearchTextField.frame = CGRect(x: 0, y: 0, width: ScreenWidth - 4*minSpace, height: 6*minSpace);
+        userSearchTextField.textAlignment = NSTextAlignment.left;
         userSearchTextField.font = UIFont(name: fontName, size: normalFont)
         userSearchTextField.placeholder = "查找银行间的朋友";
         userSearchTextField.delegate = self;
-        userSearchTextField.returnKeyType = UIReturnKeyType.Search;
+        userSearchTextField.returnKeyType = UIReturnKeyType.search;
         
-        self.tableView.registerClass(SearchPeopleTableViewCell.self, forCellReuseIdentifier: "SearchPeopleTableViewCell");
+        self.tableView.register(SearchPeopleTableViewCell.self, forCellReuseIdentifier: "SearchPeopleTableViewCell");
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell");
         
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.backgroundColor = UIColor.white
     }
 
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if(textField == userSearchTextField){
             
             
-            textField.text = textField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            textField.text = textField.text?.trimmingCharacters(in: CharacterSet.whitespaces)
             
             
             if (textField.text?.characters.count == 0||textField.text == nil) {
@@ -57,11 +57,11 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
 
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         userSearchTextField.resignFirstResponder()
     }
     
-    func searchByDesc(desc: String) {
+    func searchByDesc(_ desc: String) {
         print(desc)
         
         NewsAPI.userSearch({ (error, responseData) -> Void in
@@ -78,16 +78,19 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
                     let userArray = responseData!["data"] as! NSArray
                     
                     for userItem in userArray {
-                        print(userItem["UDT_USER_DESC"])
+                        
+                        let userItemDic = userItem as! NSDictionary
+                        
+                        print(userItemDic["UDT_USER_DESC"])
                         
                         let userModel = UserModel()
-                        userModel.userName = userItem["UDT_USER_DESC"] as? String
-                        userModel.entyName = userItem["EMA_ENTY_DESC"] as? String
-                        userModel.cityDesc = userItem["UDT_CITY_SHRT_DESC"] as? String
-                        userModel.prvnceDesc = userItem["UDT_PRVNCE_SHRT_DESC"] as? String
+                        userModel.userName = userItemDic["UDT_USER_DESC"] as? String
+                        userModel.entyName = userItemDic["EMA_ENTY_DESC"] as? String
+                        userModel.cityDesc = userItemDic["UDT_CITY_SHRT_DESC"] as? String
+                        userModel.prvnceDesc = userItemDic["UDT_PRVNCE_SHRT_DESC"] as? String
                         
                         
-                        self.userlist.addObject(userModel)
+                        self.userlist.add(userModel)
                     }
                     
                     self.tableView.reloadData()
@@ -98,15 +101,15 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
             }
             
             
-            }, parameters: ["searchDesc": desc])
+            }, parameters: ["searchDesc": desc as AnyObject])
     }
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         userSearchTextField.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         userSearchTextField.resignFirstResponder()
     }
     
@@ -118,12 +121,12 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if(section == 0){
             return 1
@@ -132,7 +135,7 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
         }
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 1){
             return "搜索结果"
         }else{
@@ -141,21 +144,21 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if(indexPath.section == 0){
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        if((indexPath as NSIndexPath).section == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
             
             cell.accessoryView = userSearchTextField;
-            cell.selectionStyle = UITableViewCellSelectionStyle.None;
+            cell.selectionStyle = UITableViewCellSelectionStyle.none;
             return cell
             
         }else{
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("SearchPeopleTableViewCell", forIndexPath: indexPath) as! SearchPeopleTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPeopleTableViewCell", for: indexPath) as! SearchPeopleTableViewCell
             
-            cell.configureCell(userlist[indexPath.row] as! UserModel)
+            cell.configureCell(userlist[(indexPath as NSIndexPath).row] as! UserModel)
             
             return cell
 
@@ -168,8 +171,8 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
     }
 
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(indexPath.section == 0){
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if((indexPath as NSIndexPath).section == 0){
             return 44
         }else{
             return SearchPeopleTableViewCell.cellHeight()
@@ -178,7 +181,7 @@ class SearchPeopleTableViewCtrl: UITableViewController, UITextFieldDelegate {
     }
     
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        if(indexPath.section == 1){
 //            
 //            let userDetail = UserDetailTableViewController(style:UITableViewStyle.Grouped)
