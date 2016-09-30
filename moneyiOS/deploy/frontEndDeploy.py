@@ -23,9 +23,17 @@ if(returnValue != 0):
     print ("git pull failed:" + str(returnValue))
     exit(-1)
 
+
+#rm previous ipa file
 returnValue = os.system("rm -f " + ipaPath)
 if(returnValue != 0):
     print ("rm " + ipaPath + " failed:" + str(returnValue))
+    exit(-1)
+
+#generate release note
+returnValue = os.system("git log>gitLog.txt")
+if(returnValue != 0):
+    print ("git log generate failed" + str(returnValue))
     exit(-1)
 
 #clean
