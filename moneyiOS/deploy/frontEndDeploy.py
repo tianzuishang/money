@@ -32,6 +32,11 @@ if(returnValue != 0):
 
 #generate release note
 returnValue = os.system("git log>gitLog.txt")
+
+
+
+
+
 if(returnValue != 0):
     print ("git log generate failed" + str(returnValue))
     exit(-1)
@@ -53,6 +58,7 @@ returnValue = os.system("xcrun  -sdk iphoneos PackageApplication -v " + buildPat
 if(returnValue != 0):
     print ("xcrun failed:" + str(returnValue))
     exit(-1)
+
 
 
 
