@@ -111,7 +111,6 @@
 		B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064E1D50DACD00FBF7EB /* watch@3x.png */; };
 		B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */; };
 
-		B24CB5D31D9BA6920058A009 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */; };
 
 		B296BA9A1D50E163004DE860 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BA991D50E163004DE860 /* NewsTableViewController.swift */; };
 		B296BAA01D50E511004DE860 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */; };
@@ -300,8 +299,6 @@
 
 				B20CFF5B1DA3769C0069FF37 /* libc++.1.tbd in Frameworks */,
 				B20CFF591DA375B80069FF37 /* JavaScriptCore.framework in Frameworks */,
-				B24CB5D31D9BA6920058A009 /* Pods_moneyiOS.framework in Frameworks */,
-
 				B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */,
 				B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */,
 				B29EBA961D9218F100818503 /* libz.tbd in Frameworks */,
@@ -676,6 +673,7 @@
 					};
 					B2D173101D3CA27C00FC128A = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 7R8RS88G2M;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 					};
@@ -1236,7 +1234,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7R8RS88G2M;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1245,7 +1243,7 @@
 				INFOPLIST_FILE = moneyiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"DEV\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wanghan.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
@@ -1260,7 +1258,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7R8RS88G2M;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1269,7 +1267,7 @@
 				INFOPLIST_FILE = moneyiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"DEV\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wanghan.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
