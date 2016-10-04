@@ -32,6 +32,34 @@ if(returnValue != 0):
     print ("rm " + ipaPath + " failed:" + str(returnValue))
     exit(-1)
 
+
+
+
+if(returnValue != 0):
+    print ("git log generate failed" + str(returnValue))
+    exit(-1)
+
+#clean
+returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName + " clean")
+if(returnValue != 0):
+    print ("clean failed:" + str(returnValue))
+    exit(-1)
+
+#build
+returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName)
+if(returnValue != 0):
+    print ("xcodebuild failed:" + str(returnValue))
+    exit(-1)
+
+#xcrun
+returnValue = os.system("xcrun  -sdk iphoneos PackageApplication -v " + buildPath + " -o " + ipaPath)
+if(returnValue != 0):
+    print ("xcrun failed:" + str(returnValue))
+    exit(-1)
+
+
+
+
 #generate release note
 releaseNote = ""
 dic = {}
@@ -68,31 +96,6 @@ for issue in dic.values():
             else:
                 releaseNote += "#"+issue+" "+content['title']+" 状态不明\n"
 print(releaseNote)
-
-
-if(returnValue != 0):
-    print ("git log generate failed" + str(returnValue))
-    exit(-1)
-
-#clean
-returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName + " clean")
-if(returnValue != 0):
-    print ("clean failed:" + str(returnValue))
-    exit(-1)
-
-#build
-returnValue = os.system("xcodebuild -workspace " + workspacePath + " -scheme " + schemeName)
-if(returnValue != 0):
-    print ("xcodebuild failed:" + str(returnValue))
-    exit(-1)
-
-#xcrun
-returnValue = os.system("xcrun  -sdk iphoneos PackageApplication -v " + buildPath + " -o " + ipaPath)
-if(returnValue != 0):
-    print ("xcrun failed:" + str(returnValue))
-    exit(-1)
-
-
 
 
 #post to bugly
