@@ -13,6 +13,8 @@
 		B208E8001D9267FA005B4A7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208E7FC1D9267DC005B4A7E /* Security.framework */; };
 		B208E8011D926803005B4A7E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA951D9218F100818503 /* libz.tbd */; };
 		B208E8021D92681A005B4A7E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B29EBA931D9218E900818503 /* libc++.tbd */; };
+		B20CFF591DA375B80069FF37 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20CFF581DA375B80069FF37 /* JavaScriptCore.framework */; };
+		B20CFF5B1DA3769C0069FF37 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B20CFF5A1DA3769C0069FF37 /* libc++.1.tbd */; };
 		B20D09341D6C7D5D00C650A5 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */; };
 		B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */; };
 		B20D093A1D6C80D000C650A5 /* adress_book_contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = B20D09391D6C80D000C650A5 /* adress_book_contacts.png */; };
@@ -194,6 +196,8 @@
 		B208E7FC1D9267DC005B4A7E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_moneyiOS.framework; path = "Pods/../build/Debug-iphoneos/Pods_moneyiOS.framework"; sourceTree = "<group>"; };
 		B20CFF571DA372E90069FF37 /* moneyiOS-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "moneyiOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		B20CFF581DA375B80069FF37 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		B20CFF5A1DA3769C0069FF37 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09391D6C80D000C650A5 /* adress_book_contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adress_book_contacts.png; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B20CFF5B1DA3769C0069FF37 /* libc++.1.tbd in Frameworks */,
+				B20CFF591DA375B80069FF37 /* JavaScriptCore.framework in Frameworks */,
 				B24CB5D31D9BA6920058A009 /* Pods_moneyiOS.framework in Frameworks */,
 				B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */,
 				B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */,
@@ -332,6 +338,8 @@
 		1B0EBD6149D348C16A86C570 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B20CFF5A1DA3769C0069FF37 /* libc++.1.tbd */,
+				B20CFF581DA375B80069FF37 /* JavaScriptCore.framework */,
 				B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */,
 				B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */,
 				B208E7FC1D9267DC005B4A7E /* Security.framework */,
