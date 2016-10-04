@@ -70,13 +70,13 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        label.snp_makeConstraints { (make) -> Void in
+        label.snp.makeConstraints { (make) -> Void in
             
             make.width.equalTo(ScreenWidth)
             make.height.equalTo(8*minSpace)
             
             make.top.equalTo(8*minSpace)
-            make.centerX.equalTo(self.view.snp_centerX)
+            make.centerX.equalTo(self.view.snp.centerX)
         }
         
         nameTextField.textAlignment = NSTextAlignment.left;
@@ -149,19 +149,19 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         
         
-        tableview.snp_makeConstraints { (make) -> Void in
+        tableview.snp.makeConstraints { (make) -> Void in
             
-            make.top.equalTo(label.snp_bottom).offset(6*minSpace)
-            make.left.equalTo(self.view.snp_left)
-            make.width.equalTo(self.view.snp_width)
+            make.top.equalTo(label.snp.bottom).offset(6*minSpace)
+            make.left.equalTo(self.view.snp.left)
+            make.width.equalTo(self.view.snp.width)
             make.height.equalTo(12*minSpace)
             
         }
         
-        loginButton.snp_makeConstraints { (make) -> Void in
+        loginButton.snp.makeConstraints { (make) -> Void in
             
-            make.top.equalTo(tableview.snp_bottom).offset(4*minSpace)
-            make.left.equalTo(self.view.snp_left).offset(3*minSpace)
+            make.top.equalTo(tableview.snp.bottom).offset(4*minSpace)
+            make.left.equalTo(self.view.snp.left).offset(3*minSpace)
             make.width.equalTo(ScreenWidth - 2*3*minSpace)
             make.height.equalTo(6*minSpace)
         }
@@ -178,62 +178,62 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        wechatButton.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(self.view.snp_bottom).offset(-4*minSpace)
-            make.left.equalTo(self.view.snp_left).offset(6*minSpace)
+        wechatButton.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(self.view.snp.bottom).offset(-4*minSpace)
+            make.left.equalTo(self.view.snp.left).offset(6*minSpace)
             make.size.height.equalTo(36)
         }
         
         
-        qqButton.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(wechatButton.snp_bottom)
-            make.centerX.equalTo(self.view.snp_centerX)
+        qqButton.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(wechatButton.snp.bottom)
+            make.centerX.equalTo(self.view.snp.centerX)
             make.size.height.equalTo(36)
         }
         
-        weiboButton.snp_makeConstraints { (make) -> Void in
+        weiboButton.snp.makeConstraints { (make) -> Void in
             
-            make.bottom.equalTo(wechatButton.snp_bottom)
-            make.right.equalTo(self.view.snp_right).offset(-6*minSpace)
+            make.bottom.equalTo(wechatButton.snp.bottom)
+            make.right.equalTo(self.view.snp.right).offset(-6*minSpace)
             make.size.height.equalTo(36)
         }
         
         
-        otherlabel.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(wechatButton.snp_top).offset(-4*minSpace)
-            make.centerX.equalTo(self.view.snp_centerX)
+        otherlabel.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(wechatButton.snp.top).offset(-4*minSpace)
+            make.centerX.equalTo(self.view.snp.centerX)
         }
         
-        leftLine.snp_makeConstraints { (make) -> Void in
+        leftLine.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(loginButton.snp_left)
+            make.left.equalTo(loginButton.snp.left)
             
-            make.centerY.equalTo(otherlabel.snp_centerY)
+            make.centerY.equalTo(otherlabel.snp.centerY)
             
             make.height.equalTo(0.5)
             
-            make.right.equalTo(otherlabel.snp_left).offset(-minSpace)
+            make.right.equalTo(otherlabel.snp.left).offset(-minSpace)
         }
         
-        rightLine.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(otherlabel.snp_right).offset(minSpace)
+        rightLine.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(otherlabel.snp.right).offset(minSpace)
             
-            make.centerY.equalTo(otherlabel.snp_centerY)
+            make.centerY.equalTo(otherlabel.snp.centerY)
             
             make.height.equalTo(0.5)
             
-            make.right.equalTo(loginButton.snp_right)
+            make.right.equalTo(loginButton.snp.right)
         }
 
         
-//        bottomLine.snp_makeConstraints { (make) -> Void in
-//            make.left.equalTo(loginButton.snp_left)
+//        bottomLine.snp.makeConstraints { (make) -> Void in
+//            make.left.equalTo(loginButton.snp.left)
 //            
-//            make.top.equalTo(weiboButton.snp_bottom).offset(4*minSpace)
+//            make.top.equalTo(weiboButton.snp.bottom).offset(4*minSpace)
 //            
 //            make.height.equalTo(0.5)
 //            
-//            make.right.equalTo(loginButton.snp_right)
+//            make.right.equalTo(loginButton.snp.right)
 //        }
 
         
@@ -458,9 +458,9 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if((indexPath as NSIndexPath).row == 0){
             cell.addSubview(nameTextField)
-            nameTextField.snp_makeConstraints { (make) -> Void in
-                make.left.equalTo(cell.snp_left).offset(3*minSpace)
-                make.bottom.equalTo(cell.snp_bottom)
+            nameTextField.snp.makeConstraints { (make) -> Void in
+                make.left.equalTo(cell.snp.left).offset(3*minSpace)
+                make.bottom.equalTo(cell.snp.bottom)
                 make.width.equalTo(ScreenWidth - 2*3*minSpace)
                 make.height.equalTo(6*minSpace)
             }
@@ -471,9 +471,9 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if((indexPath as NSIndexPath).row == 1){
             cell.addSubview(passwordTextField)
-            passwordTextField.snp_makeConstraints { (make) -> Void in
-                make.left.equalTo(cell.snp_left).offset(3*minSpace)
-                make.bottom.equalTo(cell.snp_bottom)
+            passwordTextField.snp.makeConstraints { (make) -> Void in
+                make.left.equalTo(cell.snp.left).offset(3*minSpace)
+                make.bottom.equalTo(cell.snp.bottom)
 
                 make.width.equalTo(ScreenWidth - 2*3*minSpace)
                 make.height.equalTo(6*minSpace)

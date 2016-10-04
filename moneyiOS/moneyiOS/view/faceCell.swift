@@ -116,100 +116,100 @@ class faceCell: UITableViewCell {
     func layoutViews() {
         
         
-        faceView.snp_makeConstraints{ (make) -> Void in
+        faceView.snp.makeConstraints{ (make) -> Void in
             make.size.height.equalTo(faceCell.faceViewWidth)
             make.left.equalTo(self).offset(2*minSpace)
             make.top.equalTo(self).offset(2*minSpace)
         }
         
-        name.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(minSpace);
-            make.top.equalTo(faceView.snp_top).offset(minSpace)
+        name.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(faceView.snp.right).offset(minSpace);
+            make.top.equalTo(faceView.snp.top).offset(minSpace)
         }
         
-        sign.snp_makeConstraints { (make) -> Void in
+        sign.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(name.snp_left)
+            make.left.equalTo(name.snp.left)
             
-            make.top.equalTo(name.snp_bottom).offset(minSpace)
+            make.top.equalTo(name.snp.bottom).offset(minSpace)
         }
         
-        line.snp_makeConstraints { (make) -> Void in
+        line.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(self.snp_left)
-            make.top.equalTo(faceView.snp_bottom).offset(2*minSpace)
+            make.left.equalTo(self.snp.left)
+            make.top.equalTo(faceView.snp.bottom).offset(2*minSpace)
             make.height.equalTo(0.5)
-            make.right.equalTo(self.snp_right)
+            make.right.equalTo(self.snp.right)
         }
         
         
         
         
-        newsCount.snp_makeConstraints { (make) -> Void in
+        newsCount.snp.makeConstraints { (make) -> Void in
             
-            make.centerX.equalTo(faceView.snp_centerX)
-            make.top.equalTo(line.snp_bottom).offset(2*minSpace)
-            
-        }
-        
-        
-        newsCountLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.top.equalTo(newsCount.snp_bottom)
-            make.centerX.equalTo(newsCount.snp_centerX)
-            
-        }
-//
-        
-        followCount.snp_makeConstraints { (make) -> Void in
-            
-            //make.right.equalTo(fansCount.snp_left).offset(-2*minSpace)
-            make.top.equalTo(line.snp_bottom).offset(2*minSpace)
-            make.centerX.equalTo(self.snp_centerX)
+            make.centerX.equalTo(faceView.snp.centerX)
+            make.top.equalTo(line.snp.bottom).offset(2*minSpace)
             
         }
         
-        followCountLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.top.equalTo(followCount.snp_bottom)
-            make.centerX.equalTo(followCount.snp_centerX)
-        }
         
-//
-        fansCount.snp_makeConstraints { (make) -> Void in
+        newsCountLabel.snp.makeConstraints { (make) -> Void in
             
-            make.right.equalTo(self.snp_right).offset(-4*minSpace)
-            make.top.equalTo(line.snp_bottom).offset(2*minSpace)
-        }
-        
-        fansCountLabel.snp_makeConstraints { (make) -> Void in
-            
-            make.top.equalTo(fansCount.snp_bottom)
-            make.centerX.equalTo(fansCount.snp_centerX)
+            make.top.equalTo(newsCount.snp.bottom)
+            make.centerX.equalTo(newsCount.snp.centerX)
             
         }
 //
+        
+        followCount.snp.makeConstraints { (make) -> Void in
+            
+            //make.right.equalTo(fansCount.snp.left).offset(-2*minSpace)
+            make.top.equalTo(line.snp.bottom).offset(2*minSpace)
+            make.centerX.equalTo(self.snp.centerX)
+            
+        }
+        
+        followCountLabel.snp.makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(followCount.snp.bottom)
+            make.centerX.equalTo(followCount.snp.centerX)
+        }
+        
+//
+        fansCount.snp.makeConstraints { (make) -> Void in
+            
+            make.right.equalTo(self.snp.right).offset(-4*minSpace)
+            make.top.equalTo(line.snp.bottom).offset(2*minSpace)
+        }
+        
+        fansCountLabel.snp.makeConstraints { (make) -> Void in
+            
+            make.top.equalTo(fansCount.snp.bottom)
+            make.centerX.equalTo(fansCount.snp.centerX)
+            
+        }
+//
 //        
-//        entyLabel.snp_makeConstraints { (make) -> Void in
+//        entyLabel.snp.makeConstraints { (make) -> Void in
 //            
-//            make.left.equalTo(faceView.snp_left)
-//            make.top.equalTo(faceView.snp_bottom).offset(2*minSpace)
+//            make.left.equalTo(faceView.snp.left)
+//            make.top.equalTo(faceView.snp.bottom).offset(2*minSpace)
 //        }
 //        
-//        cityLabel.snp_makeConstraints { (make) -> Void in
+//        cityLabel.snp.makeConstraints { (make) -> Void in
 //            
-//            make.left.equalTo(faceView.snp_left)
-//            make.top.equalTo(entyLabel.snp_bottom).offset(minSpace)
+//            make.left.equalTo(faceView.snp.left)
+//            make.top.equalTo(entyLabel.snp.bottom).offset(minSpace)
 //            
 //        }
 //        
-//        sign.snp_makeConstraints { (make) -> Void in
+//        sign.snp.makeConstraints { (make) -> Void in
 //            
-//            make.left.equalTo(faceView.snp_left)
-//            make.top.equalTo(cityLabel.snp_bottom).offset(minSpace)
+//            make.left.equalTo(faceView.snp.left)
+//            make.top.equalTo(cityLabel.snp.bottom).offset(minSpace)
 //        }
 //        
-//        followButton.snp_makeConstraints { (make) -> Void in
+//        followButton.snp.makeConstraints { (make) -> Void in
 //            
 //            
 //            

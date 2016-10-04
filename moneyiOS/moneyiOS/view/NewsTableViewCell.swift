@@ -121,26 +121,26 @@ class NewsTableViewCell: UITableViewCell {
     
     
     func layoutView() {
-        title.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(titleImageView.snp_right).offset(2*minSpace)
-            make.top.equalTo(self.snp_top)
+        title.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(titleImageView.snp.right).offset(2*minSpace)
+            make.top.equalTo(self.snp.top)
             make.width.equalTo(NewsTableViewCell.titleWidth)
             make.height.equalTo(NewsTableViewCell.titleHeight)
         }
         
-        source.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(title.snp_left)
-            make.top.equalTo(title.snp_bottom)
+        source.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(title.snp.left)
+            make.top.equalTo(title.snp.bottom)
         }
         
         
-        publishTime.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(source.snp_right).offset(2*minSpace)
-            make.top.equalTo(source.snp_top)
+        publishTime.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(source.snp.right).offset(2*minSpace)
+            make.top.equalTo(source.snp.top)
         }
         
         
-        titleImageView.snp_updateConstraints({ (make) -> Void in
+        titleImageView.snp.updateConstraints({ (make) -> Void in
             make.size.height.equalTo(NewsTableViewCell.cellHeight(self.newsModel) - 2*minSpace)
             make.left.equalTo(2*minSpace)
             make.top.equalTo(minSpace)

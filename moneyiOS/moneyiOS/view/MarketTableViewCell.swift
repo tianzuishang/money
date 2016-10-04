@@ -112,49 +112,49 @@ class MarketTableViewCell: UITableViewCell {
         
         if(myMarketModel.prdcImageUrl != nil){
             
-            prdcImage.snp_remakeConstraints({ (make) -> Void in
+            prdcImage.snp.remakeConstraints({ (make) -> Void in
                 make.width.equalTo(14)
                 make.height.equalTo(10)
-                make.left.equalTo(self.snp_left).offset(2*minSpace)
-                make.centerY.equalTo(self.snp_centerY)
+                make.left.equalTo(self.snp.left).offset(2*minSpace)
+                make.centerY.equalTo(self.snp.centerY)
             });
             
-            titlePrdcLabel.snp_remakeConstraints { (make) -> Void in
-                make.left.equalTo(prdcImage.snp_right).offset(minSpace)
-                make.centerY.equalTo(self.snp_centerY)
+            titlePrdcLabel.snp.remakeConstraints { (make) -> Void in
+                make.left.equalTo(prdcImage.snp.right).offset(minSpace)
+                make.centerY.equalTo(self.snp.centerY)
             }
             
         }else{
             
-            prdcImage.snp_remakeConstraints({ (make) -> Void in
+            prdcImage.snp.remakeConstraints({ (make) -> Void in
                 make.width.equalTo(0)
                 make.height.equalTo(0)
 //                make.left.equalTo(0)
 //                make.top.equalTo(0)
             });
             
-            titlePrdcLabel.snp_remakeConstraints { (make) -> Void in
-                make.left.equalTo(self.snp_left).offset(2*minSpace)
-                make.centerY.equalTo(self.snp_centerY)
+            titlePrdcLabel.snp.remakeConstraints { (make) -> Void in
+                make.left.equalTo(self.snp.left).offset(2*minSpace)
+                make.centerY.equalTo(self.snp.centerY)
             }
         }
         
         
-        priceLabel.snp_updateConstraints { (make) -> Void in
-            make.centerX.equalTo(self.snp_centerX).offset(3*minSpace)
-            make.centerY.equalTo(titlePrdcLabel.snp_centerY)
+        priceLabel.snp.updateConstraints { (make) -> Void in
+            make.centerX.equalTo(self.snp.centerX).offset(3*minSpace)
+            make.centerY.equalTo(titlePrdcLabel.snp.centerY)
         }
         
-        bpLabel.snp_updateConstraints { (make) -> Void in
-            make.right.equalTo(self.snp_right).offset(-2*minSpace)
-            make.centerY.equalTo(titlePrdcLabel.snp_centerY)
+        bpLabel.snp.updateConstraints { (make) -> Void in
+            make.right.equalTo(self.snp.right).offset(-2*minSpace)
+            make.centerY.equalTo(titlePrdcLabel.snp.centerY)
         }
         
         
         if(myMarketModel.compareTitle != nil){
-            compareTitleLabel.snp_updateConstraints({ (make) -> Void in
-                make.right.equalTo(self.snp_right).offset(-2*minSpace)
-                make.centerY.equalTo(self.snp_centerY)
+            compareTitleLabel.snp.updateConstraints({ (make) -> Void in
+                make.right.equalTo(self.snp.right).offset(-2*minSpace)
+                make.centerY.equalTo(self.snp.centerY)
             })
         }
         

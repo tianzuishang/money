@@ -157,32 +157,32 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         if(mymodel.content != nil && mymodel.content != ""){
             
-            contentLabel.snp_updateConstraints({ (make) -> Void in
+            contentLabel.snp.updateConstraints({ (make) -> Void in
                 //make.height.equalTo(20*minSpace)
-                make.top.equalTo(faceView.snp_bottom).offset(minSpace)
+                make.top.equalTo(faceView.snp.bottom).offset(minSpace)
             })
             
         }else{
             
-            contentLabel.snp_updateConstraints({ (make) -> Void in
+            contentLabel.snp.updateConstraints({ (make) -> Void in
                 //make.height.equalTo(0*minSpace)
-                make.top.equalTo(faceView.snp_bottom)
+                make.top.equalTo(faceView.snp.bottom)
             })
         }
 
         
         if(mymodel.contentImageUrl != nil && mymodel.contentImageUrl != ""){
             
-            contentImage.snp_updateConstraints({ (make) -> Void in
+            contentImage.snp.updateConstraints({ (make) -> Void in
                 make.height.equalTo(NewsFeedTableViewCell.contentImageHeight)
-                make.top.equalTo(contentLabel.snp_bottom).offset(minSpace)
+                make.top.equalTo(contentLabel.snp.bottom).offset(minSpace)
             })
             
         }else{
             
-            contentImage.snp_updateConstraints({ (make) -> Void in
+            contentImage.snp.updateConstraints({ (make) -> Void in
                 make.height.equalTo(0*minSpace)
-                make.top.equalTo(contentLabel.snp_bottom)
+                make.top.equalTo(contentLabel.snp.bottom)
             })
         }
         
@@ -229,82 +229,82 @@ class NewsFeedTableViewCell: UITableViewCell {
     
     
     func layoutView() {
-        faceView.snp_makeConstraints { (make) -> Void in
+        faceView.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(self.snp_left).offset(2*minSpace)
-            make.top.equalTo(self.snp_top).offset(2*minSpace)
+            make.left.equalTo(self.snp.left).offset(2*minSpace)
+            make.top.equalTo(self.snp.top).offset(2*minSpace)
             make.size.width.equalTo(NewsFeedTableViewCell.faceViewWidth)
         }
         
-        nameLabel.snp_makeConstraints { (make) -> Void in
+        nameLabel.snp.makeConstraints { (make) -> Void in
             
-            make.top.equalTo(faceView.snp_top)
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
+            make.top.equalTo(faceView.snp.top)
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
         }
         
-        publishTimeLabel.snp_makeConstraints { (make) -> Void in
+        publishTimeLabel.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(nameLabel.snp_right).offset(minSpace)
-            make.top.equalTo(faceView.snp_top)
+            make.left.equalTo(nameLabel.snp.right).offset(minSpace)
+            make.top.equalTo(faceView.snp.top)
             
         }
         
-        subLabel.snp_makeConstraints { (make) -> Void in
+        subLabel.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace/2)
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
+            make.top.equalTo(nameLabel.snp.bottom).offset(minSpace/2)
         }
         
-        likeIcon.snp_makeConstraints { (make) -> Void in
+        likeIcon.snp.makeConstraints { (make) -> Void in
             
             make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.left.equalTo(contentImage.snp_left)
+            make.top.equalTo(contentImage.snp.bottom).offset(minSpace)
+            make.left.equalTo(contentImage.snp.left)
             
         }
         
-        likeCountLabel.snp_makeConstraints { (make) -> Void in
+        likeCountLabel.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(likeIcon.snp_right).offset(minSpace)
+            make.left.equalTo(likeIcon.snp.right).offset(minSpace)
             
-            make.centerY.equalTo(likeIcon.snp_centerY)
+            make.centerY.equalTo(likeIcon.snp.centerY)
         }
         
-        commentIcon.snp_makeConstraints { (make) -> Void in
+        commentIcon.snp.makeConstraints { (make) -> Void in
             
             make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.centerX.equalTo(contentImage.snp_centerX)
+            make.top.equalTo(contentImage.snp.bottom).offset(minSpace)
+            make.centerX.equalTo(contentImage.snp.centerX)
             
         }
         
-        commentCountLabel.snp_makeConstraints { (make) -> Void in
+        commentCountLabel.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(commentIcon.snp_right).offset(minSpace)
-            make.centerY.equalTo(commentIcon.snp_centerY)
+            make.left.equalTo(commentIcon.snp.right).offset(minSpace)
+            make.centerY.equalTo(commentIcon.snp.centerY)
         }
         
         
-        shareIcon.snp_makeConstraints { (make) -> Void in
+        shareIcon.snp.makeConstraints { (make) -> Void in
             
             make.size.width.equalTo(20)
-            make.top.equalTo(contentImage.snp_bottom).offset(minSpace)
-            make.right.equalTo(contentImage.snp_right)
+            make.top.equalTo(contentImage.snp.bottom).offset(minSpace)
+            make.right.equalTo(contentImage.snp.right)
         }
         
         
-        contentLabel.snp_makeConstraints({ (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(faceView.snp_bottom)
-            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+        contentLabel.snp.makeConstraints({ (make) -> Void in
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
+            make.top.equalTo(faceView.snp.bottom)
+            make.right.equalTo(self.snp.right).offset(-2*minSpace)
             //make.height.equalTo(20*minSpace)
         })
         
-        contentImage.snp_makeConstraints({ (make) -> Void in
+        contentImage.snp.makeConstraints({ (make) -> Void in
             
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(contentLabel.snp_bottom)
-            make.right.equalTo(self.snp_right).offset(-2*minSpace)
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
+            make.top.equalTo(contentLabel.snp.bottom)
+            make.right.equalTo(self.snp.right).offset(-2*minSpace)
             make.height.equalTo(0*minSpace)
             
         })

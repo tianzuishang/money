@@ -59,10 +59,10 @@ class MoreTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        moreLabel.snp_makeConstraints { (make) -> Void in
+        moreLabel.snp.makeConstraints { (make) -> Void in
             
-            make.centerY.equalTo(self.snp_centerY)
-            make.centerX.equalTo(self.snp_centerX)
+            make.centerY.equalTo(self.snp.centerY)
+            make.centerX.equalTo(self.snp.centerX)
         }
     }
 
