@@ -51,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
+        Bugly.start(withAppId: "87e6825c9b")
+        
         
         //Bugly.startWithAppId("111")
         //Bugly.start(withAppId: "此处替换为你的AppId")
