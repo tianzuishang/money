@@ -227,15 +227,6 @@ class NewsFeedViewCtrl: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        if(indexPath.section == 0 && indexPath.row == 0){
-//            print("click head face")
-//        }
-        
-        
-    }
-    
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 //        if(section == 0){

@@ -63,22 +63,7 @@ class HeadFaceTableViewCell: UITableViewCell {
         
         
         
-        
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("clickView")))
-        
-        
-        
-        
-        
     }
-    
-    func clickView() {
-        
-        let viewCtrl = Tool.appRootViewController()
-        
-        viewCtrl.present(UIViewController(), animated: true, completion: nil)
-    }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
