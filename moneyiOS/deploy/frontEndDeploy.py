@@ -51,7 +51,7 @@ f.close()
 for issue in dic.values():
     url = "https://api.github.com/repos/cfetslab/money/issues/" + issue
     print(url)
-    h = httplib2.Http(".cache")
+    h = httplib2.Http()
     resp, content = h.request(url, "GET")
     #resp = json.loads(resp)
     content = content.decode()
