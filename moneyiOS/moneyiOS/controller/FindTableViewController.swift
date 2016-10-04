@@ -48,8 +48,7 @@ class FindTableViewController: UITableViewController, UISearchBarDelegate {
         self.navigationController?.navigationBar.addSubview(searchBar)
         
         
-        
-        
+
         searchBar.snp.makeConstraints { (make) -> Void in
             
             make.centerY.equalTo((self.navigationController?.navigationBar.snp.centerY)!)
