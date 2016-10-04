@@ -193,6 +193,7 @@
 		9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moneyiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B208E7FC1D9267DC005B4A7E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B208E7FE1D9267F0005B4A7E /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_moneyiOS.framework; path = "Pods/../build/Debug-iphoneos/Pods_moneyiOS.framework"; sourceTree = "<group>"; };
+		B20CFF571DA372E90069FF37 /* moneyiOS-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "moneyiOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		B20D09331D6C7D5D00C650A5 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09361D6C7DB500C650A5 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
 		B20D09391D6C80D000C650A5 /* adress_book_contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adress_book_contacts.png; sourceTree = "<group>"; };
@@ -422,6 +423,7 @@
 				B2D1731E1D3CA27C00FC128A /* Assets.xcassets */,
 				B2D173201D3CA27D00FC128A /* LaunchScreen.storyboard */,
 				B2D173231D3CA27D00FC128A /* Info.plist */,
+				B20CFF571DA372E90069FF37 /* moneyiOS-Bridging-Header.h */,
 				B2D1731B1D3CA27C00FC128A /* moneyiOS.xcdatamodeld */,
 			);
 			path = moneyiOS;
@@ -1074,6 +1076,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
 				PROVISIONING_PROFILE_SPECIFIER = moneyDev;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1102,6 +1105,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b89e7692-f965-4a1b-be1f-2b7b844596a7";
 				PROVISIONING_PROFILE_SPECIFIER = moneyDev;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1153,6 +1157,7 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1195,6 +1200,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1217,6 +1223,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1239,6 +1246,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jam.moneyiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

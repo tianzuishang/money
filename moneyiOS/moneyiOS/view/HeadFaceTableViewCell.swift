@@ -94,22 +94,22 @@ class HeadFaceTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         
-                faceView.snp_makeConstraints { (make) -> Void in
-                    make.left.equalTo(self.snp_left).offset(2*minSpace)
-                    make.centerY.equalTo(self.snp_centerY)
+                faceView.snp.makeConstraints { (make) -> Void in
+                    make.left.equalTo(self.snp.left).offset(2*minSpace)
+                    make.centerY.equalTo(self.snp.centerY)
                     make.size.width.equalTo(6*minSpace)
                     
                     
                 }
         
-                headLabel.snp_makeConstraints { (make) -> Void in
-                    make.left.equalTo(faceView.snp_right).offset(minSpace)
-                    make.centerY.equalTo(faceView.snp_centerY)
+                headLabel.snp.makeConstraints { (make) -> Void in
+                    make.left.equalTo(faceView.snp.right).offset(minSpace)
+                    make.centerY.equalTo(faceView.snp.centerY)
                 }
         
-                headIcon.snp_makeConstraints { (make) -> Void in
-                    make.right.equalTo(self.snp_right).offset(-2*minSpace)
-                    make.centerY.equalTo(faceView.snp_centerY)
+                headIcon.snp.makeConstraints { (make) -> Void in
+                    make.right.equalTo(self.snp.right).offset(-2*minSpace)
+                    make.centerY.equalTo(faceView.snp.centerY)
                     make.size.width.equalTo(4*minSpace)
                 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+//import Bugly
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //Bugly.startWithAppId("111")
+        Bugly.start(withAppId: "此处替换为你的AppId")
         return true
     }
 

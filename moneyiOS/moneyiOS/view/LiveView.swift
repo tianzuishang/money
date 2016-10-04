@@ -59,24 +59,24 @@ class LiveView: UIView {
         self.layer.cornerRadius = 6.0
         
         
-        faceView.snp_makeConstraints { (make) -> Void in
+        faceView.snp.makeConstraints { (make) -> Void in
             make.size.width.equalTo(6*minSpace)
-            make.left.equalTo(self.snp_left).offset(minSpace)
-            make.centerY.equalTo(self.snp_centerY)
+            make.left.equalTo(self.snp.left).offset(minSpace)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
         
-        liveTitleLabel.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.right.equalTo(self.snp_right).offset(-minSpace)
-            make.top.equalTo(self.snp_top).offset(2*minSpace)
+        liveTitleLabel.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
+            make.right.equalTo(self.snp.right).offset(-minSpace)
+            make.top.equalTo(self.snp.top).offset(2*minSpace)
             
         }
         
-        nameLabel.snp_makeConstraints { (make) -> Void in
+        nameLabel.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(faceView.snp_right).offset(minSpace)
-            make.top.equalTo(liveTitleLabel.snp_bottom)
+            make.left.equalTo(faceView.snp.right).offset(minSpace)
+            make.top.equalTo(liveTitleLabel.snp.bottom)
         }
 
         

@@ -108,9 +108,9 @@ class LiveTableViewCell: UITableViewCell, UIScrollViewDelegate {
             allLabel.textColor = UIColor.lightGray
             allLiveView.addSubview(allLabel)
             
-            allLabel.snp_makeConstraints { (make) -> Void in
+            allLabel.snp.makeConstraints { (make) -> Void in
                 
-                make.center.equalTo(allLiveView.snp_center)
+                make.center.equalTo(allLiveView.snp.center)
             }
             
             

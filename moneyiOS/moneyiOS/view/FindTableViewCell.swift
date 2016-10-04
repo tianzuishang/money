@@ -62,39 +62,39 @@ class FindTableViewCell: UITableViewCell {
     
     func layoutViews() {
         
-        faceView.snp_makeConstraints { (make) -> Void in
+        faceView.snp.makeConstraints { (make) -> Void in
             make.size.width.equalTo(FindTableViewCell.faceViewWidth)
-            make.left.equalTo(self.snp_left).offset(2*minSpace)
-            make.centerY.equalTo(self.snp_centerY)
+            make.left.equalTo(self.snp.left).offset(2*minSpace)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        nameLabel.snp_makeConstraints { (make) -> Void in
+        nameLabel.snp.makeConstraints { (make) -> Void in
             
-            make.left.equalTo(faceView.snp_right).offset(2*minSpace)
-            make.top.equalTo(faceView.snp_top).offset(2*minSpace)
-            
-        }
-        
-        subTitle.snp_makeConstraints { (make) -> Void in
-            
-            make.left.equalTo(nameLabel.snp_left)
-            make.top.equalTo(nameLabel.snp_bottom).offset(minSpace)
-            make.right.equalTo(followIcon.snp_left).offset(minSpace)
+            make.left.equalTo(faceView.snp.right).offset(2*minSpace)
+            make.top.equalTo(faceView.snp.top).offset(2*minSpace)
             
         }
         
-        
-        followIcon.snp_makeConstraints { (make) -> Void in
+        subTitle.snp.makeConstraints { (make) -> Void in
             
-            make.right.equalTo(self.snp_right).offset(-4*minSpace)
-            make.top.equalTo(faceView.snp_top).offset(minSpace)
+            make.left.equalTo(nameLabel.snp.left)
+            make.top.equalTo(nameLabel.snp.bottom).offset(minSpace)
+            make.right.equalTo(followIcon.snp.left).offset(minSpace)
+            
+        }
+        
+        
+        followIcon.snp.makeConstraints { (make) -> Void in
+            
+            make.right.equalTo(self.snp.right).offset(-4*minSpace)
+            make.top.equalTo(faceView.snp.top).offset(minSpace)
             make.size.width.equalTo(4*minSpace)
         }
         
-        followLabel.snp_makeConstraints { (make) -> Void in
+        followLabel.snp.makeConstraints { (make) -> Void in
             
-            make.top.equalTo(followIcon.snp_bottom).offset(minSpace)
-            make.centerX.equalTo(followIcon.snp_centerX)
+            make.top.equalTo(followIcon.snp.bottom).offset(minSpace)
+            make.centerX.equalTo(followIcon.snp.centerX)
             
         }
     }
