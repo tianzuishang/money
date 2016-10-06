@@ -12,7 +12,7 @@ var returnValue = require('../config/returnValue.js');
 router.post('/updateUserDeviceToken', function(req, res){
     log.info(req, log.getFileNameAndLineNum(__filename));
 
-    userModel.updateUserDeviceToken(req.userSrno, req.userDeviceToken, function(err, data){
+    userModel.updateUserDeviceToken(req.body.userSrno, req.body.userDeviceToken, function(err, data){
         var returnData = {};
         if (err) {
             log.error(err, log.getFileNameAndLineNum(__filename));

@@ -90,7 +90,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        
+        if(myUserInfo != nil && myUserInfo?.userSrno != 0){
+            
+            //更新
+//            NSDictionary* message = [[NSDictionary alloc]initWithObjects:@[_myInfo.user_phone, _myInfo.device_token]forKeys:@[@"user_phone", @"device_token"]];
+//            
+//            [NetworkAPI callApiWithParam:message childpath:@"/user/updateDeviceToken" successed:^(NSDictionary *response) {
+//            NSInteger code = [[response objectForKey:@"code"] integerValue];
+//            if (code == SUCCESS) {
+//            
+//            }else{
+//            
+//            [Tools AlertBigMsg:@"token更新失败"];
+//            }
+//            
+//            } failed:^(NSError *error) {
+//            [Tools AlertBigMsg:@"token更新失败"];
+//            }];
+            
+            let post = [
+                "userSrno" : myUserInfo?.userSrno as AnyObject,
+                "userDeviceToken" : deviceToken as AnyObject
+            ]
+            
+            NewsAPI.updateUserDeviceToken({ (error, dictionary) in
+                
+                if(error != nil){
+                    
+                    
+                    
+                }else{
+                    
+                    let code = dictionary?["code"] as! Int
+                    if(code != SUCCESS){
+                        
+                        Tool.showErrorMsgBox(code)
+                        
+                    }
+                }
+                
+                
+                }, parameters: post)
+            
+        }
         
     }
     
