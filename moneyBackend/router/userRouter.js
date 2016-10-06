@@ -1,26 +1,35 @@
 var express = require('express');
 var router = express.Router();
-var userController = require('../controller/userController.js');
+var userModel = require('../model/userModel.js')
+var log = require('../utility/log.js');
+var returnValue = require('../config/returnValue.js');
 
 
 
 
 
-router.route('/user')
-.get(function(req, res){
-    userController.get(req, res);
-}).put(function(req, res){
-    userController.put(req, res);
-}).post(function(req, res){
-    userController.post(req, res);
-}).delete(function(req, res){
-    userController.delete(req, res);
+
+router.post('/updateUserDeviceToken', function(req, res){
+    log.info(req, log.getFileNameAndLineNum(__filename));
+
+    userModel.updateUserDeviceToken(req.userSrno, req.userDeviceToken, function(err, data){
+        var returnData = {};
+        if (err) {
+            log.error(err, log.getFileNameAndLineNum(__filename));
+            returnData.code = returnValue.returnCode.ERROR;
+            returnData.msg = err;
+        }else{
+            returnData.code = returnValue.returnCode.SUCCESS;
+            returnData.data = data;
+        }
+        res.send(returnData);
+    });
 });
 
 
 
 router.get('/test', function(req, res){
-    res.send('router test ok');
+    res.send('user router test ok');
 });
 
 //导出router对象
