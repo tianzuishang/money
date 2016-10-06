@@ -427,6 +427,13 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     //                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
                     //                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
                     //
+                    
+                    
+                    //更新device token
+                    let setting = UIUserNotificationSettings(types: [UIUserNotificationType.badge, UIUserNotificationType.alert,UIUserNotificationType.sound], categories: nil)
+                    UIApplication.shared.registerUserNotificationSettings(setting)
+                    UIApplication.shared.registerForRemoteNotifications()
+                    
 
                 }
                 

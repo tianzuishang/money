@@ -54,11 +54,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Bugly.start(withAppId: "87e6825c9b")
         
         
-        //Bugly.startWithAppId("111")
-        //Bugly.start(withAppId: "此处替换为你的AppId")
+        
+        
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+        //注册远程通知
+        
+        
+        let setting = UIUserNotificationSettings(types: [UIUserNotificationType.badge, UIUserNotificationType.alert,UIUserNotificationType.sound], categories: nil)
+        
+        UIApplication.shared.registerUserNotificationSettings(setting)
+
+        
+        
         return true
     }
 
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+        if notificationSettings.types != UIUserNotificationType() {
+            application.registerForRemoteNotifications()
+        }
+        
+    }
+    
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+        print("didFailToRegisterForRemoteNotificationsWithError:" + error.localizedDescription)
+        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        
+        
+    }
+    
+    
     
 //    func traceLog() {
 //        
