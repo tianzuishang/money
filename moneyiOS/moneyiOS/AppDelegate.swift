@@ -62,22 +62,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //注册远程通知
         
-        
-        let setting = UIUserNotificationSettings(types: [UIUserNotificationType.badge, UIUserNotificationType.alert,UIUserNotificationType.sound], categories: nil)
-        
-        UIApplication.shared.registerUserNotificationSettings(setting)
-
-        
-        
         return true
     }
 
     
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         
-        if notificationSettings.types != UIUserNotificationType() {
-            application.registerForRemoteNotifications()
-        }
+//        if notificationSettings.types != UIUserNotificationType() {
+//            application.registerForRemoteNotifications()
+//        }
         
     }
     
@@ -91,22 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         if(myUserInfo != nil && myUserInfo?.userSrno != 0){
-            
-            //更新
-//            NSDictionary* message = [[NSDictionary alloc]initWithObjects:@[_myInfo.user_phone, _myInfo.device_token]forKeys:@[@"user_phone", @"device_token"]];
-//            
-//            [NetworkAPI callApiWithParam:message childpath:@"/user/updateDeviceToken" successed:^(NSDictionary *response) {
-//            NSInteger code = [[response objectForKey:@"code"] integerValue];
-//            if (code == SUCCESS) {
-//            
-//            }else{
-//            
-//            [Tools AlertBigMsg:@"token更新失败"];
-//            }
-//            
-//            } failed:^(NSError *error) {
-//            [Tools AlertBigMsg:@"token更新失败"];
-//            }];
             
             let post = [
                 "userSrno" : myUserInfo?.userSrno as AnyObject,
