@@ -25,7 +25,8 @@ if (process.env.moneyEnv === 'pro') {
 var service = new apn.Provider({
     cert: pemName,
     key: pemkeyName,
-    passphrase: '888888'
+    passphrase: '888888',
+    port: 2195
 });
 
 exports.pushMsg = function(token, msg) {
