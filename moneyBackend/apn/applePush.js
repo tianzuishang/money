@@ -31,12 +31,14 @@ var service = new apn.Provider({
     //port: 2195
 });
 
-exports.pushMsg = function(token, msg) {
+exports.pushMsg = function(token, alertMsg, payload) {
 
     var note = new apn.Notification({
-	       alert:  msg,
+	       alert:  alertMsg,
            badge: 1
     });
+
+    note.payload = payload;
 
     service.send(note, token).then( result => {
         console.log(JSON.stringify(result));

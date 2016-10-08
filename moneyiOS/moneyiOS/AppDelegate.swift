@@ -62,6 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //注册远程通知
         
+        
+        print("didFinishLaunchingWithOptions")
+        
         return true
     }
 
@@ -71,6 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        if notificationSettings.types != UIUserNotificationType() {
 //            application.registerForRemoteNotifications()
 //        }
+        
+        
+        
+        
         
     }
     
@@ -84,7 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         
-        Tool.showMsgBox("didReceiveRemoteNotification")
+        print("didReceiveRemoteNotification")
+        
+        let apnInfo = userInfo as! Dictionary
+        
+        print(apnInfo)
         
     }
     
