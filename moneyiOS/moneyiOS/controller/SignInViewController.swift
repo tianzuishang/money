@@ -427,7 +427,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     //                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
                     //                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
                     //
-
+                    
+                    
+                    //更新device token
+                    
+                    APN.initAPNNotification()
                 }
                 
             }

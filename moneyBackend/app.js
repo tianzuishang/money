@@ -80,9 +80,11 @@ function initRouter(app){
     log.info('initRouter......');
 
     var moneyRouter = require('./router/moneyRouter.js');
+    var userRouter = require('./router/userRouter.js');
 
     //加载路由模块
     app.use('/news', moneyRouter);
+    app.use('/user', userRouter);
 }
 
 

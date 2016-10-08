@@ -22,6 +22,8 @@ class UserModel: NSObject {
     var sign: String?
     var followCount: Int = 0
     var fansCount: Int = 0
+    var deviceToken: String?
+    
     
     
     func setModel(dic: NSDictionary) {

@@ -54,11 +54,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Bugly.start(withAppId: "87e6825c9b")
         
         
-        //Bugly.startWithAppId("111")
-        //Bugly.start(withAppId: "此处替换为你的AppId")
+        
+        
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+        //注册远程通知
+        
         return true
     }
 
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+//        if notificationSettings.types != UIUserNotificationType() {
+//            application.registerForRemoteNotifications()
+//        }
+        
+    }
+    
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+        print("didFailToRegisterForRemoteNotificationsWithError:" + error.localizedDescription)
+        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        if(myUserInfo != nil && myUserInfo?.userSrno != 0){
+            
+            let post = [
+                "userSrno" : myUserInfo?.userSrno as AnyObject,
+                "userDeviceToken" : deviceToken as AnyObject
+            ]
+            
+            NewsAPI.updateUserDeviceToken({ (error, dictionary) in
+                
+                if(error != nil){
+                    
+                    
+                    
+                }else{
+                    
+                    let code = dictionary?["code"] as! Int
+                    if(code != SUCCESS){
+                        
+                        Tool.showErrorMsgBox(code)
+                        
+                    }
+                }
+                
+                
+                }, parameters: post)
+            
+        }
+        
+    }
+    
+    
     
 //    func traceLog() {
 //        

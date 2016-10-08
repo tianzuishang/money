@@ -137,6 +137,8 @@
 		B2D173461D3CC9C000FC128A /* moneyiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D173451D3CC9C000FC128A /* moneyiOSTests.swift */; };
 		B2D173551D3CCD5A00FC128A /* cfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D1734D1D3CCAF000FC128A /* cfTest.swift */; };
 		B2D173561D3CCD5A00FC128A /* cfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D1734D1D3CCAF000FC128A /* cfTest.swift */; };
+		B2D265621DA6A99E00705E18 /* APN.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D265611DA6A99D00705E18 /* APN.swift */; };
+		B2D265631DA6A99E00705E18 /* APN.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D265611DA6A99D00705E18 /* APN.swift */; };
 		B2E27A401D56F16300D65A94 /* config.geojson in Resources */ = {isa = PBXBuildFile; fileRef = B2E27A3F1D56F16300D65A94 /* config.geojson */; };
 		B2E27A421D570DB900D65A94 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E27A411D570DB900D65A94 /* MarketViewController.swift */; };
 		B2E27A441D571BCE00D65A94 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E27A431D571BCE00D65A94 /* MarketTableViewController.swift */; };
@@ -258,6 +260,8 @@
 		B2D173451D3CC9C000FC128A /* moneyiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyiOSTests.swift; sourceTree = "<group>"; };
 		B2D173471D3CC9C000FC128A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2D1734D1D3CCAF000FC128A /* cfTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cfTest.swift; sourceTree = "<group>"; };
+		B2D265601DA6961100705E18 /* UATmoneyiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UATmoneyiOS.entitlements; sourceTree = "<group>"; };
+		B2D265611DA6A99D00705E18 /* APN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APN.swift; sourceTree = "<group>"; };
 		B2E27A3F1D56F16300D65A94 /* config.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.geojson; sourceTree = "<group>"; };
 		B2E27A411D570DB900D65A94 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		B2E27A431D571BCE00D65A94 /* MarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
@@ -392,6 +396,7 @@
 		B2D173081D3CA27C00FC128A = {
 			isa = PBXGroup;
 			children = (
+				B2D265601DA6961100705E18 /* UATmoneyiOS.entitlements */,
 				B2D173131D3CA27C00FC128A /* moneyiOS */,
 				B2D173361D3CC92100FC128A /* moneyiOSUITests */,
 				B2D173441D3CC9C000FC128A /* moneyiOSTests */,
@@ -536,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E9489E1D7D9D350087838A /* Tool.swift */,
+				B2D265611DA6A99D00705E18 /* APN.swift */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -673,6 +679,11 @@
 					B22FDC821D8FE07F005B0E86 = {
 						DevelopmentTeam = 7R8RS88G2M;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					B2D173101D3CA27C00FC128A = {
 						CreatedOnToolsVersion = 7.2;
@@ -928,6 +939,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22FDC851D8FE07F005B0E86 /* FindTableViewController.swift in Sources */,
+				B2D265631DA6A99E00705E18 /* APN.swift in Sources */,
 				B22FDC861D8FE07F005B0E86 /* MsgTableViewController.swift in Sources */,
 				B22FDC871D8FE07F005B0E86 /* HeadLineTableViewCell.swift in Sources */,
 				B22FDC881D8FE07F005B0E86 /* NewsModel.swift in Sources */,
@@ -972,6 +984,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B297DB731D86E86D00A6426D /* FindTableViewController.swift in Sources */,
+				B2D265621DA6A99E00705E18 /* APN.swift in Sources */,
 				B2458DF81D5D992500AF0815 /* MsgTableViewController.swift in Sources */,
 				B2E948841D7BF5E90087838A /* HeadLineTableViewCell.swift in Sources */,
 				B296BAA21D50E54A004DE860 /* NewsModel.swift in Sources */,
@@ -1068,6 +1081,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = UATmoneyiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
@@ -1098,6 +1112,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = UATmoneyiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				DEVELOPMENT_TEAM = 7R8RS88G2M;
