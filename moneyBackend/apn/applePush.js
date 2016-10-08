@@ -3,11 +3,17 @@ var apn = require('apn')
 var pemName = '';
 var pemkeyName = '';
 var gateway = '';
+var path = require('path')
 
 if (process.env.moneyEnv === 'dev') {
-	pemName = 'PushCert.pem';
-	pemkeyName = 'PushKey.pem';
+
+    pemName = path.join(__dirname, 'PushCert.pem');
+	pemkeyName = path.join(__dirname, 'PushKey.pem');
 	gateway = 'gateway.sandbox.push.apple.com';
+
+    console.log(pemName);
+    console.log(pemkeyName);
+    console.log(gateway);
 }
 
 if (process.env.moneyEnv === 'pro') {
