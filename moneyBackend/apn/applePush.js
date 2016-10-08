@@ -4,6 +4,8 @@ var pemName = '';
 var pemkeyName = '';
 var gateway = '';
 var path = require('path')
+var log = require('../utility/log.js')
+
 
 if (process.env.moneyEnv === 'dev') {
 
@@ -38,6 +40,10 @@ exports.pushMsg = function(token, msg) {
 
     service.send(note, token).then( result => {
         console.log(JSON.stringify(result));
+
+        if(result.failed.length > 0) {
+            log.error(JSON.stringify(result.failed), log.getFileNameAndLineNum(__filename))
+        }
     });
 
 }
