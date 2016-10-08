@@ -37,7 +37,7 @@ exports.pushMsg = function(token, msg) {
     });
 
     service.send(note, token).then( result => {
-        console.log(result);
+        console.log(JSON.stringify(result));
     });
 
 }
