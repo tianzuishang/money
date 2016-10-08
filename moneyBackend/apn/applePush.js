@@ -9,7 +9,7 @@ if (process.env.moneyEnv === 'dev') {
 
     pemName = path.join(__dirname, 'PushCert.pem');
 	pemkeyName = path.join(__dirname, 'PushKey.pem');
-	gateway = 'gateway.sandbox.push.apple.com';
+	//gateway = 'gateway.sandbox.push.apple.com';
 
     console.log(pemName);
     console.log(pemkeyName);
@@ -19,14 +19,14 @@ if (process.env.moneyEnv === 'dev') {
 if (process.env.moneyEnv === 'pro') {
 	pemName = 'StockPubPro.pem';
 	pemkeyName = 'StockPubKey.pem';
-	gateway = 'gateway.push.apple.com';
+	//gateway = 'gateway.push.apple.com';
 }
 
 var service = new apn.Provider({
     cert: pemName,
     key: pemkeyName,
     passphrase: '888888',
-    port: 2195
+    //port: 2195
 });
 
 exports.pushMsg = function(token, msg) {
