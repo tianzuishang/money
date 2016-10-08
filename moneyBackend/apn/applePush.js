@@ -16,7 +16,7 @@ if (process.env.moneyEnv === 'pro') {
 	gateway = 'gateway.push.apple.com';
 }
 
-let service = new apn.Provider({
+var service = new apn.Provider({
     cert: pemName,
     key: pemkeyName,
     passphrase: '888888'
@@ -24,7 +24,7 @@ let service = new apn.Provider({
 
 exports.pushMsg = function(token, msg) {
 
-    let note = new apn.Notification({
+    var note = new apn.Notification({
 	       alert:  msg,
            badge: 1
     });
