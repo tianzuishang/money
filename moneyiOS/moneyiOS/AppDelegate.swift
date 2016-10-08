@@ -95,6 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let apnInfo = userInfo as! Dictionary
         
+        print(apnInfo["tab"])
+        
         print(apnInfo)
         
     }
