@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var myUserInfo: UserModel?
     
+    var tabbar: TabbarController?
     
+    var myLaunchOptions: [UIApplicationLaunchOptionsKey: Any]?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -65,6 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("didFinishLaunchingWithOptions")
         
+        
+        //应用启动后，launchOptions为空则从图标进入,launchOptions不为空则从推送信息进入
+        myLaunchOptions = launchOptions
+        
         return true
     }
 
@@ -74,10 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        if notificationSettings.types != UIUserNotificationType() {
 //            application.registerForRemoteNotifications()
 //        }
-        
-        
-        
-        
         
     }
     
@@ -93,11 +95,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("didReceiveRemoteNotification")
         
-        let apnInfo = userInfo as! Dictionary
         
-        print(apnInfo["tab"])
+        //应用在后台，点击推送消息进入此函数
         
-        print(apnInfo)
+//        print(userInfo["tab"] as! Int)
+//        
+//        self.tabbar?.selectedViewController = self.tabbar?.viewControllers?[userInfo["tab"] as! Int]
         
     }
     
@@ -119,8 +122,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NewsAPI.updateUserDeviceToken({ (error, dictionary) in
                 
                 if(error != nil){
-                    
-                    
                     
                 }else{
                     
@@ -195,12 +196,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let items = [item1, item2, item3, item4, item5];
-        let tab = TabbarController();
-        tab.tabInit(items)
+        tabbar = TabbarController();
+        tabbar?.tabInit(items)
         //tab.tabBar.barTintColor = themeColor
-        tab.tabBar.isTranslucent = false
-        tab.tabBar.tintColor = themeColor;
-        return tab
+        tabbar?.tabBar.isTranslucent = false
+        tabbar?.tabBar.tintColor = themeColor;
+        return (tabbar)!
     }
     
     
