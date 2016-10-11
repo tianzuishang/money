@@ -140,6 +140,15 @@ class MsgTableViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let talkViewCtrl = TalkViewController()
+        
+        talkViewCtrl.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(talkViewCtrl, animated: true)
+    }
+    
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return MsgTableViewCell.cellHeight()

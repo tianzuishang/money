@@ -38,7 +38,7 @@ class MsgTableViewCell: UITableViewCell {
         
         name.font = UIFont(name: fontName, size: minFont)
         msg.font = UIFont(name: fontName, size: minFont)
-        dateTime.font = UIFont(name: fontName, size: minminFont)
+        dateTime.font = UIFont(name: fontName, size: minFont)
         msg.textColor = UIColor.gray
         dateTime.textColor = UIColor.gray
         
@@ -84,6 +84,7 @@ class MsgTableViewCell: UITableViewCell {
             make.size.height.equalTo(MsgTableViewCell.faceWidth)
             make.left.equalTo(self).offset(2*minSpace)
             make.top.equalTo(self).offset(minSpace)
+            make.bottom.equalTo(self).offset(-minSpace)
         }
         
         name.snp.makeConstraints{ (make) -> Void in

@@ -176,10 +176,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         nav1.navigationBar.barTintColor = themeColor
+        //nav1.navigationBar.barStyle = UIStatusBarStyle.default
         nav2.navigationBar.barTintColor = themeColor
         nav3.navigationBar.barTintColor = themeColor
         nav4.navigationBar.barTintColor = themeColor
+        nav4.navigationBar.tintColor = UIColor.white
         nav5.navigationBar.barTintColor = themeColor
+        
+        //self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+        //[self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
         
         nav1.navigationBar.isTranslucent = false
         nav2.navigationBar.isTranslucent = false
