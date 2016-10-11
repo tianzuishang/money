@@ -427,7 +427,19 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     //                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
                     //                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
                     //
-
+                    
+                    
+                    //更新device token
+                    
+                    APN.initAPNNotification()
+                    
+                    //判断是否点击推送消息进入
+//                    if(app.myLaunchOptions != nil){
+//                        let userInfo = app.myLaunchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary
+//                        app.tabbar?.selectedViewController = app.tabbar?.viewControllers?[userInfo?["tab"] as! Int]
+//                        
+//                    }
+                    
                 }
                 
             }

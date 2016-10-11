@@ -149,5 +149,10 @@ class NewsAPI: NSObject {
         NewsAPI.httpRequestForGet(url: serverDomain + "news/getUserDetail", parameters: parameters, callback: callback)
     }
     
-
+    static func updateUserDeviceToken(_ callback: @escaping responseCall, parameters: [String: AnyObject]?){
+        
+        NewsAPI.httpRequestForPost(url: serverDomain + "user/updateUserDeviceToken", parameters: parameters, callback: callback)
+    }
+    
+    
 }

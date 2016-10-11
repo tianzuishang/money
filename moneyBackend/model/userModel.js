@@ -56,3 +56,9 @@ exports.checkUserPassword = function(userID, userPassword, callback) {
 	' and a.usd_user_srno = b.udt_user_srno and b.UDT_ENTY_SRNO = c.EMA_ENTY_SRNO'
 	conn.executeSql(sql, [userID, userPassword], callback)
 }
+
+
+exports.updateUserDeviceToken = function(userSrno, userDeviceToken, callback){
+	var sql = 'update trdx_user_dtls set UDT_USER_DEVICE_TOKEN = ? where UDT_USER_SRNO = ?';
+	conn.executeSql(sql, [userDeviceToken, userSrno], callback)
+}

@@ -111,6 +111,28 @@
 		B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064E1D50DACD00FBF7EB /* watch@3x.png */; };
 		B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */; };
 
+		B2540D0D1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */; };
+		B2540D0E1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */; };
+		B2540D101DAA42CB00A644C6 /* TalkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */; };
+		B2540D111DAA42CB00A644C6 /* TalkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */; };
+		B2540D131DAA45A400A644C6 /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D121DAA45A400A644C6 /* TalkViewController.swift */; };
+		B2540D141DAA45A400A644C6 /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D121DAA45A400A644C6 /* TalkViewController.swift */; };
+		B2540D171DAB5F8500A644C6 /* ToolViewInputVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D151DAB5F8500A644C6 /* ToolViewInputVoice@2x.png */; };
+		B2540D181DAB5F8500A644C6 /* ToolViewInputVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D151DAB5F8500A644C6 /* ToolViewInputVoice@2x.png */; };
+		B2540D191DAB5F8500A644C6 /* ToolViewInputVoice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D161DAB5F8500A644C6 /* ToolViewInputVoice@3x.png */; };
+		B2540D1A1DAB5F8500A644C6 /* ToolViewInputVoice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D161DAB5F8500A644C6 /* ToolViewInputVoice@3x.png */; };
+		B2540D1D1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D1B1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png */; };
+		B2540D1E1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D1B1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png */; };
+		B2540D1F1DAB5F9100A644C6 /* ToolViewKeyboard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D1C1DAB5F9100A644C6 /* ToolViewKeyboard@3x.png */; };
+		B2540D201DAB5F9100A644C6 /* ToolViewKeyboard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D1C1DAB5F9100A644C6 /* ToolViewKeyboard@3x.png */; };
+		B2540D231DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D211DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png */; };
+		B2540D241DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D211DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png */; };
+		B2540D251DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D221DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png */; };
+		B2540D261DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D221DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png */; };
+		B2540D291DAB5FB400A644C6 /* ToolViewEmotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D271DAB5FB400A644C6 /* ToolViewEmotion@2x.png */; };
+		B2540D2A1DAB5FB400A644C6 /* ToolViewEmotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D271DAB5FB400A644C6 /* ToolViewEmotion@2x.png */; };
+		B2540D2B1DAB5FB400A644C6 /* ToolViewEmotion@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D281DAB5FB400A644C6 /* ToolViewEmotion@3x.png */; };
+		B2540D2C1DAB5FB400A644C6 /* ToolViewEmotion@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D281DAB5FB400A644C6 /* ToolViewEmotion@3x.png */; };
 
 		B296BA9A1D50E163004DE860 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BA991D50E163004DE860 /* NewsTableViewController.swift */; };
 		B296BAA01D50E511004DE860 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */; };
@@ -137,6 +159,8 @@
 		B2D173461D3CC9C000FC128A /* moneyiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D173451D3CC9C000FC128A /* moneyiOSTests.swift */; };
 		B2D173551D3CCD5A00FC128A /* cfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D1734D1D3CCAF000FC128A /* cfTest.swift */; };
 		B2D173561D3CCD5A00FC128A /* cfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D1734D1D3CCAF000FC128A /* cfTest.swift */; };
+		B2D265621DA6A99E00705E18 /* APN.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D265611DA6A99D00705E18 /* APN.swift */; };
+		B2D265631DA6A99E00705E18 /* APN.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D265611DA6A99D00705E18 /* APN.swift */; };
 		B2E27A401D56F16300D65A94 /* config.geojson in Resources */ = {isa = PBXBuildFile; fileRef = B2E27A3F1D56F16300D65A94 /* config.geojson */; };
 		B2E27A421D570DB900D65A94 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E27A411D570DB900D65A94 /* MarketViewController.swift */; };
 		B2E27A441D571BCE00D65A94 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E27A431D571BCE00D65A94 /* MarketTableViewController.swift */; };
@@ -168,6 +192,8 @@
 		B2EED7421D6C65BC0053816C /* magnifier_48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED7411D6C65BC0053816C /* magnifier_48.png */; };
 		B2EED7441D6C660C0053816C /* magnifier_32.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED7431D6C660C0053816C /* magnifier_32.png */; };
 		B2EED7461D6C70C30053816C /* magnifier_32px.png in Resources */ = {isa = PBXBuildFile; fileRef = B2EED7451D6C70C30053816C /* magnifier_32px.png */; };
+		B2F74A5F1DA3FE6600E29E38 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F74A5E1DA3FE6600E29E38 /* Bugly.framework */; };
+		B2F74A601DA3FE6600E29E38 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F74A5E1DA3FE6600E29E38 /* Bugly.framework */; };
 		F07298814B863C90E363C6C4 /* Pods_moneyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA617DD78B38513C132291E /* Pods_moneyiOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -228,6 +254,18 @@
 
 		B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_moneyiOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/moneyiOS-fqpazxdxfvcthkchuotjrhxlandb/Build/Products/Debug-iphonesimulator/Pods_moneyiOS.framework"; sourceTree = "<group>"; };
 
+		B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkTableViewCell.swift; sourceTree = "<group>"; };
+		B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkModel.swift; sourceTree = "<group>"; };
+		B2540D121DAA45A400A644C6 /* TalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
+		B2540D151DAB5F8500A644C6 /* ToolViewInputVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputVoice@2x.png"; sourceTree = "<group>"; };
+		B2540D161DAB5F8500A644C6 /* ToolViewInputVoice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputVoice@3x.png"; sourceTree = "<group>"; };
+		B2540D1B1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewKeyboard@2x.png"; sourceTree = "<group>"; };
+		B2540D1C1DAB5F9100A644C6 /* ToolViewKeyboard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewKeyboard@3x.png"; sourceTree = "<group>"; };
+		B2540D211DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TypeSelectorBtn_Black@2x.png"; sourceTree = "<group>"; };
+		B2540D221DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TypeSelectorBtn_Black@3x.png"; sourceTree = "<group>"; };
+		B2540D271DAB5FB400A644C6 /* ToolViewEmotion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewEmotion@2x.png"; sourceTree = "<group>"; };
+		B2540D281DAB5FB400A644C6 /* ToolViewEmotion@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewEmotion@3x.png"; sourceTree = "<group>"; };
+
 		B296BA991D50E163004DE860 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		B296BA9F1D50E511004DE860 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		B296BAA11D50E54A004DE860 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
@@ -258,6 +296,8 @@
 		B2D173451D3CC9C000FC128A /* moneyiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyiOSTests.swift; sourceTree = "<group>"; };
 		B2D173471D3CC9C000FC128A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2D1734D1D3CCAF000FC128A /* cfTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cfTest.swift; sourceTree = "<group>"; };
+		B2D265601DA6961100705E18 /* UATmoneyiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UATmoneyiOS.entitlements; sourceTree = "<group>"; };
+		B2D265611DA6A99D00705E18 /* APN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APN.swift; sourceTree = "<group>"; };
 		B2E27A3F1D56F16300D65A94 /* config.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.geojson; sourceTree = "<group>"; };
 		B2E27A411D570DB900D65A94 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		B2E27A431D571BCE00D65A94 /* MarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +329,7 @@
 		B2EED7411D6C65BC0053816C /* magnifier_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_48.png; sourceTree = "<group>"; };
 		B2EED7431D6C660C0053816C /* magnifier_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_32.png; sourceTree = "<group>"; };
 		B2EED7451D6C70C30053816C /* magnifier_32px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier_32px.png; sourceTree = "<group>"; };
+		B2F74A5E1DA3FE6600E29E38 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +340,7 @@
 
 				B20CFF5B1DA3769C0069FF37 /* libc++.1.tbd in Frameworks */,
 				B20CFF591DA375B80069FF37 /* JavaScriptCore.framework in Frameworks */,
+				B2F74A601DA3FE6600E29E38 /* Bugly.framework in Frameworks */,
 				B208E7FD1D9267DC005B4A7E /* Security.framework in Frameworks */,
 				B29EBA981D9218FB00818503 /* SystemConfiguration.framework in Frameworks */,
 				B29EBA961D9218F100818503 /* libz.tbd in Frameworks */,
@@ -312,6 +354,7 @@
 			files = (
 				B208E8021D92681A005B4A7E /* libc++.tbd in Frameworks */,
 				B208E8011D926803005B4A7E /* libz.tbd in Frameworks */,
+				B2F74A5F1DA3FE6600E29E38 /* Bugly.framework in Frameworks */,
 				B208E8001D9267FA005B4A7E /* Security.framework in Frameworks */,
 				F07298814B863C90E363C6C4 /* Pods_moneyiOS.framework in Frameworks */,
 			);
@@ -390,6 +433,7 @@
 		B2D173081D3CA27C00FC128A = {
 			isa = PBXGroup;
 			children = (
+				B2D265601DA6961100705E18 /* UATmoneyiOS.entitlements */,
 				B2D173131D3CA27C00FC128A /* moneyiOS */,
 				B2D173361D3CC92100FC128A /* moneyiOSUITests */,
 				B2D173441D3CC9C000FC128A /* moneyiOSTests */,
@@ -433,6 +477,7 @@
 				B2D173201D3CA27D00FC128A /* LaunchScreen.storyboard */,
 				B2D173231D3CA27D00FC128A /* Info.plist */,
 				B20CFF571DA372E90069FF37 /* moneyiOS-Bridging-Header.h */,
+				B2F74A5E1DA3FE6600E29E38 /* Bugly.framework */,
 				B2D1731B1D3CA27C00FC128A /* moneyiOS.xcdatamodeld */,
 			);
 			path = moneyiOS;
@@ -458,6 +503,7 @@
 				B2E9487A1D7BBDFB0087838A /* NewsFeedViewCtrl.swift */,
 				B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */,
 				B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */,
+				B2540D121DAA45A400A644C6 /* TalkViewController.swift */,
 				B297DB721D86E86D00A6426D /* FindTableViewController.swift */,
 				B2E27A411D570DB900D65A94 /* MarketViewController.swift */,
 				B2458E061D5DB2B600AF0815 /* UserDetailTableViewController.swift */,
@@ -481,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				B296BAA11D50E54A004DE860 /* NewsModel.swift */,
+				B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */,
 				B297DB7B1D87DA4A00A6426D /* MsgModel.swift */,
 				B2E948A41D7FAC580087838A /* NewsFeedModel.swift */,
 				B2E948981D7C4ED50087838A /* LiveModel.swift */,
@@ -493,6 +540,14 @@
 		B2D1732E1D3CB29800FC128A /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				B2540D151DAB5F8500A644C6 /* ToolViewInputVoice@2x.png */,
+				B2540D161DAB5F8500A644C6 /* ToolViewInputVoice@3x.png */,
+				B2540D1B1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png */,
+				B2540D1C1DAB5F9100A644C6 /* ToolViewKeyboard@3x.png */,
+				B2540D211DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png */,
+				B2540D221DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png */,
+				B2540D271DAB5FB400A644C6 /* ToolViewEmotion@2x.png */,
+				B2540D281DAB5FB400A644C6 /* ToolViewEmotion@3x.png */,
 				B2E948B31D8019300087838A /* Like_64.png */,
 				B2E948B01D8019250087838A /* comment.png */,
 				B2E948AD1D8017E20087838A /* like.png */,
@@ -533,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E9489E1D7D9D350087838A /* Tool.swift */,
+				B2D265611DA6A99D00705E18 /* APN.swift */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -542,6 +598,7 @@
 			children = (
 				B2458E091D5DB51000AF0815 /* faceCell.swift */,
 				B2E948A11D7FAA800087838A /* NewsFeedTableViewCell.swift */,
+				B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */,
 				B2E9488C1D7C115B0087838A /* LiveTableViewCell.swift */,
 				B297DB751D86E8C700A6426D /* FindTableViewCell.swift */,
 				B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */,
@@ -670,6 +727,11 @@
 					B22FDC821D8FE07F005B0E86 = {
 						DevelopmentTeam = 7R8RS88G2M;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					B2D173101D3CA27C00FC128A = {
 						CreatedOnToolsVersion = 7.2;
@@ -718,6 +780,7 @@
 				B22FDCAE1D8FE07F005B0E86 /* camera_.png in Resources */,
 				B22FDCAF1D8FE07F005B0E86 /* heart2.png in Resources */,
 				B22FDCB01D8FE07F005B0E86 /* message@2x.png in Resources */,
+				B2540D261DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png in Resources */,
 				B22FDCB11D8FE07F005B0E86 /* me@3x.png in Resources */,
 				B22FDCB21D8FE07F005B0E86 /* qq_48px.png in Resources */,
 				B22FDCB31D8FE07F005B0E86 /* wechat.png in Resources */,
@@ -738,17 +801,24 @@
 				B22FDCC21D8FE07F005B0E86 /* man-noname.png in Resources */,
 				B22FDCC31D8FE07F005B0E86 /* heart3.png in Resources */,
 				B22FDCC41D8FE07F005B0E86 /* message.png in Resources */,
+				B2540D2C1DAB5FB400A644C6 /* ToolViewEmotion@3x.png in Resources */,
+				B2540D201DAB5F9100A644C6 /* ToolViewKeyboard@3x.png in Resources */,
 				B22FDCC51D8FE07F005B0E86 /* weibo_48px.png in Resources */,
 				B22FDCC61D8FE07F005B0E86 /* like.png in Resources */,
 				B22FDCC71D8FE07F005B0E86 /* magnifier.png in Resources */,
+				B2540D241DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png in Resources */,
 				B22FDCC81D8FE07F005B0E86 /* follow_72px.png in Resources */,
 				B22FDCC91D8FE07F005B0E86 /* market@3x.png in Resources */,
+				B2540D2A1DAB5FB400A644C6 /* ToolViewEmotion@2x.png in Resources */,
 				B22FDCCA1D8FE07F005B0E86 /* Assets.xcassets in Resources */,
 				B22FDCCB1D8FE07F005B0E86 /* weibo.png in Resources */,
 				B22FDCCC1D8FE07F005B0E86 /* magnifier_32px.png in Resources */,
 				B22FDCCD1D8FE07F005B0E86 /* market@2x.png in Resources */,
 				B22FDCCE1D8FE07F005B0E86 /* watch@3x.png in Resources */,
 				B22FDCCF1D8FE07F005B0E86 /* Person_add_72px.png in Resources */,
+				B2540D1E1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png in Resources */,
+				B2540D1A1DAB5F8500A644C6 /* ToolViewInputVoice@3x.png in Resources */,
+				B2540D181DAB5F8500A644C6 /* ToolViewInputVoice@2x.png in Resources */,
 				B22FDCD01D8FE07F005B0E86 /* Main.storyboard in Resources */,
 				B22FDCD11D8FE07F005B0E86 /* wechat_48px.png in Resources */,
 			);
@@ -761,6 +831,7 @@
 				B2E948811D7BC6B20087838A /* camera_.png in Resources */,
 				B2E948A91D8015590087838A /* heart2.png in Resources */,
 				B2E948751D7BB0110087838A /* message@2x.png in Resources */,
+				B2540D251DAB5F9C00A644C6 /* TypeSelectorBtn_Black@3x.png in Resources */,
 				B24706541D50DACD00FBF7EB /* me@3x.png in Resources */,
 				B2D155621D6EE86100CCF174 /* qq_48px.png in Resources */,
 				B2E948941D7C48AB0087838A /* wechat.png in Resources */,
@@ -781,17 +852,24 @@
 				B2458DFE1D5DA3F200AF0815 /* man-noname.png in Resources */,
 				B2E948AB1D8015590087838A /* heart3.png in Resources */,
 				B2E948731D7BB0110087838A /* message.png in Resources */,
+				B2540D2B1DAB5FB400A644C6 /* ToolViewEmotion@3x.png in Resources */,
+				B2540D1F1DAB5F9100A644C6 /* ToolViewKeyboard@3x.png in Resources */,
 				B2D155661D6EE87600CCF174 /* weibo_48px.png in Resources */,
 				B2E948AE1D8017E20087838A /* like.png in Resources */,
 				B2EED7401D6C60FC0053816C /* magnifier.png in Resources */,
+				B2540D231DAB5F9C00A644C6 /* TypeSelectorBtn_Black@2x.png in Resources */,
 				B213E3A71D82C2C200B9E4A5 /* follow_72px.png in Resources */,
 				B24706521D50DACD00FBF7EB /* market@3x.png in Resources */,
+				B2540D291DAB5FB400A644C6 /* ToolViewEmotion@2x.png in Resources */,
 				B2D1731F1D3CA27D00FC128A /* Assets.xcassets in Resources */,
 				B2E948961D7C48AB0087838A /* weibo.png in Resources */,
 				B2EED7461D6C70C30053816C /* magnifier_32px.png in Resources */,
 				B24706511D50DACD00FBF7EB /* market@2x.png in Resources */,
 				B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */,
 				B297DB791D86EC1E00A6426D /* Person_add_72px.png in Resources */,
+				B2540D1D1DAB5F9100A644C6 /* ToolViewKeyboard@2x.png in Resources */,
+				B2540D191DAB5F8500A644C6 /* ToolViewInputVoice@3x.png in Resources */,
+				B2540D171DAB5F8500A644C6 /* ToolViewInputVoice@2x.png in Resources */,
 				B2D1731A1D3CA27C00FC128A /* Main.storyboard in Resources */,
 				B2D155641D6EE86C00CCF174 /* wechat_48px.png in Resources */,
 			);
@@ -925,13 +1003,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22FDC851D8FE07F005B0E86 /* FindTableViewController.swift in Sources */,
+				B2D265631DA6A99E00705E18 /* APN.swift in Sources */,
 				B22FDC861D8FE07F005B0E86 /* MsgTableViewController.swift in Sources */,
 				B22FDC871D8FE07F005B0E86 /* HeadLineTableViewCell.swift in Sources */,
 				B22FDC881D8FE07F005B0E86 /* NewsModel.swift in Sources */,
 				B22FDC891D8FE07F005B0E86 /* Tool.swift in Sources */,
 				B22FDC8A1D8FE07F005B0E86 /* MarketTableViewController.swift in Sources */,
 				B22FDC8B1D8FE07F005B0E86 /* NewsFeedViewCtrl.swift in Sources */,
+				B2540D141DAA45A400A644C6 /* TalkViewController.swift in Sources */,
 				B22FDC8C1D8FE07F005B0E86 /* SearchPeopleTableViewCtrl.swift in Sources */,
+				B2540D111DAA42CB00A644C6 /* TalkModel.swift in Sources */,
 				B22FDC8D1D8FE07F005B0E86 /* TradeTableViewController.swift in Sources */,
 				B22FDC8E1D8FE07F005B0E86 /* MoreTableViewCell.swift in Sources */,
 				B22FDC8F1D8FE07F005B0E86 /* ConfigAccess.swift in Sources */,
@@ -948,6 +1029,7 @@
 				B22FDC9A1D8FE07F005B0E86 /* MarketViewController.swift in Sources */,
 				B22FDC9B1D8FE07F005B0E86 /* UserModel.swift in Sources */,
 				B22FDC9C1D8FE07F005B0E86 /* FindTableViewCell.swift in Sources */,
+				B2540D0E1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */,
 				B22FDC9D1D8FE07F005B0E86 /* NewsViewCtrl.swift in Sources */,
 				B22FDC9E1D8FE07F005B0E86 /* faceCell.swift in Sources */,
 				B22FDC9F1D8FE07F005B0E86 /* MsgTableViewCell.swift in Sources */,
@@ -969,13 +1051,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B297DB731D86E86D00A6426D /* FindTableViewController.swift in Sources */,
+				B2D265621DA6A99E00705E18 /* APN.swift in Sources */,
 				B2458DF81D5D992500AF0815 /* MsgTableViewController.swift in Sources */,
 				B2E948841D7BF5E90087838A /* HeadLineTableViewCell.swift in Sources */,
 				B296BAA21D50E54A004DE860 /* NewsModel.swift in Sources */,
 				B2E9489F1D7D9D350087838A /* Tool.swift in Sources */,
 				B2E27A441D571BCE00D65A94 /* MarketTableViewController.swift in Sources */,
 				B2E9487B1D7BBDFB0087838A /* NewsFeedViewCtrl.swift in Sources */,
+				B2540D131DAA45A400A644C6 /* TalkViewController.swift in Sources */,
 				B2458DFB1D5D993700AF0815 /* SearchPeopleTableViewCtrl.swift in Sources */,
+				B2540D101DAA42CB00A644C6 /* TalkModel.swift in Sources */,
 				B2458C421D59752A00AF0815 /* TradeTableViewController.swift in Sources */,
 				B2E948871D7BFB670087838A /* MoreTableViewCell.swift in Sources */,
 				B296BAA91D56DCA7004DE860 /* ConfigAccess.swift in Sources */,
@@ -992,6 +1077,7 @@
 				B2E27A421D570DB900D65A94 /* MarketViewController.swift in Sources */,
 				B2458E011D5DA54100AF0815 /* UserModel.swift in Sources */,
 				B297DB761D86E8C700A6426D /* FindTableViewCell.swift in Sources */,
+				B2540D0D1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */,
 				B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */,
 				B2458E0A1D5DB51000AF0815 /* faceCell.swift in Sources */,
 				B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
@@ -1065,13 +1151,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = UATmoneyiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEVELOPMENT_TEAM = 7R8RS88G2M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/moneyiOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1097,12 +1184,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = UATmoneyiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jam wang (S7GN5K6W2H)";
 				DEVELOPMENT_TEAM = 7R8RS88G2M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/moneyiOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1235,6 +1324,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7R8RS88G2M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/moneyiOS",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1259,6 +1352,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7R8RS88G2M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/moneyiOS",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",

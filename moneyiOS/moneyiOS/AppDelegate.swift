@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var myUserInfo: UserModel?
     
+    var tabbar: TabbarController?
     
+    var myLaunchOptions: [UIApplicationLaunchOptionsKey: Any]?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -51,12 +53,94 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
+        Bugly.start(withAppId: "87e6825c9b")
         
-        //Bugly.startWithAppId("111")
-        //Bugly.start(withAppId: "此处替换为你的AppId")
+        
+        
+        
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+        //注册远程通知
+        
+        
+        print("didFinishLaunchingWithOptions")
+        
+        
+        //应用启动后，launchOptions为空则从图标进入,launchOptions不为空则从推送信息进入
+        myLaunchOptions = launchOptions
+        
         return true
     }
 
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+//        if notificationSettings.types != UIUserNotificationType() {
+//            application.registerForRemoteNotifications()
+//        }
+        
+    }
+    
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+        print("didFailToRegisterForRemoteNotificationsWithError:" + error.localizedDescription)
+        
+    }
+    
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+        print("didReceiveRemoteNotification")
+        
+        
+        //应用在后台，点击推送消息进入此函数
+        
+//        print(userInfo["tab"] as! Int)
+//        
+//        self.tabbar?.selectedViewController = self.tabbar?.viewControllers?[userInfo["tab"] as! Int]
+        
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        
+        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        if(myUserInfo != nil && myUserInfo?.userSrno != 0){
+            
+            let post = [
+                "userSrno" : myUserInfo?.userSrno as AnyObject,
+                "userDeviceToken" : deviceToken as AnyObject
+            ]
+            
+            NewsAPI.updateUserDeviceToken({ (error, dictionary) in
+                
+                if(error != nil){
+                    
+                }else{
+                    
+                    let code = dictionary?["code"] as! Int
+                    if(code != SUCCESS){
+                        
+                        Tool.showErrorMsgBox(code)
+                        
+                    }
+                }
+                
+                
+                }, parameters: post)
+            
+        }
+        
+    }
+    
+    
     
 //    func traceLog() {
 //        
@@ -92,10 +176,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         nav1.navigationBar.barTintColor = themeColor
+        //nav1.navigationBar.barStyle = UIStatusBarStyle.default
         nav2.navigationBar.barTintColor = themeColor
         nav3.navigationBar.barTintColor = themeColor
         nav4.navigationBar.barTintColor = themeColor
+        nav4.navigationBar.tintColor = UIColor.white
         nav5.navigationBar.barTintColor = themeColor
+        
+        //self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+        //[self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
         
         nav1.navigationBar.isTranslucent = false
         nav2.navigationBar.isTranslucent = false
@@ -112,12 +201,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let items = [item1, item2, item3, item4, item5];
-        let tab = TabbarController();
-        tab.tabInit(items)
+        tabbar = TabbarController();
+        tabbar?.tabInit(items)
         //tab.tabBar.barTintColor = themeColor
-        tab.tabBar.isTranslucent = false
-        tab.tabBar.tintColor = themeColor;
-        return tab
+        tabbar?.tabBar.isTranslucent = false
+        tabbar?.tabBar.tintColor = themeColor;
+        return (tabbar)!
     }
     
     
@@ -134,6 +223,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0;
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
