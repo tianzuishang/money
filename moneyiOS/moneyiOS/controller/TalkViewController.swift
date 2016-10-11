@@ -206,7 +206,7 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //microSendButton.buttonType = UIButtonType.custom
         
-        
+        ssss
         bottomToolbar.addSubview(emotionButton)
         bottomToolbar.addSubview(imageButton)
         bottomToolbar.addSubview(keyboardButton)
