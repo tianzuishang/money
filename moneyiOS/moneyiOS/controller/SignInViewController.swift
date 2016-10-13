@@ -224,8 +224,6 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             make.right.equalTo(loginButton.snp.right)
         }
-
-        
     }
     
     
@@ -337,11 +335,6 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         NewsAPI.login({ (error, responseData) -> Void in
-            
-//            if(hud != nil){
-//                hud!.hide()
-//            }
-//            
             
             Tool.stoploading()
             
