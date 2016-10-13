@@ -226,17 +226,6 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         
-//        bottomLine.snp.makeConstraints { (make) -> Void in
-//            make.left.equalTo(loginButton.snp.left)
-//            
-//            make.top.equalTo(weiboButton.snp.bottom).offset(4*minSpace)
-//            
-//            make.height.equalTo(0.5)
-//            
-//            make.right.equalTo(loginButton.snp.right)
-//        }
-
-        
     }
     
     
@@ -359,10 +348,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if(error != nil){
                 
                 self.view.isHidden = false
-//                BXProgressHUD.Builder(forView: self.view).text("\(error?.code):"+(error?.domain)!).mode(.text).show().hide(afterDelay: 2)
-                
                 Tool.showMsgBox("\(error?.code):"+(error?.domain)!)
-                
                 
             }else{
                 
@@ -422,15 +408,6 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
                     self.present(tab, animated: true, completion: nil)
                     
-                    //更新device token
-                    //                    [[UIApplication sharedApplication] registerForRemoteNotifications];
-                    //                    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
-                    //                    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-                    //
-                    
-                    
-                    //更新device token
-                    
                     APN.initAPNNotification()
                     
                     //判断是否点击推送消息进入
@@ -445,16 +422,6 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
         }, parameters: parameters)
-        
-        
-        //BXProgressHUD.hi
-        
-//        let hud = BXHUD.showProgress("Loading")
-//        hud.hide(afterDelay: 3)
-        
-        
-        
-        
         
     }
     
