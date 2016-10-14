@@ -20,6 +20,12 @@
 		B20D093A1D6C80D000C650A5 /* adress_book_contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = B20D09391D6C80D000C650A5 /* adress_book_contacts.png */; };
 		B20D093D1D6DE92D00C650A5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */; };
 		B213E3A71D82C2C200B9E4A5 /* follow_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = B213E3A61D82C2C200B9E4A5 /* follow_72px.png */; };
+		B21458861DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21458851DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift */; };
+		B21458871DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21458851DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift */; };
+		B21458891DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21458881DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift */; };
+		B214588A1DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21458881DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift */; };
+		B214588C1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214588B1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift */; };
+		B214588D1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214588B1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift */; };
 		B22FDC851D8FE07F005B0E86 /* FindTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297DB721D86E86D00A6426D /* FindTableViewController.swift */; };
 		B22FDC861D8FE07F005B0E86 /* MsgTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2458DF71D5D992500AF0815 /* MsgTableViewController.swift */; };
 		B22FDC871D8FE07F005B0E86 /* HeadLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E948831D7BF5E90087838A /* HeadLineTableViewCell.swift */; };
@@ -112,8 +118,6 @@
 		B24706551D50DACD00FBF7EB /* watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064D1D50DACD00FBF7EB /* watch@2x.png */; };
 		B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064E1D50DACD00FBF7EB /* watch@3x.png */; };
 		B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */; };
-		B2540D0D1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */; };
-		B2540D0E1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */; };
 		B2540D101DAA42CB00A644C6 /* TalkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */; };
 		B2540D111DAA42CB00A644C6 /* TalkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */; };
 		B2540D131DAA45A400A644C6 /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D121DAA45A400A644C6 /* TalkViewController.swift */; };
@@ -228,6 +232,9 @@
 		B20D09391D6C80D000C650A5 /* adress_book_contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adress_book_contacts.png; sourceTree = "<group>"; };
 		B20D093C1D6DE92D00C650A5 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B213E3A61D82C2C200B9E4A5 /* follow_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = follow_72px.png; sourceTree = "<group>"; };
+		B21458851DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkMsgTableViewCell.swift; sourceTree = "<group>"; };
+		B21458881DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkVoiceTableViewCell.swift; sourceTree = "<group>"; };
+		B214588B1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkImageTableViewCell.swift; sourceTree = "<group>"; };
 		B22FDCD71D8FE07F005B0E86 /* UATmoneyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UATmoneyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22FDCD81D8FE07F005B0E86 /* moneyiOS copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "moneyiOS copy3-Info.plist"; path = "/Users/wangjam/Documents/develop/money/moneyiOS/moneyiOS copy3-Info.plist"; sourceTree = "<absolute>"; };
 		B2458C411D59752A00AF0815 /* TradeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTableViewController.swift; sourceTree = "<group>"; };
@@ -252,7 +259,6 @@
 		B247064E1D50DACD00FBF7EB /* watch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch@3x.png"; sourceTree = "<group>"; };
 		B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCtrl.swift; sourceTree = "<group>"; };
 		B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_moneyiOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/moneyiOS-fqpazxdxfvcthkchuotjrhxlandb/Build/Products/Debug-iphonesimulator/Pods_moneyiOS.framework"; sourceTree = "<group>"; };
-		B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkTableViewCell.swift; sourceTree = "<group>"; };
 		B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkModel.swift; sourceTree = "<group>"; };
 		B2540D121DAA45A400A644C6 /* TalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 		B2540D151DAB5F8500A644C6 /* ToolViewInputVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputVoice@2x.png"; sourceTree = "<group>"; };
@@ -594,8 +600,10 @@
 			children = (
 				B2458E091D5DB51000AF0815 /* faceCell.swift */,
 				B2E948A11D7FAA800087838A /* NewsFeedTableViewCell.swift */,
-				B2540D0C1DAA42A700A644C6 /* TalkTableViewCell.swift */,
 				B2E9488C1D7C115B0087838A /* LiveTableViewCell.swift */,
+				B21458881DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift */,
+				B21458851DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift */,
+				B214588B1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift */,
 				B297DB751D86E8C700A6426D /* FindTableViewCell.swift */,
 				B2E948891D7C09300087838A /* HeadFaceTableViewCell.swift */,
 				B2E9489B1D7C50190087838A /* LiveView.swift */,
@@ -1000,6 +1008,7 @@
 			files = (
 				B22FDC851D8FE07F005B0E86 /* FindTableViewController.swift in Sources */,
 				B2D265631DA6A99E00705E18 /* APN.swift in Sources */,
+				B214588D1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift in Sources */,
 				B22FDC861D8FE07F005B0E86 /* MsgTableViewController.swift in Sources */,
 				B22FDC871D8FE07F005B0E86 /* HeadLineTableViewCell.swift in Sources */,
 				B22FDC881D8FE07F005B0E86 /* NewsModel.swift in Sources */,
@@ -1009,8 +1018,10 @@
 				B2540D141DAA45A400A644C6 /* TalkViewController.swift in Sources */,
 				B22FDC8C1D8FE07F005B0E86 /* SearchPeopleTableViewCtrl.swift in Sources */,
 				B2540D111DAA42CB00A644C6 /* TalkModel.swift in Sources */,
+				B21458871DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift in Sources */,
 				B22FDC8D1D8FE07F005B0E86 /* TradeTableViewController.swift in Sources */,
 				B22FDC8E1D8FE07F005B0E86 /* MoreTableViewCell.swift in Sources */,
+				B214588A1DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift in Sources */,
 				B22FDC8F1D8FE07F005B0E86 /* ConfigAccess.swift in Sources */,
 				B22FDC901D8FE07F005B0E86 /* UIMacro.swift in Sources */,
 				B22FDC911D8FE07F005B0E86 /* NewsAPI.swift in Sources */,
@@ -1025,7 +1036,6 @@
 				B22FDC9A1D8FE07F005B0E86 /* MarketViewController.swift in Sources */,
 				B22FDC9B1D8FE07F005B0E86 /* UserModel.swift in Sources */,
 				B22FDC9C1D8FE07F005B0E86 /* FindTableViewCell.swift in Sources */,
-				B2540D0E1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */,
 				B22FDC9D1D8FE07F005B0E86 /* NewsViewCtrl.swift in Sources */,
 				B22FDC9E1D8FE07F005B0E86 /* faceCell.swift in Sources */,
 				B22FDC9F1D8FE07F005B0E86 /* MsgTableViewCell.swift in Sources */,
@@ -1048,6 +1058,7 @@
 			files = (
 				B297DB731D86E86D00A6426D /* FindTableViewController.swift in Sources */,
 				B2D265621DA6A99E00705E18 /* APN.swift in Sources */,
+				B214588C1DB0D3D400DE00A1 /* TalkImageTableViewCell.swift in Sources */,
 				B2458DF81D5D992500AF0815 /* MsgTableViewController.swift in Sources */,
 				B2E948841D7BF5E90087838A /* HeadLineTableViewCell.swift in Sources */,
 				B296BAA21D50E54A004DE860 /* NewsModel.swift in Sources */,
@@ -1057,8 +1068,10 @@
 				B2540D131DAA45A400A644C6 /* TalkViewController.swift in Sources */,
 				B2458DFB1D5D993700AF0815 /* SearchPeopleTableViewCtrl.swift in Sources */,
 				B2540D101DAA42CB00A644C6 /* TalkModel.swift in Sources */,
+				B21458861DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift in Sources */,
 				B2458C421D59752A00AF0815 /* TradeTableViewController.swift in Sources */,
 				B2E948871D7BFB670087838A /* MoreTableViewCell.swift in Sources */,
+				B21458891DB0A9CE00DE00A1 /* TalkVoiceTableViewCell.swift in Sources */,
 				B296BAA91D56DCA7004DE860 /* ConfigAccess.swift in Sources */,
 				B24706441D50D70700FBF7EB /* UIMacro.swift in Sources */,
 				B296BAA51D50ECB0004DE860 /* NewsAPI.swift in Sources */,
@@ -1073,7 +1086,6 @@
 				B2E27A421D570DB900D65A94 /* MarketViewController.swift in Sources */,
 				B2458E011D5DA54100AF0815 /* UserModel.swift in Sources */,
 				B297DB761D86E8C700A6426D /* FindTableViewCell.swift in Sources */,
-				B2540D0D1DAA42A700A644C6 /* TalkTableViewCell.swift in Sources */,
 				B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */,
 				B2458E0A1D5DB51000AF0815 /* faceCell.swift in Sources */,
 				B20D09371D6C7DB500C650A5 /* MsgTableViewCell.swift in Sources */,
