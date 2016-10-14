@@ -127,16 +127,21 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         let duration = (notification as NSNotification).userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
         let curve = (notification as NSNotification).userInfo![UIKeyboardAnimationCurveUserInfoKey] as! UInt
         
-        let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         
+        print("keyboardSize: \(keyboardSize?.height)")
         
         //notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
         
         
         UIView.animate(withDuration: duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: curve), animations: { () -> Void in
-            if(self.talkTableView.frame.origin.y == 0){
+            
+            if(self.talkTableView.frame.origin.y != -(keyboardSize?.height)!) {
+                
+                
+                self.talkTableView.frame.origin.y = 0
+                self.bottomToolbar.frame.origin = CGPoint(x: 0, y: self.talkTableView.frame.origin.y + self.talkTableView.frame.size.height - (keyboardSize?.height)!)
                 self.talkTableView.frame.origin.y = -(keyboardSize?.height)!
-                self.bottomToolbar.frame.origin = CGPoint(x: 0, y: self.bottomToolbar.frame.origin.y - (keyboardSize?.height)!)
             }
             
             }, completion: nil)
