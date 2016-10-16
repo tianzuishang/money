@@ -15,7 +15,6 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
     let bottomToolbar = UIView()
     let bottomToolbarHeight = 49
     
-    let backGroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
     let bottomBarBack = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
     
     let inputTextField = UITextView()
@@ -32,12 +31,12 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
 //    let inputRightOneButton = UIButton()
 //    let inputRightTwoButton = UIButton()
     
-    
-    
-    
     let inputButtonHeight = 36.0
     
     //let inputTextFieldHeight = 30.0
+    
+    
+    let talkArray = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +48,39 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.initTalkTableView()
         self.initBottomToolbar()
+        
+        
+        
+        
+        let talkModel = TalkMsgModel()
+        talkModel.userModel.userSrno = 300189
+        talkModel.userModel.faceImageName = "tempFace2.jpg"
+        talkModel.msg = "测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话"
+        
+        talkArray.add(talkModel)
+        talkArray.add(talkModel)
+
+        talkArray.add(talkModel)
+
+        talkArray.add(talkModel)
+        
+        let talkModel2 = TalkMsgModel()
+        talkModel2.userModel.userSrno = 300189
+        talkModel2.userModel.faceImageName = "tempFace2.jpg"
+        talkModel2.msg = "测试私信"
+        talkArray.add(talkModel2)
+
+        
+        let talkModel3 = TalkMsgModel()
+        talkModel3.userModel.userSrno = 300189
+        talkModel3.userModel.faceImageName = "tempFace2.jpg"
+        talkModel3.msg = "测试私信,测试私信,测试私信,测试私信"
+        talkArray.add(talkModel3)
+
+        
+        
+        
+        talkTableView.reloadData()
         
     }
     
@@ -156,7 +188,7 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         talkTableView.delegate = self
         talkTableView.dataSource = self
         talkTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        talkTableView.backgroundColor = backGroundColor
+        talkTableView.backgroundColor = talkbackGroundColor
         
         self.view.addSubview(talkTableView)
         
@@ -168,6 +200,11 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
 
         talkTableView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(TalkViewController.clickTalkTableView)))
+        
+        
+        talkTableView.register(TalkMsgTableViewCell.self, forCellReuseIdentifier: "TalkMsgTableViewCell");
+
+        
         
     }
     
@@ -349,16 +386,32 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TalkMsgTableViewCell", for: indexPath) as! TalkMsgTableViewCell
+        
+        
+        cell.configureCell(talkArray.object(at: indexPath.row) as! TalkMsgModel)
+        
+        // Configure the cell...
+        
+        return cell
+
+        
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        
+        return TalkMsgTableViewCell.cellHeight(model: talkArray.object(at: indexPath.row) as! TalkMsgModel)
+        
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return talkArray.count
     }
     
     /*

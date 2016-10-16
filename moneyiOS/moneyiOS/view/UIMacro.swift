@@ -47,4 +47,7 @@ let red = UIColor(red:203/255, green: 27/255, blue: 69/255, alpha: 1.0)
 let green = UIColor(red:34/255, green: 125/255, blue: 81/255, alpha: 1.0)
 
 
+let talkbackGroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+
+
 

@@ -8,6 +8,7 @@
 
 import UIKit
 
-class TalkModel: NSObject {
-
+class TalkMsgModel: NSObject {
+    var userModel = UserModel()
+    var msg = String()
 }

@@ -118,8 +118,8 @@
 		B24706551D50DACD00FBF7EB /* watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064D1D50DACD00FBF7EB /* watch@2x.png */; };
 		B24706561D50DACD00FBF7EB /* watch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B247064E1D50DACD00FBF7EB /* watch@3x.png */; };
 		B247065C1D50DE5D00FBF7EB /* NewsViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */; };
-		B2540D101DAA42CB00A644C6 /* TalkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */; };
-		B2540D111DAA42CB00A644C6 /* TalkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */; };
+		B2540D101DAA42CB00A644C6 /* TalkMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkMsgModel.swift */; };
+		B2540D111DAA42CB00A644C6 /* TalkMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D0F1DAA42CB00A644C6 /* TalkMsgModel.swift */; };
 		B2540D131DAA45A400A644C6 /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D121DAA45A400A644C6 /* TalkViewController.swift */; };
 		B2540D141DAA45A400A644C6 /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2540D121DAA45A400A644C6 /* TalkViewController.swift */; };
 		B2540D171DAB5F8500A644C6 /* ToolViewInputVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2540D151DAB5F8500A644C6 /* ToolViewInputVoice@2x.png */; };
@@ -259,7 +259,7 @@
 		B247064E1D50DACD00FBF7EB /* watch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch@3x.png"; sourceTree = "<group>"; };
 		B247065B1D50DE5D00FBF7EB /* NewsViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCtrl.swift; sourceTree = "<group>"; };
 		B24CB5D21D9BA6920058A009 /* Pods_moneyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_moneyiOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/moneyiOS-fqpazxdxfvcthkchuotjrhxlandb/Build/Products/Debug-iphonesimulator/Pods_moneyiOS.framework"; sourceTree = "<group>"; };
-		B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkModel.swift; sourceTree = "<group>"; };
+		B2540D0F1DAA42CB00A644C6 /* TalkMsgModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkMsgModel.swift; sourceTree = "<group>"; };
 		B2540D121DAA45A400A644C6 /* TalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 		B2540D151DAB5F8500A644C6 /* ToolViewInputVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputVoice@2x.png"; sourceTree = "<group>"; };
 		B2540D161DAB5F8500A644C6 /* ToolViewInputVoice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputVoice@3x.png"; sourceTree = "<group>"; };
@@ -529,7 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				B296BAA11D50E54A004DE860 /* NewsModel.swift */,
-				B2540D0F1DAA42CB00A644C6 /* TalkModel.swift */,
+				B2540D0F1DAA42CB00A644C6 /* TalkMsgModel.swift */,
 				B297DB7B1D87DA4A00A6426D /* MsgModel.swift */,
 				B2E948A41D7FAC580087838A /* NewsFeedModel.swift */,
 				B2E948981D7C4ED50087838A /* LiveModel.swift */,
@@ -1017,7 +1017,7 @@
 				B22FDC8B1D8FE07F005B0E86 /* NewsFeedViewCtrl.swift in Sources */,
 				B2540D141DAA45A400A644C6 /* TalkViewController.swift in Sources */,
 				B22FDC8C1D8FE07F005B0E86 /* SearchPeopleTableViewCtrl.swift in Sources */,
-				B2540D111DAA42CB00A644C6 /* TalkModel.swift in Sources */,
+				B2540D111DAA42CB00A644C6 /* TalkMsgModel.swift in Sources */,
 				B21458871DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift in Sources */,
 				B22FDC8D1D8FE07F005B0E86 /* TradeTableViewController.swift in Sources */,
 				B22FDC8E1D8FE07F005B0E86 /* MoreTableViewCell.swift in Sources */,
@@ -1067,7 +1067,7 @@
 				B2E9487B1D7BBDFB0087838A /* NewsFeedViewCtrl.swift in Sources */,
 				B2540D131DAA45A400A644C6 /* TalkViewController.swift in Sources */,
 				B2458DFB1D5D993700AF0815 /* SearchPeopleTableViewCtrl.swift in Sources */,
-				B2540D101DAA42CB00A644C6 /* TalkModel.swift in Sources */,
+				B2540D101DAA42CB00A644C6 /* TalkMsgModel.swift in Sources */,
 				B21458861DB0A9BF00DE00A1 /* TalkMsgTableViewCell.swift in Sources */,
 				B2458C421D59752A00AF0815 /* TradeTableViewController.swift in Sources */,
 				B2E948871D7BFB670087838A /* MoreTableViewCell.swift in Sources */,
