@@ -786,6 +786,8 @@ router.get('/getUserDetail', function(req, res){
                 userDetail.cityDesc = data[0].UDT_CITY_SHRT_DESC;
                 userDetail.prvnceDesc = data[0].UDT_PRVNCE_SHRT_DESC;
                 userDetail.sign = data[0].UDT_USER_SIGN;
+                userDetail.followCount = data[0].UDT_USER_FOLLOW_COUNT;
+                userDetail.fansCount = data[0].UDT_USER_FANS_COUNT;
                 returnData.data = {
                     'userDetail': userDetail
                 }
