@@ -3,6 +3,7 @@ PODS:
   - Kingfisher (3.1.0)
   - RappleProgressHUD (2.0.4)
   - SnapKit (3.0.1)
+  - Socket.IO-Client-Swift (8.0.2)
   - SwiftyJSON (3.1.0)
 
 DEPENDENCIES:
@@ -10,6 +11,7 @@ DEPENDENCIES:
   - Kingfisher (= 3.1.0)
   - RappleProgressHUD (= 2.0.4)
   - SnapKit (= 3.0.1)
+  - Socket.IO-Client-Swift (= 8.0.2)
   - SwiftyJSON (= 3.1.0)
 
 SPEC CHECKSUMS:
@@ -17,8 +19,9 @@ SPEC CHECKSUMS:
   Kingfisher: 7779f22e977393e9533a89a9685beb8f679d3767
   RappleProgressHUD: f0591a3b4803d5392c169ca7cfae8048ba7119a4
   SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
+  Socket.IO-Client-Swift: 136598e4a81a42b0e6855e7f94a0e5a6efdc5ff8
   SwiftyJSON: 29b9f2a64f118c07e691667c2ba1efe536acfe0b
 
-PODFILE CHECKSUM: 2efe755a956398df3e8d41db88c2f4e24e30747f
+PODFILE CHECKSUM: 9f5482acb26c0ac1963cadcd93382f937745dc7f
 
 COCOAPODS: 1.0.1
