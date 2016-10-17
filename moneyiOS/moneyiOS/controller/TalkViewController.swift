@@ -31,7 +31,7 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
 //    let inputRightOneButton = UIButton()
 //    let inputRightTwoButton = UIButton()
     
-    let inputButtonHeight = 36.0
+    let inputButtonHeight = 40.0
     
     //let inputTextFieldHeight = 30.0
     
@@ -64,6 +64,7 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         talkArray.add(talkModel)
         
+        
         let talkModel2 = TalkMsgModel()
         talkModel2.userModel.userSrno = 300189
         talkModel2.userModel.faceImageName = "tempFace2.jpg"
@@ -76,6 +77,13 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         talkModel3.userModel.faceImageName = "tempFace2.jpg"
         talkModel3.msg = "测试私信,测试私信,测试私信,测试私信"
         talkArray.add(talkModel3)
+
+        
+        let talkModel4 = TalkMsgModel()
+        talkModel4.userModel.userSrno = 210013
+        talkModel4.userModel.faceImageName = "tempFace3.jpg"
+        talkModel4.msg = "测试私信,测试私信,测试私信,测试私信"
+        talkArray.add(talkModel4)
 
         
         
@@ -322,6 +330,7 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         keyboardButton.snp.makeConstraints { (make) in
+            
             make.left.equalTo(bottomToolbar.snp.left).offset(minSpace)
             make.centerY.equalTo(bottomToolbar.snp.centerY)
             make.width.equalTo(inputButtonHeight)

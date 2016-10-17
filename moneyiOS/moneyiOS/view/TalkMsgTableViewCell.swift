@@ -65,10 +65,11 @@ class TalkMsgTableViewCell: UITableViewCell {
     }
     
     func configureCell(_ model: TalkMsgModel) {
+        
         talkMsgModel = model
         let myUserInfo = (UIApplication.shared.delegate as! AppDelegate).myUserInfo
         
-        
+        msgButton.titleLabel?.frame.size = CGSize(width: TalkMsgTableViewCell.msgButtonMaxWidth - 2*minSpace, height: CGFloat(FLT_MAX))
         msgButton.setTitle(talkMsgModel?.msg, for: UIControlState.normal)
         msgButton.titleLabel?.sizeToFit()
         
@@ -82,7 +83,8 @@ class TalkMsgTableViewCell: UITableViewCell {
             //白色
             //左边
             
-            faceImage.snp.updateConstraints({ (make) in
+            
+            faceImage.snp.remakeConstraints({ (make) in
                 
                 make.left.equalTo(self.snp.left).offset(minSpace)
                 make.top.equalTo(self.snp.top).offset(minSpace)
@@ -92,7 +94,7 @@ class TalkMsgTableViewCell: UITableViewCell {
             
             msgButton.backgroundColor = UIColor.white
             msgButton.setTitleColor(UIColor.black, for: UIControlState.normal)
-            msgButton.snp.updateConstraints({ (make) in
+            msgButton.snp.remakeConstraints({ (make) in
                 make.left.equalTo(faceImage.snp.right).offset(minSpace)
                 make.top.equalTo(faceImage.snp.top)
                 make.width.equalTo((msgButton.titleLabel?.frame.size.width)!+2*minSpace)
@@ -105,7 +107,7 @@ class TalkMsgTableViewCell: UITableViewCell {
             //主题色
             //右边
             
-            faceImage.snp.updateConstraints({ (make) in
+            faceImage.snp.remakeConstraints({ (make) in
                 
                 make.right.equalTo(self.snp.right).offset(-minSpace)
                 make.top.equalTo(self.snp.top).offset(minSpace)
@@ -116,7 +118,7 @@ class TalkMsgTableViewCell: UITableViewCell {
             msgButton.backgroundColor = themeColor
             msgButton.setTitleColor(UIColor.white, for: UIControlState.normal)
             
-            msgButton.snp.updateConstraints({ (make) in
+            msgButton.snp.remakeConstraints({ (make) in
                 make.right.equalTo(faceImage.snp.left).offset(-minSpace)
                 make.top.equalTo(faceImage.snp.top)
                 make.width.equalTo((msgButton.titleLabel?.frame.size.width)! + 2*minSpace)
@@ -139,13 +141,13 @@ class TalkMsgTableViewCell: UITableViewCell {
         
         print(msgbutton.titleLabel?.frame.size.height)
         
-        if(TalkMsgTableViewCell.faceImageHeight > (msgbutton.titleLabel?.frame.size.height)!){
+        if(TalkMsgTableViewCell.faceImageHeight > (msgbutton.titleLabel?.frame.size.height)! + 2*minSpace){
             
-            return TalkMsgTableViewCell.faceImageHeight + 2*minSpace
+            return TalkMsgTableViewCell.faceImageHeight + 4*minSpace
             
         }else{
             
-            return (msgbutton.titleLabel?.frame.height)! + 4*minSpace
+            return (msgbutton.titleLabel?.frame.height)! + 6*minSpace
             
         }
         
