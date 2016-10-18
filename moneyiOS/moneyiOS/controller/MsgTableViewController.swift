@@ -28,13 +28,8 @@ class MsgTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         
-        let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.white
-        titleLabel.text = "消息"
-        titleLabel.font = UIFont(name: fontName, size: 20)
-        titleLabel.sizeToFit()
+        self.setTitle(title: "消息")
         
-        self.navigationItem.titleView = titleLabel
         
         self.tableView.register(MsgTableViewCell.self, forCellReuseIdentifier: "MsgTableViewCell");
         
@@ -98,7 +93,89 @@ class MsgTableViewController: UITableViewController {
         msgList.append(msgModel)
 
         
+        socketConnect()
+        
     }
+    
+    func setTitle(title: String) {
+        
+        let titleLabel = UILabel()
+        titleLabel.textColor = UIColor.white
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: fontName, size: 20)
+        titleLabel.sizeToFit()
+        
+        self.navigationItem.titleView = titleLabel
+        
+    }
+    
+    
+    
+    func socketRegister() {
+        
+        let app = UIApplication.shared.delegate as! AppDelegate;
+        
+//        let data = [
+//            "userID": app.myUserInfo?.userID
+//        ]
+        
+        let data = 0.1
+        
+        
+        app.socketAPI.sendMsg(data: data, event: "register") { (ackData) in
+            
+            let ackDataDic = ackData as! NSDictionary
+            
+            if(ackDataDic.object(forKey: "code") as! Int == SUCCESS) {
+                //登记成功
+                
+                
+                
+                
+            }else{
+                //登记不成功
+                print("登记异常")
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    func socketConnect() {
+        
+        let app = UIApplication.shared.delegate as! AppDelegate;
+        
+        app.socketAPI.connectServer(connectCall: { (data) in
+            
+            print("连接成功")
+            //注册
+            self.socketRegister()
+            
+            
+            
+            }, disconnectCall: { (data) in
+                
+                self.setTitle(title: "断开连接")
+                
+                
+            }, errorCall: { (data) in
+                
+                self.setTitle(title: "连接异常")
+                
+            }, reconnectCall: { (data) in
+                
+                self.setTitle(title: "正在重连")
+                
+            }, reconnectAttemptCall: { (data) in
+                
+                self.setTitle(title: "正在尝试重连")
+
+        })
+
+    }
+    
     
     func searchButton() {
         

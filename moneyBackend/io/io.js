@@ -1,13 +1,36 @@
 var authe = require('../utility/authe.js');
 var log = require('../utility/log.js');
 var constant = require('../utility/constant.js');
+var returnValue = require('../config/returnValue.js');
 
 //长连接
+var registerEvent = "register"; //登记socket id 和对应 user id
+var talkMsgEvent = "talkMsg"; //发送消息到对手方
 
 exports.connectionEntry = function(socket) {
-    socket.on('msg', function(data, fn){
+    // socket.on('msg', function(data, fn){
+    //     console.log(data)
+    //     fn(data)
+    // });
+
+    console.log("connectionEntry")
+
+    socket.on(registerEvent, function(data, fn){
+        //注册
         console.log(data)
-        fn(data)
+        fn({code:returnValue.returnCode.SUCCESS})
+
+
+        socket.on(talkMsgEvent, function(data, fn){
+
+            fn({code:returnValue.returnCode.SUCCESS})
+        })
+
+        //断开连接
+        socket.on("disconnect", function(data){
+
+        })
+
     });
 }
 
