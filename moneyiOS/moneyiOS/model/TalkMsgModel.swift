@@ -1,5 +1,5 @@
 //
-//  TalkTableViewCell.swift
+//  TalkModel.swift
 //  moneyiOS
 //
 //  Created by wang jam on 09/10/2016.
@@ -8,6 +8,7 @@
 
 import UIKit
 
-class TalkTableViewCell: NSObject {
-
+class TalkMsgModel: NSObject {
+    var userModel = UserModel()
+    var msg = String()
 }
