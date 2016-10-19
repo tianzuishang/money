@@ -121,16 +121,29 @@ class SocketAPI: NSObject {
             return socketNotConnect
         }
         
-        
-        
-        
         socket?.emitWithAck(event, with: [data])(0, {ackData in
-            
             if(ackCallFunc != nil){
                 ackCallFunc?(ackData)
             }
-            
         })
+        
+        
+//        socket?.emitWithAck(event, data as! SocketData)(0, {ackData in
+//            
+//            if(ackCallFunc != nil){
+//                ackCallFunc?(ackData)
+//            }
+//            
+//        })
+        
+        
+//        socket?.emitWithAck(event, with: ["userID":"id"])(0, {ackData in
+//            
+//            if(ackCallFunc != nil){
+//                ackCallFunc?(ackData)
+//            }
+//            
+//        })
         
         return socketConnected
         

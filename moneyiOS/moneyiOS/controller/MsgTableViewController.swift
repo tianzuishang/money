@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MsgTableViewController: UITableViewController {
 
@@ -114,21 +115,29 @@ class MsgTableViewController: UITableViewController {
     func socketRegister() {
         
         let app = UIApplication.shared.delegate as! AppDelegate;
+
+                
         
-//        let data = [
-//            "userID": app.myUserInfo?.userID
-//        ]
+        let data:[String: Any] = [
+            "userID": app.myUserInfo!.userID!
+        ]
         
-        let data = 0.1
+//        let data = NSMutableDictionary()
+//        data.setObject(app.myUserInfo?.userID, forKey: "userID" as NSCopying)
         
+        
+        //let dataStr = String(data: try! JSONSerialization.data(withJSONObject: data, options: []), encoding: String.Encoding.utf8)
+        
+        
+        //print(data.string)
         
         app.socketAPI.sendMsg(data: data, event: "register") { (ackData) in
             
-            let ackDataDic = ackData as! NSDictionary
+            let ackDataDic = ackData[0] as! NSDictionary
             
             if(ackDataDic.object(forKey: "code") as! Int == SUCCESS) {
                 //登记成功
-                
+                print("登记成功")
                 
                 
                 
