@@ -6,6 +6,7 @@ var returnValue = require('../config/returnValue.js');
 //长连接
 var registerEvent = "register"; //登记socket id 和对应 user id
 var talkMsgEvent = "talkMsg"; //发送消息到对手方
+var missedMsgEvent = "missedMsg";//获取离线信息
 
 exports.connectionEntry = function(socket) {
     // socket.on('msg', function(data, fn){
@@ -18,8 +19,13 @@ exports.connectionEntry = function(socket) {
     socket.on(registerEvent, function(data, fn){
         //注册
         console.log(data)
-        fn({code:returnValue.returnCode.SUCCESS})
 
+        socket.on(missedMsgEvent, function(data, fn){
+            var feedback = {}
+
+            feedback.code = returnValue.returnCode.SUCCESS
+            fn(feedback)
+        })
 
         socket.on(talkMsgEvent, function(data, fn){
 
@@ -31,6 +37,8 @@ exports.connectionEntry = function(socket) {
 
         })
 
+
+        fn({code:returnValue.returnCode.SUCCESS})
     });
 }
 
