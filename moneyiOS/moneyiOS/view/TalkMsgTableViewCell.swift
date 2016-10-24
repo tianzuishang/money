@@ -56,9 +56,9 @@ class TalkMsgTableViewCell: UITableViewCell {
         msgButton.setTitle("", for: UIControlState.normal)
         msgButton.titleLabel?.font = UIFont(name: fontName, size: normalFont)
         msgButton.titleLabel?.numberOfLines = 0
-        msgButton.titleLabel?.frame.size = CGSize(width: TalkMsgTableViewCell.msgButtonMaxWidth - 2*minSpace, height: CGFloat(FLT_MAX))
+        msgButton.titleLabel?.frame.size = CGSize(width: TalkMsgTableViewCell.msgButtonMaxWidth - 4*minSpace, height: CGFloat(FLT_MAX))
         
-        msgButton.contentEdgeInsets = UIEdgeInsets(top: minSpace, left: minSpace, bottom: minSpace, right: minSpace)
+        msgButton.contentEdgeInsets = UIEdgeInsets(top: 1.5*minSpace, left: 1.5*minSpace, bottom: 1.5*minSpace, right: 1.5*minSpace)
         
         return msgButton
         
@@ -69,7 +69,7 @@ class TalkMsgTableViewCell: UITableViewCell {
         talkMsgModel = model
         let myUserInfo = (UIApplication.shared.delegate as! AppDelegate).myUserInfo
         
-        msgButton.titleLabel?.frame.size = CGSize(width: TalkMsgTableViewCell.msgButtonMaxWidth - 2*minSpace, height: CGFloat(FLT_MAX))
+        msgButton.titleLabel?.frame.size = CGSize(width: TalkMsgTableViewCell.msgButtonMaxWidth - 3*minSpace, height: CGFloat(FLT_MAX))
         msgButton.setTitle(talkMsgModel?.msg, for: UIControlState.normal)
         msgButton.titleLabel?.sizeToFit()
         
@@ -97,8 +97,8 @@ class TalkMsgTableViewCell: UITableViewCell {
             msgButton.snp.remakeConstraints({ (make) in
                 make.left.equalTo(faceImage.snp.right).offset(minSpace)
                 make.top.equalTo(faceImage.snp.top)
-                make.width.equalTo((msgButton.titleLabel?.frame.size.width)!+2*minSpace)
-                make.height.equalTo((msgButton.titleLabel?.frame.size.height)! + 2*minSpace)
+                make.width.equalTo((msgButton.titleLabel?.frame.size.width)!+3*minSpace)
+                make.height.equalTo((msgButton.titleLabel?.frame.size.height)! + 3*minSpace)
             })
             
             
@@ -121,8 +121,8 @@ class TalkMsgTableViewCell: UITableViewCell {
             msgButton.snp.remakeConstraints({ (make) in
                 make.right.equalTo(faceImage.snp.left).offset(-minSpace)
                 make.top.equalTo(faceImage.snp.top)
-                make.width.equalTo((msgButton.titleLabel?.frame.size.width)! + 2*minSpace)
-                make.height.equalTo((msgButton.titleLabel?.frame.size.height)! + 2*minSpace)
+                make.width.equalTo((msgButton.titleLabel?.frame.size.width)! + 3*minSpace)
+                make.height.equalTo((msgButton.titleLabel?.frame.size.height)! + 3*minSpace)
             })
         }
         
@@ -141,13 +141,13 @@ class TalkMsgTableViewCell: UITableViewCell {
         
         print(msgbutton.titleLabel?.frame.size.height)
         
-        if(TalkMsgTableViewCell.faceImageHeight > (msgbutton.titleLabel?.frame.size.height)! + 2*minSpace){
+        if(TalkMsgTableViewCell.faceImageHeight > (msgbutton.titleLabel?.frame.size.height)! + 3*minSpace){
             
             return TalkMsgTableViewCell.faceImageHeight + 4*minSpace
             
         }else{
             
-            return (msgbutton.titleLabel?.frame.height)! + 6*minSpace
+            return (msgbutton.titleLabel?.frame.height)! + 7*minSpace
             
         }
         

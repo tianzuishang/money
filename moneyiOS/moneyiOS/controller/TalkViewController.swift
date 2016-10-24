@@ -104,7 +104,15 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         //NSNotification.Name.uike
 
-
+        
+        //滚动到底部
+        //talkTableView.scr
+        
+        
+        if(talkArray.count != 0){
+            let index = IndexPath(row: talkArray.count - 1, section: 0)
+            talkTableView.scrollToRow(at: index, at: UITableViewScrollPosition.bottom, animated: true)
+        }
     }
 
 
@@ -249,7 +257,12 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         keyboardButton.setBackgroundImage(UIImage(named: "ToolViewKeyboard"), for: UIControlState.normal)
         keyboardButton.showsTouchWhenHighlighted = true
         keyboardButton.addTarget(self, action: #selector(TalkViewController.clickKeyboardButton), for: UIControlEvents.touchDown)
-
+        
+        
+        
+        
+        
+        
         emotionButton.frame = CGRect(x: 0, y: 0, width: CGFloat(inputButtonHeight), height: CGFloat(inputButtonHeight))
         emotionButton.setBackgroundImage(UIImage(named: "ToolViewEmotion"), for: UIControlState.normal)
         emotionButton.showsTouchWhenHighlighted = true
@@ -273,7 +286,10 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputTextField.layer.cornerRadius = 4.0
         inputTextField.layer.borderWidth = 0.5
         inputTextField.layer.borderColor = UIColor.lightGray.cgColor
-
+        inputTextField.returnKeyType = UIReturnKeyType.go
+        inputTextField.enablesReturnKeyAutomatically = true
+        
+        
 
         microSendButton.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
 
@@ -360,7 +376,81 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.clickKeyboardButton()
 
     }
-
+    
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        if(textView == inputTextField) {
+            
+            if(textView.text == "") {
+                
+                
+            }
+            
+        }
+        
+    }
+    
+    func sendMsg() {
+        print("sendMsg")
+        
+        if(inputTextField.text != "") {
+            
+            let app = UIApplication.shared.delegate as! AppDelegate;
+            
+            let talkMsgModel = TalkMsgModel()
+            talkMsgModel.userModel = app.myUserInfo!
+            talkMsgModel.msg = inputTextField.text
+            talkArray.add(talkMsgModel)
+            
+            
+            talkTableView.reloadData()
+            talkTableView.scrollToRow(at: IndexPath(row: talkArray.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+            
+            
+            let talkMsgData = [
+                "msg": talkMsgModel.msg,
+                "userID": talkMsgModel.userModel.userID!
+            ]
+            
+            
+            app.socketAPI.sendMsg(data: talkMsgData, event: "talkMsg", ackCallFunc: { (ackData) in
+                
+                let ackDataDic = ackData[0] as! NSDictionary
+                
+                if(ackDataDic.object(forKey: "code") as! Int == SUCCESS) {
+                    
+                }
+            })
+            
+            inputTextField.text = ""
+            
+        }
+        
+    }
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        
+        if(textView == inputTextField) {
+            print("shouldChangeTextIn")
+            
+            print(text)
+            if(text == "\n") {
+                self.sendMsg()
+                return false
+            }
+            //return false
+        }
+        return true
+    }
+    
+    
+    
+    
+    
+    
     func clickKeyboardButton() {
 
         keyboardButton.isHidden = true

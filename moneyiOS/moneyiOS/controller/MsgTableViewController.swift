@@ -19,6 +19,7 @@ class MsgTableViewController: UITableViewController {
     var msgList = [MsgModel]()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +30,7 @@ class MsgTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         
-        self.setTitle(title: "消息")
+        self.setTitle(title: "消息", active: false)
         
         
         self.tableView.register(MsgTableViewCell.self, forCellReuseIdentifier: "MsgTableViewCell");
@@ -94,11 +95,57 @@ class MsgTableViewController: UITableViewController {
         msgList.append(msgModel)
 
         
-        socketConnect()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MsgTableViewController.applicationWillEnterForeground(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+    
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let app = UIApplication.shared.delegate as! AppDelegate;
+        
+        if(app.socketAPI.isConnect() != socketConnected) {
+            socketConnect()
+        }else{
+            
+            getMissedMsg()
+            
+        }
         
     }
     
-    func setTitle(title: String) {
+    
+    
+    func applicationWillEnterForeground(_ notification: NSNotification) {
+        
+        
+        let app = UIApplication.shared.delegate as! AppDelegate;
+        
+        if(app.socketAPI.isConnect() != socketConnected) {
+            socketConnect()
+        }else{
+            
+            getMissedMsg()
+            
+        }
+        
+        
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        
+        //NotificationCenter.default.removeObserver(self)
+        
+        //[[NSNotificationCenter defaultCenter] removeObserver:self];
+        
+    }
+    
+    
+    
+    func setTitle(title: String, active: Bool) {
         
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.white
@@ -108,28 +155,61 @@ class MsgTableViewController: UITableViewController {
         
         self.navigationItem.titleView = titleLabel
         
+        print(titleLabel.frame.size.width)
+        
+        if(active == true) {
+            
+            let activeLoad = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+            
+            activeLoad.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            activeLoad.center = CGPoint(x: (self.navigationItem.titleView?.center.x)! + titleLabel.frame.size.width/2 + 2*minSpace, y: (self.navigationItem.titleView?.center.y)!)
+            activeLoad.hidesWhenStopped = true
+            activeLoad.startAnimating()
+            self.navigationItem.titleView?.addSubview(activeLoad)
+            
+        }
     }
     
+    
+    func getMissedMsg() {
+        
+        setTitle(title:"收取中", active: true)
+        
+        let app = UIApplication.shared.delegate as! AppDelegate;
+        let data:[String: Any] = [
+            "userID": app.myUserInfo!.userID!
+        ]
+        
+        app.socketAPI.sendMsg(data: data, event: "missedMsg") { (ackData) in
+            
+            self.setTitle(title:"消息", active: false)
+            
+            let ackDataDic = ackData[0] as! NSDictionary
+            
+            if(ackDataDic.object(forKey: "code") as! Int == SUCCESS) {
+                
+                
+                
+            }else{
+                
+                print("离线消息收取失败")
+                
+            }
+        }
+        
+        
+    }
     
     
     func socketRegister() {
         
         let app = UIApplication.shared.delegate as! AppDelegate;
 
-                
         
         let data:[String: Any] = [
             "userID": app.myUserInfo!.userID!
         ]
         
-//        let data = NSMutableDictionary()
-//        data.setObject(app.myUserInfo?.userID, forKey: "userID" as NSCopying)
-        
-        
-        //let dataStr = String(data: try! JSONSerialization.data(withJSONObject: data, options: []), encoding: String.Encoding.utf8)
-        
-        
-        //print(data.string)
         
         app.socketAPI.sendMsg(data: data, event: "register") { (ackData) in
             
@@ -138,7 +218,8 @@ class MsgTableViewController: UITableViewController {
             if(ackDataDic.object(forKey: "code") as! Int == SUCCESS) {
                 //登记成功
                 print("登记成功")
-                
+                //获取离线信息
+                self.getMissedMsg()
                 
                 
             }else{
@@ -154,6 +235,8 @@ class MsgTableViewController: UITableViewController {
     
     func socketConnect() {
         
+        setTitle(title: "连接中", active: true)
+        
         let app = UIApplication.shared.delegate as! AppDelegate;
         
         app.socketAPI.connectServer(connectCall: { (data) in
@@ -166,20 +249,20 @@ class MsgTableViewController: UITableViewController {
             
             }, disconnectCall: { (data) in
                 
-                self.setTitle(title: "断开连接")
+                self.setTitle(title: "断开连接", active: true)
                 
                 
             }, errorCall: { (data) in
                 
-                self.setTitle(title: "连接异常")
+                self.setTitle(title: "连接异常", active: true)
                 
             }, reconnectCall: { (data) in
                 
-                self.setTitle(title: "正在重连")
+                self.setTitle(title: "正在重连", active: true)
                 
             }, reconnectAttemptCall: { (data) in
                 
-                self.setTitle(title: "正在尝试重连")
+                self.setTitle(title: "正在尝试重连", active: true)
 
         })
 
