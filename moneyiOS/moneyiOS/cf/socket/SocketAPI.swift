@@ -110,6 +110,23 @@ class SocketAPI: NSObject {
         return true
     }
     
+    func isConnect() -> Int {
+        
+        if(socket == nil){
+            return socketNotConnect
+        }
+        
+        if(socket?.status == SocketIOClientStatus.notConnected) {
+            return socketNotConnect
+        }
+        
+        if(socket?.status == SocketIOClientStatus.connected) {
+            return socketConnected
+        }
+        
+        return socketNotConnect
+    }
+    
     
     func sendMsg(data: Any, event: String, ackCallFunc: ackCall? ) -> Int {
         

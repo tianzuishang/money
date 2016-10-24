@@ -96,20 +96,57 @@ class MsgTableViewController: UITableViewController {
 
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector(MsgTableViewController.applicationWillEnterForeground(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+    
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let app = UIApplication.shared.delegate as! AppDelegate;
+        
+        if(app.socketAPI.isConnect() != socketConnected) {
+            socketConnect()
+        }else{
+            
+            getMissedMsg()
+            
+        }
+        
+    }
+    
+    
+    
+    func applicationWillEnterForeground(_ notification: NSNotification) {
         
         
-
+        let app = UIApplication.shared.delegate as! AppDelegate;
         
-        socketConnect()
-        
-        
-        
+        if(app.socketAPI.isConnect() != socketConnected) {
+            socketConnect()
+        }else{
+            
+            getMissedMsg()
+            
+        }
         
         
     }
     
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        
+        //NotificationCenter.default.removeObserver(self)
+        
+        //[[NSNotificationCenter defaultCenter] removeObserver:self];
+        
+    }
+    
+    
+    
     func setTitle(title: String, active: Bool) {
-
+        
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.white
         titleLabel.text = title
@@ -131,17 +168,14 @@ class MsgTableViewController: UITableViewController {
             self.navigationItem.titleView?.addSubview(activeLoad)
             
         }
-        
-        
-        
     }
     
     
     func getMissedMsg() {
         
         setTitle(title:"收取中", active: true)
-        let app = UIApplication.shared.delegate as! AppDelegate;
         
+        let app = UIApplication.shared.delegate as! AppDelegate;
         let data:[String: Any] = [
             "userID": app.myUserInfo!.userID!
         ]

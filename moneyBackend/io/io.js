@@ -34,7 +34,7 @@ exports.connectionEntry = function(socket) {
 
         //断开连接
         socket.on("disconnect", function(data){
-
+            console.log('disconnect ' + data)
         })
 
 
