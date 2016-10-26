@@ -10,9 +10,9 @@ exports.mysqlConnection = {
     port: process.env.dbport
 };
 
-// exports.redisConnection = {
-//     auth_pass: process.env.redis_auth_pass
-// };
+exports.redisConnection = {
+    auth_pass: process.env.redis_auth_pass
+};
 
 
 //mongodb连接配置
@@ -23,9 +23,7 @@ exports.mysqlConnection = {
 
 //redis中hash表配置
 exports.redisHashTable = {
-    userAccountHash: 'userAccountHash',
-    userTokenHash :'userTokenHash',
-    quoteHash: 'quoteHash'
+    userIDSocketHash: 'userIDSocketHash', //key:userID, value:socket object
 };
 
 //如果需要token校验，api 认证加密密钥
