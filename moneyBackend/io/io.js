@@ -8,11 +8,22 @@ var registerEvent = "register"; //登记socket id 和对应 user id
 var talkMsgEvent = "talkMsg"; //发送消息到对手方
 var missedMsgEvent = "missedMsg";//获取离线信息
 
-exports.connectionEntry = function(socket) {
+var utility = require('../model/utility.js')
+var appConfig = require('../config/appConfig.js')
+
+var encode = require('../utility/encode.js')
+
+var globalSockets = null
+
+exports.connectionEntry = function(socket, sockets) {
     // socket.on('msg', function(data, fn){
     //     console.log(data)
     //     fn(data)
     // });
+    if(globalSockets == null){
+        globalSockets = sockets
+    }
+
 
     console.log("connectionEntry")
 
@@ -20,27 +31,103 @@ exports.connectionEntry = function(socket) {
         //注册
         console.log(data)
 
-        socket.on(missedMsgEvent, function(data, fn){
-            var feedback = {}
+        utility.redisHset(appConfig.redisHashTable.userIDSocketHash, data.userID, socket.id, function(err, data){
+            if(err){
+                log.error(err, log.getFileNameAndLineNum(__filename))
+            }
+        });
 
-            feedback.code = returnValue.returnCode.SUCCESS
-            fn(feedback)
-        })
+        socket.on(missedMsgEvent, onMissedMsgEvent)
 
-        socket.on(talkMsgEvent, function(data, fn){
-
-            fn({code:returnValue.returnCode.SUCCESS})
-        })
+        socket.on(talkMsgEvent, onTalkMsgEvent);
 
         //断开连接
         socket.on("disconnect", function(data){
             console.log('disconnect ' + data)
+
+
         })
 
 
         fn({code:returnValue.returnCode.SUCCESS})
     });
 }
+
+
+function onMissedMsgEvent(data, fn) {
+
+    var feedback = {}
+    utility.redisHvals(data.userID+".missedMsgHash", function(err, missedMsg){
+        if(err){
+            log.error(err, log.getFileNameAndLineNum(__filename))
+            feedback.code = returnValue.returnCode.ERROR
+        }else{
+            feedback.code = returnValue.returnCode.SUCCESS
+            feedback.data = missedMsg
+
+            //清空离线消息
+            utility
+
+        }
+        fn(feedback)
+    })
+}
+
+
+
+function onTalkMsgEvent(data, fn) {
+
+    data.timestamp = Date.now();
+    console.log(data.sourceUserID)
+    console.log(data.targetUserID)
+    console.log(data.timestamp)
+    data.msg_id = encode.sha1Cryp(data.sourceUserID + data.targetUserID + data.timestamp);
+
+    utility.redisHget(appConfig.redisHashTable.userIDSocketHash, data.targetUserID, function(err, socketid){
+        if(err){
+            log.error(err, log.getFileNameAndLineNum(__filename))
+            return
+        }
+
+        if(socketid == null){
+            //未登录 添加离线消息
+            utility.redisHset(data.targetUserID+".missedMsgHash", data.msg_id, data, function(err){
+                if(err){
+                    log.error(err, log.getFileNameAndLineNum(__filename))
+                }
+            });
+            return
+        }
+
+        if(globalSockets.connected[socketid] != null) {
+            //已连接
+            globalSockets.connected[socketid].emit(data)
+
+        }else{
+            //连接失效,去除redis中连接id
+            utility.redisHdel(appConfig.redisHashTable.userIDSocketHash, data.targetUserID, function(err){
+                if(err){
+                    log.error(err, log.getFileNameAndLineNum(__filename))
+                }
+            });
+
+            //离线消息添加
+            utility.redisHset(data.targetUserID+".missedMsgHash", data.msg_id, data, function(err){
+                if(err){
+                    log.error(err, log.getFileNameAndLineNum(__filename))
+                }
+            });
+        }
+    });
+
+    fn({
+        code:returnValue.returnCode.SUCCESS,
+        data:data
+    });
+
+}
+
+
 
 
 // exports.connectionEntry = function(socket){

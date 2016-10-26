@@ -25,3 +25,9 @@ moneyiOS/deploy/a.txt
 moneyiOS/deploy/.cache/api.github.com,repos,cfetslab,money,issues,1,9acef3663822507a918ab48ffc418d10
 
 moneyiOS/deploy/gitLog.txt
+
+moneyBackend/config/redisServer/dump.rdb
+
+moneyBackend/config/redisServer/nohup.out
+
+moneyBackend/config/redisServer/redis.log

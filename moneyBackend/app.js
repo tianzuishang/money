@@ -71,7 +71,7 @@ function initSocketIO(server){
     var io = require('./io/io.js');//长连接模块
     var socketio = require('socket.io')(server);
     socketio.on('connection', function(socket){
-        io.connectionEntry(socket);
+        io.connectionEntry(socket, socketio);
     });
 }
 

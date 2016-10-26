@@ -73,12 +73,12 @@ class TalkMsgTableViewCell: UITableViewCell {
         msgButton.setTitle(talkMsgModel?.msg, for: UIControlState.normal)
         msgButton.titleLabel?.sizeToFit()
         
-        Tool.setFaceViewImage(faceImage, faceViewWidth: CGFloat(TalkMsgTableViewCell.faceImageHeight), imageUrl: ConfigAccess.serverDomain() + (talkMsgModel?.userModel.faceImageName)!)
+        Tool.setFaceViewImage(faceImage, faceViewWidth: CGFloat(TalkMsgTableViewCell.faceImageHeight), imageUrl: ConfigAccess.serverDomain() + (talkMsgModel?.sourceUserModel.faceImageName)!)
         
         
         
         
-        if(myUserInfo?.userSrno != talkMsgModel?.userModel.userSrno){
+        if(myUserInfo?.userSrno != talkMsgModel?.sourceUserModel.userSrno){
             //对方聊天信息
             //白色
             //左边
