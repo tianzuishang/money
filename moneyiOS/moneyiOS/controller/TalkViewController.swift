@@ -37,6 +37,10 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
     let talkArray = NSMutableArray()
+    
+    
+    var counterUserInfo = UserModel()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,45 +52,6 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         self.initTalkTableView()
         self.initBottomToolbar()
-
-
-
-
-        let talkModel = TalkMsgModel()
-        talkModel.userModel.userSrno = 300189
-        talkModel.userModel.faceImageName = "tempFace2.jpg"
-        talkModel.msg = "测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话测试私信对话"
-
-        talkArray.add(talkModel)
-        talkArray.add(talkModel)
-
-        talkArray.add(talkModel)
-
-        talkArray.add(talkModel)
-
-
-        let talkModel2 = TalkMsgModel()
-        talkModel2.userModel.userSrno = 300189
-        talkModel2.userModel.faceImageName = "tempFace2.jpg"
-        talkModel2.msg = "测试私信"
-        talkArray.add(talkModel2)
-
-
-        let talkModel3 = TalkMsgModel()
-        talkModel3.userModel.userSrno = 300189
-        talkModel3.userModel.faceImageName = "tempFace2.jpg"
-        talkModel3.msg = "测试私信,测试私信,测试私信,测试私信"
-        talkArray.add(talkModel3)
-
-
-        let talkModel4 = TalkMsgModel()
-        talkModel4.userModel.userSrno = 210013
-        talkModel4.userModel.faceImageName = "tempFace3.jpg"
-        talkModel4.msg = "测试私信,测试私信,测试私信,测试私信"
-        talkArray.add(talkModel4)
-
-
-
 
         talkTableView.reloadData()
 
@@ -399,7 +364,9 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
             let app = UIApplication.shared.delegate as! AppDelegate;
             
             let talkMsgModel = TalkMsgModel()
-            talkMsgModel.userModel = app.myUserInfo!
+            
+            talkMsgModel.sourceUserModel = app.myUserInfo!
+            talkMsgModel.targetUserModel = counterUserInfo
             talkMsgModel.msg = inputTextField.text
             talkArray.add(talkMsgModel)
             
@@ -410,7 +377,8 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let talkMsgData = [
                 "msg": talkMsgModel.msg,
-                "userID": talkMsgModel.userModel.userID!
+                "sourceUserID": talkMsgModel.sourceUserModel.userID!,
+                "targetUserID": talkMsgModel.targetUserModel.userID!
             ]
             
             

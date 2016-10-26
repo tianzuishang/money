@@ -9,6 +9,7 @@
 import UIKit
 
 class TalkMsgModel: NSObject {
-    var userModel = UserModel()
+    var sourceUserModel = UserModel()
+    var targetUserModel = UserModel()
     var msg = String()
 }
