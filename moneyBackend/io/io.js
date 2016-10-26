@@ -37,12 +37,7 @@ exports.connectionEntry = function(socket, sockets) {
             }
         });
 
-        socket.on(missedMsgEvent, function(data, fn){
-            var feedback = {}
-
-            feedback.code = returnValue.returnCode.SUCCESS
-            fn(feedback)
-        })
+        socket.on(missedMsgEvent, onMissedMsgEvent)
 
         socket.on(talkMsgEvent, onTalkMsgEvent);
 
@@ -56,6 +51,26 @@ exports.connectionEntry = function(socket, sockets) {
 
         fn({code:returnValue.returnCode.SUCCESS})
     });
+}
+
+
+function onMissedMsgEvent(data, fn) {
+
+    var feedback = {}
+    utility.redisHvals(data.userID+".missedMsgHash", function(err, missedMsg){
+        if(err){
+            log.error(err, log.getFileNameAndLineNum(__filename))
+            feedback.code = returnValue.returnCode.ERROR
+        }else{
+            feedback.code = returnValue.returnCode.SUCCESS
+            feedback.data = missedMsg
+
+            //清空离线消息
+            utility
+
+        }
+        fn(feedback)
+    })
 }
 
 
