@@ -99,6 +99,12 @@ class MsgTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(MsgTableViewController.applicationWillEnterForeground(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
     
+        
+        
+        
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -247,20 +253,20 @@ class MsgTableViewController: UITableViewController {
             
             
             
-            }, disconnectCall: { (data) in
+            }, disconnectCall: { (data, ack) in
                 
                 self.setTitle(title: "断开连接", active: true)
                 
                 
-            }, errorCall: { (data) in
+            }, errorCall: { (data, ack) in
                 
                 self.setTitle(title: "连接异常", active: true)
                 
-            }, reconnectCall: { (data) in
+            }, reconnectCall: { (data, ack) in
                 
                 self.setTitle(title: "正在重连", active: true)
                 
-            }, reconnectAttemptCall: { (data) in
+            }, reconnectAttemptCall: { (data, ack) in
                 
                 self.setTitle(title: "正在尝试重连", active: true)
 

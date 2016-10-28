@@ -388,6 +388,8 @@ class TalkViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 if(ackDataDic.object(forKey: "code") as! Int == SUCCESS) {
                     
+                    //发送成功
+                    
                 }
             })
             

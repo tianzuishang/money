@@ -9,7 +9,7 @@
 import UIKit
 import SocketIO
 
-typealias socketCall = (_ data: [Any])->Void
+typealias socketCall = (_ data: [Any], _ ack: SocketAckEmitter)->Void
 
 typealias ackCall = (_ ackdata: [Any])->Void
 
@@ -42,7 +42,7 @@ class SocketAPI: NSObject {
             print("socket connect")
             
             if(connectCall != nil){
-                connectCall!(data)
+                connectCall!(data, ack)
             }
         })
         
@@ -51,7 +51,7 @@ class SocketAPI: NSObject {
             
             print("socket disconnect")
             if(disconnectCall != nil){
-                disconnectCall!(data)
+                disconnectCall!(data, ack)
             }
 
             
@@ -63,7 +63,7 @@ class SocketAPI: NSObject {
             print("socket error")
             
             if(errorCall != nil){
-                errorCall!(data)
+                errorCall!(data, ack)
             }
             
         })
@@ -73,7 +73,7 @@ class SocketAPI: NSObject {
             print("socket reconnect")
             
             if(reconnectCall != nil){
-                reconnectCall!(data)
+                reconnectCall!(data, ack)
             }
             
         })
@@ -83,7 +83,7 @@ class SocketAPI: NSObject {
             print("socket reconnectAttempt")
             
             if(reconnectAttemptCall != nil){
-                reconnectAttemptCall!(data)
+                reconnectAttemptCall!(data, ack)
             }
             
         })
@@ -93,19 +93,15 @@ class SocketAPI: NSObject {
     }
     
     
-    func bindEventsAction(eventActionMap:[String:socketCall])->Bool {
+    func bindEventAction(eventAction:(String,socketCall))->Bool {
         
         if(socket == nil){
             return false
         }
         
-        for (event, call) in eventActionMap {
-            
-            socket?.on(event, callback: { (data, ack) in
-                call(data)
-            })
-
-        }
+        socket?.on(eventAction.0, callback: { (data, ack) in
+            eventAction.1(data, ack)
+        })
         
         return true
     }
@@ -144,23 +140,6 @@ class SocketAPI: NSObject {
             }
         })
         
-        
-//        socket?.emitWithAck(event, data as! SocketData)(0, {ackData in
-//            
-//            if(ackCallFunc != nil){
-//                ackCallFunc?(ackData)
-//            }
-//            
-//        })
-        
-        
-//        socket?.emitWithAck(event, with: ["userID":"id"])(0, {ackData in
-//            
-//            if(ackCallFunc != nil){
-//                ackCallFunc?(ackData)
-//            }
-//            
-//        })
         
         return socketConnected
         

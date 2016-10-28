@@ -89,7 +89,6 @@ function onTalkMsgEvent(data, fn) {
     utility.redisHget(appConfig.redisHashTable.userIDSocketHash, data.targetUserID, function(err, socketid){
         if(err){
             log.error(err, log.getFileNameAndLineNum(__filename))
-            return
         }
 
         utility.redisHset(data.targetUserID+".missedMsgHash", data.msg_id, data, function(err){
